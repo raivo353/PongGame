@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VariableDefinition xmlns="http://www.br-automation.com/iat2014/session/runtime/v1">
+  <Session>
+    <Variable name="GreenColour" xsi:type="ANY_STRING" value="Solid_Black_Green" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+  </Session>
+  <Session>
+    <Variable name="RedColour" xsi:type="ANY_STRING" value="Solid_Black_Red" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+  </Session>
+</VariableDefinition>

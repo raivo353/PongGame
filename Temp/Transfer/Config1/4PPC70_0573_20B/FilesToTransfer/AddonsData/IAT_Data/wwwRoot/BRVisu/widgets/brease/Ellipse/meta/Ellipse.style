@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StyleInformation name="widgets.brease.Ellipse" xmlns="http://www.br-automation.com/iat2014/widgetStyles"
+									xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+									>
+	<StyleProperties >
+    <StyleProperty name="width" type="Size" not_styleable="true" default="100">
+      <StyleElement attribute="@include elemWidth($value)"></StyleElement>
+      <Description>outer width of widget</Description>
+    </StyleProperty>
+    <StyleProperty name="height" type="Size" not_styleable="true" default="100">
+      <StyleElement attribute="@include elemHeight($value)"></StyleElement>
+      <Description>outer height of widget</Description>
+    </StyleProperty>
+    <StyleProperty name="cornerRadius" type="PixelVal" not_styleable="true" hide="true">
+      <Description>Sets the radius of the widget rounded corners. For further information, please check its type</Description>
+    </StyleProperty>
+  </StyleProperties>
+</StyleInformation>
+	
+	
+
