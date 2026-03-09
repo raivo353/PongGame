@@ -1,7 +1,0 @@
-$(AS_PROJECT_PATH)/Logical/Libraries/Acp10_MC/acp10_mc.fun
-$(AS_PROJECT_PATH)/Logical/LibACP10MC_SingleAx_C/Basic/basic.var
-$(AS_PROJECT_PATH)/Logical/LibACP10MC_SingleAx_C/Basic/basic.typ
-$(AS_PROJECT_PATH)/Logical/Libraries/Acp10_MC/acp10_mc.typ
-$(AS_PROJECT_PATH)/Logical/Libraries/Acp10_MC/acp10_mc.var
-$(AS_PROJECT_PATH)/Logical/Global.var
-$(AS_PROJECT_PATH)/Logical/Libraries/Acp10man/Acp10man.typ
