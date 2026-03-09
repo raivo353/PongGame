@@ -1,0 +1,8 @@
+VAR
+	i_HMI_Button_1 : BOOL;
+	i_HMI_Button_2 : BOOL;
+	i_HMI_Button_3 : BOOL;
+	o_HMI_Button_1 : BOOL;
+	o_HMI_Button_2 : BOOL;
+	o_HMI_Button_3 : BOOL;
+END_VAR

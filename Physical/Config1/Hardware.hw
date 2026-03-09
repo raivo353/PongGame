@@ -42,7 +42,9 @@
     <Connection Connector="PLK1" TargetModule="X20BC1083" TargetConnector="PLK1" NodeNumber="2">
       <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
     </Connection>
-    <Connection Connector="MT2" TargetModule="8LVA13.R0030D000-0a" TargetConnector="MT" />
+    <Connection Connector="EC1" TargetModule="8LVA13.R0030D000-0a" TargetConnector="EC" />
+    <Connection Connector="EC2" TargetModule="8LVA13.R0030D000-0" TargetConnector="EC" />
+    <Connection Connector="MT2" TargetModule="8LVA13.R0030D000-0" TargetConnector="MT" />
     <Parameter ID="MotionTP" Value="Acp10Arnc0" />
     <Parameter ID="BothEndSwitchesAreNormallyOpen_r1" Value="on" />
     <Parameter ID="QuickStopIsNormallyOpen_r1" Value="on" />
@@ -50,10 +52,12 @@
     <Parameter ID="QuickStopIsNormallyOpen_r2" Value="on" />
   </Module>
   <Module Name="8LVA13.R0030D000-0" Type="8LVA13.R0030D000-0" Version="2.2.0.5">
-    <Connection Connector="MT" TargetModule="80VD100PD.C022-01" TargetConnector="MT1" />
+    <Connection Connector="EC" TargetModule="80VD100PD.C022-01" TargetConnector="EC2" />
+    <Connection Connector="MT" TargetModule="80VD100PD.C022-01" TargetConnector="MT2" />
   </Module>
   <Module Name="8LVA13.R0030D000-0a" Type="8LVA13.R0030D000-0" Version="2.2.0.5">
-    <Connection Connector="MT" TargetModule="80VD100PD.C022-01" TargetConnector="MT2" />
+    <Connection Connector="EC" TargetModule="80VD100PD.C022-01" TargetConnector="EC1" />
+    <Connection Connector="MT" TargetModule="80VD100PD.C022-01" TargetConnector="MT1" />
   </Module>
   <Module Name="IO_Link_Master_SL_EIP_8P_IP67_V1_5" Type="FBD.Hilscher.EIGenEDSAdapterDTM.IO-Link Master SL EIP 8P IP67 V1.5" Version="1.5" OrderNumber="IO-Link Master SL EIP 8P IP67 V1.5" VendorAddress="192.168.1.150">
     <Connection Connector="EIP1" TargetModule="X20IF10D1_1" TargetConnector="IF1" />

@@ -21,6 +21,7 @@ unsigned long bur_heap_size = 0xFFFF;
 
 #define TRAPPER_BITMASK 0x02
 #define KANTELMECHANISME_BITMASK 0x04
+#define test 0x08
 
 void _INIT TonTimerINIT(void)
 {

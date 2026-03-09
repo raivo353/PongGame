@@ -28,10 +28,5 @@
       <Parameter ID="tc_CycDat_PLCopen" Value="Task class for NC Manager task" />
       <Parameter ID="mc_broadcast_extdat" Value="No" />
     </Group>
-    <Group ID="sdc_if[0]">
-      <Parameter ID="if_name" Value="SDC_IF1" />
-      <Parameter ID="mc_broadcast_size" Value="800" />
-      <Parameter ID="mc_broadcast_extdat" Value="No" />
-    </Group>
   </Group>
 </NcConfiguration>
