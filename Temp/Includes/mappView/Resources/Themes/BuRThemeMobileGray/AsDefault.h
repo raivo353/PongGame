@@ -1,6 +1,0 @@
-#ifndef _MAPPVIEW_RESOURCES_THEMES_BURTHEMEMOBILEGRAY_DEFAULT_30275191
-#define _MAPPVIEW_RESOURCES_THEMES_BURTHEMEMOBILEGRAY_DEFAULT_30275191
-#include "../AsDefault.h"
-#include <bur/plctypes.h>
-#include <bur/plc.h>
-#endif
