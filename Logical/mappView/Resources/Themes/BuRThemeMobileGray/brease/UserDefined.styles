@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Styles id="BuRThemeMobileGrayUserDefinedStyles" xmlns="http://www.br-automation.com/iat2015/styles/engineering/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!--<Style xsi:type="" id="" />-->
+	<Style id="Solid_Black_Green" xsi:type="widgets.brease.Ellipse" 
+		borderWidth="2px" 
+		backColor="#17FC03" 
+		lineColor="#000000" 
+		borderStyle="solid" 
+	opacity="1" />
+	
+	<Style id="Solid_Black_Red" xsi:type="widgets.brease.Ellipse" 
+		borderWidth="2px" 
+		backColor="#FC0303" 
+		lineColor="#000000" 
+		borderStyle="solid" 
+	opacity="1" />
+</Styles>

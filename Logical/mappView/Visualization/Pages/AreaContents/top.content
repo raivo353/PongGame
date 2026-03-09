@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Content id="top" height="720" width="1280" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Widgets>
+    <Widget xsi:type="widgets.brease.ToggleButton" id="ToggleTimer_Btn" top="160" left="280" width="740" height="380" zIndex="0" text="start/stop" fontSize="150px" checkedBackColor="rgba(0, 255, 0, 1)" />
+  </Widgets>
+</Content>

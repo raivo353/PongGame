@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.12.6.106 FileVersion="4.9"?>
+<Hardware xmlns="http://br-automation.co.at/AS/Hardware">
+  <Module Name="4PPC70_0573_20B" Type="4PPC70.0573-20B" Version="1.6.1.0">
+    <Connector Name="IF1">
+      <Parameter ID="InternetAddress" Value="192.168.30.1" />
+      <Parameter ID="SubnetMask" Value="255.255.255.0" />
+      <Parameter ID="ActivateIna" Value="1" />
+    </Connector>
+    <Connector Name="IF2">
+      <Parameter ID="ActivateDevice" Value="1" />
+      <Parameter ID="Mode" Value="Manual" />
+      <Parameter ID="InternetAddress" Value="192.168.1.20" />
+      <Parameter ID="SubnetMask" Value="255.255.255.0" />
+      <Parameter ID="InaNodeNumber" Value="0" />
+      <Group ID="Vnc1" />
+      <Parameter ID="VncAuthentication1" Value="1" />
+      <Parameter ID="VncPasswordViewOnly1" Value="user" />
+      <Parameter ID="VncPasswordViewControl1" Value="admin" />
+      <Parameter ID="ActivateSnmp" Value="2" />
+    </Connector>
+    <Parameter ID="ConfigurationID" Value="AutomatedPongGame_Config1" />
+    <Parameter ID="TimerDeviceType" Value="EPLX2X" />
+    <Parameter ID="TimerDevice" Value="4PPC70_0573_20B.IF1" />
+    <Parameter ID="TaskClassIdleTime" Value="2000" />
+    <Parameter ID="Cyclic1Duration" Value="2000" />
+    <Parameter ID="Cyclic1Tolerance" Value="0" />
+    <Parameter ID="Cyclic1Output" Value="1" />
+    <Group ID="FileDevice1" />
+    <Parameter ID="FileDeviceName1" Value="USER" />
+    <Parameter ID="FileDevicePath1" Value="USER_PATH" />
+    <Parameter ID="ActivateOpcUa" Value="1" />
+    <Parameter ID="OpcUaInformationModels_PV_Version" Value="1" />
+    <Parameter ID="KeyMappingFile" Value="VC\4PPC70_0573_20B.dis" />
+  </Module>
+  <Module Name="4XP0043.00-00B" Type="4XP0043.00-00B" Version="2.1.1.0">
+    <Connection Connector="X2X1" TargetModule="4PPC70_0573_20B" TargetConnector="IF5">
+      <Cable Type="X2XCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+  </Module>
+  <Module Name="80VD100PD.C022-01" Type="80VD100PD.C022-01" Version="2.5.0.0">
+    <Connection Connector="PLK1" TargetModule="X20BC1083" TargetConnector="PLK1" NodeNumber="2">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Connection Connector="MT2" TargetModule="8LVA13.R0030D000-0a" TargetConnector="MT" />
+    <Parameter ID="MotionTP" Value="Acp10Arnc0" />
+    <Parameter ID="BothEndSwitchesAreNormallyOpen_r1" Value="on" />
+    <Parameter ID="QuickStopIsNormallyOpen_r1" Value="on" />
+    <Parameter ID="BothEndSwitchesAreNormallyOpen_r2" Value="on" />
+    <Parameter ID="QuickStopIsNormallyOpen_r2" Value="on" />
+  </Module>
+  <Module Name="8LVA13.R0030D000-0" Type="8LVA13.R0030D000-0" Version="2.2.0.5">
+    <Connection Connector="MT" TargetModule="80VD100PD.C022-01" TargetConnector="MT1" />
+  </Module>
+  <Module Name="8LVA13.R0030D000-0a" Type="8LVA13.R0030D000-0" Version="2.2.0.5">
+    <Connection Connector="MT" TargetModule="80VD100PD.C022-01" TargetConnector="MT2" />
+  </Module>
+  <Module Name="IO_Link_Master_SL_EIP_8P_IP67_V1_5" Type="FBD.Hilscher.EIGenEDSAdapterDTM.IO-Link Master SL EIP 8P IP67 V1.5" Version="1.5" OrderNumber="IO-Link Master SL EIP 8P IP67 V1.5" VendorAddress="192.168.1.150">
+    <Connection Connector="EIP1" TargetModule="X20IF10D1_1" TargetConnector="IF1" />
+    <Parameter ID="DtmId" Value="cae6d7b0-cfd8-47f1-9e8e-3783e9b887dc" />
+    <Group ID="ChannelBlocks_78e66418-9731-44dc-bd45-61a937da4e16" Description="Module 0" />
+    <Group ID="IO_InputImage_78e66418-9731-44dc-bd45-61a937da4e16" Description="446 Byte(s)" />
+    <Group ID="IO_OutputImage_78e66418-9731-44dc-bd45-61a937da4e16" Description="302 Byte(s)" />
+  </Module>
+  <Module Name="X20BB81" Type="X20BB81" Version="1.2.0.0" />
+  <Module Name="X20BC1083" Type="X20BC1083" Version="2.17.0.0">
+    <Connection Connector="PLK1" TargetModule="80VD100PD.C022-01" TargetConnector="PLK1" NodeNumber="1">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Connection Connector="PLK2" TargetModule="4PPC70_0573_20B" TargetConnector="IF1" NodeNumber="1">
+      <Cable Type="PowerlinkCable" Length="10" Version="1.0.0.3" />
+    </Connection>
+    <Connection Connector="SL" TargetModule="X20BB81" TargetConnector="SL1" />
+  </Module>
+  <Module Name="X20IF10D1_1" Type="X20IF10D1-1" Version="1.7.0.0">
+    <Connection Connector="SS" TargetModule="X20BB81" TargetConnector="SS1" />
+    <Connector Name="IF1">
+      <Parameter ID="DtmId" Value="66a43618-f239-4c0c-80e6-69720443d023" />
+    </Connector>
+    <Parameter ID="ConfigFile" Value="X20IF10D1_1.dtm" />
+    <Parameter ID="ConfigModule" Value="asnxdb1" />
+    <Parameter ID="CycleTime" Value="2000" />
+  </Module>
+  <Module Name="X20PS9400" Type="X20PS9400" Version="1.9.0.0">
+    <Connection Connector="SS1" TargetModule="X20TB12" TargetConnector="SS" />
+    <Connection Connector="PS" TargetModule="X20BB81" TargetConnector="PS1" />
+  </Module>
+  <Module Name="X20TB12" Type="X20TB12" Version="1.0.0.0" />
+</Hardware>

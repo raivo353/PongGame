@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?AutomationStudio FileVersion="4.9"?>
+<BR.AS.HardwareTopology>
+  <TimeStamps>
+    <TimeStamp LogicalPath="Config1.Hardware.hw" LastWriteTime="02/25/2026 14:16:10" />
+  </TimeStamps>
+  <Modules>
+    <Module Name="4PPC70_0573_20B" Type="4PPC70.0573-20B" X="345" Y="227" />
+    <Module Name="X20BB81" Type="X20BB81" X="503" Y="397" />
+    <Module Name="X20IF10D1_1" Type="X20IF10D1-1" X="503" Y="397" />
+    <Module Name="X20PS9400" Type="X20PS9400" X="553" Y="397" />
+    <Module Name="X20TB12" Type="X20TB12" X="553" Y="424" />
+    <Module Name="X20BC1083" Type="X20BC1083" X="528" Y="397" />
+    <Module Name="IO_Link_Master_SL_EIP_8P_IP67_V1_5" Type="FBD.Hilscher.EIGenEDSAdapterDTM.IO-Link Master SL EIP 8P IP67 V1.5" X="667" Y="431" />
+    <Module Name="8LVA13.R0030D000-0a" Type="8LVA13.R0030D000-0" X="699" Y="297" />
+    <Module Name="80VD100PD.C022-01" Type="80VD100PD.C022-01" X="503" Y="199" />
+    <Module Name="8LVA13.R0030D000-0" Type="8LVA13.R0030D000-0" X="609" Y="313" />
+    <Module Name="4XP0043.00-00B" Type="4XP0043.00-00B" X="326" Y="359" />
+  </Modules>
+  <Links>
+    <Link From="4PPC70_0573_20B" To="X20BC1083" FromPort="IF1" ToPort="PLK2" IsRoutedByUser="False">
+      <Point X="542" Y="487" />
+      <Point X="542" Y="487" />
+      <Point X="542" Y="497" />
+      <Point X="542" Y="519" />
+      <Point X="495" Y="519" />
+      <Point X="495" Y="345" />
+      <Point X="381.800018" Y="345" />
+      <Point X="381.800018" Y="334" />
+      <Point X="381.800018" Y="329" />
+      <Point X="381.800018" Y="329" />
+    </Link>
+    <Link From="4PPC70_0573_20B" To="4XP0043.00-00B" FromPort="IF5" ToPort="X2X1" IsRoutedByUser="False">
+      <Point X="429.800018" Y="329" />
+      <Point X="429.800018" Y="329" />
+      <Point X="429.800018" Y="334" />
+      <Point X="429.800018" Y="352" />
+      <Point X="475" Y="352" />
+      <Point X="475" Y="425" />
+      <Point X="390" Y="425" />
+      <Point X="390" Y="420" />
+      <Point X="390" Y="415" />
+      <Point X="390" Y="415" />
+    </Link>
+    <Link From="80VD100PD.C022-01" To="X20BC1083" FromPort="PLK1" ToPort="PLK1" IsRoutedByUser="False">
+      <Point X="542" Y="273" />
+      <Point X="542" Y="258" />
+      <Point X="561" Y="258" />
+      <Point X="575" Y="258" />
+      <Point X="575" Y="505" />
+      <Point X="533.75" Y="505" />
+      <Point X="533.75" Y="497" />
+      <Point X="533.75" Y="472" />
+      <Point X="542" Y="472" />
+    </Link>
+    <Link From="80VD100PD.C022-01" To="8LVA13.R0030D000-0" FromPort="MT1" ToPort="MT" IsRoutedByUser="True">
+      <Point X="522" Y="323" />
+      <Point X="522" Y="323" />
+      <Point X="522" Y="334" />
+      <Point X="522" Y="338" />
+      <Point X="602" Y="338" />
+      <Point X="602" Y="305" />
+      <Point X="658.5" Y="305" />
+      <Point X="658.5" Y="312.1" />
+      <Point X="658.5" Y="319.1" />
+      <Point X="658.5" Y="319.1" />
+    </Link>
+    <Link From="80VD100PD.C022-01" To="8LVA13.R0030D000-0a" FromPort="MT2" ToPort="MT" IsRoutedByUser="False">
+      <Point X="748.5" Y="303.099976" />
+      <Point X="748.5" Y="303.099976" />
+      <Point X="748.5" Y="296.099976" />
+      <Point X="748.5" Y="285" />
+      <Point X="595" Y="285" />
+      <Point X="595" Y="323" />
+      <Point X="561" Y="323" />
+      <Point X="547" Y="323" />
+      <Point X="547" Y="323" />
+    </Link>
+    <Link From="IO_Link_Master_SL_EIP_8P_IP67_V1_5" To="X20IF10D1_1" FromPort="EIP1" ToPort="IF1" IsRoutedByUser="False">
+      <Point X="686" Y="470" />
+      <Point X="686" Y="470" />
+      <Point X="666" Y="470" />
+      <Point X="655" Y="470" />
+      <Point X="655" Y="512" />
+      <Point X="517" Y="512" />
+      <Point X="517" Y="497" />
+      <Point X="517" Y="488" />
+      <Point X="517" Y="488" />
+    </Link>
+  </Links>
+  <InfoElements />
+</BR.AS.HardwareTopology>

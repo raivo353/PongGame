@@ -1,0 +1,3 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version="4.12.6.106"?>
+<Diagnosis ConnectionString="NCMGR=&quot;Acp10&quot;;NCVER=&quot;5302&quot;;IFTYP=&quot;&quot;;NCOBJNAM=&quot;gAxis01&quot;;OBJTYP=&quot;ncAXIS&quot;;CHL=&quot;1&quot;;ADDR=&quot;&quot;;IP_MOD=&quot;gAxis01i&quot;;DIAG_FILE_PATH=&quot;C:\projects\AutomatedPongGame\Diagnosis\Config1\4PPC70_0573_20B\gAxis01.ate&quot;;" />

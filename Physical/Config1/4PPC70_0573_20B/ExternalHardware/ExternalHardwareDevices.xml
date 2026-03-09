@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ExternalHardware>
+  <Modules>
+    <Module ModuleID="FBD.Hilscher.EIGenEDSAdapterDTM.IO-Link Master SL EIP 8P IP67 V1.5" Version="1.5" OrderNumber="IO-Link Master SL EIP 8P IP67 V1.5">
+      <SourceFile OriginalFile="ifm_IOL_Master_AL1122.eds" TranslationFile="H99Q8298.ext" />
+    </Module>
+  </Modules>
+</ExternalHardware>

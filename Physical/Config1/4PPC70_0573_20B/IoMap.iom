@@ -1,0 +1,3 @@
+VAR_CONFIG
+	::digitalInput AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input001;
+END_VAR

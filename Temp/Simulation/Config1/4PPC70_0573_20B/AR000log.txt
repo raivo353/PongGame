@@ -1,0 +1,21 @@
+Mon Feb 23 10:51:06 2026
+COPYRIGHT (C) B&R Industrial Automation GmbH
+
+Mon Feb 23 10:51:06 2026
+No ARsim registration found!
+
+Mon Feb 23 10:51:06 2026
+InstanceName: 0000093f94b67c07
+
+Mon Feb 23 10:51:06 2026
+WorkingDirectory: C:\projects\AutomatedPongGame\Temp\Simulation\Config1\4PPC70_0573_20B\
+
+Mon Feb 23 10:51:06 2026
+COMMAND_COLDSTART
+
+Mon Feb 23 10:51:09 2026
+Version: R4.93
+
+Mon Feb 23 11:36:06 2026
+COMMAND_TERMINATE
+

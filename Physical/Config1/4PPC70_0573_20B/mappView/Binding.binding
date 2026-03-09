@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BindingsSet id="binding" xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Bindings>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:bStart" attribute="value" />
+			<Target xsi:type="brease" contentRefId="top" widgetRefId="ToggleTimer_Btn" attribute="value" />
+		</Binding>
+		
+		
+<Binding mode="oneWay">
+<Source xsi:type="session" refId="GreenColour" attribute="value" />
+<Target xsi:type="brease" contentRefId="main" widgetRefId="Ellipse2" attribute="style" />
+</Binding>
+
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:isTrapperButtonPressed" attribute="value" />
+<Target xsi:type="brease" contentRefId="main" widgetRefId="Ellipse2" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:isTrapperButtonNotPressed" attribute="value" />
+<Target xsi:type="brease" contentRefId="main" widgetRefId="Ellipse1" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:isVeldButtonNotPressed" attribute="value" />
+<Target xsi:type="brease" contentRefId="main" widgetRefId="Ellipse4" attribute="visible" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:isVeldButtonPressed" attribute="value" />
+<Target xsi:type="brease" contentRefId="main" widgetRefId="Ellipse3" attribute="visible" />
+</Binding>
+</Bindings>
+</BindingsSet>

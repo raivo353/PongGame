@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio FileVersion="4.9"?>
+<Diagnosis ConnectionString='NCMGR="Acp10" NCVER="5302" IFTYP="Powerlink" NCOBJNAM="gAxis01" OBJTYP="ncAXIS" CHL="1" ADDR="IF1.ST2" IP_MOD="gAxis01i" DIAG_FILE_PATH="C:\projects\AutomatedPongGame\Diagnosis\Config1\4PPC70_0573_20B\gAxis01.mdc" '>
+<Watch>
+  <Row Parameter="network.init" Value="ncFALSE" />
+  <Row Parameter="network.service.data_text" Value="0" />
+  <Row Parameter="network.service.request.par_id" Value="0" />
+  <Row Parameter="network.service.response.par_id" Value="0" />
+  <Row Parameter="monitor.s" Value="0" Unit="Units" />
+  <Row Parameter="monitor.v" Value="0" Unit="Units/s" />
+  <Row Parameter="message.count.error" Value="0" />
+  <Row Parameter="message.count.warning" Value="0" />
+  <Row Parameter="message.record.par_id" Value="ParId" />
+  <Row Parameter="message.record.number" Value="ErrorNbrUI2" />
+  <Row Parameter="message.record.info" Value="ExtraInfo" />
+</Watch>
+</Diagnosis>

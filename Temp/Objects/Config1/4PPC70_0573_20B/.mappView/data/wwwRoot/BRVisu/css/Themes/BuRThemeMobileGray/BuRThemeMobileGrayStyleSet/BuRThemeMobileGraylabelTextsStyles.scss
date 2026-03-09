@@ -1,0 +1,164 @@
+﻿@import "mixins.scss";
+@import "../../../../widgets/brease/Label/meta/Label_base";
+.widgets_brease_Label_style_Caption {
+@include widgets_brease_Label_base; 
+	font-size: 16px;
+& span {
+	color: #000000;
+}
+	background-color: transparent;
+	border-style: none;
+&:before {
+	border-style: none;
+}
+&:after {
+	border-style: none;
+}
+span {
+	padding: 5px;
+}
+@include font-weight-bold(true);
+
+}
+@import "../../../../widgets/brease/Label/meta/Label_base";
+.widgets_brease_Label_style_Title1 {
+@include widgets_brease_Label_base; 
+	font-size: 22px;
+& span {
+	color: #3388CC;
+}
+@include font-weight-bold(true);
+	background-color: transparent;
+	border-style: none;
+&:before {
+	border-style: none;
+}
+&:after {
+	border-style: none;
+}
+span {
+	padding: 5px;
+}
+
+}
+@import "../../../../widgets/brease/Label/meta/Label_base";
+.widgets_brease_Label_style_Title2 {
+@include widgets_brease_Label_base; 
+	font-size: 18px;
+& span {
+	color: #3388CC;
+}
+@include font-weight-bold(true);
+	background-color: transparent;
+	border-style: none;
+&:before {
+	border-style: none;
+}
+&:after {
+	border-style: none;
+}
+span {
+	padding: 5px;
+}
+
+}
+@import "../../../../widgets/brease/Label/meta/Label_base";
+.widgets_brease_Label_style_Title3 {
+@include widgets_brease_Label_base; 
+	font-size: 16px;
+& span {
+	color: #3388CC;
+}
+@include font-weight-bold(true);
+@include font-style-italic(true);
+	background-color: transparent;
+	border-style: none;
+&:before {
+	border-style: none;
+}
+&:after {
+	border-style: none;
+}
+span {
+	padding: 5px;
+}
+
+}
+@import "../../../../widgets/brease/Label/meta/Label_base";
+.widgets_brease_Label_style_Description {
+@include widgets_brease_Label_base; 
+	font-size: 18px;
+& span {
+	color: #000000;
+}
+	background-color: transparent;
+	border-color: #3388CC;
+&:before {
+	border-color: #3388CC;
+}
+&:after {
+	border-color: #3388CC;
+}
+	border-width: 1px;
+	border-style: solid;
+&:before {
+	border-style: solid;
+}
+&:after {
+	border-style: solid;
+}
+span {
+	padding: 5px;
+}
+@include font-weight-bold(true);
+
+}
+@import "../../../../widgets/brease/Label/meta/Label_base";
+.widgets_brease_Label_style_Information {
+@include widgets_brease_Label_base; 
+	font-size: 18px;
+& span {
+	color: #000000;
+}
+	background-color: transparent;
+	border-color: #FF0000;
+&:before {
+	border-color: #FF0000;
+}
+&:after {
+	border-color: #FF0000;
+}
+	border-width: 2px;
+	border-style: solid;
+&:before {
+	border-style: solid;
+}
+&:after {
+	border-style: solid;
+}
+span {
+	padding: 5px;
+}
+@include font-weight-bold(true);
+
+}
+@import "../../../../widgets/brease/Label/meta/Label_base";
+.widgets_brease_Label_style_FavoriteWatch {
+@include widgets_brease_Label_base; 
+	font-size: 14px;
+& span {
+	color: #474747;
+}
+	background-color: #ff8500;
+	border-style: none;
+&:before {
+	border-style: none;
+}
+&:after {
+	border-style: none;
+}
+span {
+	padding: 5px;
+}
+
+}
