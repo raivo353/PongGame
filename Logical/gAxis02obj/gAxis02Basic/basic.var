@@ -1,7 +1,7 @@
 VAR
-	GearControl : gear_typ; (*control structure*)
+	ColorDatapoints : color_datapoints_typ;
+	BasicControl : basic_typ; (*control structure*)
 	Axis1Obj : UDINT; (*axis reference*)
-	Axis2Obj : UDINT; (*axis reference*)
 	AxisStep : USINT; (*current step in the step sequence*)
 	MC_Power_0 : MC_Power; (*Function Block*)
 	MC_Home_0 : MC_Home; (*Function Block*)
@@ -9,8 +9,6 @@ VAR
 	MC_MoveVelocity_0 : MC_MoveVelocity; (*Function Block*)
 	MC_MoveAbsolute_0 : MC_MoveAbsolute; (*Function Block*)
 	MC_MoveAdditive_0 : MC_MoveAdditive; (*Function Block*)
-	MC_GearIn_0 : MC_GearIn; (*Function Block*)
-	MC_GearOut_0 : MC_GearOut; (*Function Block*)
 	MC_ReadAxisError_0 : MC_ReadAxisError; (*Function Block*)
 	MC_Reset_0 : MC_Reset; (*Function Block*)
 	MC_ReadStatus_0 : MC_ReadStatus; (*Function Block*)

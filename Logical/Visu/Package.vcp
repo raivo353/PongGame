@@ -41,8 +41,11 @@
   <Property Name="WheelEnterDatapoint" Value="None"/>
   <SourceFiles>
     <Source File="Fonts\DefaultFont.fninfo"/>
+    <Source File="Fonts\GroteLetters.fninfo"/>
     <Source File="Bitmaps\Bitmap_1.bminfo"/>
+    <Source File="Bitmaps\Bitmap_2.bminfo"/>
     <Source File="Pages\StartPage.page"/>
+    <Source File="Pages\ControlPage.page"/>
     <Source File="StyleSheets\Color.vcs"/>
     <Source File="Borders\driedimensionaal.bdr"/>
     <Source File="Borders\rand.bdr"/>

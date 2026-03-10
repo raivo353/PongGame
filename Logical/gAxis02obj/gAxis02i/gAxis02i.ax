@@ -43,7 +43,7 @@
     <Group ID="controller">
       <Parameter ID="mode" Value="ncPOSITION" />
       <Group ID="position">
-        <Parameter ID="kv" Value="635.0" />
+        <Parameter ID="kv" Value="565.0" />
         <Parameter ID="tn" Value="0.0" />
         <Parameter ID="t_predict" Value="0.0004" />
         <Parameter ID="t_total" Value="0.0004" />
@@ -51,7 +51,7 @@
         <Parameter ID="i_max" Value="0.0" />
       </Group>
       <Group ID="speed">
-        <Parameter ID="kv" Value="0.2" />
+        <Parameter ID="kv" Value="0.25" />
         <Parameter ID="tn" Value="0.0" />
         <Parameter ID="t_filter" Value="0.0" />
         <Group ID="isq_filter1">

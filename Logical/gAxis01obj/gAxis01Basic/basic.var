@@ -15,4 +15,7 @@ VAR
 	MC_ReadActualVelocity_0 : MC_ReadActualVelocity; (*Function Block*)
 	MC_BR_ReadDriveStatus_0 : MC_BR_ReadDriveStatus; (*Function Block*)
 	MC_Halt_0 : MC_Halt; (*Function Block*)
+	ActPositionINT : INT;
+	IndicatorIntValue : INT;
+	ColorDatapoints : color_datapoints_typ;
 END_VAR

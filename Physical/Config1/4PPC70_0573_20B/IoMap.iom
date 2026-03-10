@@ -1,8 +1,5 @@
 VAR_CONFIG
 	::digitalInput AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input001;
-	::gAxis01Bas:BasicControl.Command.MoveJogNeg AT %IX."4XP0043.00-00B".DigitalInput01;
-	::gAxis01Bas:BasicControl.Command.Stop AT %IX."4XP0043.00-00B".DigitalInput02;
-	::gAxis01Bas:BasicControl.Command.MoveJogPos AT %IX."4XP0043.00-00B".DigitalInput03;
 	::Motion:o_HMI_Button_1 AT %QX."4XP0043.00-00B".DigitalOutput03;
 	::Motion:o_HMI_Button_2 AT %QX."4XP0043.00-00B".DigitalOutput07;
 	::Motion:o_HMI_Button_3 AT %QX."4XP0043.00-00B".DigitalOutput11;

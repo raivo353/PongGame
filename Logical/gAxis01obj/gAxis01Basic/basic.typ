@@ -1,5 +1,9 @@
 
 TYPE
+	color_datapoints_typ : 	STRUCT 
+		color_power : INT;
+		color_homing : INT;
+	END_STRUCT;
 	basic_command_typ : 	STRUCT  (*command structure*)
 		Power : BOOL; (*switch on the controller*)
 		Home : BOOL; (*reference the axis*)
@@ -25,7 +29,7 @@ TYPE
 	END_STRUCT;
 	basic_status_typ : 	STRUCT  (*status structure*)
 		ErrorID : UINT; (*ErrorID of any occured error*)
-		ErrorText : ARRAY[0..3] OF STRING[79]; (*Error Text*)
+		ErrorText : ARRAY[0..3]OF STRING[79]; (*Error Text*)
 		ActPosition : REAL; (*actual position of the axis*)
 		ActVelocity : REAL; (*actual velocity of the axis*)
 		DriveStatus : MC_DRIVESTATUS_TYP; (*actual status of the axis*)

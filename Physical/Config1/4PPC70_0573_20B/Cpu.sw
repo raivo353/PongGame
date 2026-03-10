@@ -2,8 +2,8 @@
 <?AutomationStudio FileVersion="4.9"?>
 <SwConfiguration CpuAddress="SL1" xmlns="http://br-automation.co.at/AS/SwConfiguration">
   <TaskClass Name="Cyclic#1">
-    <Task Name="gAxix02Gea" Source="gAxis02obj.gAxix02Gear.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
     <Task Name="gAxis01Bas" Source="gAxis01obj.gAxis01Basic.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
+    <Task Name="gAxis02Bas" Source="gAxis02obj.gAxis02Basic.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#2" />
   <TaskClass Name="Cyclic#3" />
@@ -30,6 +30,31 @@
     <BinaryObject Name="FWRules" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="TCData" Source="" Memory="SystemROM" Language="Binary" />
     <BinaryObject Name="mvLoader" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="vcctext" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="arialbd" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="vcpdi855" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="vcdsloc" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="vcbclass" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="vcfntttf" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="Visu03" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="vcshared" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="vcrt" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="vcpk" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="vcfile" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="vccbtn" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="vcmgr" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="vctcal" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="vcptelo" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="vcalarm" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="vccnum" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="vcpdsw" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="Visu01" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="vcgclass" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="vcpdihd" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="vcpdi815" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="vcpfppc7" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="vcdsint" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="Visu02" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="Acp10map" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="acp10cfg" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="iomap" Source="" Memory="UserROM" Language="Binary" />
@@ -59,5 +84,7 @@
     <LibraryObject Name="astime" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="powerlnk" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="fileio" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="dataobj" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="vcresman" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
   </Libraries>
 </SwConfiguration>
