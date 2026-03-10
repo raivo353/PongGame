@@ -43,7 +43,7 @@
     <Group ID="controller">
       <Parameter ID="mode" Value="ncPOSITION" />
       <Group ID="position">
-        <Parameter ID="kv" Value="123.0" />
+        <Parameter ID="kv" Value="126.0" />
         <Parameter ID="tn" Value="0.0" />
         <Parameter ID="t_predict" Value="0.0004" />
         <Parameter ID="t_total" Value="0.0004" />
@@ -148,7 +148,7 @@
       </Group>
       <Group ID="homing">
         <Group ID="parameter">
-          <Parameter ID="s" Value="1000" />
+          <Parameter ID="s" Value="0" />
           <Parameter ID="v_switch" Value="5000.0" />
           <Parameter ID="v_trigger" Value="500.0" />
           <Parameter ID="a" Value="50000.0" />

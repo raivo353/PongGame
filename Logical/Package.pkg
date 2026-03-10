@@ -11,5 +11,6 @@
     <Object Type="DataObject" Language="Ett">acp10etxen</Object>
     <Object Type="Package" Description="gAxis01obj">gAxis01obj</Object>
     <Object Type="Package" Description="gAxis02obj">gAxis02obj</Object>
+    <Object Type="DataObject" Language="Vc" Description="640x480 (VGA)">Visu</Object>
   </Objects>
 </Package>

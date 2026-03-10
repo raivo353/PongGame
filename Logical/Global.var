@@ -12,4 +12,5 @@ VAR
 	gStpAxis_MotorStep0 : INT := (0);
 	gAxis01 : ACP10AXIS_typ;
 	gAxis02 : ACP10AXIS_typ;
+	gVAxis01 : ACP10VAXIS_typ;
 END_VAR

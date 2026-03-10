@@ -1,14 +1,3 @@
-/*******************************************************************
- * COPYRIGHT -- Bernecker + Rainer
- ********************************************************************
- * PROGRAM: Basic
- * File: Basic.c
- * Author: Bernecker + Rainer
- * Created: December 01, 2009
- ********************************************************************
- * Implementation of Program Basic
- ********************************************************************/
-
 #ifdef _DEFAULT_INCLUDES
  #include <AsDefault.h>
 #endif
