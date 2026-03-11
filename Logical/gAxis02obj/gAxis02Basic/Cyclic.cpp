@@ -536,4 +536,12 @@ void _CYCLIC ProgramCyclic(void)
 	{
 		ColorDatapoints.color_homing = RED_COLOR;
 	}
+	if(incrementKantelSpeed && BasicControl.Parameter.JogVelocity < 4000)
+	{
+		BasicControl.Parameter.JogVelocity++; 
+	}
+	if(decrementKantelSpeed && BasicControl.Parameter.JogVelocity > 0)
+	{
+		BasicControl.Parameter.JogVelocity--;
+	}
 }

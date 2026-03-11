@@ -6,7 +6,7 @@
   <FontMapping LanguageId="en">
     <Property Name="Antialiasing" Value="Default"/>
     <Property Name="Bold" Value="True"/>
-    <Property Name="Family" Value="Arial"/>
+    <Property Name="Family" Value="Calibri"/>
     <Property Name="Italic" Value="False"/>
     <Property Name="Size" Value="10"/>
   </FontMapping>

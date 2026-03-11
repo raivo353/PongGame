@@ -12,7 +12,7 @@
   <Property Name="DefaultKeyLevelNumeric" Value="0"/>
   <Property Name="DefaultKeyLevelString" Value="0"/>
   <Property Name="DefaultLanguage" Value="en"/>
-  <Property Name="DefaultPage" Value="Source[local].Page[StartPage]"/>
+  <Property Name="DefaultPage" Value="Source[local].Page[StartPagina]"/>
   <Property Name="DefaultStyleSheet" Value="Source[local].StyleSheet[Color]"/>
   <Property Name="FocusControlDatapoint" Value="None"/>
   <Property Name="FontAntialiasing" Value="Off"/>
@@ -42,13 +42,27 @@
   <SourceFiles>
     <Source File="Fonts\DefaultFont.fninfo"/>
     <Source File="Fonts\GroteLetters.fninfo"/>
+    <Source File="Fonts\MiddelgroteLetters.fninfo"/>
+    <Source File="Fonts\KleineLetters.fninfo"/>
     <Source File="Bitmaps\Bitmap_1.bminfo"/>
     <Source File="Bitmaps\Bitmap_2.bminfo"/>
-    <Source File="Pages\StartPage.page"/>
-    <Source File="Pages\ControlPage.page"/>
+    <Source File="Bitmaps\Red_Arrow_Down.bminfo"/>
+    <Source File="Bitmaps\Red_Arrow_Left.bminfo"/>
+    <Source File="Bitmaps\Red_Arrow_Right.bminfo"/>
+    <Source File="Bitmaps\Red_Arrow_Up.bminfo"/>
+    <Source File="Bitmaps\PongLogo.bminfo"/>
+    <Source File="Bitmaps\Red_Arrow_Down_Small.bminfo"/>
+    <Source File="Bitmaps\Red_Arrow_Left_Small.bminfo"/>
+    <Source File="Bitmaps\Red_Arrow_Right_Small.bminfo"/>
+    <Source File="Bitmaps\Red_Arrow_Up_Small.bminfo"/>
+    <Source File="Pages\StartPagina.page"/>
+    <Source File="Pages\Instellingen.page"/>
+    <Source File="Pages\SensorData.page"/>
+    <Source File="Pages\Besturing.page"/>
     <Source File="StyleSheets\Color.vcs"/>
-    <Source File="Borders\driedimensionaal.bdr"/>
     <Source File="Borders\rand.bdr"/>
+    <Source File="Borders\Double3D.bdr"/>
+    <Source File="Borders\dikkerand.bdr"/>
     <Source File="Trends\TrendData.tdc"/>
     <Source File="VirtualKeys.vcvk"/>
     <Source File="Palette.vcr"/>

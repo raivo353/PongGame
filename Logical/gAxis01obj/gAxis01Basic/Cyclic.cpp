@@ -22,8 +22,11 @@
 #define STATE_ERROR             101
 #define STATE_ERROR_RESET       102
 
-#define RED_COLOR 50
+#define RED_COLOR 51
 #define GREEN_COLOR 10
+
+#define MIDDELPUNT_TRAPPER_OFFSET 15
+#define ACTPOSITION_TO_MM 0.0784
 
 unsigned long bur_heap_size = 0xFFFF; 
 
@@ -520,7 +523,11 @@ void _CYCLIC ProgramCyclic(void)
 	MC_Reset_0.Axis = Axis1Obj;
 	MC_Reset(&MC_Reset_0);
 	
-	ActPositionINT = (int)BasicControl.Status.ActPosition / 10;
+	hmiActPosition = (UINT)((-BasicControl.Status.ActPosition) * ACTPOSITION_TO_MM);
+
+	digitalOutputs &= ~((1 << 0) | (1 << 3));   // bit 0 en 3 wissen
+	digitalOutputs |= ((USINT)turnOnVentilator << 0) | ((USINT)turnOnSolenoid << 3);
+	
 	if(BasicControl.Command.Power)
 	{
 		ColorDatapoints.color_power = GREEN_COLOR;
@@ -537,5 +544,30 @@ void _CYCLIC ProgramCyclic(void)
 	{
 		ColorDatapoints.color_homing = RED_COLOR;
 	}
-	
+	if(turnOnVentilator)
+	{
+		ColorDatapoints.color_ventilator = GREEN_COLOR;
+	}
+	else
+	{
+		ColorDatapoints.color_ventilator = RED_COLOR;
+	}
+	if(incrementTrapperSpeed && BasicControl.Parameter.JogVelocity < 4000)
+	{
+		BasicControl.Parameter.JogVelocity++; 
+	}
+	if(decrementTrapperSpeed && BasicControl.Parameter.JogVelocity > 0)
+	{
+		BasicControl.Parameter.JogVelocity--;
+	}
+	if(incrementTrapperAccDecc && BasicControl.Parameter.Acceleration < 50000)
+	{
+		BasicControl.Parameter.Acceleration += 10;
+		BasicControl.Parameter.Deceleration += 10;
+	}
+	if(decrementTrapperAccDecc && BasicControl.Parameter.Acceleration > 100)
+	{
+		BasicControl.Parameter.Acceleration -= 10;
+		BasicControl.Parameter.Deceleration -= 10;
+	}
 }
