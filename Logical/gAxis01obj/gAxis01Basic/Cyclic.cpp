@@ -528,33 +528,13 @@ void _CYCLIC ProgramCyclic(void)
 	digitalOutputs &= ~((1 << 0) | (1 << 3));   // bit 0 en 3 wissen
 	digitalOutputs |= ((USINT)turnOnVentilator << 0) | ((USINT)turnOnSolenoid << 3);
 	
-	if(BasicControl.Command.Power)
-	{
-		ColorDatapoints.color_power = GREEN_COLOR;
-	}
-	else
-	{
-		ColorDatapoints.color_power = RED_COLOR;
-	}
-	if(BasicControl.AxisState.Homing)
-	{
-		ColorDatapoints.color_homing = GREEN_COLOR;
-	}
-	else
-	{
-		ColorDatapoints.color_homing = RED_COLOR;
-	}
-	if(turnOnVentilator)
-	{
-		ColorDatapoints.color_ventilator = GREEN_COLOR;
-	}
-	else
-	{
-		ColorDatapoints.color_ventilator = RED_COLOR;
-	}
+	ColorDatapoints.color_power      = BasicControl.Command.Power ? GREEN_COLOR : RED_COLOR;
+	ColorDatapoints.color_homing     = BasicControl.AxisState.Homing ? GREEN_COLOR : RED_COLOR;
+	ColorDatapoints.color_ventilator = turnOnVentilator ? GREEN_COLOR : RED_COLOR;
+	
 	if(incrementTrapperSpeed && BasicControl.Parameter.JogVelocity < 4000)
 	{
-		BasicControl.Parameter.JogVelocity++; 
+		BasicControl.Parameter.JogVelocity++;
 	}
 	if(decrementTrapperSpeed && BasicControl.Parameter.JogVelocity > 0)
 	{
