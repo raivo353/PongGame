@@ -15,5 +15,6 @@
     <Object Type="Library" Language="Binary" Description="Global NC functions">NcGlobal</Object>
     <Object Type="Library" Language="binary" Description="Smart Device Controller">Acp10sdc</Object>
     <Object Type="Library" Language="binary" Description="PLCopen Motion Control function blocks">Acp10_MC</Object>
+    <Object Type="Library" Language="ANSIC">Library</Object>
   </Objects>
 </Package>

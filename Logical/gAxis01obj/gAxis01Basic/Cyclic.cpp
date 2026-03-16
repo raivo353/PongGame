@@ -26,7 +26,7 @@
 #define GREEN_COLOR 10
 
 #define MIDDELPUNT_TRAPPER_OFFSET 15
-#define ACTPOSITION_TO_MM 0.0784
+//#define ACTPOSITION_TO_MM 0.0784
 
 unsigned long bur_heap_size = 0xFFFF; 
 
@@ -523,15 +523,12 @@ void _CYCLIC ProgramCyclic(void)
 	MC_Reset_0.Axis = Axis1Obj;
 	MC_Reset(&MC_Reset_0);
 	
-	hmiActPosition = (UINT)((-BasicControl.Status.ActPosition) * ACTPOSITION_TO_MM);
 
-	digitalOutputs &= ~((1 << 0) | (1 << 3));   // bit 0 en 3 wissen
-	digitalOutputs |= ((USINT)turnOnVentilator << 0) | ((USINT)turnOnSolenoid << 3);
-	
-	ColorDatapoints.color_power      = BasicControl.Command.Power ? GREEN_COLOR : RED_COLOR;
-	ColorDatapoints.color_homing     = BasicControl.AxisState.Homing ? GREEN_COLOR : RED_COLOR;
-	ColorDatapoints.color_ventilator = turnOnVentilator ? GREEN_COLOR : RED_COLOR;
-	
+	hmiActPosition = ActPositionToMM(BasicControl.Status.ActPosition); //function
+
+	digitalOutputs = SetOutputs(digitalOutputs, turnOnVentilator, turnOnSolenoid); //function
+
+
 	if(incrementTrapperSpeed && BasicControl.Parameter.JogVelocity < 4000)
 	{
 		BasicControl.Parameter.JogVelocity++;
@@ -539,7 +536,8 @@ void _CYCLIC ProgramCyclic(void)
 	if(decrementTrapperSpeed && BasicControl.Parameter.JogVelocity > 0)
 	{
 		BasicControl.Parameter.JogVelocity--;
-	}
+	}	
+
 	if(incrementTrapperAccDecc && BasicControl.Parameter.Acceleration < 50000)
 	{
 		BasicControl.Parameter.Acceleration += 10;

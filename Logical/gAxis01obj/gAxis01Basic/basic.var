@@ -15,7 +15,6 @@ VAR
 	MC_ReadActualVelocity_0 : MC_ReadActualVelocity; (*Function Block*)
 	MC_BR_ReadDriveStatus_0 : MC_BR_ReadDriveStatus; (*Function Block*)
 	MC_Halt_0 : MC_Halt; (*Function Block*)
-	ColorDatapoints : color_datapoints_typ;
 	hmiActPosition : UINT;
 	digitalOutputs : USINT;
 	turnOnSolenoid : BOOL;
