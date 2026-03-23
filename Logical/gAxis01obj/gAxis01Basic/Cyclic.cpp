@@ -528,7 +528,14 @@ void _CYCLIC ProgramCyclic(void)
 
 	digitalOutputs = SetOutputs(digitalOutputs, turnOnVentilator, turnOnSolenoid); //function
 
+	if(BasicControl.Status.ErrorID != oldErrorID)
+	{
+		strncpy(firstErrorMessage, BasicControl.Status.ErrorText[0], sizeof(firstErrorMessage) - 1);
+		firstErrorMessage[sizeof(firstErrorMessage) - 1] = '\0';
+		oldErrorID = BasicControl.Status.ErrorID;
+	}
 
+	
 	if(incrementTrapperSpeed && BasicControl.Parameter.JogVelocity < 4000)
 	{
 		BasicControl.Parameter.JogVelocity++;

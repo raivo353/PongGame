@@ -1,26 +1,28 @@
 VAR
 	BasicControl : basic_typ; (*control structure*)
-	Axis1Obj : UDINT; (*axis reference*)
-	AxisStep : USINT; (*current step in the step sequence*)
-	MC_Power_0 : MC_Power; (*Function Block*)
-	MC_Home_0 : MC_Home; (*Function Block*)
-	MC_Stop_0 : MC_Stop; (*Function Block*)
-	MC_MoveVelocity_0 : MC_MoveVelocity; (*Function Block*)
-	MC_MoveAbsolute_0 : MC_MoveAbsolute; (*Function Block*)
-	MC_MoveAdditive_0 : MC_MoveAdditive; (*Function Block*)
-	MC_ReadAxisError_0 : MC_ReadAxisError; (*Function Block*)
-	MC_Reset_0 : MC_Reset; (*Function Block*)
-	MC_ReadStatus_0 : MC_ReadStatus; (*Function Block*)
-	MC_ReadActualPosition_0 : MC_ReadActualPosition; (*Function Block*)
-	MC_ReadActualVelocity_0 : MC_ReadActualVelocity; (*Function Block*)
-	MC_BR_ReadDriveStatus_0 : MC_BR_ReadDriveStatus; (*Function Block*)
-	MC_Halt_0 : MC_Halt; (*Function Block*)
-	hmiActPosition : UINT;
-	digitalOutputs : USINT;
-	turnOnSolenoid : BOOL;
-	turnOnVentilator : BOOL;
-	incrementTrapperSpeed : BOOL;
 	decrementTrapperSpeed : BOOL;
+	incrementTrapperSpeed : BOOL;
+	turnOnVentilator : BOOL;
+	turnOnSolenoid : BOOL;
 	incrementTrapperAccDecc : BOOL;
 	decrementTrapperAccDecc : BOOL;
+	MC_BR_ReadDriveStatus_0 : MC_BR_ReadDriveStatus; (*Function Block*)
+	MC_Halt_0 : MC_Halt; (*Function Block*)
+	MC_Home_0 : MC_Home; (*Function Block*)
+	MC_MoveAbsolute_0 : MC_MoveAbsolute; (*Function Block*)
+	MC_MoveAdditive_0 : MC_MoveAdditive; (*Function Block*)
+	MC_MoveVelocity_0 : MC_MoveVelocity; (*Function Block*)
+	MC_Power_0 : MC_Power; (*Function Block*)
+	MC_ReadActualPosition_0 : MC_ReadActualPosition; (*Function Block*)
+	MC_ReadActualVelocity_0 : MC_ReadActualVelocity; (*Function Block*)
+	MC_ReadAxisError_0 : MC_ReadAxisError; (*Function Block*)
+	MC_ReadStatus_0 : MC_ReadStatus; (*Function Block*)
+	MC_Reset_0 : MC_Reset; (*Function Block*)
+	MC_Stop_0 : MC_Stop; (*Function Block*)
+	Axis1Obj : UDINT; (*axis reference*)
+	hmiActPosition : UINT;
+	digitalOutputs : USINT;
+	AxisStep : USINT; (*current step in the step sequence*)
+	firstErrorMessage : STRING[80];
+	oldErrorID : UINT;
 END_VAR

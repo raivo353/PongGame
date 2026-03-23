@@ -4,12 +4,12 @@
   <TaskClass Name="Cyclic#1">
     <Task Name="gAxis01Bas" Source="gAxis01obj.gAxis01Basic.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
     <Task Name="gAxis02Bas" Source="gAxis02obj.gAxis02Basic.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
+    <Task Name="Motion" Source="Motion.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#2" />
   <TaskClass Name="Cyclic#3" />
   <TaskClass Name="Cyclic#4">
     <Task Name="TonTimer" Source="Timer_CPP.TonTimer.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
-    <Task Name="Motion" Source="Motion.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#5" />
   <TaskClass Name="Cyclic#6" />
@@ -55,6 +55,10 @@
     <BinaryObject Name="vcpfppc7" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="vcdsint" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="Visu02" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="calibrib" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="vccbmp" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="arial" Source="" Memory="UserROM" Language="Binary" />
+    <BinaryObject Name="vccstr" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="Acp10map" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="acp10cfg" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="iomap" Source="" Memory="UserROM" Language="Binary" />
@@ -80,12 +84,12 @@
     <LibraryObject Name="NcGlobal" Source="Libraries.NcGlobal.lby" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="Acp10sdc" Source="Libraries.Acp10sdc.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="Acp10_MC" Source="Libraries.Acp10_MC.lby" Memory="UserROM" Language="binary" Debugging="true" />
+    <LibraryObject Name="Library" Source="Libraries.Library.lby" Memory="None" Language="ANSIC" Debugging="true" />
     <LibraryObject Name="arssl" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="astime" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="powerlnk" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="fileio" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="dataobj" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="vcresman" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
-    <LibraryObject Name="Library" Source="Libraries.Library.lby" Memory="None" Language="ANSIC" Debugging="true" />
   </Libraries>
 </SwConfiguration>

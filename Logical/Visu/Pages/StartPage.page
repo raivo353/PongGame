@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?AutomationStudio Version="4.12.6.106"?>
-<Page xmlns="http://br-automation.co.at/AS/VC/Project" Name="StartPagina">
+<Page xmlns="http://br-automation.co.at/AS/VC/Project" Name="StartPage">
   <Property Name="BackColor" Value="0"/>
   <Property Name="Description" Value=""/>
   <Property Name="Height" Value="480"/>
@@ -66,7 +66,7 @@
           <Property Name="TextIndexDatapoint" Value="None"/>
           <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="263"/>
+          <Property Name="Top" Value="225"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_7]"/>
           <Property Name="Width" Value="200"/>
         </Control>
@@ -88,7 +88,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="Font" Value="Source[local].Font[GroteLetters]"/>
           <Property Name="ForeColor" Value="16"/>
-          <Property Name="Height" Value="79"/>
+          <Property Name="Height" Value="44"/>
           <Property Name="Left" Value="220"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -96,7 +96,7 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="27"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="200"/>
+          <Property Name="Top" Value="179"/>
           <Property Name="Width" Value="200"/>
         </Control>
       </Controls>

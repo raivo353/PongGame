@@ -12,3 +12,10 @@ FUNCTION SetOutputs : USINT
 		solenoid : BOOL;
 	END_VAR
 END_FUNCTION
+
+FUNCTION DistanceSensor : INT
+	VAR_INPUT
+		DistanceMSB : USINT;
+		DistanceLSB : USINT;
+	END_VAR
+END_FUNCTION

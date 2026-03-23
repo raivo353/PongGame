@@ -6,5 +6,11 @@ VAR_CONFIG
 	::gAxis01Bas:BasicControl.Command.MoveJogNeg AT %IX."4XP0043.00-00B".DigitalInput01;
 	::gAxis01Bas:turnOnSolenoid AT %IX."4XP0043.00-00B".DigitalInput02;
 	::gAxis01Bas:BasicControl.Command.MoveJogPos AT %IX."4XP0043.00-00B".DigitalInput03;
-	::gAxis01Bas:BasicControl.Command.MoveJogPos AT %QX."4XP0043.00-00B".DigitalOutput10;
+	::Motion:DistanceSensorInputsVar.LeftLSB AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input415;
+	::Motion:DistanceSensorInputsVar.LeftMSB AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input416;
+	::Motion:DistanceSensorInputsVar.RightLSB AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input383;
+	::Motion:DistanceSensorInputsVar.RightMSB AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input384;
+	::Motion:DistanceSensorInputsVar.MiddleLSB AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input351;
+	::Motion:DistanceSensorInputsVar.MiddleMSB AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input352;
+	::gAxis01Bas:BasicControl.Command.MoveJogPos  AT %QX."4XP0043.00-00B".DigitalOutput11;
 END_VAR

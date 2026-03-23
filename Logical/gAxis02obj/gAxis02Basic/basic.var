@@ -18,4 +18,6 @@ VAR
 	MC_Halt_0 : MC_Halt; (*Function Block*)
 	incrementKantelSpeed : BOOL;
 	decrementKantelSpeed : BOOL;
+	firstErrorMessage : STRING[80];
+	oldErrorID : UINT;
 END_VAR

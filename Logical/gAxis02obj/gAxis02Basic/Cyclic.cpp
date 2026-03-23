@@ -520,9 +520,13 @@ void _CYCLIC ProgramCyclic(void)
 	MC_Reset_0.Axis = Axis1Obj;
 	MC_Reset(&MC_Reset_0);
 	
-	ColorDatapoints.color_power      = BasicControl.Command.Power ? GREEN_COLOR : RED_COLOR;
-	ColorDatapoints.color_homing     = BasicControl.AxisState.Homing ? GREEN_COLOR : RED_COLOR;
-
+	if(BasicControl.Status.ErrorID != oldErrorID)
+	{
+		strncpy(firstErrorMessage, BasicControl.Status.ErrorText[0], sizeof(firstErrorMessage) - 1);
+		firstErrorMessage[sizeof(firstErrorMessage) - 1] = '\0';
+		oldErrorID = BasicControl.Status.ErrorID;
+	}
+	
 	if(incrementKantelSpeed && BasicControl.Parameter.JogVelocity < 4000)
 	{
 		BasicControl.Parameter.JogVelocity++; 

@@ -12,7 +12,7 @@
   <Property Name="DefaultKeyLevelNumeric" Value="0"/>
   <Property Name="DefaultKeyLevelString" Value="0"/>
   <Property Name="DefaultLanguage" Value="en"/>
-  <Property Name="DefaultPage" Value="Source[local].Page[StartPagina]"/>
+  <Property Name="DefaultPage" Value="Source[local].Page[StartPage]"/>
   <Property Name="DefaultStyleSheet" Value="Source[local].StyleSheet[Color]"/>
   <Property Name="FocusControlDatapoint" Value="None"/>
   <Property Name="FontAntialiasing" Value="Off"/>
@@ -55,10 +55,10 @@
     <Source File="Bitmaps\Red_Arrow_Left_Small.bminfo"/>
     <Source File="Bitmaps\Red_Arrow_Right_Small.bminfo"/>
     <Source File="Bitmaps\Red_Arrow_Up_Small.bminfo"/>
-    <Source File="Pages\StartPagina.page"/>
+    <Source File="Pages\StartPage.page"/>
     <Source File="Pages\Instellingen.page"/>
     <Source File="Pages\SensorData.page"/>
-    <Source File="Pages\Besturing.page"/>
+    <Source File="Pages\ManualControl.page"/>
     <Source File="StyleSheets\Color.vcs"/>
     <Source File="Borders\rand.bdr"/>
     <Source File="Borders\Double3D.bdr"/>

@@ -2,7 +2,7 @@
 <?AutomationStudio FileVersion="4.9"?>
 <BR.AS.HardwareTopology>
   <TimeStamps>
-    <TimeStamp LogicalPath="Config1.Hardware.hw" LastWriteTime="03/10/2026 09:52:36" />
+    <TimeStamp LogicalPath="Config1.Hardware.hw" LastWriteTime="03/19/2026 12:50:19" />
   </TimeStamps>
   <Modules>
     <Module Name="4PPC70_0573_20B" Type="4PPC70.0573-20B" X="345" Y="227" />
@@ -54,24 +54,24 @@
       <Point X="617.5" Y="600" />
     </Link>
     <Link From="80VD100PD.C022-01" To="8LVA13.R0030D000-0a" FromPort="EC1" ToPort="EC" IsRoutedByUser="False">
-      <Point X="517.5" Y="689.1" />
-      <Point X="517.5" Y="689.1" />
-      <Point X="517.5" Y="682.1" />
+      <Point X="586" Y="579" />
+      <Point X="586" Y="579" />
+      <Point X="577" Y="579" />
       <Point X="517.5" Y="579" />
-      <Point X="577.5" Y="579" />
-      <Point X="586.5" Y="579" />
-      <Point X="586.5" Y="579" />
+      <Point X="517.5" Y="682.1" />
+      <Point X="517.5" Y="689.1" />
+      <Point X="517.5" Y="689.1" />
     </Link>
     <Link From="80VD100PD.C022-01" To="8LVA13.R0030D000-0" FromPort="EC2" ToPort="EC" IsRoutedByUser="False">
-      <Point X="636" Y="689.1" />
-      <Point X="636" Y="689.1" />
-      <Point X="636" Y="682.1" />
-      <Point X="636" Y="675" />
-      <Point X="565" Y="675" />
+      <Point X="600" Y="579" />
+      <Point X="600" Y="594" />
+      <Point X="577" Y="594" />
       <Point X="565" Y="594" />
-      <Point X="577.5" Y="594" />
-      <Point X="600.5" Y="594" />
-      <Point X="600.5" Y="579" />
+      <Point X="565" Y="675" />
+      <Point X="635.5" Y="675" />
+      <Point X="635.5" Y="682.1" />
+      <Point X="635.5" Y="689.1" />
+      <Point X="635.5" Y="689.1" />
     </Link>
     <Link From="80VD100PD.C022-01" To="8LVA13.R0030D000-0a" FromPort="MT1" ToPort="MT" IsRoutedByUser="False">
       <Point X="597" Y="650" />

@@ -26,3 +26,10 @@ unsigned char SetOutputs(unsigned char digitalOutputs, plcbit ventilator, plcbit
 	return digitalOutputs;
 }
 
+short DistanceSensor(unsigned char DistanceMSB, unsigned char DistanceLSB)
+{
+	return (INT)((DistanceMSB << 8) | DistanceLSB);
+}
+
+
+
