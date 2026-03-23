@@ -1,0 +1,5 @@
+$(AS_PROJECT_PATH)/logical/global.var
+$(AS_PROJECT_PATH)/logical/gaxis01obj/gaxis01basic/basic.var
+$(AS_PROJECT_PATH)/logical/gaxis01obj/gaxis01basic/basic.typ
+$(AS_PROJECT_PATH)/logical/motion/variables.var
+$(AS_PROJECT_PATH)/logical/motion/types.typ

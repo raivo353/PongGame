@@ -1,0 +1,12 @@
+<BuildOptions>
+  <BuildOption>
+    <SourceFile Value="C:/projects/AutomatedPongGame/Physical/Config1/4PPC70_0573_20B/Cpu.sw" />
+    <Query Value="/ns:SwConfiguration/ns:TaskClass/*$$Name,Source" />
+    <Xml>
+      <Task Name="gAxis01Bas" Source="gAxis01obj.gAxis01Basic.prg" />
+      <Task Name="gAxis02Bas" Source="gAxis02obj.gAxis02Basic.prg" />
+      <Task Name="TonTimer" Source="Timer_CPP.TonTimer.prg" />
+      <Task Name="Motion" Source="Motion.prg" />
+    </Xml>
+  </BuildOption>
+</BuildOptions>

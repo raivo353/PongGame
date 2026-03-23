@@ -1,0 +1,21 @@
+﻿@import "mixins.scss";
+@import "../../../../widgets/brease/Ellipse/meta/Ellipse_base";
+.widgets_brease_Ellipse_style_Solid_Black_Green {
+@include widgets_brease_Ellipse_base; 
+	border-width: 2px;
+	background-color: #17FC03;
+	border-color: #000000;
+	border-style: solid;
+	opacity: 1;
+
+}
+@import "../../../../widgets/brease/Ellipse/meta/Ellipse_base";
+.widgets_brease_Ellipse_style_Solid_Black_Red {
+@include widgets_brease_Ellipse_base; 
+	border-width: 2px;
+	background-color: #FC0303;
+	border-color: #000000;
+	border-style: solid;
+	opacity: 1;
+
+}

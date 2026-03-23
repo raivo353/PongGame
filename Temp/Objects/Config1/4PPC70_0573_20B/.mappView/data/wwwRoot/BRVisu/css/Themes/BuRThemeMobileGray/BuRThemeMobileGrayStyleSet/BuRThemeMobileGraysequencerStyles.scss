@@ -1,0 +1,25 @@
+﻿@import "mixins.scss";
+@import "../../../../widgets/brease/Label/meta/Label_base";
+.widgets_brease_Label_style_seq-label {
+@include widgets_brease_Label_base; 
+span {
+	font-family: Arial;
+}
+	font-size: 22px;
+& span {
+	color: #000000;
+}
+	background-color: transparent;
+	border-style: none;
+&:before {
+	border-style: none;
+}
+&:after {
+	border-style: none;
+}
+	margin: 5px;
+span {
+	padding: 0px;
+}
+
+}

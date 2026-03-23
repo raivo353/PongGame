@@ -1,0 +1,8 @@
+{
+  global:
+    ActPositionToMM;
+    SetOutputs;
+    DistanceSensor;
+  local:
+    *;
+ };

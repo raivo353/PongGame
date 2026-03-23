@@ -1,0 +1,34 @@
+<Language Name="de" ID="1">
+  <LogicalFont Name="KleineLetters">
+    <Property Name="PhysicalFont" Value="arial" />
+    <Property Name="Width" Value="0" />
+    <Property Name="Height" Value="12" />
+    <Property Name="Index" Value="3" />
+    <Property Name="FontSize" Value="18" />
+    <Property Name="AntiAliasing" Value="False" />
+  </LogicalFont>
+  <LogicalFont Name="MiddelgroteLetters">
+    <Property Name="PhysicalFont" Value="arial" />
+    <Property Name="Width" Value="0" />
+    <Property Name="Height" Value="12" />
+    <Property Name="Index" Value="2" />
+    <Property Name="FontSize" Value="18" />
+    <Property Name="AntiAliasing" Value="False" />
+  </LogicalFont>
+  <LogicalFont Name="GroteLetters">
+    <Property Name="PhysicalFont" Value="arialbd" />
+    <Property Name="Width" Value="0" />
+    <Property Name="Height" Value="24" />
+    <Property Name="Index" Value="1" />
+    <Property Name="FontSize" Value="37" />
+    <Property Name="AntiAliasing" Value="False" />
+  </LogicalFont>
+  <LogicalFont Name="DefaultFont">
+    <Property Name="PhysicalFont" Value="arialbd" />
+    <Property Name="Width" Value="0" />
+    <Property Name="Height" Value="11" />
+    <Property Name="Index" Value="0" />
+    <Property Name="FontSize" Value="18" />
+    <Property Name="AntiAliasing" Value="False" />
+  </LogicalFont>
+</Language>

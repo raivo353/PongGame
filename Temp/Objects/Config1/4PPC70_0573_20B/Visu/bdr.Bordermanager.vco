@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=3.0?>
+<Intermediate xmlns="http://br.automation.co.at/AS/VC/Intermediate">
+  <Folder Name="BorderManager">
+    <Folder Name="POBJ">
+      <Object Name="BorderManager" ClsId="0x111" Version="1" Type="MGR" RefString="Source[local].BorderManager[default]">
+        <UInt32 Name="BorderCount">3</UInt32>
+        <Group Name="rand">
+          <UInt32 Name="BorderType">12290</UInt32>
+          <UInt16 Name="PaddingHorizontal">2</UInt16>
+          <UInt16 Name="PaddingVertical">1</UInt16>
+          <UInt32 Name="Color">16</UInt32>
+          <UInt32 Name="Reserved">0</UInt32>
+          <UInt32 Name="Reserved">0</UInt32>
+          <UInt32 Name="Reserved">0</UInt32>
+          <UInt16 Name="BorderWidth">1</UInt16>
+          <UInt16 Name="Reserved">0</UInt16>
+          <UInt32 Name="Reserved">0</UInt32>
+        </Group>
+        <Group Name="Double3D">
+          <UInt32 Name="BorderType">12292</UInt32>
+          <UInt16 Name="PaddingHorizontal">2</UInt16>
+          <UInt16 Name="PaddingVertical">1</UInt16>
+          <UInt32 Name="InnerLeftTopColor">250</UInt32>
+          <UInt32 Name="InnerRightBottomColor">7</UInt32>
+          <UInt32 Name="OuterLeftTopColor">15</UInt32>
+          <UInt32 Name="OuterRightBottomColor">8</UInt32>
+          <UInt16 Name="InnerWidth">2</UInt16>
+          <UInt16 Name="OuterWidth">2</UInt16>
+          <UInt32 Name="Reserved">0</UInt32>
+        </Group>
+        <Group Name="dikkerand">
+          <UInt32 Name="BorderType">12290</UInt32>
+          <UInt16 Name="PaddingHorizontal">2</UInt16>
+          <UInt16 Name="PaddingVertical">1</UInt16>
+          <UInt32 Name="Color">16</UInt32>
+          <UInt32 Name="Reserved">0</UInt32>
+          <UInt32 Name="Reserved">0</UInt32>
+          <UInt32 Name="Reserved">0</UInt32>
+          <UInt16 Name="BorderWidth">2</UInt16>
+          <UInt16 Name="Reserved">0</UInt16>
+          <UInt32 Name="Reserved">0</UInt32>
+        </Group>
+      </Object>
+      <Folder Name="BorderObjects">
+        <Object Name="rand" ClsId="0x0" Version="0" TargetIndex="0" Type="BRD" RefString="Source[local].Border[rand]" />
+        <Object Name="Double3D" ClsId="0x0" Version="0" TargetIndex="1" Type="BRD" RefString="Source[local].Border[Double3D]" />
+        <Object Name="dikkerand" ClsId="0x0" Version="0" TargetIndex="2" Type="BRD" RefString="Source[local].Border[dikkerand]" />
+      </Folder>
+    </Folder>
+  </Folder>
+</Intermediate>

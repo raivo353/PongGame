@@ -1,0 +1,29 @@
+#top_ToggleTimer_Btn {
+  top: 160px;
+  position: absolute;
+}
+
+#top_ToggleTimer_Btn {
+  left: 280px;
+  position: absolute;
+}
+
+#top_ToggleTimer_Btn {
+  width: 740px;
+}
+
+#top_ToggleTimer_Btn {
+  height: 380px;
+}
+
+#top_ToggleTimer_Btn {
+  z-index: 0;
+}
+
+#top_ToggleTimer_Btn span {
+  font-size: 150px;
+}
+
+#top_ToggleTimer_Btn.checked:not(.active):not(.disabled) {
+  background-color: lime;
+}

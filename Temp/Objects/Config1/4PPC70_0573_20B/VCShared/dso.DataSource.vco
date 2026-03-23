@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=3.0?>
+<Intermediate xmlns="http://br.automation.co.at/AS/VC/Intermediate">
+  <Folder Name="DPV">
+    <Folder Name="Drivers">
+      <Folder Name="POBJ">
+        <Object Name="DataSource" ClsId="0x200" Version="1" Type="DS" RefString="Source[global].DataSource[DataSource]">
+          <Reference Name="DriverID" Type="DS">Source[global].DataSource[DataSource]</Reference>
+          <Reference Name="TextGroup" Type="TG">None</Reference>
+          <UInt32 Name="PVCount">30</UInt32>
+          <UInt32 Name="ImageSize">212</UInt32>
+          <Table Name="Variables" Cols="5">
+            <TableHeader>
+              <Column Name="PVID" />
+              <Column Name="PVType" />
+              <Column Name="PVOffset" />
+              <Column Name="PVDim" />
+              <Column Name="PVName" />
+            </TableHeader>
+            <Group Name="gAxis01Bas:BasicControl.Status.ActVelocity">
+              <UInt16 Name="ID">0</UInt16>
+              <UInt16 Name="PVType">6</UInt16>
+              <UInt32 Name="PVOffset">0</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">-3.4028234663852886E+38</Double>
+              <Double Name="PVMaxVal">3.4028234663852886E+38</Double>
+              <Int32 Name="Offset">0</Int32>
+            </Group>
+            <Group Name="gAxis01Bas:BasicControl.Command.Power">
+              <UInt16 Name="ID">1</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">4</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">0</Double>
+              <Double Name="PVMaxVal">1</Double>
+              <Int32 Name="Offset">43</Int32>
+            </Group>
+            <Group Name="gAxis01Bas:BasicControl.Command.Home">
+              <UInt16 Name="ID">2</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">5</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">0</Double>
+              <Double Name="PVMaxVal">1</Double>
+              <Int32 Name="Offset">81</Int32>
+            </Group>
+            <Group Name="gAxis01Bas:BasicControl.Command.MoveJogPos">
+              <UInt16 Name="ID">3</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">6</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">0</Double>
+              <Double Name="PVMaxVal">1</Double>
+              <Int32 Name="Offset">118</Int32>
+            </Group>
+            <Group Name="gAxis01Bas:BasicControl.Command.MoveJogNeg">
+              <UInt16 Name="ID">4</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">7</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">0</Double>
+              <Double Name="PVMaxVal">1</Double>
+              <Int32 Name="Offset">161</Int32>
+            </Group>
+            <Group Name="gAxis01Bas:BasicControl.Command.ErrorAcknowledge">
+              <UInt16 Name="ID">5</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">8</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">0</Double>
+              <Double Name="PVMaxVal">1</Double>
+              <Int32 Name="Offset">204</Int32>
+            </Group>
+            <Group Name="gAxis01Bas:BasicControl.Parameter.JogVelocity">
+              <UInt16 Name="ID">6</UInt16>
+              <UInt16 Name="PVType">6</UInt16>
+              <UInt32 Name="PVOffset">9</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">-3.4028234663852886E+38</Double>
+              <Double Name="PVMaxVal">3.4028234663852886E+38</Double>
+              <Int32 Name="Offset">253</Int32>
+            </Group>
+            <Group Name="gAxis01Bas:BasicControl.Parameter.Acceleration">
+              <UInt16 Name="ID">7</UInt16>
+              <UInt16 Name="PVType">6</UInt16>
+              <UInt32 Name="PVOffset">13</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">-3.4028234663852886E+38</Double>
+              <Double Name="PVMaxVal">3.4028234663852886E+38</Double>
+              <Int32 Name="Offset">299</Int32>
+            </Group>
+            <Group Name="gAxis01Bas:hmiActPosition">
+              <UInt16 Name="ID">8</UInt16>
+              <UInt16 Name="PVType">3</UInt16>
+              <UInt32 Name="PVOffset">17</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">0</Double>
+              <Double Name="PVMaxVal">65535</Double>
+              <Int32 Name="Offset">346</Int32>
+            </Group>
+            <Group Name="gAxis01Bas:turnOnVentilator">
+              <UInt16 Name="ID">9</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">19</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">0</Double>
+              <Double Name="PVMaxVal">1</Double>
+              <Int32 Name="Offset">372</Int32>
+            </Group>
+            <Group Name="gAxis01Bas:turnOnSolenoid">
+              <UInt16 Name="ID">10</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">20</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">0</Double>
+              <Double Name="PVMaxVal">1</Double>
+              <Int32 Name="Offset">400</Int32>
+            </Group>
+            <Group Name="gAxis01Bas:decrementTrapperSpeed">
+              <UInt16 Name="ID">11</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">21</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">0</Double>
+              <Double Name="PVMaxVal">1</Double>
+              <Int32 Name="Offset">426</Int32>
+            </Group>
+            <Group Name="gAxis01Bas:incrementTrapperSpeed">
+              <UInt16 Name="ID">12</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">22</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">0</Double>
+              <Double Name="PVMaxVal">1</Double>
+              <Int32 Name="Offset">459</Int32>
+            </Group>
+            <Group Name="gAxis01Bas:decrementTrapperAccDecc">
+              <UInt16 Name="ID">13</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">23</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">0</Double>
+              <Double Name="PVMaxVal">1</Double>
+              <Int32 Name="Offset">492</Int32>
+            </Group>
+            <Group Name="gAxis01Bas:incrementTrapperAccDecc">
+              <UInt16 Name="ID">14</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">24</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">0</Double>
+              <Double Name="PVMaxVal">1</Double>
+              <Int32 Name="Offset">527</Int32>
+            </Group>
+            <Group Name="gAxis01Bas:firstErrorMessage">
+              <UInt16 Name="ID">15</UInt16>
+              <UInt16 Name="PVType">8</UInt16>
+              <UInt32 Name="PVOffset">25</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">0</Double>
+              <Double Name="PVMaxVal">0</Double>
+              <Int32 Name="Offset">562</Int32>
+            </Group>
+            <Group Name="gAxis02Bas:BasicControl.Command.Power">
+              <UInt16 Name="ID">16</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">106</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">0</Double>
+              <Double Name="PVMaxVal">1</Double>
+              <Int32 Name="Offset">591</Int32>
+            </Group>
+            <Group Name="gAxis02Bas:BasicControl.Command.Home">
+              <UInt16 Name="ID">17</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">107</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">0</Double>
+              <Double Name="PVMaxVal">1</Double>
+              <Int32 Name="Offset">629</Int32>
+            </Group>
+            <Group Name="gAxis02Bas:BasicControl.Command.MoveJogPos">
+              <UInt16 Name="ID">18</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">108</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">0</Double>
+              <Double Name="PVMaxVal">1</Double>
+              <Int32 Name="Offset">666</Int32>
+            </Group>
+            <Group Name="gAxis02Bas:BasicControl.Command.MoveJogNeg">
+              <UInt16 Name="ID">19</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">109</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">0</Double>
+              <Double Name="PVMaxVal">1</Double>
+              <Int32 Name="Offset">709</Int32>
+            </Group>
+            <Group Name="gAxis02Bas:BasicControl.Command.ErrorAcknowledge">
+              <UInt16 Name="ID">20</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">110</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">0</Double>
+              <Double Name="PVMaxVal">1</Double>
+              <Int32 Name="Offset">752</Int32>
+            </Group>
+            <Group Name="gAxis02Bas:BasicControl.Status.ActPosition">
+              <UInt16 Name="ID">21</UInt16>
+              <UInt16 Name="PVType">6</UInt16>
+              <UInt32 Name="PVOffset">111</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">-3.4028234663852886E+38</Double>
+              <Double Name="PVMaxVal">3.4028234663852886E+38</Double>
+              <Int32 Name="Offset">801</Int32>
+            </Group>
+            <Group Name="gAxis02Bas:BasicControl.Status.ActVelocity">
+              <UInt16 Name="ID">22</UInt16>
+              <UInt16 Name="PVType">6</UInt16>
+              <UInt32 Name="PVOffset">115</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">-3.4028234663852886E+38</Double>
+              <Double Name="PVMaxVal">3.4028234663852886E+38</Double>
+              <Int32 Name="Offset">844</Int32>
+            </Group>
+            <Group Name="gAxis02Bas:BasicControl.Parameter.JogVelocity">
+              <UInt16 Name="ID">23</UInt16>
+              <UInt16 Name="PVType">6</UInt16>
+              <UInt32 Name="PVOffset">119</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">-3.4028234663852886E+38</Double>
+              <Double Name="PVMaxVal">3.4028234663852886E+38</Double>
+              <Int32 Name="Offset">887</Int32>
+            </Group>
+            <Group Name="gAxis02Bas:decrementKantelSpeed">
+              <UInt16 Name="ID">24</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">123</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">0</Double>
+              <Double Name="PVMaxVal">1</Double>
+              <Int32 Name="Offset">933</Int32>
+            </Group>
+            <Group Name="gAxis02Bas:incrementKantelSpeed">
+              <UInt16 Name="ID">25</UInt16>
+              <UInt16 Name="PVType">1</UInt16>
+              <UInt32 Name="PVOffset">124</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">0</Double>
+              <Double Name="PVMaxVal">1</Double>
+              <Int32 Name="Offset">965</Int32>
+            </Group>
+            <Group Name="gAxis02Bas:firstErrorMessage">
+              <UInt16 Name="ID">26</UInt16>
+              <UInt16 Name="PVType">8</UInt16>
+              <UInt32 Name="PVOffset">125</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">0</Double>
+              <Double Name="PVMaxVal">0</Double>
+              <Int32 Name="Offset">997</Int32>
+            </Group>
+            <Group Name="Motion:DistanceSensorMiddle">
+              <UInt16 Name="ID">27</UInt16>
+              <UInt16 Name="PVType">2</UInt16>
+              <UInt32 Name="PVOffset">206</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">-32768</Double>
+              <Double Name="PVMaxVal">32767</Double>
+              <Int32 Name="Offset">1026</Int32>
+            </Group>
+            <Group Name="Motion:DistanceSensorRight">
+              <UInt16 Name="ID">28</UInt16>
+              <UInt16 Name="PVType">2</UInt16>
+              <UInt32 Name="PVOffset">208</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">-32768</Double>
+              <Double Name="PVMaxVal">32767</Double>
+              <Int32 Name="Offset">1054</Int32>
+            </Group>
+            <Group Name="Motion:DistanceSensorLeft">
+              <UInt16 Name="ID">29</UInt16>
+              <UInt16 Name="PVType">2</UInt16>
+              <UInt32 Name="PVOffset">210</UInt32>
+              <UInt32 Name="PVDim">1</UInt32>
+              <Double Name="PVMinVal">-32768</Double>
+              <Double Name="PVMaxVal">32767</Double>
+              <Int32 Name="Offset">1081</Int32>
+            </Group>
+          </Table>
+          <Binary Name="Name" Encoding="Base64">Z0F4aXMwMUJhczpCYXNpY0NvbnRyb2wuU3RhdHVzLkFjdFZlbG9jaXR5AGdBeGlzMDFCYXM6QmFzaWNDb250cm9sLkNvbW1hbmQuUG93ZXIAZ0F4aXMwMUJhczpCYXNpY0NvbnRyb2wuQ29tbWFuZC5Ib21lAGdBeGlzMDFCYXM6QmFzaWNDb250cm9sLkNvbW1hbmQuTW92ZUpvZ1BvcwBnQXhpczAxQmFzOkJhc2ljQ29udHJvbC5Db21tYW5kLk1vdmVKb2dOZWcAZ0F4aXMwMUJhczpCYXNpY0NvbnRyb2wuQ29tbWFuZC5FcnJvckFja25vd2xlZGdlAGdBeGlzMDFCYXM6QmFzaWNDb250cm9sLlBhcmFtZXRlci5Kb2dWZWxvY2l0eQBnQXhpczAxQmFzOkJhc2ljQ29udHJvbC5QYXJhbWV0ZXIuQWNjZWxlcmF0aW9uAGdBeGlzMDFCYXM6aG1pQWN0UG9zaXRpb24AZ0F4aXMwMUJhczp0dXJuT25WZW50aWxhdG9yAGdBeGlzMDFCYXM6dHVybk9uU29sZW5vaWQAZ0F4aXMwMUJhczpkZWNyZW1lbnRUcmFwcGVyU3BlZWQAZ0F4aXMwMUJhczppbmNyZW1lbnRUcmFwcGVyU3BlZWQAZ0F4aXMwMUJhczpkZWNyZW1lbnRUcmFwcGVyQWNjRGVjYwBnQXhpczAxQmFzOmluY3JlbWVudFRyYXBwZXJBY2NEZWNjAGdBeGlzMDFCYXM6Zmlyc3RFcnJvck1lc3NhZ2UAZ0F4aXMwMkJhczpCYXNpY0NvbnRyb2wuQ29tbWFuZC5Qb3dlcgBnQXhpczAyQmFzOkJhc2ljQ29udHJvbC5Db21tYW5kLkhvbWUAZ0F4aXMwMkJhczpCYXNpY0NvbnRyb2wuQ29tbWFuZC5Nb3ZlSm9nUG9zAGdBeGlzMDJCYXM6QmFzaWNDb250cm9sLkNvbW1hbmQuTW92ZUpvZ05lZwBnQXhpczAyQmFzOkJhc2ljQ29udHJvbC5Db21tYW5kLkVycm9yQWNrbm93bGVkZ2UAZ0F4aXMwMkJhczpCYXNpY0NvbnRyb2wuU3RhdHVzLkFjdFBvc2l0aW9uAGdBeGlzMDJCYXM6QmFzaWNDb250cm9sLlN0YXR1cy5BY3RWZWxvY2l0eQBnQXhpczAyQmFzOkJhc2ljQ29udHJvbC5QYXJhbWV0ZXIuSm9nVmVsb2NpdHkAZ0F4aXMwMkJhczpkZWNyZW1lbnRLYW50ZWxTcGVlZABnQXhpczAyQmFzOmluY3JlbWVudEthbnRlbFNwZWVkAGdBeGlzMDJCYXM6Zmlyc3RFcnJvck1lc3NhZ2UATW90aW9uOkRpc3RhbmNlU2Vuc29yTWlkZGxlAE1vdGlvbjpEaXN0YW5jZVNlbnNvclJpZ2h0AE1vdGlvbjpEaXN0YW5jZVNlbnNvckxlZnQA</Binary>
+        </Object>
+      </Folder>
+    </Folder>
+  </Folder>
+</Intermediate>

@@ -1,0 +1,10 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<Fonts>
+  <Font FamilyName="Calibri" BrName="calibrib" FilePath="C:\WINDOWS\fonts\calibrib.TTF" Bold="True" Italic="False" Size="10" RenderSize="15" />
+  <Font FamilyName="Arial" BrName="arialbd" FilePath="C:\WINDOWS\fonts\arialbd.TTF" Bold="True" Italic="False" Size="11" RenderSize="18" />
+  <Font FamilyName="Calibri" BrName="calibrib" FilePath="C:\WINDOWS\fonts\calibrib.TTF" Bold="True" Italic="False" Size="24" RenderSize="39" />
+  <Font FamilyName="Arial" BrName="arialbd" FilePath="C:\WINDOWS\fonts\arialbd.TTF" Bold="True" Italic="False" Size="24" RenderSize="37" />
+  <Font FamilyName="Calibri" BrName="calibrib" FilePath="C:\WINDOWS\fonts\calibrib.TTF" Bold="True" Italic="False" Size="16" RenderSize="26" />
+  <Font FamilyName="Arial" BrName="arial" FilePath="C:\WINDOWS\fonts\arial.TTF" Bold="False" Italic="False" Size="12" RenderSize="18" />
+  <Font FamilyName="Arial" BrName="arial" FilePath="C:\WINDOWS\fonts\arial.TTF" Bold="False" Italic="False" Size="8" RenderSize="14" />
+</Fonts>
