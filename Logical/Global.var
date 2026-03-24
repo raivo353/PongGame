@@ -1,9 +1,16 @@
 VAR
-	gAxis01 : ACP10AXIS_typ;
-	gAxis02 : ACP10AXIS_typ;
 	isVeldButtonPressed : BOOL;
 	isTrapperButtonPressed : BOOL;
 	digitalInput : USINT;
 	isVeldButtonNotPressed : BOOL;
 	isTrapperButtonNotPressed : BOOL;
+	gStpAxis : ACP10AXIS_typ;
+	gStpAxis_HW : SdcHwCfg_typ := (0);
+	gStpAxis_DrvIf : SdcDrvIf16_typ := (0);
+	gStpAxis_EncIf1 : SdcEncIf16_typ := (0);
+	gStpAxis_DiDoIf : SdcDiDoIf_typ := (0);
+	gStpAxis_MotorStep0 : INT := (0);
+	gAxis01 : ACP10AXIS_typ;
+	gAxis02 : ACP10AXIS_typ;
+	gVAxis01 : ACP10VAXIS_typ;
 END_VAR

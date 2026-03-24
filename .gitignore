@@ -1,0 +1,10 @@
+# Build / binaries
+Binaries/
+Temp/
+
+# User-specific settings
+*.set
+*.isopen
+
+# Diagnostics / logs
+Diagnosis/

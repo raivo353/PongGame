@@ -1,0 +1,6 @@
+VAR
+	DistanceSensorLeft : INT;
+	DistanceSensorRight : INT;
+	DistanceSensorMiddle : INT;
+	DistanceSensorInputsVar : DistanceSensorInputsStruct;
+END_VAR

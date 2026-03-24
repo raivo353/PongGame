@@ -21,10 +21,7 @@ unsigned long bur_heap_size = 0xFFFF;
 
 #define TRAPPER_BITMASK 0x02
 #define KANTELMECHANISME_BITMASK 0x04
-
-DINT getal1;
-INT getal2;
-
+#define test 0x08
 
 void _INIT TonTimerINIT(void)
 {
@@ -40,7 +37,6 @@ void _CYCLIC TonTimerCYCLIC(void)
 	isVeldButtonNotPressed = !isVeldButtonPressed;
 	/* read output values to process variables */
 	/* Cyclic call. This is needed because the TON Function block is used in the class IECTonTimer */
-	getal1 = (INT)getal2;
 }
 
 void _EXIT TonTimerEXIT(void)

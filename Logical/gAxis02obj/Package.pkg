@@ -4,5 +4,6 @@
   <Objects>
     <Object Type="DataObject" Language="Apt">gAxis02a</Object>
     <Object Type="DataObject" Language="Ax">gAxis02i</Object>
+    <Object Type="Program" Language="ANSIC" Description="Basic logical control">gAxis02Basic</Object>
   </Objects>
 </Package>
