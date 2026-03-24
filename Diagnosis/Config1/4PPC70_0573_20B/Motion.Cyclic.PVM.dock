@@ -1,6 +1,0 @@
-WATCH Ver=2.00 PLCName=PLC1 CPUName=CPU TaskName=Motion 
-Position X=0 Y=0 Width=0 Height=0 TabWidth Name=250 Type=0 Scope=0 Force=0 Index=2 ASCIIString=0
-                                    name                                     type force                                                            value level type len format place expand specs
-                      DistanceSensorLeft                                      INT    0 "                                                              82"    0    3    1   10    1    0         
-                    DistanceSensorMiddle                                      INT    0 "                                                              80"    0    3    1   10    1    0         
-                     DistanceSensorRight                                      INT    0 "                                                             124"    0    3    1   10    1    0         
