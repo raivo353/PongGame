@@ -8,4 +8,8 @@ TYPE
 		RightLSB : USINT;
 		RightMSB : USINT;
 	END_STRUCT;
+	InclineSensorInputsStruct : 	STRUCT 
+		MSB : USINT;
+		LSB : USINT;
+	END_STRUCT;
 END_TYPE

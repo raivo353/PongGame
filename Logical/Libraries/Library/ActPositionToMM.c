@@ -26,9 +26,14 @@ unsigned char SetOutputs(unsigned char digitalOutputs, plcbit ventilator, plcbit
 	return digitalOutputs;
 }
 
-short DistanceSensor(unsigned char DistanceMSB, unsigned char DistanceLSB)
+short SensorDataConverter(unsigned char MSB, unsigned char LSB)
 {
-	return (INT)((DistanceMSB << 8) | DistanceLSB);
+	return (INT)((MSB << 8) | LSB);
+}
+
+float InclineSensorDataToAngle(INT InclineSensorData)
+{
+	return (float)(InclineSensorData) / 100;
 }
 
 

@@ -13,9 +13,15 @@ FUNCTION SetOutputs : USINT
 	END_VAR
 END_FUNCTION
 
-FUNCTION DistanceSensor : INT
+FUNCTION SensorDataConverter : INT
 	VAR_INPUT
-		DistanceMSB : USINT;
-		DistanceLSB : USINT;
+		MSB : USINT;
+		LSB : USINT;
+	END_VAR
+END_FUNCTION
+
+FUNCTION InclineSensorDataToAngle : REAL
+	VAR_INPUT
+		InclineSensorData : INT;
 	END_VAR
 END_FUNCTION

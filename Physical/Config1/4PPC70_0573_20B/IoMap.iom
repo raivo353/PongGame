@@ -12,5 +12,7 @@ VAR_CONFIG
 	::Motion:DistanceSensorInputsVar.RightMSB AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input384;
 	::Motion:DistanceSensorInputsVar.MiddleLSB AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input351;
 	::Motion:DistanceSensorInputsVar.MiddleMSB AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input352;
-	::gAxis01Bas:BasicControl.Command.MoveJogPos  AT %QX."4XP0043.00-00B".DigitalOutput11;
+	::gAxis01Bas:BasicControl.Command.MoveJogPos AT %QX."4XP0043.00-00B".DigitalOutput11;
+	::Motion:InclineSensorInputsVar.MSB AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input319;
+	::Motion:InclineSensorInputsVar.LSB AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input320;
 END_VAR

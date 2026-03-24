@@ -3,4 +3,6 @@ VAR
 	DistanceSensorRight : INT;
 	DistanceSensorMiddle : INT;
 	DistanceSensorInputsVar : DistanceSensorInputsStruct;
+	FieldAngle : REAL;
+	InclineSensorInputsVar : InclineSensorInputsStruct;
 END_VAR

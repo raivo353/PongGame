@@ -246,18 +246,6 @@
           <Folder Name="Status">
             <Property Name="Description" Value=""/>
             <Property Name="FolderType" Value="Struct"/>
-            <DataPoint Name="ActPosition">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Visu"/>
-              <Property Name="DPLimit" Value="None"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="REAL"/>
-              <Property Name="PLCUnit" Value="None"/>
-              <Property Name="UnitGroup" Value="None"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="SCALED"/>
-            </DataPoint>
             <DataPoint Name="ActVelocity">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Visu"/>
@@ -347,6 +335,18 @@
         <Property Name="UpdateTime" Value="Default"/>
         <Property Name="UserID" Value="None"/>
         <Property Name="VCType" Value="INTEGER"/>
+      </DataPoint>
+      <DataPoint Name="FieldAngle">
+        <Property Name="ConnectedBySharedResource" Value="False"/>
+        <Property Name="ConnectingVisus" Value="Visu"/>
+        <Property Name="DPLimit" Value="None"/>
+        <Property Name="Description" Value=""/>
+        <Property Name="PLCType" Value="REAL"/>
+        <Property Name="PLCUnit" Value="None"/>
+        <Property Name="UnitGroup" Value="None"/>
+        <Property Name="UpdateTime" Value="Default"/>
+        <Property Name="UserID" Value="None"/>
+        <Property Name="VCType" Value="SCALED"/>
       </DataPoint>
     </Folder>
   </DataPoints>
