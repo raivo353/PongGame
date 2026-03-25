@@ -18,13 +18,6 @@
   </Aliases>
   <DefaultView AclId="2">
     <Module Name="&lt;Default&gt;">
-      <GlobalVariables Name="Global Variables">
-        <Variable Name="digitalInput" />
-        <Variable Name="isTrapperButtonPressed" />
-        <Variable Name="isTrapperButtonNotPressed" />
-        <Variable Name="isVeldButtonNotPressed" />
-        <Variable Name="isVeldButtonPressed" />
-      </GlobalVariables>
       <Task Name="TonTimer" />
     </Module>
   </DefaultView>

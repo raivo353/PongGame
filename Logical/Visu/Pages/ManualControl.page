@@ -481,7 +481,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="160"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Motion.FieldAngle]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Main.FieldAngle]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="60"/>
         </Control>

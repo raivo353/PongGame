@@ -4,7 +4,7 @@
   <TaskClass Name="Cyclic#1">
     <Task Name="gAxis01Bas" Source="gAxis01obj.gAxis01Basic.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
     <Task Name="gAxis02Bas" Source="gAxis02obj.gAxis02Basic.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
-    <Task Name="Motion" Source="Motion.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
+    <Task Name="Main" Source="Main.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#2" />
   <TaskClass Name="Cyclic#3" />

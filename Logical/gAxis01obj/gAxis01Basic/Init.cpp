@@ -17,5 +17,5 @@ void _INIT ProgramInit(void)
 	BasicControl.Parameter.Deceleration          = 5000;  /*deceleration for movement*/
 	BasicControl.Parameter.JogVelocity           = 400;   /*velocity for jogging */
 	
-	oldErrorID = 0;
+
 }

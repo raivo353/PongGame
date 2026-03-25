@@ -25,3 +25,57 @@ FUNCTION InclineSensorDataToAngle : REAL
 		InclineSensorData : INT;
 	END_VAR
 END_FUNCTION
+
+{REDUND_ERROR} FUNCTION_BLOCK FB_PaddleMotor (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+	VAR_IN_OUT
+		PaddleMotor : UDT_PaddleMotor;
+	END_VAR
+	VAR
+		digitalInput : USINT;
+	END_VAR
+END_FUNCTION_BLOCK
+
+{REDUND_ERROR} {REDUND_UNREPLICABLE} FUNCTION_BLOCK FB_DistanceSensor (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+	VAR_IN_OUT
+		DistanceSensor : UDT_DistanceSensor;
+	END_VAR
+END_FUNCTION_BLOCK
+
+{REDUND_ERROR} {REDUND_UNREPLICABLE} FUNCTION_BLOCK FB_Shooter (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+	VAR_IN_OUT
+		Shooter : UDT_Shooter;
+	END_VAR
+END_FUNCTION_BLOCK
+
+{REDUND_ERROR} FUNCTION_BLOCK FB_FieldMotor (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+	VAR_IN_OUT
+		FieldMotor : UDT_FieldMotor;
+	END_VAR
+	VAR
+		digitalInput : USINT;
+	END_VAR
+END_FUNCTION_BLOCK
+
+{REDUND_ERROR} {REDUND_UNREPLICABLE} FUNCTION_BLOCK FB_InclinoSensor (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+	VAR_IN_OUT
+		InclinoSensor : UDT_InclinoSensor;
+	END_VAR
+END_FUNCTION_BLOCK
+
+{REDUND_ERROR} {REDUND_UNREPLICABLE} FUNCTION_BLOCK FB_BallControl (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+	VAR_IN_OUT
+		BallControl : UDT_BallControl;
+	END_VAR
+END_FUNCTION_BLOCK
+
+{REDUND_ERROR} FUNCTION_BLOCK FB_FieldControl (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+	VAR_IN_OUT
+		FieldControl : UDT_FieldControl;
+	END_VAR
+END_FUNCTION_BLOCK
+
+{REDUND_ERROR} {REDUND_UNREPLICABLE} FUNCTION_BLOCK FB_PongGame (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+	VAR_IN_OUT
+		PongGame : UDT_PongGame;
+	END_VAR
+END_FUNCTION_BLOCK

@@ -1,9 +1,4 @@
 VAR
-	isVeldButtonPressed : BOOL;
-	isTrapperButtonPressed : BOOL;
-	digitalInput : USINT;
-	isVeldButtonNotPressed : BOOL;
-	isTrapperButtonNotPressed : BOOL;
 	gStpAxis : ACP10AXIS_typ;
 	gStpAxis_HW : SdcHwCfg_typ := (0);
 	gStpAxis_DrvIf : SdcDrvIf16_typ := (0);
@@ -13,4 +8,12 @@ VAR
 	gAxis01 : ACP10AXIS_typ;
 	gAxis02 : ACP10AXIS_typ;
 	gVAxis01 : ACP10VAXIS_typ;
+	digitalInput : USINT;
+	g_PongGame : UDT_PongGame;
+	g_BallControl : UDT_BallControl;
+	g_FieldControl : UDT_FieldControl;
+	g_DistanceSensor : UDT_DistanceSensor;
+	g_PaddleMotor : UDT_PaddleMotor;
+	g_FieldMotor : UDT_FieldMotor;
+	g_InclinoSensor : UDT_InclinoSensor;
 END_VAR

@@ -150,15 +150,16 @@
           <Property Name="ForeColor" Value="16"/>
           <Property Name="Height" Value="30"/>
           <Property Name="Left" Value="115"/>
-          <Property Name="MaxDatapoint" Value="Source[global].Variable[DataSource.gAxis01obj.gAxis01Basic.hmiActPosition]"/>
+          <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="2700"/>
-          <Property Name="MinDatapoint" Value="Source[global].Variable[DataSource.gAxis01obj.gAxis01Basic.hmiActPosition]"/>
+          <Property Name="MinDatapoint" Value="None"/>
+          <Property Name="MinMaxViolation" Value="Retain current value"/>
           <Property Name="MinValue" Value="0"/>
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="40"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.gAxis01obj.gAxis01Basic.hmiActPosition]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_PaddleMotor.STS.ActPosition]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="60"/>
         </Control>
@@ -281,7 +282,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="75"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.gAxis01obj.gAxis01Basic.BasicControl.Parameter.JogVelocity]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_PaddleMotor.PAR.JogVelocity]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="60"/>
         </Control>
@@ -303,7 +304,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="190"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Motion.FieldAngle]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Main.FieldAngle]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="60"/>
         </Control>
@@ -965,7 +966,7 @@
               <Property Name="Name" Value="Action_0"/>
               <Property Name="ResetValue" Value="0"/>
               <Property Name="SetValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.gAxis01obj.gAxis01Basic.BasicControl.Command.Power]"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_PaddleMotor.HMI.Power]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>
@@ -1025,7 +1026,7 @@
               <Property Name="Locking" Value="Never"/>
               <Property Name="Name" Value="Action_0"/>
               <Property Name="SetValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.gAxis01obj.gAxis01Basic.BasicControl.Command.Home]"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_PaddleMotor.HMI.Home]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>
@@ -1069,7 +1070,7 @@
               <Property Name="Name" Value="Action_0"/>
               <Property Name="ResetValue" Value="0"/>
               <Property Name="SetValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.gAxis01obj.gAxis01Basic.incrementTrapperSpeed]"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_PaddleMotor.HMI.IncreaseJogSpeed]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>
@@ -1085,7 +1086,7 @@
               <Property Name="Name" Value="Action_0"/>
               <Property Name="ResetValue" Value="0"/>
               <Property Name="SetValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.gAxis01obj.gAxis01Basic.decrementTrapperSpeed]"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_PaddleMotor.HMI.DecreaseJogSpeed]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>
@@ -1133,7 +1134,7 @@
               <Property Name="Name" Value="Action_0"/>
               <Property Name="ResetValue" Value="0"/>
               <Property Name="SetValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.gAxis01obj.gAxis01Basic.incrementTrapperAccDecc]"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_PaddleMotor.HMI.IncreaseAccDec]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>
@@ -1149,7 +1150,7 @@
               <Property Name="Name" Value="Action_0"/>
               <Property Name="ResetValue" Value="0"/>
               <Property Name="SetValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.gAxis01obj.gAxis01Basic.decrementTrapperAccDecc]"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_PaddleMotor.HMI.DecreaseAccDec]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>
@@ -1164,7 +1165,7 @@
               <Property Name="Locking" Value="Never"/>
               <Property Name="Name" Value="Action_0"/>
               <Property Name="SetValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.gAxis01obj.gAxis01Basic.BasicControl.Command.ErrorAcknowledge]"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_PaddleMotor.HMI.ErrorAcknowledge]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>

@@ -2,9 +2,25 @@
 <?AutomationStudio FileVersion="4.9"?>
 <Library SubType="ANSIC" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
-    <File>Types.typ</File>
+    <File>UDT.typ</File>
     <File>Variables.var</File>
     <File>Library.fun</File>
     <File>ActPositionToMM.c</File>
+    <File>UDT_DistanceSensor.typ</File>
+    <File>UDT_PaddleMotor.typ</File>
+    <File>UDT_PongGame.typ</File>
+    <File>UDT_FieldControl.typ</File>
+    <File>UDT_BallControl.typ</File>
+    <File>UDT_InclinoSensor.typ</File>
+    <File>UDT_FieldMotor.typ</File>
+    <File>UDT_Shooter.typ</File>
+    <File>FB_PaddleMotor.c</File>
+    <File>FB_DistanceSensor.c</File>
+    <File>FB_Shooter.c</File>
+    <File>FB_FieldMotor.c</File>
+    <File>FB_InclinoSensor.c</File>
+    <File>FB_BallControl.c</File>
+    <File>FB_FieldControl.c</File>
+    <File>FB_PongGame.c</File>
   </Files>
 </Library>

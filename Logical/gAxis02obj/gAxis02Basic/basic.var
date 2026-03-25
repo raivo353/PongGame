@@ -1,5 +1,4 @@
 VAR
-	ColorDatapoints : color_datapoints_typ;
 	BasicControl : basic_typ; (*control structure*)
 	Axis1Obj : UDINT; (*axis reference*)
 	AxisStep : USINT; (*current step in the step sequence*)

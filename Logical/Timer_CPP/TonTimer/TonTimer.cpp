@@ -31,10 +31,6 @@ void _CYCLIC TonTimerCYCLIC(void)
 {
 	/* set and reset timer */
 
-	isTrapperButtonPressed = ((digitalInput & TRAPPER_BITMASK) == 0);
-	isVeldButtonPressed = ((digitalInput & KANTELMECHANISME_BITMASK) == 0);
-	isTrapperButtonNotPressed = !isTrapperButtonPressed;
-	isVeldButtonNotPressed = !isVeldButtonPressed;
 	/* read output values to process variables */
 	/* Cyclic call. This is needed because the TON Function block is used in the class IECTonTimer */
 }
