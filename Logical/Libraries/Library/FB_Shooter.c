@@ -18,4 +18,5 @@ void FB_Shooter(struct FB_Shooter* inst)
 	inst->digitalOutput = 0;
 	inst->digitalOutput |= (inst->Shooter->IO.Shoot << 3);
 	inst->digitalOutput |= inst->Shooter->IO.EnableFan;
+	
 }

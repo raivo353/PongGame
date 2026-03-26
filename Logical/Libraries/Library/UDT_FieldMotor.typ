@@ -40,8 +40,8 @@ TYPE
 		MoveJogPos : BOOL;
 		Stop : BOOL;
 		MoveAbsolute : BOOL;
-		Acceleration : BOOL;
-		Deceleration : BOOL;
+		Acceleration : REAL;
+		Deceleration : REAL;
 		JogVelocity : REAL;
 		Velocity : REAL;
 		Position : REAL;

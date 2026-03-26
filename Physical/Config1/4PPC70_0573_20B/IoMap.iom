@@ -4,7 +4,7 @@ VAR_CONFIG
 	::g_Shooter.IO.Shoot AT %QX."4XP0043.00-00B".DigitalOutput07;
 	::digitalOutput AT %QB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Output001;
 	::g_PaddleMotor.IO.MoveJogNeg AT %IX."4XP0043.00-00B".DigitalInput01;
-	::g_Shooter.HMI.Shoot AT %IX."4XP0043.00-00B".DigitalInput02;
+	::g_Shooter.IO.Shoot AT %IX."4XP0043.00-00B".DigitalInput02;
 	::g_PaddleMotor.IO.MoveJogPos AT %IX."4XP0043.00-00B".DigitalInput03;
 	::g_DistanceSensorLeft.IO.DataMSB AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input415;
 	::g_DistanceSensorLeft.IO.DataLSB AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input416;
