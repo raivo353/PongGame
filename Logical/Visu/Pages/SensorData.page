@@ -150,7 +150,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="20"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Main.DistanceSensorLeft]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_DistanceSensorLeft.STS.Distance]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="100"/>
         </Control>
@@ -235,7 +235,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="70"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Main.DistanceSensorMiddle]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_DistanceSensorMiddle.STS.Distance]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="100"/>
         </Control>
@@ -257,7 +257,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="120"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Main.DistanceSensorRight]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_DistanceSensorRight.STS.Distance]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="100"/>
         </Control>
@@ -301,7 +301,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="170"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Main.FieldAngle]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_InclinoSensor.STS.CurrentAngle]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="100"/>
         </Control>

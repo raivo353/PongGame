@@ -2,6 +2,18 @@
 TYPE
 	UDT_PaddleMotor_IO : 	STRUCT 
 		EndButton : BOOL;
+		Power : BOOL;
+		Home : BOOL;
+		ErrorAcknowledge : BOOL;
+		MoveJogNeg : BOOL;
+		MoveJogPos : BOOL;
+		Stop : BOOL;
+		MoveAbsolute : BOOL;
+		Acceleration : BOOL;
+		Deceleration : BOOL;
+		JogVelocity : REAL;
+		Velocity : REAL;
+		Position : REAL;
 	END_STRUCT;
 	UDT_PaddleMotor_CS : 	STRUCT 
 		Home : BOOL;
@@ -34,7 +46,7 @@ TYPE
 		Deceleration : REAL;
 		JogVelocity : REAL;
 		Velocity : REAL;
-		TargetPosition : REAL;
+		Position : REAL;
 	END_STRUCT;
 	UDT_PaddleMotor_ALM : 	STRUCT 
 		MotorError : BOOL;

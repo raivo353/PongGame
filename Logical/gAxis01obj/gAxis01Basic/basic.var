@@ -1,7 +1,5 @@
 VAR
 	BasicControl : basic_typ; (*control structure*)
-	turnOnVentilator : BOOL;
-	turnOnSolenoid : BOOL;
 	MC_BR_ReadDriveStatus_0 : MC_BR_ReadDriveStatus; (*Function Block*)
 	MC_Halt_0 : MC_Halt; (*Function Block*)
 	MC_Home_0 : MC_Home; (*Function Block*)
@@ -17,5 +15,4 @@ VAR
 	MC_Stop_0 : MC_Stop; (*Function Block*)
 	Axis1Obj : UDINT; (*axis reference*)
 	AxisStep : USINT;
-	digitalOutputs : USINT;
 END_VAR

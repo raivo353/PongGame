@@ -12,8 +12,12 @@ VAR
 	g_PongGame : UDT_PongGame;
 	g_BallControl : UDT_BallControl;
 	g_FieldControl : UDT_FieldControl;
-	g_DistanceSensor : UDT_DistanceSensor;
+	g_DistanceSensorLeft : UDT_DistanceSensor;
 	g_PaddleMotor : UDT_PaddleMotor;
 	g_FieldMotor : UDT_FieldMotor;
 	g_InclinoSensor : UDT_InclinoSensor;
+	digitalOutput : USINT;
+	g_Shooter : UDT_Shooter;
+	g_DistanceSensorRight : UDT_DistanceSensor;
+	g_DistanceSensorMiddle : UDT_DistanceSensor;
 END_VAR

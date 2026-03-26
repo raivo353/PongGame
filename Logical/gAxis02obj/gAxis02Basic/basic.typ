@@ -1,9 +1,5 @@
 
 TYPE
-	color_datapoints_typ : 	STRUCT 
-		color_power : INT;
-		color_homing : INT;
-	END_STRUCT;
 	basic_command_typ : 	STRUCT  (*command structure*)
 		Power : BOOL; (*switch on the controller*)
 		Home : BOOL; (*reference the axis*)

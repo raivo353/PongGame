@@ -520,19 +520,35 @@ void _CYCLIC ProgramCyclic(void)
 	MC_Reset_0.Axis = Axis1Obj;
 	MC_Reset(&MC_Reset_0);
 	
-	if(BasicControl.Status.ErrorID != oldErrorID)
-	{
-		strncpy(firstErrorMessage, BasicControl.Status.ErrorText[0], sizeof(firstErrorMessage) - 1);
-		firstErrorMessage[sizeof(firstErrorMessage) - 1] = '\0';
-		oldErrorID = BasicControl.Status.ErrorID;
-	}
+	//io mapping with FieldMotor
+	BasicControl.Command.Power = g_FieldMotor.IO.Power;
+	BasicControl.Command.Home = g_FieldMotor.IO.Home;
+	BasicControl.Command.ErrorAcknowledge = g_FieldMotor.IO.ErrorAcknowledge;
+	BasicControl.Command.MoveJogNeg = g_FieldMotor.IO.MoveJogNeg;
+	BasicControl.Command.MoveJogPos = g_FieldMotor.IO.MoveJogPos;
+	BasicControl.Command.Stop = g_FieldMotor.IO.Stop;
+	BasicControl.Command.MoveAbsolute = g_FieldMotor.IO.MoveAbsolute;
 	
-	if(incrementKantelSpeed && BasicControl.Parameter.JogVelocity < 4000)
+	
+	BasicControl.Parameter.Acceleration = g_FieldMotor.IO.Acceleration;
+	BasicControl.Parameter.Deceleration = g_FieldMotor.IO.Deceleration;
+	BasicControl.Parameter.JogVelocity = g_FieldMotor.IO.JogVelocity;
+	BasicControl.Parameter.Position = g_FieldMotor.IO.Position;
+	BasicControl.Parameter.Velocity = g_FieldMotor.IO.Velocity;
+	
+	g_FieldMotor.STS.ActPosition = BasicControl.Status.ActPosition;
+	g_FieldMotor.STS.ActVelocity = BasicControl.Status.ActVelocity;
+	g_FieldMotor.ALM.MotorError = (BasicControl.Status.ErrorID != 0);
+	g_FieldMotor.ALM.ErrorID = BasicControl.Status.ErrorID;
+	
+	for (int i = 0; i < 4; i++)
 	{
-		BasicControl.Parameter.JogVelocity++; 
-	}
-	if(decrementKantelSpeed && BasicControl.Parameter.JogVelocity > 0)
-	{
-		BasicControl.Parameter.JogVelocity--;
+		strncpy(
+			g_FieldMotor.ALM.ErrorText[i],
+			BasicControl.Status.ErrorText[i],
+			sizeof(g_FieldMotor.ALM.ErrorText[i]) - 1
+			);
+
+		g_FieldMotor.ALM.ErrorText[i][sizeof(g_FieldMotor.ALM.ErrorText[i]) - 1] = '\0';
 	}
 }

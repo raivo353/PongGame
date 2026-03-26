@@ -524,36 +524,36 @@ void _CYCLIC ProgramCyclic(void)
 	MC_Reset(&MC_Reset_0);
 	
 
-	//hmiActPosition = ActPositionToMM(BasicControl.Status.ActPosition); //function
-
-	digitalOutputs = SetOutputs(digitalOutputs, turnOnVentilator, turnOnSolenoid); //function
-
-//	if(BasicControl.Status.ErrorID != oldErrorID)
-//	{
-		//strncpy(firstErrorMessage, BasicControl.Status.ErrorText[0], sizeof(firstErrorMessage) - 1);
-		//firstErrorMessage[sizeof(firstErrorMessage) - 1] = '\0';
-//		oldErrorID = BasicControl.Status.ErrorID;
-//	}
-
-	BasicControl.Command.Power = g_PaddleMotor.HMI.Power;
-	BasicControl.Command.Home = g_PaddleMotor.HMI.Home;
-	BasicControl.Command.ErrorAcknowledge = g_PaddleMotor.HMI.ErrorAcknowledge;
-	BasicControl.Command.MoveJogNeg = g_PaddleMotor.HMI.MoveJogNeg;
-	BasicControl.Command.MoveJogPos = g_PaddleMotor.HMI.MoveJogPos;
-	BasicControl.Command.Stop = g_PaddleMotor.HMI.Stop;
-	BasicControl.Command.MoveAbsolute = g_PaddleMotor.HMI.MoveAbsolute;
+	
+	//io mapping met PaddleMotor
+	BasicControl.Command.Power = g_PaddleMotor.IO.Power;
+	BasicControl.Command.Home = g_PaddleMotor.IO.Home;
+	BasicControl.Command.ErrorAcknowledge = g_PaddleMotor.IO.ErrorAcknowledge;
+	BasicControl.Command.MoveJogNeg = g_PaddleMotor.IO.MoveJogNeg;
+	BasicControl.Command.MoveJogPos = g_PaddleMotor.IO.MoveJogPos;
+	BasicControl.Command.Stop = g_PaddleMotor.IO.Stop;
+	BasicControl.Command.MoveAbsolute = g_PaddleMotor.IO.MoveAbsolute;
 	
 	
-	BasicControl.Parameter.Acceleration = g_PaddleMotor.PAR.Acceleration;
-	BasicControl.Parameter.Deceleration = g_PaddleMotor.PAR.Deceleration;
-	BasicControl.Parameter.JogVelocity = g_PaddleMotor.PAR.JogVelocity;
-	//BasicControl.Parameter.Position = g_PaddleMotor.PAR.TargetPosition;
-	BasicControl.Parameter.Velocity = g_PaddleMotor.PAR.Velocity;
+	BasicControl.Parameter.Acceleration = g_PaddleMotor.IO.Acceleration;
+	BasicControl.Parameter.Deceleration = g_PaddleMotor.IO.Deceleration;
+	BasicControl.Parameter.JogVelocity = g_PaddleMotor.IO.JogVelocity;
+	BasicControl.Parameter.Position = g_PaddleMotor.IO.Position;
+	BasicControl.Parameter.Velocity = g_PaddleMotor.IO.Velocity;
 	
-	g_PaddleMotor.STS.ActPosition = ActPositionToMM(BasicControl.Status.ActPosition);
+	g_PaddleMotor.STS.ActPosition = BasicControl.Status.ActPosition;
 	g_PaddleMotor.STS.ActVelocity = BasicControl.Status.ActVelocity;
-	g_PaddleMotor.STS.AlarmActive = (BasicControl.Status.ErrorID != 0);
-	
+	g_PaddleMotor.ALM.MotorError = (BasicControl.Status.ErrorID != 0);
 	g_PaddleMotor.ALM.ErrorID = BasicControl.Status.ErrorID;
-	strncpy(g_PaddleMotor.ALM.ErrorText[0], BasicControl.Status.ErrorText[0], sizeof(g_PaddleMotor.ALM.ErrorText[0]) - 1);
+	
+	for (int i = 0; i < 4; i++)
+	{
+		strncpy(
+			g_PaddleMotor.ALM.ErrorText[i],
+			BasicControl.Status.ErrorText[i],
+			sizeof(g_PaddleMotor.ALM.ErrorText[i]) - 1
+			);
+
+		g_PaddleMotor.ALM.ErrorText[i][sizeof(g_PaddleMotor.ALM.ErrorText[i]) - 1] = '\0';
+	}
 }

@@ -304,7 +304,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="190"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Main.FieldAngle]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_InclinoSensor.STS.CurrentAngle]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="60"/>
         </Control>
@@ -325,7 +325,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="225"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.gAxis02obj.gAxis02Basic.BasicControl.Parameter.JogVelocity]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_FieldMotor.PAR.JogVelocity]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="60"/>
         </Control>
@@ -505,7 +505,7 @@
           <Property Name="TextIndexDatapoint" Value="None"/>
           <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="5"/>
+          <Property Name="Top" Value="4"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_14]"/>
           <Property Name="Width" Value="100"/>
         </Control>
@@ -737,7 +737,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="110"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.gAxis01obj.gAxis01Basic.BasicControl.Parameter.Acceleration]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_PaddleMotor.PAR.Acceleration]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="60"/>
         </Control>
@@ -814,11 +814,12 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="16"/>
           <Property Name="Height" Value="30"/>
+          <Property Name="Input" Value="False"/>
           <Property Name="Left" Value="135"/>
           <Property Name="SimulationValue" Value="ABC"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
           <Property Name="Top" Value="300"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.gAxis01obj.gAxis01Basic.firstErrorMessage]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_PaddleMotor.ALM.ErrorText[0]]"/>
           <Property Name="Width" Value="400"/>
         </Control>
         <Control ClassId="0x00001002" Name="Button_17">
@@ -849,7 +850,7 @@
           <Property Name="TextIndexDatapoint" Value="None"/>
           <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="125"/>
+          <Property Name="Top" Value="124"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_32]"/>
           <Property Name="Width" Value="100"/>
         </Control>
@@ -892,11 +893,12 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="16"/>
           <Property Name="Height" Value="30"/>
+          <Property Name="Input" Value="False"/>
           <Property Name="Left" Value="135"/>
           <Property Name="SimulationValue" Value="ABC"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
           <Property Name="Top" Value="335"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.gAxis02obj.gAxis02Basic.firstErrorMessage]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_FieldMotor.ALM.ErrorText[0]]"/>
           <Property Name="Width" Value="400"/>
         </Control>
         <Control ClassId="0x00001004" Name="Text_10">
@@ -995,7 +997,7 @@
               <Property Name="Name" Value="Action_0"/>
               <Property Name="ResetValue" Value="0"/>
               <Property Name="SetValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.gAxis02obj.gAxis02Basic.BasicControl.Command.Power]"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_FieldMotor.HMI.Power]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>
@@ -1011,7 +1013,7 @@
               <Property Name="Name" Value="Action_0"/>
               <Property Name="ResetValue" Value="0"/>
               <Property Name="SetValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.gAxis01obj.gAxis01Basic.turnOnVentilator]"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_Shooter.HMI.EnableFan]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>
@@ -1019,12 +1021,13 @@
           <Property Name="Description" Value=""/>
           <Property Name="VirtualKey_LED" Value="False"/>
           <KeyActions>
-            <KeyAction ClassId="0x00000161">
+            <KeyAction ClassId="0x0000016B">
               <Property Name="CompletionDatapoint" Value="None"/>
               <Property Name="CompletionValue" Value="0"/>
               <Property Name="Description" Value=""/>
               <Property Name="Locking" Value="Never"/>
               <Property Name="Name" Value="Action_0"/>
+              <Property Name="ResetValue" Value="0"/>
               <Property Name="SetValue" Value="1"/>
               <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_PaddleMotor.HMI.Home]"/>
             </KeyAction>
@@ -1034,12 +1037,13 @@
           <Property Name="Description" Value=""/>
           <Property Name="VirtualKey_LED" Value="False"/>
           <KeyActions>
-            <KeyAction ClassId="0x00000161">
+            <KeyAction ClassId="0x0000016B">
               <Property Name="CompletionDatapoint" Value="None"/>
               <Property Name="CompletionValue" Value="0"/>
               <Property Name="Description" Value=""/>
               <Property Name="Locking" Value="Never"/>
               <Property Name="Name" Value="Action_0"/>
+              <Property Name="ResetValue" Value="0"/>
               <Property Name="SetValue" Value="1"/>
               <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.gAxis02obj.gAxis02Basic.BasicControl.Command.Home]"/>
             </KeyAction>
@@ -1102,7 +1106,7 @@
               <Property Name="Name" Value="Action_0"/>
               <Property Name="ResetValue" Value="0"/>
               <Property Name="SetValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.gAxis02obj.gAxis02Basic.incrementKantelSpeed]"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_FieldMotor.HMI.IncreaseJogSpeed]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>
@@ -1118,7 +1122,7 @@
               <Property Name="Name" Value="Action_0"/>
               <Property Name="ResetValue" Value="0"/>
               <Property Name="SetValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.gAxis02obj.gAxis02Basic.decrementKantelSpeed]"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_FieldMotor.HMI.DecreaseJogSpeed]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>
@@ -1158,12 +1162,13 @@
           <Property Name="Description" Value=""/>
           <Property Name="VirtualKey_LED" Value="False"/>
           <KeyActions>
-            <KeyAction ClassId="0x00000161">
+            <KeyAction ClassId="0x0000016B">
               <Property Name="CompletionDatapoint" Value="None"/>
               <Property Name="CompletionValue" Value="0"/>
               <Property Name="Description" Value=""/>
               <Property Name="Locking" Value="Never"/>
               <Property Name="Name" Value="Action_0"/>
+              <Property Name="ResetValue" Value="0"/>
               <Property Name="SetValue" Value="1"/>
               <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_PaddleMotor.HMI.ErrorAcknowledge]"/>
             </KeyAction>
@@ -1173,34 +1178,22 @@
           <Property Name="Description" Value=""/>
           <Property Name="VirtualKey_LED" Value="False"/>
           <KeyActions>
-            <KeyAction ClassId="0x00000161">
+            <KeyAction ClassId="0x0000016B">
               <Property Name="CompletionDatapoint" Value="None"/>
               <Property Name="CompletionValue" Value="0"/>
               <Property Name="Description" Value=""/>
               <Property Name="Locking" Value="Never"/>
               <Property Name="Name" Value="Action_0"/>
+              <Property Name="ResetValue" Value="0"/>
               <Property Name="SetValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.gAxis02obj.gAxis02Basic.BasicControl.Command.ErrorAcknowledge]"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_FieldMotor.HMI.ErrorAcknowledge]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>
       </KeyMapping>
     </Layer>
   </Layers>
-  <MovementOrder>
-    <MovementEntry Control="Source[embedded].Layer[Default].Control[String_1]">
-      <Property Name="Down" Value="Source[embedded].Layer[Default].Control[String_2]"/>
-      <Property Name="Left" Value="Source[embedded].Layer[Default].Control[String_2]"/>
-      <Property Name="Right" Value="Source[embedded].Layer[Default].Control[String_2]"/>
-      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[String_2]"/>
-    </MovementEntry>
-    <MovementEntry Control="Source[embedded].Layer[Default].Control[String_2]">
-      <Property Name="Down" Value="Source[embedded].Layer[Default].Control[String_1]"/>
-      <Property Name="Left" Value="Source[embedded].Layer[Default].Control[String_1]"/>
-      <Property Name="Right" Value="Source[embedded].Layer[Default].Control[String_1]"/>
-      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[String_1]"/>
-    </MovementEntry>
-  </MovementOrder>
+  <MovementOrder/>
   <TabSequence>
     <TabSeqItem Index="0" Value="Source[embedded].Layer[Default].Control[Numeric_1]"/>
     <TabSeqItem Index="1" Value="Source[embedded].Layer[Default].Control[Numeric_2]"/>

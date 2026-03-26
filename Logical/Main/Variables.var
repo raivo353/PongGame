@@ -1,10 +1,7 @@
 VAR
-	DistanceSensorLeft : INT;
-	DistanceSensorRight : INT;
-	DistanceSensorMiddle : INT;
-	DistanceSensorInputsVar : DistanceSensorInputsStruct;
-	FieldAngle : REAL;
-	InclineSensorInputsVar : InclineSensorInputsStruct;
+	DistanceSensors : FB_DistanceSensor;
 	FieldMotor : FB_FieldMotor;
 	PaddleMotor : FB_PaddleMotor;
+	Shooter : FB_Shooter;
+	InclinoSensor : FB_InclinoSensor;
 END_VAR

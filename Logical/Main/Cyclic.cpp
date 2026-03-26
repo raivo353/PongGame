@@ -8,27 +8,29 @@
 unsigned long bur_heap_size = 0xFFFF; 
 
 void _CYCLIC ProgramCyclic(void)
-{
-	INT distLeft = SensorDataConverter(DistanceSensorInputsVar.LeftMSB, DistanceSensorInputsVar.LeftLSB);
-	INT distMiddle = SensorDataConverter(DistanceSensorInputsVar.MiddleMSB, DistanceSensorInputsVar.MiddleLSB);
-	INT distRight = SensorDataConverter(DistanceSensorInputsVar.RightMSB, DistanceSensorInputsVar.RightLSB);
-	INT InclineSensorData = SensorDataConverter(InclineSensorInputsVar.MSB, InclineSensorInputsVar.LSB);
-	
-
-	DistanceSensorLeft = (distLeft >= 30 && distLeft <= 300) ? distLeft : 0;
-	DistanceSensorMiddle = (distMiddle >= 30 && distMiddle <= 300) ? distMiddle : 0;
-	DistanceSensorRight = (distRight >= 30 && distRight <= 300) ? distRight : 0;
-	
-
-	FieldAngle = InclineSensorDataToAngle(InclineSensorData);
-	
+{	
+	//creating FieldMotor function block
 	FieldMotor.FieldMotor = &g_FieldMotor;
 	FieldMotor.digitalInput = digitalInput;
-	
 	FB_FieldMotor(&FieldMotor);
 	
+	//creating PaddleMotor function block
 	PaddleMotor.PaddleMotor = &g_PaddleMotor;
 	PaddleMotor.digitalInput = digitalInput;
-	
 	FB_PaddleMotor(&PaddleMotor);
+	
+	//creating Shooter function block
+	Shooter.Shooter = &g_Shooter;
+	digitalOutput = Shooter.digitalOutput;
+	FB_Shooter(&Shooter);
+	
+	//creating DistanceSensors function block
+	DistanceSensors.DistanceSensorLeft = &g_DistanceSensorLeft;
+	DistanceSensors.DistanceSensorMiddle = &g_DistanceSensorMiddle;
+	DistanceSensors.DistanceSensorRight = &g_DistanceSensorRight;
+	FB_DistanceSensor(&DistanceSensors);
+	
+	//creating InclinoSensor function block
+	InclinoSensor.InclinoSensor = &g_InclinoSensor;
+	FB_InclinoSensor(&InclinoSensor);
 }

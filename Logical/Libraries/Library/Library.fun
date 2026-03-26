@@ -1,58 +1,36 @@
 
-{REDUND_ERROR} FUNCTION ActPositionToMM : UINT (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
-	VAR_INPUT
-		ActPosition : REAL;
-	END_VAR
-END_FUNCTION
-
-FUNCTION SetOutputs : USINT
-	VAR_INPUT
-		digitalOutputs : USINT;
-		ventilator : BOOL;
-		solenoid : BOOL;
-	END_VAR
-END_FUNCTION
-
-FUNCTION SensorDataConverter : INT
-	VAR_INPUT
-		MSB : USINT;
-		LSB : USINT;
-	END_VAR
-END_FUNCTION
-
-FUNCTION InclineSensorDataToAngle : REAL
-	VAR_INPUT
-		InclineSensorData : INT;
-	END_VAR
-END_FUNCTION
-
 {REDUND_ERROR} FUNCTION_BLOCK FB_PaddleMotor (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+	VAR_INPUT
+		digitalInput : USINT;
+	END_VAR
 	VAR_IN_OUT
 		PaddleMotor : UDT_PaddleMotor;
-	END_VAR
-	VAR
-		digitalInput : USINT;
 	END_VAR
 END_FUNCTION_BLOCK
 
 {REDUND_ERROR} {REDUND_UNREPLICABLE} FUNCTION_BLOCK FB_DistanceSensor (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
 	VAR_IN_OUT
-		DistanceSensor : UDT_DistanceSensor;
+		DistanceSensorLeft : UDT_DistanceSensor;
+		DistanceSensorMiddle : UDT_DistanceSensor;
+		DistanceSensorRight : UDT_DistanceSensor;
 	END_VAR
 END_FUNCTION_BLOCK
 
-{REDUND_ERROR} {REDUND_UNREPLICABLE} FUNCTION_BLOCK FB_Shooter (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+{REDUND_ERROR} FUNCTION_BLOCK FB_Shooter (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+	VAR_OUTPUT
+		digitalOutput : USINT;
+	END_VAR
 	VAR_IN_OUT
 		Shooter : UDT_Shooter;
 	END_VAR
 END_FUNCTION_BLOCK
 
 {REDUND_ERROR} FUNCTION_BLOCK FB_FieldMotor (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+	VAR_INPUT
+		digitalInput : USINT;
+	END_VAR
 	VAR_IN_OUT
 		FieldMotor : UDT_FieldMotor;
-	END_VAR
-	VAR
-		digitalInput : USINT;
 	END_VAR
 END_FUNCTION_BLOCK
 

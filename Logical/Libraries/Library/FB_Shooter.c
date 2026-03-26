@@ -12,4 +12,10 @@
 void FB_Shooter(struct FB_Shooter* inst)
 {
 	/*TODO: Add your code here*/
+	inst->Shooter->IO.Shoot = inst->Shooter->HMI.Shoot;
+	inst->Shooter->IO.EnableFan = inst->Shooter->HMI.EnableFan;
+	
+	inst->digitalOutput = 0;
+	inst->digitalOutput |= (inst->Shooter->IO.Shoot << 3);
+	inst->digitalOutput |= inst->Shooter->IO.EnableFan;
 }

@@ -10,8 +10,7 @@ TYPE
 		Start : BOOL;
 		IncreaseJogSpeed : BOOL;
 		DecreaseJogSpeed : BOOL;
-		IncreaseAccDec : BOOL;
-		DecreaseAccDec : BOOL;
+		ErrorAcknowledge : BOOL;
 	END_STRUCT;
 	UDT_FieldMotor_CS : 	STRUCT 
 		Home : BOOL;
@@ -30,10 +29,22 @@ TYPE
 		Deceleration : REAL;
 		JogVelocity : REAL;
 		Velocity : REAL;
-		TargetPosition : REAL;
+		Position : REAL;
 	END_STRUCT;
 	UDT_FieldMotor_IO : 	STRUCT 
 		EndButton : BOOL;
+		Power : BOOL;
+		Home : BOOL;
+		ErrorAcknowledge : BOOL;
+		MoveJogNeg : BOOL;
+		MoveJogPos : BOOL;
+		Stop : BOOL;
+		MoveAbsolute : BOOL;
+		Acceleration : BOOL;
+		Deceleration : BOOL;
+		JogVelocity : REAL;
+		Velocity : REAL;
+		Position : REAL;
 	END_STRUCT;
 	UDT_FieldMotor_STS : 	STRUCT 
 		Disabled : BOOL;
@@ -45,6 +56,9 @@ TYPE
 		Alarm : BOOL;
 		AutoActive : BOOL;
 		StatusInt : USINT;
+		AlarmActive : BOOL;
+		ActPosition : REAL;
+		ActVelocity : REAL;
 	END_STRUCT;
 	UDT_FieldMotor_ALM : 	STRUCT 
 		MotorError : BOOL;

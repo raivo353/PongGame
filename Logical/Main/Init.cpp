@@ -12,4 +12,9 @@ void _INIT ProgramInit(void)
 	g_PaddleMotor.PAR.Acceleration = 5000;
 	g_PaddleMotor.PAR.Deceleration = 5000;
 	g_PaddleMotor.PAR.JogVelocity = 400;
+	
+	g_FieldMotor.PAR.Velocity = 1000;
+	g_FieldMotor.PAR.Acceleration = 5000;
+	g_FieldMotor.PAR.Deceleration = 5000;
+	g_FieldMotor.PAR.JogVelocity = 400;
 }

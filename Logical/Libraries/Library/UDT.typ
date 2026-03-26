@@ -27,6 +27,7 @@ TYPE
 		HMI : UDT_InclinoSensor_HMI;
 		PAR : UDT_InclinoSensor_PAR;
 		STS : UDT_InclinoSensor_STS;
+		IO : UDT_InclinoSensor_IO;
 	END_STRUCT;
 	UDT_FieldMotor : 	STRUCT 
 		ALM : UDT_FieldMotor_ALM;

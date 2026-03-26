@@ -14,14 +14,18 @@ TYPE
 		Power : BOOL;
 	END_STRUCT;
 	UDT_DistanceSensor_PAR : 	STRUCT 
+		dummy : USINT;
 	END_STRUCT;
 	UDT_DistanceSensor_IO : 	STRUCT 
 		OUT1 : BOOL;
 		OUT2 : BOOL;
+		DataMSB : USINT;
+		DataLSB : USINT;
 	END_STRUCT;
 	UDT_DistanceSensor_ALM : 	STRUCT 
 		OutOfBounds : BOOL;
 	END_STRUCT;
 	UDT_DistanceSensor_HMI : 	STRUCT 
+		dummy : USINT;
 	END_STRUCT;
 END_TYPE
