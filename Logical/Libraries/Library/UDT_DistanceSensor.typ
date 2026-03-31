@@ -8,7 +8,8 @@ TYPE
 		Valid : BOOL;
 		DeviceStatus : UINT;
 		PowerOn : BOOL;
-		StatusInt : USINT;
+		StateInt : USINT;
+		AlarmActive : BOOL;
 	END_STRUCT;
 	UDT_DistanceSensor_CS : 	STRUCT 
 		Power : BOOL;
@@ -21,11 +22,12 @@ TYPE
 		OUT2 : BOOL;
 		DataMSB : USINT;
 		DataLSB : USINT;
+		SensorInfo : USINT; (*bit 0 = OUT1 (1 als <300mm) , bit 1 = OUT2 (1 als <30mm) , bit 4-7 device status*)
 	END_STRUCT;
 	UDT_DistanceSensor_ALM : 	STRUCT 
 		OutOfBounds : BOOL;
 	END_STRUCT;
 	UDT_DistanceSensor_HMI : 	STRUCT 
-		dummy : USINT;
+		Power : BOOL;
 	END_STRUCT;
 END_TYPE

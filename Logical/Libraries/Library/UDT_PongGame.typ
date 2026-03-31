@@ -5,14 +5,14 @@ TYPE
 		ErrorAcknowledge : BOOL;
 		Initialize : BOOL;
 		Start : BOOL;
-		Stop : BOOL;
+		StopGame : BOOL;
 	END_STRUCT;
 	UDT_PongGame_HMI : 	STRUCT 
 		AutoMode : BOOL;
 		ErrorAcknowledge : BOOL;
 		Initialize : BOOL;
 		Start : BOOL;
-		Stop : BOOL;
+		StopGame : BOOL;
 	END_STRUCT;
 	UDT_PongGame_STS : 	STRUCT 
 		Disabled : BOOL;
@@ -21,8 +21,9 @@ TYPE
 		Initializing : BOOL;
 		Running : BOOL;
 		Stopping : BOOL;
-		StatusInt : USINT;
+		StateInt : USINT;
 		AutoActive : BOOL;
+		Interlocked : BOOL;
 	END_STRUCT;
 	UDT_PongGame_PAR : 	STRUCT 
 		Highscore : USINT;

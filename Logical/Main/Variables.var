@@ -1,7 +1,10 @@
 VAR
 	DistanceSensors : FB_DistanceSensor;
-	FieldMotor : FB_FieldMotor;
 	PaddleMotor : FB_PaddleMotor;
 	Shooter : FB_Shooter;
 	InclinoSensor : FB_InclinoSensor;
+	FieldMotor : FB_FieldMotor;
+	FieldControl : FB_FieldControl;
+	BallControl : FB_BallControl;
+	PongGame : FB_PongGame;
 END_VAR

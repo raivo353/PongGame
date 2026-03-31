@@ -22,7 +22,6 @@ TYPE
 		ErrorAcknowledge : BOOL;
 		Start : BOOL;
 		Interlock : BOOL;
-		AutoMode : BOOL;
 	END_STRUCT;
 	UDT_FieldMotor_PAR : 	STRUCT 
 		Acceleration : REAL;
@@ -49,13 +48,12 @@ TYPE
 	UDT_FieldMotor_STS : 	STRUCT 
 		Disabled : BOOL;
 		Idle : BOOL;
-		Homing : BOOL;
-		Homed : BOOL;
+		Initializing : BOOL;
+		Initialized : BOOL;
 		Moving : BOOL;
 		AtTargetPosition : BOOL;
-		Alarm : BOOL;
 		AutoActive : BOOL;
-		StatusInt : USINT;
+		StateInt : USINT;
 		AlarmActive : BOOL;
 		ActPosition : REAL;
 		ActVelocity : REAL;

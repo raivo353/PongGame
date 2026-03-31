@@ -8,11 +8,11 @@ TYPE
 		Stop : BOOL;
 		Interlock : BOOL;
 		ChangePosition : BOOL;
-		New_Member : BOOL;
+		ErrorAcknowledge : BOOL;
+		StopGame : BOOL;
 	END_STRUCT;
 	UDT_BallControl_HMI : 	STRUCT 
-		Start : BOOL;
-		Stop : BOOL;
+		dummy : BOOL;
 	END_STRUCT;
 	UDT_BallControl_PAR : 	STRUCT 
 		Position : UINT;
@@ -23,13 +23,13 @@ TYPE
 		AlarmActive : BOOL;
 		Initializing : BOOL;
 		Running : BOOL;
-		Stopping : BOOL;
 		Interlocked : BOOL;
-		StatusInt : BOOL;
+		StateInt : BOOL;
 		AutoActive : BOOL;
 	END_STRUCT;
 	UDT_BallControl_ALM : 	STRUCT 
 		ShooterAlarm : BOOL;
 		MotorAlarm : BOOL;
+		DistanceSensorAlarm : BOOL;
 	END_STRUCT;
 END_TYPE

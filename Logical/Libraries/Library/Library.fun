@@ -43,17 +43,26 @@ END_FUNCTION_BLOCK
 {REDUND_ERROR} {REDUND_UNREPLICABLE} FUNCTION_BLOCK FB_BallControl (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
 	VAR_IN_OUT
 		BallControl : UDT_BallControl;
+		PaddleMotor : UDT_PaddleMotor;
+		Shooter : UDT_Shooter;
+		DistanceSensorLeft : UDT_DistanceSensor;
+		DistanceSensorMiddle : UDT_DistanceSensor;
+		DistanceSensorRight : UDT_DistanceSensor;
 	END_VAR
 END_FUNCTION_BLOCK
 
 {REDUND_ERROR} FUNCTION_BLOCK FB_FieldControl (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
 	VAR_IN_OUT
+		FieldMotor : UDT_FieldMotor;
 		FieldControl : UDT_FieldControl;
+		InclinoSensor : UDT_InclinoSensor;
 	END_VAR
 END_FUNCTION_BLOCK
 
-{REDUND_ERROR} {REDUND_UNREPLICABLE} FUNCTION_BLOCK FB_PongGame (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+{REDUND_ERROR} FUNCTION_BLOCK FB_PongGame (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
 	VAR_IN_OUT
 		PongGame : UDT_PongGame;
+		BallControl : UDT_BallControl;
+		FieldControl : UDT_FieldControl;
 	END_VAR
 END_FUNCTION_BLOCK

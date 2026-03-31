@@ -3,8 +3,9 @@ TYPE
 	UDT_FieldControl_CS : 	STRUCT 
 		MoveToAngle : BOOL;
 		Initialize : BOOL;
-		Start : BOOL;
 		Stop : BOOL;
+		StopGame : BOOL;
+		Start : BOOL;
 		ErrorAcknowledge : BOOL;
 		Interlock : BOOL;
 		Automode : BOOL;
@@ -12,11 +13,11 @@ TYPE
 	UDT_FieldControl_STS : 	STRUCT 
 		Disabled : BOOL;
 		Idle : BOOL;
+		Running : BOOL;
 		AlarmActive : BOOL;
 		Initializing : BOOL;
-		Error : BOOL;
 		Moving : BOOL;
-		StatusInt : USINT;
+		StateInt : USINT;
 		Interlocked : BOOL;
 		AutoActive : BOOL;
 	END_STRUCT;
@@ -24,8 +25,7 @@ TYPE
 		Angle : USINT;
 	END_STRUCT;
 	UDT_FieldControl_HMI : 	STRUCT 
-		Stop : BOOL;
-		Start : BOOL;
+		dummy : BOOL;
 	END_STRUCT;
 	UDT_FieldControl_ALM : 	STRUCT 
 		MotorAlarm : BOOL;

@@ -34,16 +34,21 @@ void FB_DistanceSensor(struct FB_DistanceSensor* inst)
 		{
 			sensors[i]->STS.TooFar = 1;
 			sensors[i]->STS.TooClose = 0;
+			sensors[i]->ALM.OutOfBounds = 1;
 		}
 		else if(sensors[i]->STS.Distance == UNDERLOAD)
 		{
 			sensors[i]->STS.TooClose = 1;
 			sensors[i]->STS.TooFar = 0;
+			sensors[i]->ALM.OutOfBounds = 1;
 		}
 		else
 		{
 			sensors[i]->STS.TooClose = 0;
 			sensors[i]->STS.TooFar = 0;
+			sensors[i]->ALM.OutOfBounds = 0;
 		}
+		
+		
 	}
 }

@@ -528,6 +528,7 @@ void _CYCLIC ProgramCyclic(void)
 	//io mapping met PaddleMotor
 	BasicControl.Command.Power = g_PaddleMotor.IO.Power;
 	BasicControl.Command.Home = g_PaddleMotor.IO.Home;
+
 	BasicControl.Command.ErrorAcknowledge = g_PaddleMotor.IO.ErrorAcknowledge;
 	BasicControl.Command.MoveJogNeg = g_PaddleMotor.IO.MoveJogNeg;
 	BasicControl.Command.MoveJogPos = g_PaddleMotor.IO.MoveJogPos;

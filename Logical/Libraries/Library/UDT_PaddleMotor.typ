@@ -26,6 +26,8 @@ TYPE
 		Start : BOOL;
 		Interlock : BOOL;
 		AutoMode : BOOL;
+		Initialize : BOOL;
+		StopGame : BOOL;
 	END_STRUCT;
 	UDT_PaddleMotor_HMI : 	STRUCT 
 		Home : BOOL;
@@ -40,6 +42,7 @@ TYPE
 		ErrorAcknowledge : BOOL;
 		IncreaseAccDec : BOOL;
 		DecreaseAccDec : BOOL;
+		Initialize : BOOL;
 	END_STRUCT;
 	UDT_PaddleMotor_PAR : 	STRUCT 
 		Acceleration : REAL;
@@ -55,8 +58,8 @@ TYPE
 	END_STRUCT;
 	UDT_PaddleMotor_STS : 	STRUCT 
 		Disabled : BOOL;
-		Homed : BOOL;
-		Homing : BOOL;
+		Initializing : BOOL;
+		Initialized : BOOL;
 		Idle : BOOL;
 		AlarmActive : BOOL;
 		Moving : BOOL;
@@ -66,7 +69,8 @@ TYPE
 		Interlocked : BOOL;
 		PowerOn : BOOL;
 		AutoActive : BOOL;
-		StatusInt : USINT;
+		StateInt : USINT := 0;
 		ActVelocity : REAL;
+		EndButtonHit : BOOL;
 	END_STRUCT;
 END_TYPE

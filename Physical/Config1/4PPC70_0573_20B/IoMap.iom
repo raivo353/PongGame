@@ -3,9 +3,9 @@ VAR_CONFIG
 	::gAxis01Bas:BasicControl.Command.MoveJogNeg AT %QX."4XP0043.00-00B".DigitalOutput03;
 	::g_Shooter.IO.Shoot AT %QX."4XP0043.00-00B".DigitalOutput07;
 	::digitalOutput AT %QB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Output001;
-	::g_PaddleMotor.IO.MoveJogNeg AT %IX."4XP0043.00-00B".DigitalInput01;
-	::g_Shooter.IO.Shoot AT %IX."4XP0043.00-00B".DigitalInput02;
-	::g_PaddleMotor.IO.MoveJogPos AT %IX."4XP0043.00-00B".DigitalInput03;
+	::g_PaddleMotor.HMI.MoveJogNeg AT %IX."4XP0043.00-00B".DigitalInput01;
+	::g_Shooter.HMI.Shoot AT %IX."4XP0043.00-00B".DigitalInput02;
+	::g_PaddleMotor.HMI.MoveJogPos AT %IX."4XP0043.00-00B".DigitalInput03;
 	::g_DistanceSensorLeft.IO.DataMSB AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input415;
 	::g_DistanceSensorLeft.IO.DataLSB AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input416;
 	::g_DistanceSensorRight.IO.DataMSB AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input383;
@@ -15,4 +15,7 @@ VAR_CONFIG
 	::gAxis01Bas:BasicControl.Command.MoveJogPos AT %QX."4XP0043.00-00B".DigitalOutput11;
 	::g_InclinoSensor.IO.DataMSB AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input319;
 	::g_InclinoSensor.IO.DataLSB AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input320;
+	::g_DistanceSensorMiddle.IO.SensorInfo AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input358;
+	::g_DistanceSensorRight.IO.SensorInfo AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input390;
+	::g_DistanceSensorLeft.IO.SensorInfo AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input422;
 END_VAR

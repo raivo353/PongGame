@@ -12,4 +12,5 @@
 void FB_FieldControl(struct FB_FieldControl* inst)
 {
 	/*TODO: Add your code here*/
+
 }

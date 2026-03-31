@@ -7,27 +7,27 @@ TYPE
 		EnableFan : BOOL;
 		Shoot : BOOL;
 		IncreaseIntensity : BOOL;
-		New_Member : BOOL;
+		DecreaseIntensity : BOOL;
 	END_STRUCT;
 	UDT_Shooter_CS : 	STRUCT 
 		Interlock : BOOL;
 		EnableFan : BOOL;
 		Shoot : BOOL;
-		AutoMode : BOOL;
 	END_STRUCT;
 	UDT_Shooter_STS : 	STRUCT 
+		Disabled : BOOL;
 		Idle : BOOL;
 		Interlocked : BOOL;
 		AlarmActive : BOOL;
 		AutoActive : BOOL;
 		Shooting : BOOL;
-		StatusInt : BOOL;
+		StateInt : BOOL;
 	END_STRUCT;
 	UDT_Shooter_ALM : 	STRUCT 
-		FanNotEnabled : BOOL;
+		dummy : BOOL;
 	END_STRUCT;
 	UDT_Shooter_IO : 	STRUCT 
-		Shoot : BOOL;
 		EnableFan : BOOL;
+		Shoot : BOOL;
 	END_STRUCT;
 END_TYPE
