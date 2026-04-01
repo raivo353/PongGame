@@ -14,6 +14,7 @@ TYPE
 		JogVelocity : REAL;
 		Velocity : REAL;
 		Position : REAL;
+		Homed : BOOL;
 	END_STRUCT;
 	UDT_PaddleMotor_CS : 	STRUCT 
 		Home : BOOL;

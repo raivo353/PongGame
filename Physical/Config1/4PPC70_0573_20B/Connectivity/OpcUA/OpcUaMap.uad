@@ -17,8 +17,6 @@
     <EngineeringUnitAliases />
   </Aliases>
   <DefaultView AclId="2">
-    <Module Name="&lt;Default&gt;">
-      <Task Name="TonTimer" />
-    </Module>
+    <Module Name="&lt;Default&gt;" />
   </DefaultView>
 </OpcUaSource>

@@ -7,20 +7,15 @@
 
 void _INIT ProgramInit(void)
 {
-	g_PaddleMotor.PAR.Velocity = 400;
-	g_PaddleMotor.PAR.Acceleration = 5000;
-	g_PaddleMotor.PAR.Deceleration = 5000;
-	g_PaddleMotor.PAR.JogVelocity = 200;
 	g_PaddleMotor.STS.StateInt = 0;
-	g_PaddleMotor.CS.Initialize = 0;
 	
-	g_FieldMotor.PAR.Velocity = 1000;
+	/*g_FieldMotor.PAR.Velocity = 1000;
 	g_FieldMotor.PAR.Acceleration = 5000;
 	g_FieldMotor.PAR.Deceleration = 5000;
-	g_FieldMotor.PAR.JogVelocity = 400;
+	g_FieldMotor.PAR.JogVelocity = 400; */
 	
 	PaddleMotor.PaddleMotor = &g_PaddleMotor;
-
+	
 	Shooter.Shooter = &g_Shooter;
 	
 	DistanceSensors.DistanceSensorLeft = &g_DistanceSensorLeft;

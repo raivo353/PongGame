@@ -24,7 +24,7 @@ TYPE
 		Initializing : BOOL;
 		Running : BOOL;
 		Interlocked : BOOL;
-		StateInt : BOOL;
+		StateInt : USINT;
 		AutoActive : BOOL;
 	END_STRUCT;
 	UDT_BallControl_ALM : 	STRUCT 

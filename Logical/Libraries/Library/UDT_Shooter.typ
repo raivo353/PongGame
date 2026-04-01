@@ -21,7 +21,7 @@ TYPE
 		AlarmActive : BOOL;
 		AutoActive : BOOL;
 		Shooting : BOOL;
-		StateInt : BOOL;
+		StateInt : USINT;
 	END_STRUCT;
 	UDT_Shooter_ALM : 	STRUCT 
 		dummy : BOOL;

@@ -12,10 +12,11 @@ void _INIT ProgramInit(void)
 
 	AxisStep = STATE_WAIT;  /* start step */
 
-	//BasicControl.Parameter.Velocity              = 1000;  /*velocity for movement*/
-	//BasicControl.Parameter.Acceleration          = 5000;  /*acceleration for movement*/
-	//BasicControl.Parameter.Deceleration          = 5000;  /*deceleration for movement*/
-	//BasicControl.Parameter.JogVelocity           = 400;   /*velocity for jogging */
+	//BasicControl.Command.Home = 1;
+	BasicControl.Parameter.Velocity              = 400;  /*velocity for movement*/
+	BasicControl.Parameter.Acceleration          = 40000;  /*acceleration for movement*/
+	BasicControl.Parameter.Deceleration          = 40000;  /*deceleration for movement*/
+	BasicControl.Parameter.JogVelocity           = 400;   /*velocity for jogging */
 	
 
 }

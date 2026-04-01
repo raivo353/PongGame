@@ -134,6 +134,9 @@
           <Property Name="Height" Value="100"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
           <Property Name="Left" Value="223"/>
+          <Property Name="Locking" Value="Datapoint &gt;= Level"/>
+          <Property Name="LockingDatapoint" Value="Source[global].Variable[DataSource.g_PaddleMotor.STS.StateInt]"/>
+          <Property Name="LockingLevel" Value="10"/>
           <Property Name="PressedBackColor" Value="10"/>
           <Property Name="PressedBitmapSource" Value="Source[embedded].Property[BitmapSource]"/>
           <Property Name="PressedBorder" Value="Source[local].Border[Double3D]"/>
@@ -165,6 +168,9 @@
           <Property Name="Height" Value="100"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
           <Property Name="Left" Value="10"/>
+          <Property Name="Locking" Value="Datapoint &lt; Level"/>
+          <Property Name="LockingDatapoint" Value="Source[global].Variable[DataSource.g_PaddleMotor.STS.StateInt]"/>
+          <Property Name="LockingLevel" Value="20"/>
           <Property Name="PressedBackColor" Value="10"/>
           <Property Name="PressedBitmapSource" Value="Source[embedded].Property[BitmapSource]"/>
           <Property Name="PressedBorder" Value="Source[local].Border[Double3D]"/>
