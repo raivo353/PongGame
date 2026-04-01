@@ -62,6 +62,7 @@ TYPE
 		Initializing : BOOL;
 		Initialized : BOOL;
 		Idle : BOOL;
+		Running : BOOL;
 		AlarmActive : BOOL;
 		Moving : BOOL;
 		StandStill : BOOL;
@@ -73,5 +74,7 @@ TYPE
 		StateInt : USINT := 0;
 		ActVelocity : REAL;
 		EndButtonHit : BOOL;
+		TimerStarted : BOOL;
+		TimerEnded : BOOL;
 	END_STRUCT;
 END_TYPE

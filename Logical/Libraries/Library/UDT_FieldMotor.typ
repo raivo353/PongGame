@@ -19,9 +19,11 @@ TYPE
 		MoveJogPos : BOOL;
 		Power : BOOL;
 		Stop : BOOL;
+		StopGame : BOOL;
 		ErrorAcknowledge : BOOL;
 		Start : BOOL;
 		Interlock : BOOL;
+		Initialize : BOOL;
 	END_STRUCT;
 	UDT_FieldMotor_PAR : 	STRUCT 
 		Acceleration : REAL;

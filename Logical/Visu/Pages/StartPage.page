@@ -35,6 +35,8 @@
           <Text ID="96944" Value="Start"/>
           <Text ID="96945" Value="Stop"/>
           <Text ID="96946" Value="Stop"/>
+          <Text ID="97139" Value="Handmatige modus"/>
+          <Text ID="97140" Value="Automodus"/>
         </TextLayer>
         <TextLayer LanguageId="de">
           <Text ID="95529" Value=""/>
@@ -46,6 +48,8 @@
           <Text ID="96944" Value="Control panel"/>
           <Text ID="96945" Value=""/>
           <Text ID="96946" Value="Control panel"/>
+          <Text ID="97139" Value=""/>
+          <Text ID="97140" Value=""/>
         </TextLayer>
         <IndexMap>
           <Index ID="95529" Value="24"/>
@@ -57,6 +61,8 @@
           <Index ID="96944" Value="3"/>
           <Index ID="96945" Value="4"/>
           <Index ID="96946" Value="5"/>
+          <Index ID="97139" Value="6"/>
+          <Index ID="97140" Value="7"/>
         </IndexMap>
       </TextGroup>
       <Controls>
@@ -73,7 +79,10 @@
           <Property Name="ForeColor" Value="16"/>
           <Property Name="Height" Value="100"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="223"/>
+          <Property Name="Left" Value="220"/>
+          <Property Name="Locking" Value="Datapoint &gt;= Level"/>
+          <Property Name="LockingDatapoint" Value="Source[global].Variable[DataSource.g_PongGame.STS.AutoActive]"/>
+          <Property Name="LockingLevel" Value="1"/>
           <Property Name="PressedBackColor" Value="10"/>
           <Property Name="PressedBitmapSource" Value="Source[embedded].Property[BitmapSource]"/>
           <Property Name="PressedBorder" Value="Source[local].Border[Double3D]"/>
@@ -87,7 +96,7 @@
           <Property Name="TextIndexDatapoint" Value="None"/>
           <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="354"/>
+          <Property Name="Top" Value="350"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_7]"/>
           <Property Name="Width" Value="200"/>
         </Control>
@@ -133,7 +142,7 @@
           <Property Name="ForeColor" Value="16"/>
           <Property Name="Height" Value="100"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="223"/>
+          <Property Name="Left" Value="220"/>
           <Property Name="Locking" Value="Datapoint &gt;= Level"/>
           <Property Name="LockingDatapoint" Value="Source[global].Variable[DataSource.g_PaddleMotor.STS.StateInt]"/>
           <Property Name="LockingLevel" Value="10"/>
@@ -150,7 +159,7 @@
           <Property Name="TextIndexDatapoint" Value="None"/>
           <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="231"/>
+          <Property Name="Top" Value="230"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_8]"/>
           <Property Name="Width" Value="200"/>
         </Control>
@@ -201,7 +210,7 @@
           <Property Name="ForeColor" Value="16"/>
           <Property Name="Height" Value="100"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="437"/>
+          <Property Name="Left" Value="430"/>
           <Property Name="PressedBackColor" Value="10"/>
           <Property Name="PressedBitmapSource" Value="Source[embedded].Property[BitmapSource]"/>
           <Property Name="PressedBorder" Value="Source[local].Border[Double3D]"/>
@@ -218,6 +227,36 @@
           <Property Name="Top" Value="230"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_10]"/>
           <Property Name="Width" Value="200"/>
+        </Control>
+        <Control ClassId="0x00001002" Name="Button_11">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="BackColor" Value="51"/>
+          <Property Name="BitmapIndexDatapoint" Value="None"/>
+          <Property Name="BitmapSource" Value="None"/>
+          <Property Name="Border" Value="Source[local].Border[Double3D]"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="EmbVirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_11]"/>
+          <Property Name="ForeColor" Value="16"/>
+          <Property Name="Height" Value="59"/>
+          <Property Name="KeyMatrixOffset" Value="None"/>
+          <Property Name="Left" Value="13"/>
+          <Property Name="PressedBackColor" Value="10"/>
+          <Property Name="PressedBitmapSource" Value="Source[embedded].Property[BitmapSource]"/>
+          <Property Name="PressedBorder" Value="Source[local].Border[Double3D]"/>
+          <Property Name="PressedForeColor" Value="0"/>
+          <Property Name="PressedTextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="PressedTextIndex" Value="7"/>
+          <Property Name="PressedTextSource" Value="SingleText"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndex" Value="6"/>
+          <Property Name="TextIndexDatapoint" Value="None"/>
+          <Property Name="TextSimulationValue" Value="0"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="411"/>
+          <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_11]"/>
+          <Property Name="Width" Value="126"/>
         </Control>
       </Controls>
       <KeyMapping>
@@ -279,6 +318,22 @@
               <Property Name="ResetValue" Value="0"/>
               <Property Name="SetValue" Value="1"/>
               <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_PongGame.HMI.StopGame]"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="%embVirtualKey_11">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x0000016A">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="ResetValue" Value="0"/>
+              <Property Name="SetValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_PongGame.HMI.AutoMode]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>

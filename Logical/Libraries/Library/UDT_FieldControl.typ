@@ -8,7 +8,6 @@ TYPE
 		Start : BOOL;
 		ErrorAcknowledge : BOOL;
 		Interlock : BOOL;
-		Automode : BOOL;
 	END_STRUCT;
 	UDT_FieldControl_STS : 	STRUCT 
 		Disabled : BOOL;

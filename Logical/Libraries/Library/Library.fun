@@ -6,9 +6,6 @@
 	VAR_IN_OUT
 		PaddleMotor : UDT_PaddleMotor;
 	END_VAR
-	VAR
-		TimerStarted : BOOL;
-	END_VAR
 END_FUNCTION_BLOCK
 
 {REDUND_ERROR} {REDUND_UNREPLICABLE} FUNCTION_BLOCK FB_DistanceSensor (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)

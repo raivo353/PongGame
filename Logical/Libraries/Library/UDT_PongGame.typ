@@ -20,7 +20,6 @@ TYPE
 		Idle : BOOL;
 		Initializing : BOOL;
 		Running : BOOL;
-		Stopping : BOOL;
 		StateInt : USINT;
 		AutoActive : BOOL;
 		Interlocked : BOOL;
