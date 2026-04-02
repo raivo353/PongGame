@@ -6,11 +6,12 @@ TYPE
 	UDT_InclinoSensor_CS : 	STRUCT 
 		Power : BOOL;
 		Reset : BOOL;
-		SetCenterPoint : USINT; (*waarde 3 naar schrijven*)
+		SetCenterPoint : BOOL;
 	END_STRUCT;
 	UDT_InclinoSensor_STS : 	STRUCT 
 		CurrentAngle : REAL;
 		PowerOn : BOOL;
+		CenterPointSet : BOOL;
 	END_STRUCT;
 	UDT_InclinoSensor_ALM : 	STRUCT 
 		dummy : USINT;
@@ -22,5 +23,6 @@ TYPE
 	UDT_InclinoSensor_IO : 	STRUCT 
 		DataMSB : USINT;
 		DataLSB : USINT;
+		SetCenterPoint : USINT; (*waarde 3 naar schrijven*)
 	END_STRUCT;
 END_TYPE

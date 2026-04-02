@@ -14,7 +14,6 @@ TYPE
 		JogVelocity : REAL;
 		Velocity : REAL;
 		Position : REAL;
-		Homed : BOOL;
 	END_STRUCT;
 	UDT_PaddleMotor_CS : 	STRUCT 
 		Home : BOOL;
@@ -60,7 +59,6 @@ TYPE
 	UDT_PaddleMotor_STS : 	STRUCT 
 		Disabled : BOOL;
 		Initializing : BOOL;
-		Initialized : BOOL;
 		Idle : BOOL;
 		Running : BOOL;
 		AlarmActive : BOOL;
@@ -71,10 +69,11 @@ TYPE
 		Interlocked : BOOL;
 		PowerOn : BOOL;
 		AutoActive : BOOL;
-		StateInt : USINT := 0;
+		StateInt : USINT;
 		ActVelocity : REAL;
 		EndButtonHit : BOOL;
 		TimerStarted : BOOL;
 		TimerEnded : BOOL;
+		ReferencePosition : REAL;
 	END_STRUCT;
 END_TYPE

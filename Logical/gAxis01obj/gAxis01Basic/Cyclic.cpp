@@ -22,12 +22,6 @@
 #define STATE_ERROR             101
 #define STATE_ERROR_RESET       102
 
-#define RED_COLOR 51
-#define GREEN_COLOR 10
-
-#define MIDDELPUNT_TRAPPER_OFFSET 15
-//#define ACTPOSITION_TO_MM 0.0784
-
 unsigned long bur_heap_size = 0xFFFF; 
 
 void _CYCLIC ProgramCyclic(void)

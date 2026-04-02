@@ -18,4 +18,5 @@ VAR_CONFIG
 	::g_DistanceSensorMiddle.IO.SensorInfo AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input358;
 	::g_DistanceSensorRight.IO.SensorInfo AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input390;
 	::g_DistanceSensorLeft.IO.SensorInfo AT %IB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Input422;
+	::g_InclinoSensor.IO.SetCenterPoint AT %QB."IO_Link_Master_SL_EIP_8P_IP67_V1_5".Module_0_Output175;
 END_VAR

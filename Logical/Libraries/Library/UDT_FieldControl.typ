@@ -8,6 +8,7 @@ TYPE
 		Start : BOOL;
 		ErrorAcknowledge : BOOL;
 		Interlock : BOOL;
+		SetCenterPoint : BOOL;
 	END_STRUCT;
 	UDT_FieldControl_STS : 	STRUCT 
 		Disabled : BOOL;
@@ -19,12 +20,16 @@ TYPE
 		StateInt : USINT;
 		Interlocked : BOOL;
 		AutoActive : BOOL;
+		CurrentAngle : REAL;
+		AtTargetPosition : BOOL;
 	END_STRUCT;
 	UDT_FieldControl_PAR : 	STRUCT 
-		Angle : USINT;
+		Angle : REAL;
 	END_STRUCT;
 	UDT_FieldControl_HMI : 	STRUCT 
-		dummy : BOOL;
+		InitAngle : REAL;
+		IncreaseAngle : BOOL;
+		DecreaseAngle : BOOL;
 	END_STRUCT;
 	UDT_FieldControl_ALM : 	STRUCT 
 		MotorAlarm : BOOL;

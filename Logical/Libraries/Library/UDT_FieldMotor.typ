@@ -24,6 +24,7 @@ TYPE
 		Start : BOOL;
 		Interlock : BOOL;
 		Initialize : BOOL;
+		SetCenterPoint : BOOL;
 	END_STRUCT;
 	UDT_FieldMotor_PAR : 	STRUCT 
 		Acceleration : REAL;
@@ -49,16 +50,23 @@ TYPE
 	END_STRUCT;
 	UDT_FieldMotor_STS : 	STRUCT 
 		Disabled : BOOL;
-		Idle : BOOL;
 		Initializing : BOOL;
-		Initialized : BOOL;
+		Idle : BOOL;
+		Running : BOOL;
+		AlarmActive : BOOL;
 		Moving : BOOL;
+		StandStill : BOOL;
 		AtTargetPosition : BOOL;
+		ActPosition : REAL;
+		Interlocked : BOOL;
+		PowerOn : BOOL;
 		AutoActive : BOOL;
 		StateInt : USINT;
-		AlarmActive : BOOL;
-		ActPosition : REAL;
 		ActVelocity : REAL;
+		EndButtonHit : BOOL;
+		TimerStarted : BOOL;
+		TimerEnded : BOOL;
+		ReferencePosition : REAL;
 	END_STRUCT;
 	UDT_FieldMotor_ALM : 	STRUCT 
 		MotorError : BOOL;

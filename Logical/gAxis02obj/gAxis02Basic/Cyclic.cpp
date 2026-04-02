@@ -22,9 +22,6 @@
 #define STATE_ERROR             101
 #define STATE_ERROR_RESET       102
 
-#define RED_COLOR 50
-#define GREEN_COLOR 10
-
 unsigned long bur_heap_size = 0xFFFF; 
 
 void _CYCLIC ProgramCyclic(void)
@@ -523,6 +520,7 @@ void _CYCLIC ProgramCyclic(void)
 	//io mapping with FieldMotor
 	BasicControl.Command.Power = g_FieldMotor.IO.Power;
 	BasicControl.Command.Home = g_FieldMotor.IO.Home;
+	
 	BasicControl.Command.ErrorAcknowledge = g_FieldMotor.IO.ErrorAcknowledge;
 	BasicControl.Command.MoveJogNeg = g_FieldMotor.IO.MoveJogNeg;
 	BasicControl.Command.MoveJogPos = g_FieldMotor.IO.MoveJogPos;

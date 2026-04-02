@@ -1,5 +1,5 @@
 #include <bur/plctypes.h>
-
+#include <standard.h>
 #ifdef __cplusplus
 	extern "C"
 	{
@@ -11,12 +11,37 @@
 
 #define TO_DEGREES 100
 #define SHIFT_BYTE 8
+
+#define InclinoSensor inst->InclinoSensor
+
+_LOCAL TON_typ TON_03;
+
 /* TODO: Add your comment here */
 void FB_InclinoSensor(struct FB_InclinoSensor* inst)
 {
 	/*TODO: Add your code here*/
-	inst->InclinoSensor->STS.CurrentAngle = (float)((INT)((inst->InclinoSensor->IO.DataMSB << SHIFT_BYTE) | inst->InclinoSensor->IO.DataLSB)) / TO_DEGREES;
+	InclinoSensor->STS.CurrentAngle = (float)((INT)((InclinoSensor->IO.DataMSB << SHIFT_BYTE) | InclinoSensor->IO.DataLSB)) / TO_DEGREES;
 	
+	BOOL start = InclinoSensor->CS.SetCenterPoint && !InclinoSensor->STS.CenterPointSet;
 
-	//inst->InclinoSensor->CS.SetCenterPoint = 0;
+	// Timer aansturen
+	TON_03.IN = start;
+	TON_03.PT = 100;
+	TON(&TON_03);
+
+	// Output naar sensor
+	if(start)
+	{
+    	InclinoSensor->IO.SetCenterPoint = 3;
+	}
+	else
+	{
+    	InclinoSensor->IO.SetCenterPoint = 0;
+	}
+
+	// Na timer klaar
+	if(TON_03.Q)
+	{
+    	InclinoSensor->STS.CenterPointSet = 1;
+	}
 }

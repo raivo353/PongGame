@@ -12,10 +12,10 @@
 
 #define POSITION_TO_MM 0.0784
 #define ENDBUTTON_BITMASK 0x2
-#define MAX_JOG_VELOCITY 4000
+#define MAX_JOG_VELOCITY 2000
 #define MAX_ACC_DEC 20000
 #define MIN_ACC_DEC 100
-#define MAX_POSITION 220
+#define MIN_POSITION PaddleMotor->STS.ReferencePosition - 2800
 
 #define STATE_DISABLED 00
 #define STATE_INITIALIZING 10
@@ -33,11 +33,17 @@ void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 	/*TODO: Add your code here*/
 	PaddleMotor->STS.AutoActive = PaddleMotor->CS.AutoMode;
 	PaddleMotor->IO.EndButton = !((inst->digitalInput & ENDBUTTON_BITMASK) >> 1);
-	//PaddleMotor->STS.ActPosition = PaddleMotor->STS.ActPosition;
 	
+	if(PaddleMotor->CS.StopGame)
+	{
+		PaddleMotor->STS.StateInt = STATE_STOPPING;
+	}
+
 	switch(PaddleMotor->STS.StateInt)
 	{
 		case STATE_DISABLED:
+			PaddleMotor->STS.Disabled = 1;
+
 			PaddleMotor->CS.Power = 0;
 			PaddleMotor->CS.Home = 0;
 			PaddleMotor->STS.EndButtonHit = 0;
@@ -46,30 +52,26 @@ void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 			PaddleMotor->CS.MoveAbsolute = 0;
 			PaddleMotor->STS.TimerStarted = 0;
 			PaddleMotor->STS.TimerEnded = 0;
+			PaddleMotor->STS.ReferencePosition = 0;
+
 			TON_01.IN = 0;
 			TON(&TON_01);
-			if(PaddleMotor->CS.Initialize)
+
+			if(PaddleMotor->CS.Initialize && !PaddleMotor->STS.AlarmActive && !PaddleMotor->STS.Interlocked)
 			{
 				PaddleMotor->STS.StateInt = STATE_INITIALIZING;
 			}
-			
-			PaddleMotor->IO.MoveJogNeg = PaddleMotor->CS.MoveJogNeg;
-			PaddleMotor->IO.MoveJogPos = PaddleMotor->CS.MoveJogPos;
-			PaddleMotor->IO.MoveAbsolute = PaddleMotor->CS.MoveAbsolute;
 			break;
 		case STATE_INITIALIZING:
-			PaddleMotor->CS.Power = 1;
-			//PaddleMotor->CS.Initialize = 0;
-			
-			if(PaddleMotor->CS.StopGame)
-			{
-				PaddleMotor->STS.StateInt = STATE_STOPPING;
-			}
+			PaddleMotor->STS.Initializing = 1;
+			PaddleMotor->STS.Disabled = 0;
 
+			PaddleMotor->CS.Power = 1;	
+			
 			if(!PaddleMotor->IO.EndButton && !PaddleMotor->STS.EndButtonHit) 
 			{ 
 				PaddleMotor->CS.Home = 1; 
-				if(PaddleMotor->STS.TimerStarted == 0) 
+				if(!PaddleMotor->STS.TimerStarted) 
 				{ 
 					TON_01.IN = 1; 
 					PaddleMotor->STS.TimerStarted = 1; 
@@ -102,9 +104,10 @@ void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 					PaddleMotor->STS.TimerEnded = 1;
 					PaddleMotor->CS.Home = 0;
 					PaddleMotor->PAR.Position = PaddleMotor->STS.ActPosition - 1400;
+					PaddleMotor->STS.ReferencePosition = PaddleMotor->STS.ActPosition;
 					PaddleMotor->CS.MoveAbsolute = 1;
 				}
-				if(PaddleMotor->STS.ActPosition <= PaddleMotor->PAR.Position)
+				if(PaddleMotor->STS.ActPosition <= PaddleMotor->PAR.Position && !PaddleMotor->STS.AlarmActive && !PaddleMotor->STS.Interlocked)
 				{
 					PaddleMotor->CS.MoveAbsolute = 0;
 					PaddleMotor->STS.StateInt = STATE_IDLE;
@@ -113,30 +116,27 @@ void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 			
 			break;
 		case STATE_IDLE:
+			PaddleMotor->STS.Initializing = 0;
+			PaddleMotor->STS.Idle = 1;
+
 			PaddleMotor->CS.MoveAbsolute = 0;
 			PaddleMotor->CS.MoveJogNeg = 0;
 			PaddleMotor->CS.MoveJogPos = 0;
 			
-			PaddleMotor->STS.Initializing = 0;
-			
-			if(PaddleMotor->CS.StopGame)
-			{
-				PaddleMotor->STS.StateInt = STATE_STOPPING;
-			}
 			if(PaddleMotor->CS.Start && !PaddleMotor->STS.AlarmActive && !PaddleMotor->STS.Interlocked)
 			{
 				PaddleMotor->STS.StateInt = STATE_RUNNING;
 			}
 			break;
 		case STATE_RUNNING:
-			if(PaddleMotor->CS.StopGame)
-			{
-				PaddleMotor->STS.StateInt = STATE_STOPPING;
-			}
+			PaddleMotor->STS.Running = 1;
+			PaddleMotor->STS.Idle = 0;
 
 			if(!PaddleMotor->STS.AutoActive)
 			{
 				PaddleMotor->CS.MoveAbsolute = 0;
+				PaddleMotor->CS.MoveJogNeg = 0;
+				PaddleMotor->CS.MoveJogPos = 0;
 				//control parameters
 				if(PaddleMotor->HMI.IncreaseJogSpeed && PaddleMotor->PAR.JogVelocity < MAX_JOG_VELOCITY)
 				{
@@ -156,28 +156,35 @@ void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 					PaddleMotor->PAR.Acceleration -= 10;
 					PaddleMotor->PAR.Deceleration -= 10;
 				}
-
-				//moving controls
-				PaddleMotor->IO.MoveJogNeg = PaddleMotor->HMI.MoveJogNeg;
-				PaddleMotor->IO.MoveJogPos = PaddleMotor->HMI.MoveJogPos;
 			}			
 			else
 			{
-				if(PaddleMotor->STS.ActPosition < MAX_POSITION)
-				{
-					PaddleMotor->IO.MoveJogPos = PaddleMotor->CS.MoveJogPos;
-				}
-				if(PaddleMotor->STS.ActPosition >= 0 && !PaddleMotor->IO.EndButton)
-				{
-					PaddleMotor->IO.MoveJogNeg = PaddleMotor->CS.MoveJogNeg;
-				}
-				PaddleMotor->IO.MoveAbsolute = PaddleMotor->CS.MoveAbsolute;
+				PaddleMotor->HMI.MoveAbsolute = 0;
+				PaddleMotor->HMI.MoveJogNeg = 0;
+				PaddleMotor->HMI.MoveJogPos = 0;
+			}
+			if(PaddleMotor->STS.ActPosition < MIN_POSITION)
+			{
+				PaddleMotor->CS.MoveJogNeg = 0;
+				PaddleMotor->HMI.MoveJogNeg = 0;
+				PaddleMotor->CS.MoveAbsolute = 0;
+			}
+			else if(PaddleMotor->IO.EndButton || PaddleMotor->STS.ActPosition >= PaddleMotor->STS.ReferencePosition - 50)
+			{
+				PaddleMotor->CS.MoveJogPos = 0;
+				PaddleMotor->HMI.MoveJogPos = 0;
+				PaddleMotor->CS.MoveAbsolute = 0;
 			}
 			break;
 		case STATE_STOPPING:
+			PaddleMotor->STS.Running = 0;
+			PaddleMotor->STS.Initializing = 0;
+			PaddleMotor->STS.Idle = 0;
+
 			PaddleMotor->CS.MoveAbsolute = 0;
 			PaddleMotor->CS.MoveJogNeg = 0;
 			PaddleMotor->CS.MoveJogPos = 0;
+
 			PaddleMotor->STS.StateInt = STATE_DISABLED;
 			break;
 	}
@@ -193,8 +200,8 @@ void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 	PaddleMotor->IO.Velocity = PaddleMotor->PAR.Velocity;
 	PaddleMotor->IO.Position = PaddleMotor->PAR.Position;
 	PaddleMotor->IO.ErrorAcknowledge = PaddleMotor->HMI.ErrorAcknowledge;
-	PaddleMotor->IO.MoveJogPos = PaddleMotor->CS.MoveJogPos;
-	PaddleMotor->IO.MoveJogNeg = PaddleMotor->CS.MoveJogNeg;
-	PaddleMotor->IO.MoveAbsolute = PaddleMotor->CS.MoveAbsolute;
+	PaddleMotor->IO.MoveJogPos = PaddleMotor->CS.MoveJogPos ^ PaddleMotor->HMI.MoveJogPos;
+	PaddleMotor->IO.MoveJogNeg = PaddleMotor->CS.MoveJogNeg ^ PaddleMotor->HMI.MoveJogNeg;
+	PaddleMotor->IO.MoveAbsolute = PaddleMotor->CS.MoveAbsolute ^ PaddleMotor->HMI.MoveAbsolute;
 
 }
