@@ -6,9 +6,9 @@
   <FontMapping LanguageId="en">
     <Property Name="Antialiasing" Value="Default"/>
     <Property Name="Bold" Value="True"/>
-    <Property Name="Family" Value="Calibri"/>
+    <Property Name="Family" Value="Verdana"/>
     <Property Name="Italic" Value="False"/>
-    <Property Name="Size" Value="16"/>
+    <Property Name="Size" Value="14"/>
   </FontMapping>
   <FontMapping LanguageId="de">
     <Property Name="Antialiasing" Value="Default"/>

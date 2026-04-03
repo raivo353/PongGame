@@ -16,6 +16,7 @@
 #define STATE_STOPPING 40
 
 #define MAX_ANGLE 19
+#define MIN_ANGLE 3
 
 #define FieldMotor inst->FieldMotor
 #define FieldControl inst->FieldControl
@@ -38,11 +39,11 @@ void FB_FieldControl(struct FB_FieldControl* inst)
 
 			if(FieldControl->HMI.IncreaseAngle && FieldControl->PAR.Angle < MAX_ANGLE)
 			{
-				FieldControl->PAR.Angle += 0.001;
+				FieldControl->PAR.Angle += 0.002;
 			}
-			else if(FieldControl->HMI.DecreaseAngle && FieldControl->PAR.Angle > 0)
+			else if(FieldControl->HMI.DecreaseAngle && FieldControl->PAR.Angle > MIN_ANGLE)
 			{
-				FieldControl->PAR.Angle -= 0.001;
+				FieldControl->PAR.Angle -= 0.002;
 			}
 			if(FieldControl->STS.Initializing)
 			{
@@ -56,9 +57,9 @@ void FB_FieldControl(struct FB_FieldControl* inst)
 			{
 				FieldControl->STS.StateInt = STATE_IDLE;
 			}
-			else if(FieldControl->STS.CurrentAngle >= FieldControl->PAR.Angle && !FieldControl->STS.AtTargetPosition)
+			else if((FieldControl->STS.CurrentAngle + 0.65 >= FieldControl->PAR.Angle) && !FieldControl->STS.AtTargetPosition && FieldMotor->STS.EndButtonHit)
 			{	
-			FieldControl->STS.AtTargetPosition = 1;
+				FieldControl->STS.AtTargetPosition = 1;
 			}
 			break;
 		}
@@ -72,7 +73,7 @@ void FB_FieldControl(struct FB_FieldControl* inst)
 		}
 		case STATE_RUNNING:
 		{
-
+			
 			break;
 		}
 		case STATE_STOPPING:
@@ -95,7 +96,7 @@ void FB_FieldControl(struct FB_FieldControl* inst)
 	FieldMotor->STS.AtTargetPosition = FieldControl->STS.AtTargetPosition;
 	
 	FieldControl->STS.CurrentAngle = InclinoSensor->STS.CurrentAngle;
-	FieldControl->STS.Disabled = FieldMotor->STS.Disabled & FieldMotor->STS.Disabled;
+	FieldControl->STS.Disabled = FieldMotor->STS.Disabled;
 	FieldControl->STS.AlarmActive = FieldMotor->STS.AlarmActive;
 	FieldControl->STS.Idle = FieldMotor->STS.Idle;
 	FieldControl->STS.Running = FieldMotor->STS.Running;

@@ -14,7 +14,7 @@
 
 #define InclinoSensor inst->InclinoSensor
 
-_LOCAL TON_typ TON_03;
+_LOCAL TON_typ InclinoTimer;
 
 /* TODO: Add your comment here */
 void FB_InclinoSensor(struct FB_InclinoSensor* inst)
@@ -24,12 +24,10 @@ void FB_InclinoSensor(struct FB_InclinoSensor* inst)
 	
 	BOOL start = InclinoSensor->CS.SetCenterPoint && !InclinoSensor->STS.CenterPointSet;
 
-	// Timer aansturen
-	TON_03.IN = start;
-	TON_03.PT = 100;
-	TON(&TON_03);
+	InclinoTimer.IN = start;
+	InclinoTimer.PT = 10;
+	TON(&InclinoTimer);
 
-	// Output naar sensor
 	if(start)
 	{
     	InclinoSensor->IO.SetCenterPoint = 3;
@@ -38,9 +36,7 @@ void FB_InclinoSensor(struct FB_InclinoSensor* inst)
 	{
     	InclinoSensor->IO.SetCenterPoint = 0;
 	}
-
-	// Na timer klaar
-	if(TON_03.Q)
+	if(InclinoTimer.Q)
 	{
     	InclinoSensor->STS.CenterPointSet = 1;
 	}

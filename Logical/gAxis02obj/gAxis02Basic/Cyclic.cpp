@@ -22,6 +22,8 @@
 #define STATE_ERROR             101
 #define STATE_ERROR_RESET       102
 
+#define TWO_TICKS_JITTER 77
+
 unsigned long bur_heap_size = 0xFFFF; 
 
 void _CYCLIC ProgramCyclic(void)
@@ -535,9 +537,13 @@ void _CYCLIC ProgramCyclic(void)
 	BasicControl.Parameter.Velocity = g_FieldMotor.IO.Velocity;
 	
 	g_FieldMotor.STS.ActPosition = BasicControl.Status.ActPosition;
-	g_FieldMotor.STS.ActVelocity = BasicControl.Status.ActVelocity;
+	if(BasicControl.Status.ActVelocity == 0 || BasicControl.Status.ActVelocity < -TWO_TICKS_JITTER || BasicControl.Status.ActVelocity > TWO_TICKS_JITTER)
+	{
+		g_FieldMotor.STS.ActVelocity = BasicControl.Status.ActVelocity;
+	}
 	g_FieldMotor.ALM.MotorError = (BasicControl.Status.ErrorID != 0);
 	g_FieldMotor.ALM.ErrorID = BasicControl.Status.ErrorID;
+	g_FieldMotor.STS.PowerOn = BasicControl.Command.Power;
 	
 	for (int i = 0; i < 4; i++)
 	{

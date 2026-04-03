@@ -2,7 +2,7 @@
 	#include <AsDefault.h>
 #endif
 #include <string.h>
-
+#include <Library.h>
 
 /* defines of the state-constants */
 #define STATE_WAIT              0  
@@ -21,6 +21,8 @@
 #define STATE_ERROR_AXIS        100
 #define STATE_ERROR             101
 #define STATE_ERROR_RESET       102
+
+#define TWO_TICKS_JITTER 77
 
 unsigned long bur_heap_size = 0xFFFF; 
 
@@ -537,9 +539,13 @@ void _CYCLIC ProgramCyclic(void)
 	BasicControl.Parameter.Velocity = g_PaddleMotor.IO.Velocity;
 	
 	g_PaddleMotor.STS.ActPosition = BasicControl.Status.ActPosition;
-	g_PaddleMotor.STS.ActVelocity = BasicControl.Status.ActVelocity;
+	if(BasicControl.Status.ActVelocity == 0 || BasicControl.Status.ActVelocity < -TWO_TICKS_JITTER || BasicControl.Status.ActVelocity > TWO_TICKS_JITTER)
+	{
+		g_PaddleMotor.STS.ActVelocity = BasicControl.Status.ActVelocity;
+	}
 	g_PaddleMotor.ALM.MotorError = (BasicControl.Status.ErrorID != 0);
 	g_PaddleMotor.ALM.ErrorID = BasicControl.Status.ErrorID;
+	g_PaddleMotor.STS.PowerOn = BasicControl.Command.Power;
 	
 	for (int i = 0; i < 4; i++)
 	{

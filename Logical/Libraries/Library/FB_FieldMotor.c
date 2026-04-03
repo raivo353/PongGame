@@ -11,8 +11,11 @@
 #endif
 
 #define ENDBUTTON_BITMASK 0x4
-#define MAX_JOG_VELOCITY 1000
+#define MAX_VELOCITY 1000
+#define MIN_VELOCITY 100
 #define MIN_POSITION FieldMotor->STS.ReferencePosition - 2800
+#define MS_100 100
+#define MAX_ACC_DEC 40000
 
 #define STATE_DISABLED 00
 #define STATE_INITIALIZING 10
@@ -22,7 +25,7 @@
 
 #define FieldMotor inst->FieldMotor
 
-_LOCAL TON_typ TON_02;
+_LOCAL TON_typ FieldMotorTimer;
 
 /* TODO: Add your comment here */
 void FB_FieldMotor(struct FB_FieldMotor* inst)
@@ -39,20 +42,21 @@ void FB_FieldMotor(struct FB_FieldMotor* inst)
 	switch(FieldMotor->STS.StateInt)
 	{
 		case STATE_DISABLED:
-			FieldMotor->STS.Disabled = 1;
-
 			FieldMotor->CS.Power = 0;
 			FieldMotor->CS.Home = 0;
-			FieldMotor->STS.EndButtonHit = 0;
 			FieldMotor->CS.MoveJogNeg = 0;
 			FieldMotor->CS.MoveJogPos = 0;
 			FieldMotor->CS.MoveAbsolute = 0;
+
+			FieldMotor->STS.Disabled = 1;
+			FieldMotor->STS.EndButtonHit = 0;
 			FieldMotor->STS.TimerStarted = 0;
 			FieldMotor->STS.TimerEnded = 0;
 			FieldMotor->STS.ReferencePosition = 0;
+			FieldMotor->STS.AtTargetPosition = 0;
 
-			TON_02.IN = 0;
-			TON(&TON_02);
+			FieldMotorTimer.IN = 0;
+			TON(&FieldMotorTimer);
 
 			if(FieldMotor->CS.Initialize && !FieldMotor->STS.AlarmActive && !FieldMotor->STS.Interlocked)
 			{
@@ -60,50 +64,57 @@ void FB_FieldMotor(struct FB_FieldMotor* inst)
 			}
 			break;
 		case STATE_INITIALIZING:
+			FieldMotor->CS.Power = 1;
+			FieldMotor->CS.Stop = 0;
+
 			FieldMotor->STS.Initializing = 1;
 			FieldMotor->STS.Disabled = 0;
 
-			FieldMotor->CS.Power = 1;
+			FieldMotor->PAR.Acceleration = MAX_ACC_DEC;
+			FieldMotor->PAR.Deceleration = MAX_ACC_DEC;
+			FieldMotor->PAR.JogVelocity = MAX_VELOCITY;
+			FieldMotor->PAR.Velocity = MAX_VELOCITY;
 
 			if(!FieldMotor->IO.EndButton && !FieldMotor->STS.EndButtonHit) 
 			{
 				FieldMotor->CS.Home = 1; 
 				if(!FieldMotor->STS.TimerStarted) 
 				{ 
-					TON_02.IN = 1; 
+					FieldMotorTimer.IN = 1; 
 					FieldMotor->STS.TimerStarted = 1;
-					FieldMotor->CS.SetCenterPoint = 1; 
+					//FieldMotor->CS.SetCenterPoint = 1; 
 				} 
-				TON_02.PT = 100; 
-				TON(&TON_02); 
+
+				FieldMotorTimer.PT = MS_100; 
+				TON(&FieldMotorTimer); 
 			
-				if(TON_02.Q) 
+				if(FieldMotorTimer.Q) 
 				{ 
 					FieldMotor->CS.Home = 0; 
 					FieldMotor->CS.MoveJogPos = 1;
-					FieldMotor->CS.SetCenterPoint = 0;
+					//FieldMotor->CS.SetCenterPoint = 0;
 				} 
 			}
 			else if(FieldMotor->IO.EndButton && !FieldMotor->STS.EndButtonHit)
 			{
-				TON_02.IN = 0;
+				FieldMotorTimer.IN = 0;
 				FieldMotor->STS.TimerStarted = 0;
 			
 				FieldMotor->CS.MoveJogPos = 0;
 				FieldMotor->STS.EndButtonHit = 1;
 				FieldMotor->CS.Home = 1;
+				FieldMotor->CS.SetCenterPoint = 1;
 	
-				TON_02.IN = 1;
-				FieldMotor->STS.TimerStarted = 1;
+				FieldMotorTimer.IN = 1;
+				//FieldMotor->STS.TimerStarted = 1;
 			}
 			else if(FieldMotor->STS.EndButtonHit)
 			{
-				if(TON_02.Q && !FieldMotor->STS.TimerEnded)
+				if(FieldMotorTimer.Q && !FieldMotor->STS.TimerStarted)
 				{
-					FieldMotor->STS.TimerEnded = 1;
+					FieldMotor->STS.TimerStarted = 1;
 					FieldMotor->CS.Home = 0;
-					//FieldMotor->PAR.Position = FieldMotor->STS.ActPosition - 1400;
-					//FieldMotor->STS.ReferencePosition = FieldMotor->STS.ActPosition;
+					FieldMotor->CS.SetCenterPoint = 0;
 					FieldMotor->CS.MoveJogNeg = 1;
 				}
 				if(FieldMotor->STS.AtTargetPosition && !FieldMotor->STS.AlarmActive && !FieldMotor->STS.Interlocked)
@@ -111,6 +122,7 @@ void FB_FieldMotor(struct FB_FieldMotor* inst)
 					FieldMotor->CS.MoveJogNeg = 0;
 					FieldMotor->STS.StateInt = STATE_IDLE;
 				}
+
 			}
 			
 			break;
@@ -121,6 +133,7 @@ void FB_FieldMotor(struct FB_FieldMotor* inst)
 			FieldMotor->CS.MoveAbsolute = 0;
 			FieldMotor->CS.MoveJogNeg = 0;
 			FieldMotor->CS.MoveJogPos = 0;
+			FieldMotor->CS.Power = 0;
 			
 			if(FieldMotor->CS.Start && !FieldMotor->STS.AlarmActive && !FieldMotor->STS.Interlocked)
 			{
@@ -130,41 +143,41 @@ void FB_FieldMotor(struct FB_FieldMotor* inst)
 		case STATE_RUNNING:
 			FieldMotor->STS.Running = 1;
 			FieldMotor->STS.Idle = 0;
+			FieldMotor->CS.Power = 1;
 
-
-			// else if(!FieldMotor->STS.AutoActive)
-			// {
-			// 	FieldMotor->CS.MoveAbsolute = 0;
-			// 	FieldMotor->CS.MoveJogNeg = 0;
-			// 	FieldMotor->CS.MoveJogPos = 0;
-			// 	//control parameters
-			// 	if(FieldMotor->HMI.IncreaseJogSpeed && FieldMotor->PAR.JogVelocity < MAX_JOG_VELOCITY)
-			// 	{
-			// 		FieldMotor->PAR.JogVelocity++;
-			// 	}
-			// 	else if(FieldMotor->HMI.DecreaseJogSpeed && FieldMotor->PAR.JogVelocity > 0)
-			// 	{
-			// 		FieldMotor->PAR.JogVelocity--;
-			// 	}
-			// }			
-			// else
-			// {
-			// 	FieldMotor->HMI.MoveAbsolute = 0;
-			// 	FieldMotor->HMI.MoveJogNeg = 0;
-			// 	FieldMotor->HMI.MoveJogPos = 0;
-			// }
+			if(!FieldMotor->STS.AutoActive)
+			{
+				FieldMotor->CS.MoveAbsolute = 0;
+				FieldMotor->CS.MoveJogNeg = 0;
+				FieldMotor->CS.MoveJogPos = 0;
+				//control parameters
+				if(FieldMotor->HMI.IncreaseJogSpeed && FieldMotor->PAR.JogVelocity < MAX_VELOCITY)
+				{
+					FieldMotor->PAR.JogVelocity++;
+				}
+				else if(FieldMotor->HMI.DecreaseJogSpeed && FieldMotor->PAR.JogVelocity > 0)
+				{
+					FieldMotor->PAR.JogVelocity--;
+				}
+			}			
+			else
+			{
+				FieldMotor->HMI.MoveAbsolute = 0;
+				FieldMotor->HMI.MoveJogNeg = 0;
+				FieldMotor->HMI.MoveJogPos = 0;
+			}
 			// if(FieldMotor->STS.ActPosition < MIN_POSITION)
 			// {
 			// 	FieldMotor->CS.MoveJogNeg = 0;
 			// 	FieldMotor->HMI.MoveJogNeg = 0;
 			// 	FieldMotor->CS.MoveAbsolute = 0;
 			// }
-			// else if(FieldMotor->IO.EndButton || FieldMotor->STS.ActPosition >= FieldMotor->STS.ReferencePosition - 50)
-			// {
-			// 	FieldMotor->CS.MoveJogPos = 0;
-			// 	FieldMotor->HMI.MoveJogPos = 0;
-			// 	FieldMotor->CS.MoveAbsolute = 0;
-			// }
+			if(FieldMotor->IO.EndButton)
+			{
+				FieldMotor->CS.MoveJogPos = 0;
+				FieldMotor->HMI.MoveJogPos = 0;
+				FieldMotor->CS.MoveAbsolute = 0;
+			}
 			break;
 		case STATE_STOPPING:
 			FieldMotor->STS.Running = 0;
@@ -174,6 +187,7 @@ void FB_FieldMotor(struct FB_FieldMotor* inst)
 			FieldMotor->CS.MoveAbsolute = 0;
 			FieldMotor->CS.MoveJogNeg = 0;
 			FieldMotor->CS.MoveJogPos = 0;
+			FieldMotor->CS.Stop = 1;
 
 			FieldMotor->STS.StateInt = STATE_DISABLED;
 			break;
@@ -183,6 +197,7 @@ void FB_FieldMotor(struct FB_FieldMotor* inst)
 
 	FieldMotor->IO.Power = FieldMotor->CS.Power;
 	FieldMotor->IO.Home = FieldMotor->CS.Home;
+	FieldMotor->IO.Stop = FieldMotor->CS.Stop;
 	
 	FieldMotor->IO.JogVelocity = FieldMotor->PAR.JogVelocity;
 	FieldMotor->IO.Acceleration = FieldMotor->PAR.Acceleration;
@@ -193,4 +208,7 @@ void FB_FieldMotor(struct FB_FieldMotor* inst)
 	FieldMotor->IO.MoveJogPos = FieldMotor->CS.MoveJogPos ^ FieldMotor->HMI.MoveJogPos;
 	FieldMotor->IO.MoveJogNeg = FieldMotor->CS.MoveJogNeg ^ FieldMotor->HMI.MoveJogNeg;
 	FieldMotor->IO.MoveAbsolute = FieldMotor->CS.MoveAbsolute ^ FieldMotor->HMI.MoveAbsolute;
+
+	FieldMotor->STS.AlarmActive = FieldMotor->ALM.MotorError;
+	FieldMotor->STS.Moving = FieldMotor->STS.ActVelocity > MIN_VELOCITY;
 }
