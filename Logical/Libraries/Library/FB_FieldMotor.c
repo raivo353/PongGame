@@ -25,6 +25,7 @@
 
 #define FieldMotor inst->FieldMotor
 
+
 _LOCAL TON_typ FieldMotorTimer;
 
 /* TODO: Add your comment here */
@@ -82,7 +83,7 @@ void FB_FieldMotor(struct FB_FieldMotor* inst)
 				{ 
 					FieldMotorTimer.IN = 1; 
 					FieldMotor->STS.TimerStarted = 1;
-					//FieldMotor->CS.SetCenterPoint = 1; 
+					FieldMotor->CS.SetCenterPoint = 1; 
 				} 
 
 				FieldMotorTimer.PT = MS_100; 
@@ -92,7 +93,7 @@ void FB_FieldMotor(struct FB_FieldMotor* inst)
 				{ 
 					FieldMotor->CS.Home = 0; 
 					FieldMotor->CS.MoveJogPos = 1;
-					//FieldMotor->CS.SetCenterPoint = 0;
+					FieldMotor->CS.SetCenterPoint = 0;
 				} 
 			}
 			else if(FieldMotor->IO.EndButton && !FieldMotor->STS.EndButtonHit)
@@ -210,5 +211,6 @@ void FB_FieldMotor(struct FB_FieldMotor* inst)
 	FieldMotor->IO.MoveAbsolute = FieldMotor->CS.MoveAbsolute ^ FieldMotor->HMI.MoveAbsolute;
 
 	FieldMotor->STS.AlarmActive = FieldMotor->ALM.MotorError;
-	FieldMotor->STS.Moving = FieldMotor->STS.ActVelocity > MIN_VELOCITY;
+	FieldMotor->STS.StandStill = (int)FieldMotor->STS.ActVelocity == 0;
+	FieldMotor->STS.Moving = !FieldMotor->STS.StandStill;
 }

@@ -2,6 +2,7 @@
 <?AutomationStudio Version="4.12.6.106"?>
 <Page xmlns="http://br-automation.co.at/AS/VC/Project" Name="StartPage">
   <Property Name="BackColor" Value="0"/>
+  <Property Name="ColorDatapoint" Value="Source[global].Variable[DataSource.g_PongGame.STS.AlarmActiveColor]"/>
   <Property Name="Description" Value=""/>
   <Property Name="Height" Value="480"/>
   <Property Name="Index" Value="1"/>
@@ -26,8 +27,8 @@
       <Property Name="Z-Order" Value="0"/>
       <TextGroup>
         <TextLayer LanguageId="en">
-          <Text ID="95529" Value="Manual mode"/>
-          <Text ID="95530" Value="Handmatige modus"/>
+          <Text ID="95529" Value="Control panel"/>
+          <Text ID="95530" Value="Control panel"/>
           <Text ID="95598" Value="Choose a menu"/>
           <Text ID="96941" Value="Initialize"/>
           <Text ID="96942" Value="Initialiseren"/>
@@ -86,9 +87,9 @@
           <Property Name="Height" Value="100"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
           <Property Name="Left" Value="220"/>
-          <Property Name="Locking" Value="Datapoint &gt;= Level"/>
-          <Property Name="LockingDatapoint" Value="Source[global].Variable[DataSource.g_PongGame.STS.AutoActive]"/>
-          <Property Name="LockingLevel" Value="1"/>
+          <Property Name="Locking" Value="Datapoint &lt; Level"/>
+          <Property Name="LockingDatapoint" Value="Source[global].Variable[DataSource.g_PongGame.STS.StateInt]"/>
+          <Property Name="LockingLevel" Value="20"/>
           <Property Name="PressedBackColor" Value="10"/>
           <Property Name="PressedBitmapSource" Value="Source[embedded].Property[BitmapSource]"/>
           <Property Name="PressedBorder" Value="Source[local].Border[Double3D]"/>
@@ -247,6 +248,9 @@
           <Property Name="Height" Value="59"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
           <Property Name="Left" Value="13"/>
+          <Property Name="Locking" Value="Datapoint &gt;= Level"/>
+          <Property Name="LockingDatapoint" Value="Source[global].Variable[DataSource.g_PongGame.STS.StateInt]"/>
+          <Property Name="LockingLevel" Value="10"/>
           <Property Name="PressedBackColor" Value="10"/>
           <Property Name="PressedBitmapSource" Value="Source[embedded].Property[BitmapSource]"/>
           <Property Name="PressedBorder" Value="Source[local].Border[Double3D]"/>
@@ -260,7 +264,7 @@
           <Property Name="TextIndexDatapoint" Value="None"/>
           <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="411"/>
+          <Property Name="Top" Value="412"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_11]"/>
           <Property Name="Width" Value="126"/>
         </Control>

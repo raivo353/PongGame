@@ -544,7 +544,7 @@ void _CYCLIC ProgramCyclic(void)
 	g_FieldMotor.ALM.MotorError = (BasicControl.Status.ErrorID != 0);
 	g_FieldMotor.ALM.ErrorID = BasicControl.Status.ErrorID;
 	g_FieldMotor.STS.PowerOn = BasicControl.Command.Power;
-	g_FieldMotor.STS.StandStill = BasicControl.AxisState.StandStill;
+	//g_FieldMotor.STS.StandStill = BasicControl.AxisState.StandStill;
 	
 	for (int i = 0; i < 4; i++)
 	{

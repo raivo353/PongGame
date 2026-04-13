@@ -1,5 +1,6 @@
 
 #include <bur/plctypes.h>
+#include <standard.h>
 #ifdef __cplusplus
 	extern "C"
 	{
@@ -15,18 +16,53 @@
 #define STATE_RUNNING 30
 #define STATE_STOPPING 40
 
+#define BLACK_COLOUR 0
+#define RED_COLOUR 51
+
 #define PongGame inst->PongGame
 #define BallControl inst->BallControl
 #define FieldControl inst->FieldControl
 
+_LOCAL TON_typ AlarmTimer;
+_LOCAL BOOL BlinkState;
+
 /* TODO: Add your comment here */
 void FB_PongGame(struct FB_PongGame* inst)
 {
-	/*TODO: Add your code here*/
 	if(PongGame->CS.StopGame || PongGame->HMI.StopGame)
 	{
 		PongGame->STS.StateInt = STATE_STOPPING;
 	}
+	PongGame->STS.AlarmActiveColor = BLACK_COLOUR;
+	if(PongGame->STS.AlarmActive)
+	{
+		AlarmTimer.IN = 1;
+		AlarmTimer.PT = 1000;
+		TON(&AlarmTimer);
+
+		if(AlarmTimer.Q)
+		{
+			BlinkState = !BlinkState;
+
+			AlarmTimer.IN = 0;
+			TON(&AlarmTimer);
+		}
+		if(BlinkState)
+		{
+			PongGame->STS.AlarmActiveColor = RED_COLOUR;
+		}
+		else
+		{
+			PongGame->STS.AlarmActiveColor = BLACK_COLOUR;
+		}
+	}
+	else
+	{
+		AlarmTimer.IN = 0;
+		TON(&AlarmTimer);
+		BlinkState = 0;
+	}
+	
 
 	switch(PongGame->STS.StateInt)
 	{
@@ -72,6 +108,7 @@ void FB_PongGame(struct FB_PongGame* inst)
 	BallControl->CS.StopGame = PongGame->HMI.StopGame | PongGame->CS.StopGame;
 	BallControl->CS.Start = PongGame->HMI.Start | PongGame->CS.Start;
 	BallControl->CS.AutoMode = PongGame->HMI.AutoMode | PongGame->CS.AutoMode;
+	
 	BallControl->CS.ErrorAcknowledge = PongGame->HMI.ErrorAcknowledge | PongGame->CS.ErrorAcknowledge;
 
 	FieldControl->CS.Initialize = PongGame->HMI.Initialize | PongGame->CS.Initialize;

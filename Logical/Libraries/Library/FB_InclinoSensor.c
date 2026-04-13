@@ -25,7 +25,7 @@ void FB_InclinoSensor(struct FB_InclinoSensor* inst)
 	BOOL start = InclinoSensor->CS.SetCenterPoint && !InclinoSensor->STS.CenterPointSet;
 
 	InclinoTimer.IN = start;
-	InclinoTimer.PT = 10;
+	InclinoTimer.PT = 100;
 	TON(&InclinoTimer);
 
 	if(start)

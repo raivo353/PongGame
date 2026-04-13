@@ -22,6 +22,9 @@
 #define FieldControl inst->FieldControl
 #define InclinoSensor inst->InclinoSensor
 
+#define STOPPING_OFFSET (FieldControl->PAR.Angle * -0.068) + 1.3
+
+
 /* TODO: Add your comment here */
 void FB_FieldControl(struct FB_FieldControl* inst)
 {
@@ -57,7 +60,7 @@ void FB_FieldControl(struct FB_FieldControl* inst)
 			{
 				FieldControl->STS.StateInt = STATE_IDLE;
 			}
-			else if((FieldControl->STS.CurrentAngle + 0.65 >= FieldControl->PAR.Angle) && !FieldControl->STS.AtTargetPosition && FieldMotor->STS.EndButtonHit)
+			else if((FieldControl->STS.CurrentAngle + STOPPING_OFFSET >= FieldControl->PAR.Angle) && !FieldControl->STS.AtTargetPosition && FieldMotor->STS.EndButtonHit)
 			{	
 				FieldControl->STS.AtTargetPosition = 1;
 			}
@@ -103,6 +106,7 @@ void FB_FieldControl(struct FB_FieldControl* inst)
 	FieldControl->STS.Moving = FieldMotor->STS.Moving;
 	FieldControl->STS.Initializing = FieldMotor->STS.Initializing;
 
-	FieldControl->CS.SetCenterPoint = FieldMotor->CS.SetCenterPoint;
-	InclinoSensor->CS.SetCenterPoint = FieldControl->CS.SetCenterPoint;
+	//FieldControl->CS.SetCenterPoint = FieldMotor->CS.SetCenterPoint;
+	InclinoSensor->CS.SetCenterPoint = FieldMotor->CS.SetCenterPoint;
+
 }

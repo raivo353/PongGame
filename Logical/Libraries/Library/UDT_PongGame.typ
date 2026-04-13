@@ -23,6 +23,7 @@ TYPE
 		StateInt : USINT;
 		AutoActive : BOOL;
 		Interlocked : BOOL;
+		AlarmActiveColor : USINT;
 	END_STRUCT;
 	UDT_PongGame_PAR : 	STRUCT 
 		Highscore : USINT;

@@ -21,5 +21,5 @@ void _CYCLIC ProgramCyclic(void)
 	FB_BallControl(&BallControl);
 	FB_PongGame(&PongGame);
 	
-	digitalOutput = Shooter.digitalOutput;	
+	digitalOutput = Shooter.digitalOutput;
 }

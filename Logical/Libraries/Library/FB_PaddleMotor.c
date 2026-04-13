@@ -12,12 +12,13 @@
 
 #define POSITION_TO_MM 0.0784
 #define ENDBUTTON_BITMASK 0x2
-#define MAX_JOG_VELOCITY 2000
+#define MAX_VELOCITY 2000
+#define MIN_VELOCITY 100
 #define MAX_ACC_DEC 40000
 #define MIN_ACC_DEC 100
 #define MIN_POSITION PaddleMotor->STS.ReferencePosition - 2800
 #define MIDDLE_POSITION 1450
-#define STOPPING_OFFSET ((PaddleMotor->PAR.JogVelocity * PaddleMotor->PAR.JogVelocity) / 50000 + 3)
+#define STOPPING_OFFSET PaddleMotor->PAR.JogVelocity * PaddleMotor->PAR.JogVelocity * 0.0000216
 
 #define STATE_DISABLED 00
 #define STATE_INITIALIZING 10
@@ -33,7 +34,7 @@ _LOCAL TON_typ PaddleMotorTimer;
 void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 {
 	/*TODO: Add your code here*/
-	PaddleMotor->STS.AutoActive = PaddleMotor->CS.AutoMode;
+
 	PaddleMotor->IO.EndButton = !((inst->digitalInput & ENDBUTTON_BITMASK) >> 1);
 	
 	if(PaddleMotor->CS.StopGame)
@@ -52,6 +53,8 @@ void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 			PaddleMotor->CS.MoveJogNeg = 0;
 			PaddleMotor->CS.MoveJogPos = 0;
 			PaddleMotor->CS.MoveAbsolute = 0;
+			PaddleMotor->HMI.MoveJogNeg = 0;
+			PaddleMotor->HMI.MoveJogPos = 0;
 			PaddleMotor->STS.TimerStarted = 0;
 			PaddleMotor->STS.TimerEnded = 0;
 			PaddleMotor->STS.ReferencePosition = 0;
@@ -74,6 +77,9 @@ void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 
 			PaddleMotor->CS.Power = 1;	
 			PaddleMotor->CS.Stop = 0;
+
+			PaddleMotor->HMI.MoveJogNeg = 0;
+			PaddleMotor->HMI.MoveJogPos = 0;
 			
 			if(!PaddleMotor->IO.EndButton && !PaddleMotor->STS.EndButtonHit) 
 			{ 
@@ -145,11 +151,11 @@ void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 				PaddleMotor->CS.MoveJogNeg = 0;
 				PaddleMotor->CS.MoveJogPos = 0;
 				//control parameters
-				if(PaddleMotor->HMI.IncreaseJogSpeed && PaddleMotor->PAR.JogVelocity < MAX_JOG_VELOCITY)
+				if(PaddleMotor->HMI.IncreaseJogSpeed && PaddleMotor->PAR.JogVelocity < MAX_VELOCITY)
 				{
 					PaddleMotor->PAR.JogVelocity++;
 				}
-				else if(PaddleMotor->HMI.DecreaseJogSpeed && PaddleMotor->PAR.JogVelocity > 0)
+				else if(PaddleMotor->HMI.DecreaseJogSpeed && PaddleMotor->PAR.JogVelocity > MIN_VELOCITY)
 				{
 					PaddleMotor->PAR.JogVelocity--;
 				}
@@ -193,7 +199,13 @@ void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 			PaddleMotor->CS.MoveJogPos = 0;
 			PaddleMotor->CS.Stop = 1;
 
-			PaddleMotor->STS.StateInt = STATE_DISABLED;
+			PaddleMotor->HMI.MoveJogNeg = 0;
+			PaddleMotor->HMI.MoveJogPos = 0;
+
+			if(PaddleMotor->STS.StandStill)
+			{
+				PaddleMotor->STS.StateInt = STATE_DISABLED;
+			}	
 			break;
 	}
 	 
@@ -212,6 +224,10 @@ void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 	PaddleMotor->IO.MoveJogNeg = PaddleMotor->CS.MoveJogNeg ^ PaddleMotor->HMI.MoveJogNeg;
 	PaddleMotor->IO.MoveAbsolute = PaddleMotor->CS.MoveAbsolute ^ PaddleMotor->HMI.MoveAbsolute;
 
+
 	PaddleMotor->STS.AlarmActive = PaddleMotor->ALM.MotorError;
+	PaddleMotor->STS.StandStill = (int)PaddleMotor->STS.ActVelocity == 0;
+	PaddleMotor->STS.Moving = !PaddleMotor->STS.StandStill;
+	PaddleMotor->STS.AutoActive = PaddleMotor->CS.AutoMode;
 
 }
