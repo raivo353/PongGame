@@ -132,7 +132,7 @@ void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 			
 			if(PaddleMotor->CS.Start && !PaddleMotor->STS.AlarmActive && !PaddleMotor->STS.Interlocked)
 			{
-				PaddleMotor->STS.StateInt = STATE_RUNNING;
+				PaddleMotor->STS.StateInt = STATE_RUNNING;			
 			}
 			break;
 		case STATE_RUNNING:

@@ -1,0 +1,18 @@
+(********************************************************************
+ * COPYRIGHT --  MyAutomation-IT
+ ********************************************************************
+ * Program: Tests_PaddleMotor_C
+ * File: variables.var
+ * Author: Raivo Berends
+ ********************************************************************
+ * Local variables of program Tests_PaddleMotor_C
+ ********************************************************************)
+(*Describe the test*)
+VAR
+	Testsuite : UtMgrTestSuite := (Name:='PaddleMotor_Tests',Type:=utMgrTEST_TYPE_C);
+END_VAR
+(*Variables used in the tests*)
+VAR
+	PaddleMotorFB : FB_PaddleMotor;
+	PaddleMotorStruct : UDT_PaddleMotor;
+END_VAR

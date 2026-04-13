@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.12.6.106 FileVersion="4.9"?>
+<Hardware xmlns="http://br-automation.co.at/AS/Hardware">
+  <Module Name="4PPC70_0573_20B" Type="4PPC70.0573-20B" Version="1.6.1.0">
+    <Connector Name="IF2">
+      <Parameter ID="ActivateDevice" Value="1" />
+      <Parameter ID="InaPort" Value="11160" />
+    </Connector>
+    <Parameter ID="ConfigurationID" Value="AutomatedPongGame_TS_UnitTest_Sample" />
+    <Parameter ID="Cyclic4Duration" Value="10000" />
+    <Group ID="FileDevice1" />
+    <Parameter ID="FileDeviceName1" Value="USER" />
+    <Parameter ID="FileDevicePath1" Value="USER_PATH" />
+    <Parameter ID="KeyMappingFile" Value="VC\4PPC70_0573_20B.dis" />
+  </Module>
+</Hardware>
