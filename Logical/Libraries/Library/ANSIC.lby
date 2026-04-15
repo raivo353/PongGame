@@ -21,5 +21,6 @@
     <File>FB_BallControl.c</File>
     <File>FB_FieldControl.c</File>
     <File>FB_PongGame.c</File>
+    <File>CommonTypes.h</File>
   </Files>
 </Library>

@@ -1,6 +1,8 @@
 
 #include <bur/plctypes.h>
 #include <standard.h>
+#include "CommonTypes.h"
+
 #ifdef __cplusplus
 	extern "C"
 	{
@@ -12,19 +14,12 @@
 
 #define POSITION_TO_MM 0.0784
 #define ENDBUTTON_BITMASK 0x2
-#define MAX_VELOCITY 2000
-#define MIN_VELOCITY 100
-#define MAX_ACC_DEC 40000
 #define MIN_ACC_DEC 100
 #define MIN_POSITION PaddleMotor->STS.ReferencePosition - 2800
 #define MIDDLE_POSITION 1450
 #define STOPPING_OFFSET PaddleMotor->PAR.JogVelocity * PaddleMotor->PAR.JogVelocity * 0.0000216
+#define REFERENCE_OFFSET 25
 
-#define STATE_DISABLED 00
-#define STATE_INITIALIZING 10
-#define STATE_IDLE 20
-#define STATE_RUNNING 30
-#define STATE_STOPPING 40
 
 #define PaddleMotor inst->PaddleMotor
 
@@ -34,19 +29,24 @@ _LOCAL TON_typ PaddleMotorTimer;
 void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 {
 	/*TODO: Add your code here*/
-
 	PaddleMotor->IO.EndButton = !((inst->digitalInput & ENDBUTTON_BITMASK) >> 1);
-	
+
 	if(PaddleMotor->CS.StopGame)
 	{
 		PaddleMotor->STS.StateInt = STATE_STOPPING;
+	}
+
+	PaddleMotor->STS.AlarmActiveColour = GREEN_COLOUR;
+	if(PaddleMotor->STS.AlarmActive)
+	{
+		PaddleMotor->STS.AlarmActiveColour = RED_COLOUR;
 	}
 
 	switch(PaddleMotor->STS.StateInt)
 	{
 		case STATE_DISABLED:
 			PaddleMotor->STS.Disabled = 1;
-
+			PaddleMotor->STS.ReferenceSet = 0;
 			PaddleMotor->CS.Power = 0;
 			PaddleMotor->CS.Home = 0;
 			PaddleMotor->STS.EndButtonHit = 0;
@@ -89,7 +89,7 @@ void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 					PaddleMotorTimer.IN = 1; 
 					PaddleMotor->STS.TimerStarted = 1; 
 				} 
-				PaddleMotorTimer.PT = 100; 
+				PaddleMotorTimer.PT = MS_100; 
 				TON(&PaddleMotorTimer); 
 			
 				if(PaddleMotorTimer.Q) 
@@ -115,8 +115,14 @@ void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 				if(PaddleMotorTimer.Q && !PaddleMotor->STS.TimerEnded)
 				{
 					PaddleMotor->STS.TimerEnded = 1;
+					
+				}
+				if(PaddleMotor->STS.TimerEnded && !PaddleMotor->STS.ReferenceSet)
+				{
+					PaddleMotor->STS.ReferenceSet = 1;
 					PaddleMotor->CS.Home = 0;
-					PaddleMotor->STS.ReferencePosition = PaddleMotor->STS.ActPosition;
+					
+					PaddleMotor->STS.ReferencePosition = PaddleMotor->STS.ActPosition + 25;
 					PaddleMotor->PAR.Position = PaddleMotor->STS.ReferencePosition - MIDDLE_POSITION;
 					PaddleMotor->CS.MoveAbsolute = 1;
 				}
@@ -126,7 +132,6 @@ void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 					PaddleMotor->STS.StateInt = STATE_IDLE;
 				}
 			}
-			
 			break;
 		case STATE_IDLE:
 			PaddleMotor->STS.Initializing = 0;
@@ -208,7 +213,7 @@ void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 			}	
 			break;
 	}
-	 
+	
 	//io mapping
 
 	PaddleMotor->IO.Power = PaddleMotor->CS.Power;
@@ -229,5 +234,5 @@ void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 	PaddleMotor->STS.StandStill = (int)PaddleMotor->STS.ActVelocity == 0;
 	PaddleMotor->STS.Moving = !PaddleMotor->STS.StandStill;
 	PaddleMotor->STS.AutoActive = PaddleMotor->CS.AutoMode;
-
+	
 }

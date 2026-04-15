@@ -67,6 +67,7 @@ TYPE
 		TimerStarted : BOOL;
 		TimerEnded : BOOL;
 		ReferencePosition : REAL;
+		AlarmActiveColour : USINT;
 	END_STRUCT;
 	UDT_FieldMotor_ALM : 	STRUCT 
 		MotorError : BOOL;

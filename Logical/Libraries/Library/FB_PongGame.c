@@ -1,6 +1,7 @@
 
 #include <bur/plctypes.h>
 #include <standard.h>
+#include "CommonTypes.h"
 #ifdef __cplusplus
 	extern "C"
 	{
@@ -10,14 +11,6 @@
 	};
 #endif
 
-#define STATE_DISABLED 00
-#define STATE_INITIALIZING 10
-#define STATE_IDLE 20
-#define STATE_RUNNING 30
-#define STATE_STOPPING 40
-
-#define BLACK_COLOUR 0
-#define RED_COLOUR 51
 
 #define PongGame inst->PongGame
 #define BallControl inst->BallControl
@@ -33,9 +26,17 @@ void FB_PongGame(struct FB_PongGame* inst)
 	{
 		PongGame->STS.StateInt = STATE_STOPPING;
 	}
-	PongGame->STS.AlarmActiveColor = BLACK_COLOUR;
+	PongGame->STS.AlarmActiveColour = BLACK_COLOUR;
 	if(PongGame->STS.AlarmActive)
 	{
+		PongGame->CS.StopGame = !PongGame->STS.GameStopped;
+
+		if(PongGame->CS.StopGame && !PongGame->STS.GameStopped)
+		{
+    		PongGame->STS.GameStopped = 1;
+			//PongGame->CS.StopGame = 0;
+		}
+		
 		AlarmTimer.IN = 1;
 		AlarmTimer.PT = 1000;
 		TON(&AlarmTimer);
@@ -49,11 +50,11 @@ void FB_PongGame(struct FB_PongGame* inst)
 		}
 		if(BlinkState)
 		{
-			PongGame->STS.AlarmActiveColor = RED_COLOUR;
+			PongGame->STS.AlarmActiveColour = RED_COLOUR;
 		}
 		else
 		{
-			PongGame->STS.AlarmActiveColor = BLACK_COLOUR;
+			PongGame->STS.AlarmActiveColour = BLACK_COLOUR;
 		}
 	}
 	else
@@ -68,6 +69,8 @@ void FB_PongGame(struct FB_PongGame* inst)
 	{
 		case STATE_DISABLED:
 		{
+			PongGame->STS.GameStopped = 0;
+			PongGame->CS.StopGame = 0;
 			if(PongGame->STS.Initializing)
 			{
 				PongGame->STS.StateInt = STATE_INITIALIZING;

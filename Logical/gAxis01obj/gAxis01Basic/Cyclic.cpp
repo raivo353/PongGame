@@ -546,7 +546,6 @@ void _CYCLIC ProgramCyclic(void)
 	g_PaddleMotor.ALM.MotorError = (BasicControl.Status.ErrorID != 0);
 	g_PaddleMotor.ALM.ErrorID = BasicControl.Status.ErrorID;
 	g_PaddleMotor.STS.PowerOn = BasicControl.Command.Power;
-	//g_PaddleMotor.STS.StandStill = BasicControl.AxisState.StandStill;
 	
 	for (int i = 0; i < 4; i++)
 	{

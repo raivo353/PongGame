@@ -25,6 +25,7 @@ TYPE
 		AutoActive : BOOL;
 		Shooting : BOOL;
 		StateInt : USINT;
+		AlarmActiveColour : USINT;
 	END_STRUCT;
 	UDT_Shooter_ALM : 	STRUCT 
 		dummy : BOOL;

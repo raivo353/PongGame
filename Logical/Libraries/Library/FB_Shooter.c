@@ -1,5 +1,6 @@
 
 #include <bur/plctypes.h>
+#include "CommonTypes.h"
 #ifdef __cplusplus
 	extern "C"
 	{
@@ -9,9 +10,8 @@
 	};
 #endif
 
-#define STATE_DISABLED 0
-#define STATE_IDLE 10
-#define STATE_SHOOTING 20
+
+#define STATE_SHOOTING 50
 
 #define Shooter inst->Shooter
 
@@ -21,6 +21,12 @@ void FB_Shooter(struct FB_Shooter* inst)
 	if(Shooter->CS.StopGame)
 	{
 		Shooter->STS.StateInt = STATE_DISABLED;
+	}
+
+	Shooter->STS.AlarmActiveColour = GREEN_COLOUR;
+	if(Shooter->STS.AlarmActive)
+	{
+		Shooter->STS.AlarmActiveColour = RED_COLOUR;
 	}
 	
 	switch (Shooter->STS.StateInt)
@@ -70,7 +76,7 @@ void FB_Shooter(struct FB_Shooter* inst)
 					Shooter->CS.Shoot = 0;
 			}
 
-			if((Shooter->HMI.Shoot ^ Shooter->CS.Shoot == 1) && !Shooter->STS.AlarmActive && !Shooter->STS.Interlocked)
+			if((Shooter->HMI.Shoot ^ Shooter->CS.Shoot) == 1 && !Shooter->STS.AlarmActive && !Shooter->STS.Interlocked)
 			{
 				Shooter->STS.StateInt = STATE_SHOOTING;
 			}

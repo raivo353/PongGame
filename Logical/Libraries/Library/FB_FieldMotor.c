@@ -1,6 +1,7 @@
 
 #include <bur/plctypes.h>
 #include <standard.h>
+#include "CommonTypes.h"
 #ifdef __cplusplus
 	extern "C"
 	{
@@ -11,27 +12,25 @@
 #endif
 
 #define ENDBUTTON_BITMASK 0x4
-#define MAX_VELOCITY 1000
-#define MIN_VELOCITY 100
 #define MIN_POSITION FieldMotor->STS.ReferencePosition - 2800
-#define MS_100 100
-#define MAX_ACC_DEC 40000
 
-#define STATE_DISABLED 00
-#define STATE_INITIALIZING 10
-#define STATE_IDLE 20
-#define STATE_RUNNING 30
-#define STATE_STOPPING 40
 
 #define FieldMotor inst->FieldMotor
-
 
 _LOCAL TON_typ FieldMotorTimer;
 
 /* TODO: Add your comment here */
 void FB_FieldMotor(struct FB_FieldMotor* inst)
 {
+	//FieldMotorTimer.IN = 0;
+	FieldMotorTimer.PT = MS_100; 
+	TON(&FieldMotorTimer);
 	/*TODO: Add your code here*/
+	if(FieldMotor->STS.AlarmActive)
+	{
+		FieldMotor->STS.AlarmActiveColour = RED_COLOUR;
+		FieldMotor->CS.Stop = 1;
+	}
 	FieldMotor->IO.EndButton = !((inst->digitalInput & ENDBUTTON_BITMASK) >> 2);
 	
 
@@ -39,6 +38,8 @@ void FB_FieldMotor(struct FB_FieldMotor* inst)
 	{
 		FieldMotor->STS.StateInt = STATE_STOPPING;
 	}
+
+	FieldMotor->STS.AlarmActiveColour = GREEN_COLOUR;
 
 	switch(FieldMotor->STS.StateInt)
 	{
@@ -55,9 +56,6 @@ void FB_FieldMotor(struct FB_FieldMotor* inst)
 			FieldMotor->STS.TimerEnded = 0;
 			FieldMotor->STS.ReferencePosition = 0;
 			FieldMotor->STS.AtTargetPosition = 0;
-
-			FieldMotorTimer.IN = 0;
-			TON(&FieldMotorTimer);
 
 			if(FieldMotor->CS.Initialize && !FieldMotor->STS.AlarmActive && !FieldMotor->STS.Interlocked)
 			{
@@ -84,11 +82,7 @@ void FB_FieldMotor(struct FB_FieldMotor* inst)
 					FieldMotorTimer.IN = 1; 
 					FieldMotor->STS.TimerStarted = 1;
 					FieldMotor->CS.SetCenterPoint = 1; 
-				} 
-
-				FieldMotorTimer.PT = MS_100; 
-				TON(&FieldMotorTimer); 
-			
+				} 			
 				if(FieldMotorTimer.Q) 
 				{ 
 					FieldMotor->CS.Home = 0; 
@@ -107,7 +101,6 @@ void FB_FieldMotor(struct FB_FieldMotor* inst)
 				FieldMotor->CS.SetCenterPoint = 1;
 	
 				FieldMotorTimer.IN = 1;
-				//FieldMotor->STS.TimerStarted = 1;
 			}
 			else if(FieldMotor->STS.EndButtonHit)
 			{
@@ -213,4 +206,5 @@ void FB_FieldMotor(struct FB_FieldMotor* inst)
 	FieldMotor->STS.AlarmActive = FieldMotor->ALM.MotorError;
 	FieldMotor->STS.StandStill = (int)FieldMotor->STS.ActVelocity == 0;
 	FieldMotor->STS.Moving = !FieldMotor->STS.StandStill;
+
 }

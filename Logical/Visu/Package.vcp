@@ -56,8 +56,8 @@
     <Source File="Bitmaps\Red_Arrow_Right_Small.bminfo"/>
     <Source File="Bitmaps\Red_Arrow_Up_Small.bminfo"/>
     <Source File="Pages\StartPage.page"/>
-    <Source File="Pages\Settings.page"/>
-    <Source File="Pages\SensorData.page"/>
+    <Source File="Pages\ControlPanel.page"/>
+    <Source File="Pages\AlarmPanel.page"/>
     <Source File="StyleSheets\Color.vcs"/>
     <Source File="Borders\rand.bdr"/>
     <Source File="Borders\Double3D.bdr"/>

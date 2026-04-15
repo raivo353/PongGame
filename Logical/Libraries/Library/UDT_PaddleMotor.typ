@@ -75,5 +75,7 @@ TYPE
 		TimerStarted : BOOL;
 		TimerEnded : BOOL;
 		ReferencePosition : REAL;
+		ReferenceSet : BOOL;
+		AlarmActiveColour : USINT;
 	END_STRUCT;
 END_TYPE

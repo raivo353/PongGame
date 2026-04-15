@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?AutomationStudio Version="4.12.6.106"?>
-<Page xmlns="http://br-automation.co.at/AS/VC/Project" Name="SensorData">
+<Page xmlns="http://br-automation.co.at/AS/VC/Project" Name="AlarmPanel">
   <Property Name="BackColor" Value="0"/>
   <Property Name="Description" Value=""/>
   <Property Name="Height" Value="480"/>
@@ -34,6 +34,11 @@
           <Text ID="97727" Value="ACKNOWLEDGE ERROR TRAPPER"/>
           <Text ID="97728" Value="Error paddle"/>
           <Text ID="97729" Value="Error field"/>
+          <Text ID="97917" Value="DistanceSensor left"/>
+          <Text ID="97918" Value="Distancesensor middle"/>
+          <Text ID="97919" Value="Distancesensor right"/>
+          <Text ID="97920" Value="Shooter"/>
+          <Text ID="97921" Value="InclinoSensor"/>
         </TextLayer>
         <TextLayer LanguageId="de">
           <Text ID="95754" Value="Startscherm"/>
@@ -44,6 +49,11 @@
           <Text ID="97727" Value=""/>
           <Text ID="97728" Value="Text_2"/>
           <Text ID="97729" Value="Text_2"/>
+          <Text ID="97917" Value="Text_2"/>
+          <Text ID="97918" Value="Distancesensor middle"/>
+          <Text ID="97919" Value="Distancesensor right"/>
+          <Text ID="97920" Value="Text_2"/>
+          <Text ID="97921" Value="Text_2"/>
         </TextLayer>
         <IndexMap>
           <Index ID="95754" Value="0"/>
@@ -54,6 +64,11 @@
           <Index ID="97727" Value="11"/>
           <Index ID="97728" Value="12"/>
           <Index ID="97729" Value="13"/>
+          <Index ID="97917" Value="6"/>
+          <Index ID="97918" Value="7"/>
+          <Index ID="97919" Value="9"/>
+          <Index ID="97920" Value="10"/>
+          <Index ID="97921" Value="14"/>
         </IndexMap>
       </TextGroup>
       <Controls>
@@ -122,7 +137,7 @@
           <Property Name="Left" Value="326"/>
           <Property Name="SimulationValue" Value="ABC"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
-          <Property Name="Top" Value="16"/>
+          <Property Name="Top" Value="15"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_PaddleMotor.ALM.ErrorText[0]]"/>
           <Property Name="Width" Value="300"/>
         </Control>
@@ -139,7 +154,7 @@
           <Property Name="ForeColor" Value="16"/>
           <Property Name="Height" Value="50"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="63"/>
+          <Property Name="Left" Value="7"/>
           <Property Name="Locking" Value="Datapoint &lt; Level"/>
           <Property Name="LockingDatapoint" Value="Source[global].Variable[DataSource.g_PongGame.STS.StateInt]"/>
           <Property Name="LockingLevel" Value="30"/>
@@ -157,7 +172,7 @@
           <Property Name="TextIndexDatapoint" Value="None"/>
           <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="11"/>
+          <Property Name="Top" Value="9"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_34]"/>
           <Property Name="Width" Value="110"/>
         </Control>
@@ -174,7 +189,7 @@
           <Property Name="ForeColor" Value="16"/>
           <Property Name="Height" Value="50"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="63"/>
+          <Property Name="Left" Value="7"/>
           <Property Name="Locking" Value="Datapoint &lt; Level"/>
           <Property Name="LockingDatapoint" Value="Source[global].Variable[DataSource.g_PongGame.STS.StateInt]"/>
           <Property Name="LockingLevel" Value="30"/>
@@ -192,7 +207,7 @@
           <Property Name="TextIndexDatapoint" Value="None"/>
           <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="66"/>
+          <Property Name="Top" Value="64"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_35]"/>
           <Property Name="Width" Value="110"/>
         </Control>
@@ -207,7 +222,7 @@
           <Property Name="Left" Value="328"/>
           <Property Name="SimulationValue" Value="ABC"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
-          <Property Name="Top" Value="81"/>
+          <Property Name="Top" Value="80"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_FieldMotor.ALM.ErrorText[0]]"/>
           <Property Name="Width" Value="300"/>
         </Control>
@@ -228,7 +243,7 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="12"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="16"/>
+          <Property Name="Top" Value="15"/>
           <Property Name="Width" Value="120"/>
         </Control>
         <Control ClassId="0x00001004" Name="Text_12">
@@ -248,8 +263,185 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="13"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="81"/>
+          <Property Name="Top" Value="80"/>
           <Property Name="Width" Value="120"/>
+        </Control>
+        <Control ClassId="0x00001001" Name="Shape_1">
+          <Property Name="ColorDatapoint" Value="Source[global].Variable[DataSource.g_PaddleMotor.STS.AlarmActiveColour]"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Height" Value="30"/>
+          <Property Name="Left" Value="160"/>
+          <Property Name="Shape" Value="Ellipse"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
+          <Property Name="Top" Value="15"/>
+          <Property Name="Width" Value="30"/>
+        </Control>
+        <Control ClassId="0x00001001" Name="Shape_2">
+          <Property Name="ColorDatapoint" Value="Source[global].Variable[DataSource.g_FieldMotor.STS.AlarmActiveColour]"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Height" Value="30"/>
+          <Property Name="Left" Value="160"/>
+          <Property Name="Shape" Value="Ellipse"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
+          <Property Name="Top" Value="80"/>
+          <Property Name="Width" Value="30"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_11">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="AlignmentVertical" Value="Center"/>
+          <Property Name="BackColor" Value="0"/>
+          <Property Name="Border" Value="Source[local].Border[dikkerand]"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="FillStyle" Value="Opaque"/>
+          <Property Name="ForeColor" Value="16"/>
+          <Property Name="Height" Value="30"/>
+          <Property Name="Left" Value="55"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="6"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="137"/>
+          <Property Name="Width" Value="160"/>
+        </Control>
+        <Control ClassId="0x00001001" Name="Shape_3">
+          <Property Name="ColorDatapoint" Value="Source[global].Variable[DataSource.g_DistanceSensorLeft.STS.AlarmActiveColour]"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Height" Value="30"/>
+          <Property Name="Left" Value="20"/>
+          <Property Name="Shape" Value="Ellipse"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
+          <Property Name="Top" Value="137"/>
+          <Property Name="Width" Value="30"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_13">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="AlignmentVertical" Value="Center"/>
+          <Property Name="BackColor" Value="0"/>
+          <Property Name="Border" Value="Source[local].Border[dikkerand]"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="FillStyle" Value="Opaque"/>
+          <Property Name="ForeColor" Value="16"/>
+          <Property Name="Height" Value="30"/>
+          <Property Name="Left" Value="263"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="7"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="137"/>
+          <Property Name="Width" Value="160"/>
+        </Control>
+        <Control ClassId="0x00001001" Name="Shape_4">
+          <Property Name="ColorDatapoint" Value="Source[global].Variable[DataSource.g_DistanceSensorMiddle.STS.AlarmActiveColour]"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Height" Value="30"/>
+          <Property Name="Left" Value="227"/>
+          <Property Name="Shape" Value="Ellipse"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
+          <Property Name="Top" Value="137"/>
+          <Property Name="Width" Value="30"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_14">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="AlignmentVertical" Value="Center"/>
+          <Property Name="BackColor" Value="0"/>
+          <Property Name="Border" Value="Source[local].Border[dikkerand]"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="FillStyle" Value="Opaque"/>
+          <Property Name="ForeColor" Value="16"/>
+          <Property Name="Height" Value="30"/>
+          <Property Name="Left" Value="469"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="9"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="137"/>
+          <Property Name="Width" Value="160"/>
+        </Control>
+        <Control ClassId="0x00001001" Name="Shape_5">
+          <Property Name="ColorDatapoint" Value="Source[global].Variable[DataSource.g_DistanceSensorRight.STS.AlarmActiveColour]"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Height" Value="30"/>
+          <Property Name="Left" Value="433"/>
+          <Property Name="Shape" Value="Ellipse"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
+          <Property Name="Top" Value="137"/>
+          <Property Name="Width" Value="30"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_15">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="AlignmentVertical" Value="Center"/>
+          <Property Name="BackColor" Value="0"/>
+          <Property Name="Border" Value="Source[local].Border[dikkerand]"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="FillStyle" Value="Opaque"/>
+          <Property Name="ForeColor" Value="16"/>
+          <Property Name="Height" Value="30"/>
+          <Property Name="Left" Value="48"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="10"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="211"/>
+          <Property Name="Width" Value="100"/>
+        </Control>
+        <Control ClassId="0x00001001" Name="Shape_6">
+          <Property Name="ColorDatapoint" Value="Source[global].Variable[DataSource.g_Shooter.STS.AlarmActiveColour]"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Height" Value="30"/>
+          <Property Name="Left" Value="12"/>
+          <Property Name="Shape" Value="Ellipse"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
+          <Property Name="Top" Value="211"/>
+          <Property Name="Width" Value="30"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_16">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="AlignmentVertical" Value="Center"/>
+          <Property Name="BackColor" Value="0"/>
+          <Property Name="Border" Value="Source[local].Border[dikkerand]"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="FillStyle" Value="Opaque"/>
+          <Property Name="ForeColor" Value="16"/>
+          <Property Name="Height" Value="30"/>
+          <Property Name="Left" Value="48"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="14"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="255"/>
+          <Property Name="Width" Value="100"/>
+        </Control>
+        <Control ClassId="0x00001001" Name="Shape_7">
+          <Property Name="ColorDatapoint" Value="Source[global].Variable[DataSource.g_InclinoSensor.STS.AlarmActiveColour]"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Height" Value="30"/>
+          <Property Name="Left" Value="12"/>
+          <Property Name="Shape" Value="Ellipse"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
+          <Property Name="Top" Value="255"/>
+          <Property Name="Width" Value="30"/>
         </Control>
       </Controls>
       <KeyMapping>
@@ -274,7 +466,7 @@
               <Property Name="Description" Value=""/>
               <Property Name="Locking" Value="Never"/>
               <Property Name="Name" Value="Action_0"/>
-              <Property Name="Page" Value="Source[local].Page[Settings]"/>
+              <Property Name="Page" Value="Source[local].Page[ControlPanel]"/>
               <Property Name="Target" Value="Page"/>
             </KeyAction>
           </KeyActions>

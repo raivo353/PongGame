@@ -1,5 +1,6 @@
 
 #include <bur/plctypes.h>
+#include "CommonTypes.h"
 #ifdef __cplusplus
 	extern "C"
 	{
@@ -30,6 +31,12 @@ void FB_DistanceSensor(struct FB_DistanceSensor* inst)
 	{
 		sensors[i]->STS.Distance = (INT)((sensors[i]->IO.DataMSB << SHIFT_BYTE) | sensors[i]->IO.DataLSB);
 		
+		sensors[i]->STS.AlarmActiveColour = GREEN_COLOUR;
+		if(sensors[i]->STS.AlarmActive)
+		{
+			sensors[i]->STS.AlarmActiveColour = RED_COLOUR;
+		}
+
 		if(sensors[i]->STS.Distance == OVERLOAD)
 		{
 			sensors[i]->STS.TooFar = 1;
@@ -48,7 +55,7 @@ void FB_DistanceSensor(struct FB_DistanceSensor* inst)
 			sensors[i]->STS.TooFar = 0;
 			sensors[i]->ALM.OutOfBounds = 0;
 		}
-		
-		
 	}
+
+
 }

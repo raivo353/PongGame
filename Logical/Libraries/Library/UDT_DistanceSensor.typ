@@ -10,6 +10,7 @@ TYPE
 		PowerOn : BOOL;
 		StateInt : USINT;
 		AlarmActive : BOOL;
+		AlarmActiveColour : USINT;
 	END_STRUCT;
 	UDT_DistanceSensor_CS : 	STRUCT 
 		Power : BOOL;

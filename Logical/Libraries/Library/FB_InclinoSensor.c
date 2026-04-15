@@ -1,5 +1,6 @@
 #include <bur/plctypes.h>
 #include <standard.h>
+#include "CommonTypes.h"
 #ifdef __cplusplus
 	extern "C"
 	{
@@ -22,6 +23,12 @@ void FB_InclinoSensor(struct FB_InclinoSensor* inst)
 	/*TODO: Add your code here*/
 	InclinoSensor->STS.CurrentAngle = (float)((INT)((InclinoSensor->IO.DataMSB << SHIFT_BYTE) | InclinoSensor->IO.DataLSB)) / TO_DEGREES;
 	
+	InclinoSensor->STS.AlarmActiveColour = GREEN_COLOUR;
+	if(InclinoSensor->STS.AlarmActive)
+	{
+		InclinoSensor->STS.AlarmActiveColour = RED_COLOUR;
+	}
+
 	BOOL start = InclinoSensor->CS.SetCenterPoint && !InclinoSensor->STS.CenterPointSet;
 
 	InclinoTimer.IN = start;

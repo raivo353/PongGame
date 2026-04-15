@@ -24,7 +24,6 @@
 void FB_BallControl(struct FB_BallControl* inst)
 {
 	/*TODO: Add your code here*/
-
 	if(BallControl->CS.StopGame)
 	{
 		BallControl->STS.StateInt = STATE_STOPPING;
@@ -91,5 +90,9 @@ void FB_BallControl(struct FB_BallControl* inst)
 	BallControl->STS.Initializing = PaddleMotor->STS.Initializing;
 	BallControl->STS.Running = PaddleMotor->STS.Running;
 	BallControl->STS.Interlocked = PaddleMotor->STS.Interlocked || Shooter->STS.Interlocked;
-	BallControl->STS.AlarmActive = PaddleMotor->STS.AlarmActive || Shooter->STS.AlarmActive;
+	BallControl->STS.AlarmActive = PaddleMotor->STS.AlarmActive || Shooter->STS.AlarmActive 
+																|| inst->DistanceSensorLeft->STS.AlarmActive 															
+																|| inst->DistanceSensorMiddle->STS.AlarmActive 
+																|| inst->DistanceSensorRight->STS.AlarmActive;
+	
 }
