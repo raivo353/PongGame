@@ -73,7 +73,7 @@ void FB_Shooter(struct FB_Shooter* inst)
 				{
 					Shooter->CS.Interlock = 1;
 				}
-					Shooter->CS.Shoot = 0;
+				Shooter->CS.Shoot = 0;
 			}
 
 			if((Shooter->HMI.Shoot ^ Shooter->CS.Shoot) == 1 && !Shooter->STS.AlarmActive && !Shooter->STS.Interlocked)
@@ -93,7 +93,7 @@ void FB_Shooter(struct FB_Shooter* inst)
 
 	if(!Shooter->STS.Interlocked && !Shooter->STS.AlarmActive)
 	{
-		Shooter->IO.Shoot = Shooter->HMI.Shoot;
+		Shooter->IO.Shoot = Shooter->HMI.Shoot ^ Shooter->CS.Shoot;
 	}
 	
 	Shooter->IO.EnableFan = Shooter->HMI.EnableFan ^ Shooter->CS.EnableFan;

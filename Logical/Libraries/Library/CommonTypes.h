@@ -18,7 +18,7 @@
 #define MS_100 100
 
 #define MAX_ACC_DEC 40000
-#define MAX_VELOCITY 1000
+#define MAX_VELOCITY 2000
 #define MIN_VELOCITY 100
 
 

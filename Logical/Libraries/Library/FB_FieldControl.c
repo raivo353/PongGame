@@ -15,7 +15,7 @@
 #define STATE_RUNNING 30
 #define STATE_STOPPING 40
 
-#define MAX_ANGLE 19
+#define MAX_ANGLE 18
 #define MIN_ANGLE 3
 
 #define FieldMotor inst->FieldMotor
@@ -76,7 +76,11 @@ void FB_FieldControl(struct FB_FieldControl* inst)
 		}
 		case STATE_RUNNING:
 		{
-			
+			FieldMotor->CS.Stop = 0;
+			if(FieldControl->STS.CurrentAngle >= MAX_ANGLE)
+			{
+				FieldMotor->HMI.MoveJogNeg = 0;
+			}
 			break;
 		}
 		case STATE_STOPPING:
@@ -106,7 +110,7 @@ void FB_FieldControl(struct FB_FieldControl* inst)
 	FieldControl->STS.Moving = FieldMotor->STS.Moving;
 	FieldControl->STS.Initializing = FieldMotor->STS.Initializing;
 
-	//FieldControl->CS.SetCenterPoint = FieldMotor->CS.SetCenterPoint;
+	FieldControl->CS.SetCenterPoint = FieldMotor->CS.SetCenterPoint;
 	InclinoSensor->CS.SetCenterPoint = FieldMotor->CS.SetCenterPoint;
 
 }

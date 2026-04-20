@@ -20,13 +20,19 @@
 #define STATE_DISABLED 0
 #define STATE_INITIALIZING 10
 
+_SETUP_TEST(void)
+{
+	/* TODO:  add code running before test set here */
+	PaddleMotorFB.PaddleMotor = &PaddleMotorStruct;
+	PaddleMotorFB.PaddleMotor->STS.StateInt = STATE_DISABLED;
+	
+	TEST_DONE;
+}
+
 _TEST test_Disabled_State_DefaultBehavior(void)
 {
 	PaddleMotorFB.digitalInput = 0;
-	PaddleMotorFB.PaddleMotor = &PaddleMotorStruct;
-
-	// Set beginstate
-	PaddleMotorFB.PaddleMotor->STS.StateInt = STATE_DISABLED;
+	
 
 	// Setting signals that have to be reset
 	PaddleMotorFB.PaddleMotor->CS.Power = 1;
@@ -66,9 +72,6 @@ _TEST test_Disabled_State_DefaultBehavior(void)
 
 _TEST test_Disabled_NoInitialize_StaysDisabled(void)
 {
-	PaddleMotorFB.PaddleMotor = &PaddleMotorStruct;
-
-	PaddleMotorFB.PaddleMotor->STS.StateInt = STATE_DISABLED;
 	PaddleMotorFB.PaddleMotor->CS.Initialize = 0;
 	PaddleMotorFB.PaddleMotor->STS.AlarmActive = 0;
 	PaddleMotorFB.PaddleMotor->STS.Interlocked = 0;
@@ -82,9 +85,6 @@ _TEST test_Disabled_NoInitialize_StaysDisabled(void)
 
 _TEST test_Disabled_ToInitializing(void)
 {
-	PaddleMotorFB.PaddleMotor = &PaddleMotorStruct;
-
-	PaddleMotorFB.PaddleMotor->STS.StateInt = STATE_DISABLED;
 	PaddleMotorFB.PaddleMotor->CS.Initialize = 1;
 	PaddleMotorFB.PaddleMotor->STS.AlarmActive = 0;
 	PaddleMotorFB.PaddleMotor->STS.Interlocked = 0;
@@ -98,9 +98,6 @@ _TEST test_Disabled_ToInitializing(void)
 
 _TEST test_Disabled_NoTransition_WhenAlarm(void)
 {
-	PaddleMotorFB.PaddleMotor = &PaddleMotorStruct;
-
-	PaddleMotorFB.PaddleMotor->STS.StateInt = STATE_DISABLED;
 	PaddleMotorFB.PaddleMotor->CS.Initialize = 1;
 	PaddleMotorFB.PaddleMotor->STS.AlarmActive = 1;
 	PaddleMotorFB.PaddleMotor->STS.Interlocked = 0;
@@ -114,9 +111,6 @@ _TEST test_Disabled_NoTransition_WhenAlarm(void)
 
 _TEST test_Disabled_NoTransition_WhenInterlocked(void)
 {
-	PaddleMotorFB.PaddleMotor = &PaddleMotorStruct;
-
-	PaddleMotorFB.PaddleMotor->STS.StateInt = STATE_DISABLED;
 	PaddleMotorFB.PaddleMotor->CS.Initialize = 1;
 	PaddleMotorFB.PaddleMotor->STS.AlarmActive = 0;
 	PaddleMotorFB.PaddleMotor->STS.Interlocked = 1;
@@ -135,7 +129,7 @@ _TEST test_Disabled_NoTransition_WhenInterlocked(void)
 B+R UnitTest: This is generated code.
 Do not edit! Do not move!
 Description: UnitTest Testprogramm infrastructure (TestSet).
-LastUpdated: 2026-04-14 09:02:57Z
+LastUpdated: 2026-04-20 10:39:20Z
 By B+R UnitTest Helper Version: 2.0.2.35
 */
 UNITTEST_FIXTURES(fixtures)
@@ -147,5 +141,5 @@ UNITTEST_FIXTURES(fixtures)
 	new_TestFixture("test_Disabled_NoTransition_WhenInterlocked", test_Disabled_NoTransition_WhenInterlocked), 
 };
 
-UNITTEST_CALLER_COMPLETE_EXPLICIT(testSet_PaddleMotor_Disabled, "testSet_PaddleMotor_Disabled", 0, 0, fixtures, 0, 0, 0);
+UNITTEST_CALLER_COMPLETE_EXPLICIT(testSet_PaddleMotor_Disabled, "testSet_PaddleMotor_Disabled", setupTest, 0, fixtures, 0, 0, 0);
 

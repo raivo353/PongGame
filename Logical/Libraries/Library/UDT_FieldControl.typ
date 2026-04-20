@@ -27,7 +27,6 @@ TYPE
 		Angle : REAL;
 	END_STRUCT;
 	UDT_FieldControl_HMI : 	STRUCT 
-		InitAngle : REAL;
 		IncreaseAngle : BOOL;
 		DecreaseAngle : BOOL;
 	END_STRUCT;

@@ -539,6 +539,7 @@ void _CYCLIC ProgramCyclic(void)
 	BasicControl.Parameter.Velocity = g_PaddleMotor.IO.Velocity;
 	
 	g_PaddleMotor.STS.ActPosition = BasicControl.Status.ActPosition;
+	
 	if(BasicControl.Status.ActVelocity == 0 || BasicControl.Status.ActVelocity < -TWO_TICKS_JITTER || BasicControl.Status.ActVelocity > TWO_TICKS_JITTER)
 	{
 		g_PaddleMotor.STS.ActVelocity = BasicControl.Status.ActVelocity;

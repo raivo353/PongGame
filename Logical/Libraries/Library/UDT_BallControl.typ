@@ -26,6 +26,12 @@ TYPE
 		Interlocked : BOOL;
 		StateInt : USINT;
 		AutoActive : BOOL;
+		BallVelocity : USINT;
+		Direction : BOOL;
+		ShootState : USINT;
+		DelayTimeElapsed : UINT;
+		ShootTimeElapsed : UINT;
+		PrevBallDetected : BOOL;
 	END_STRUCT;
 	UDT_BallControl_ALM : 	STRUCT 
 		ShooterAlarm : BOOL;

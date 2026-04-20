@@ -40,7 +40,7 @@ END_FUNCTION_BLOCK
 	END_VAR
 END_FUNCTION_BLOCK
 
-{REDUND_ERROR} FUNCTION_BLOCK FB_BallControl (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
+{REDUND_ERROR} {REDUND_UNREPLICABLE} FUNCTION_BLOCK FB_BallControl (*TODO: Add your comment here*) (*$GROUP=User,$CAT=User,$GROUPICON=User.png,$CATICON=User.png*)
 	VAR_IN_OUT
 		BallControl : UDT_BallControl;
 		PaddleMotor : UDT_PaddleMotor;

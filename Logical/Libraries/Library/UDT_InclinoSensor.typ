@@ -11,7 +11,6 @@ TYPE
 	UDT_InclinoSensor_STS : 	STRUCT 
 		CurrentAngle : REAL;
 		PowerOn : BOOL;
-		CenterPointSet : BOOL;
 		AlarmActive : BOOL;
 		AlarmActiveColour : USINT;
 	END_STRUCT;

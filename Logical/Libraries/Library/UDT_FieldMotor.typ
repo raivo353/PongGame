@@ -1,37 +1,20 @@
 
 TYPE
-	UDT_FieldMotor_HMI : 	STRUCT 
-		Home : BOOL;
-		MoveAbsolute : BOOL;
-		MoveJogNeg : BOOL;
-		MoveJogPos : BOOL;
-		Power : BOOL;
-		Stop : BOOL;
-		Start : BOOL;
-		IncreaseJogSpeed : BOOL;
-		DecreaseJogSpeed : BOOL;
-		ErrorAcknowledge : BOOL;
-	END_STRUCT;
-	UDT_FieldMotor_CS : 	STRUCT 
-		Home : BOOL;
-		MoveAbsolute : BOOL;
-		MoveJogNeg : BOOL;
-		MoveJogPos : BOOL;
-		Power : BOOL;
-		Stop : BOOL;
-		StopGame : BOOL;
-		ErrorAcknowledge : BOOL;
-		Start : BOOL;
-		Interlock : BOOL;
-		Initialize : BOOL;
-		SetCenterPoint : BOOL;
-	END_STRUCT;
 	UDT_FieldMotor_PAR : 	STRUCT 
 		Acceleration : REAL;
 		Deceleration : REAL;
 		JogVelocity : REAL;
 		Velocity : REAL;
 		Position : REAL;
+	END_STRUCT;
+	UDT_FieldMotor_HMI : 	STRUCT 
+		MoveAbsolute : BOOL;
+		MoveJogNeg : BOOL;
+		MoveJogPos : BOOL;
+		Power : BOOL;
+		IncreaseJogSpeed : BOOL;
+		DecreaseJogSpeed : BOOL;
+		ErrorAcknowledge : BOOL;
 	END_STRUCT;
 	UDT_FieldMotor_IO : 	STRUCT 
 		EndButton : BOOL;
@@ -73,5 +56,19 @@ TYPE
 		MotorError : BOOL;
 		ErrorID : UINT;
 		ErrorText : ARRAY[0..3]OF STRING[79];
+	END_STRUCT;
+	UDT_FieldMotor_CS : 	STRUCT 
+		Home : BOOL;
+		MoveAbsolute : BOOL;
+		MoveJogNeg : BOOL;
+		MoveJogPos : BOOL;
+		Power : BOOL;
+		Stop : BOOL;
+		StopGame : BOOL;
+		ErrorAcknowledge : BOOL;
+		Start : BOOL;
+		Interlock : BOOL;
+		Initialize : BOOL;
+		SetCenterPoint : BOOL;
 	END_STRUCT;
 END_TYPE

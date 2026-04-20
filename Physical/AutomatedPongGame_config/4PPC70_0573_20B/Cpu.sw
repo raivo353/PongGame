@@ -89,6 +89,5 @@
     <LibraryObject Name="vcresman" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="AsARCfg" Source="Libraries.AsARCfg.lby" Memory="UserROM" Language="binary" Debugging="true" />
     <LibraryObject Name="DataObj" Source="Libraries.DataObj.lby" Memory="UserROM" Language="binary" Debugging="true" />
-    <LibraryObject Name="Timer" Source="Libraries.Timer.lby" Memory="None" Language="ANSIC" Debugging="true" />
   </Libraries>
 </SwConfiguration>

@@ -1,15 +1,16 @@
-
 #include <bur/plctypes.h>
 
+#define STATE_DISABLED 0
 #ifdef _DEFAULT_INCLUDES
 	#include <AsDefault.h>
 #endif
 
 void _INIT ProgramInit(void)
 {
-	g_PaddleMotor.STS.StateInt = 0;
-	g_FieldMotor.STS.StateInt = 0;
-	g_FieldControl.STS.StateInt = 0;
+	g_PaddleMotor.STS.StateInt = STATE_DISABLED;
+	g_FieldMotor.STS.StateInt = STATE_DISABLED;
+	g_FieldControl.STS.StateInt = STATE_DISABLED;
+	g_Shooter.STS.StateInt = STATE_DISABLED;
 	
 	PaddleMotor.PaddleMotor = &g_PaddleMotor;
 	

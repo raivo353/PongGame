@@ -15,7 +15,6 @@
 
 #define InclinoSensor inst->InclinoSensor
 
-_LOCAL TON_typ InclinoTimer;
 
 /* TODO: Add your comment here */
 void FB_InclinoSensor(struct FB_InclinoSensor* inst)
@@ -28,23 +27,10 @@ void FB_InclinoSensor(struct FB_InclinoSensor* inst)
 	{
 		InclinoSensor->STS.AlarmActiveColour = RED_COLOUR;
 	}
-
-	BOOL start = InclinoSensor->CS.SetCenterPoint && !InclinoSensor->STS.CenterPointSet;
-
-	InclinoTimer.IN = start;
-	InclinoTimer.PT = 100;
-	TON(&InclinoTimer);
-
-	if(start)
+	InclinoSensor->IO.SetCenterPoint = 7;
+	if(InclinoSensor->CS.SetCenterPoint)
 	{
-    	InclinoSensor->IO.SetCenterPoint = 3;
-	}
-	else
-	{
-    	InclinoSensor->IO.SetCenterPoint = 0;
-	}
-	if(InclinoTimer.Q)
-	{
-    	InclinoSensor->STS.CenterPointSet = 1;
+    	
+		InclinoSensor->IO.SetCenterPoint = 3;
 	}
 }

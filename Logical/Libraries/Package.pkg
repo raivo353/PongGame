@@ -16,7 +16,6 @@
     <Object Type="Library" Language="Binary" Description="Global NC functions">NcGlobal</Object>
     <Object Type="Library" Language="binary" Description="Smart Device Controller">Acp10sdc</Object>
     <Object Type="Library" Language="binary" Description="PLCopen Motion Control function blocks">Acp10_MC</Object>
-    <Object Type="Library" Language="ANSIC" Description="Object oriented IEC Timer">Timer</Object>
     <Object Type="Library" Language="ANSIC">Library</Object>
     <Object Type="Library" Language="binary" Description="The AsARCfg library supports reading and writing Automation Runtime configurations.">AsARCfg</Object>
     <Object Type="Library" Language="binary" Description="The DataObj library can be used to dynamically create, dynamically delete and copy data objects, etc. ">DataObj</Object>

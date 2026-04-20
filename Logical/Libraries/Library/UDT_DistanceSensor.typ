@@ -11,6 +11,7 @@ TYPE
 		StateInt : USINT;
 		AlarmActive : BOOL;
 		AlarmActiveColour : USINT;
+		BallDetected : BOOL;
 	END_STRUCT;
 	UDT_DistanceSensor_CS : 	STRUCT 
 		Power : BOOL;

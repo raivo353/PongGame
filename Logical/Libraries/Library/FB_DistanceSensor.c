@@ -15,6 +15,9 @@
 #define SHIFT_BYTE 8
 #define NUM_SENSORS 3
 
+#define OUT1_BITMASK 0x1
+#define OUT2_BITMASK 0x2
+
 /* TODO: Add your comment here */
 void FB_DistanceSensor(struct FB_DistanceSensor* inst)
 {
@@ -30,6 +33,9 @@ void FB_DistanceSensor(struct FB_DistanceSensor* inst)
 	for(i = 0; i < NUM_SENSORS; i++)
 	{
 		sensors[i]->STS.Distance = (INT)((sensors[i]->IO.DataMSB << SHIFT_BYTE) | sensors[i]->IO.DataLSB);
+		sensors[i]->IO.OUT1 = sensors[i]->IO.SensorInfo & OUT1_BITMASK;
+		sensors[i]->IO.OUT2 = (sensors[i]->IO.SensorInfo & OUT2_BITMASK) >> 1;
+		sensors[i]->STS.BallDetected = sensors[i]->IO.OUT1 && !sensors[i]->IO.OUT2;
 		
 		sensors[i]->STS.AlarmActiveColour = GREEN_COLOUR;
 		if(sensors[i]->STS.AlarmActive)

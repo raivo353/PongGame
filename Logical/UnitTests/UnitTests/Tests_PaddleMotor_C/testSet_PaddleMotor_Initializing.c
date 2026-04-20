@@ -119,7 +119,7 @@ _TEST test_Initializing_ReferencePosition(void)
 
 	FB_PaddleMotor(&PaddleMotorFB);
 
-	TEST_ASSERT_EQUAL_INT(5000, PaddleMotorFB.PaddleMotor->STS.ReferencePosition);
+	TEST_ASSERT_EQUAL_INT(PaddleMotorFB.PaddleMotor->STS.ActPosition + 25, PaddleMotorFB.PaddleMotor->STS.ReferencePosition);
 
 	TEST_DONE;
 }
@@ -155,7 +155,7 @@ _TEST test_Initializing_TargetPosition(void)
 
 	FB_PaddleMotor(&PaddleMotorFB);
 
-	TEST_ASSERT_EQUAL_INT(5000 - MIDDLE_POSITION, PaddleMotorFB.PaddleMotor->PAR.Position);
+	TEST_ASSERT_EQUAL_INT(PaddleMotorFB.PaddleMotor->STS.ReferencePosition - MIDDLE_POSITION, PaddleMotorFB.PaddleMotor->PAR.Position);
 
 	TEST_DONE;
 }

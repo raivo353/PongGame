@@ -29,9 +29,9 @@
           <Text ID="95754" Value="Start page"/>
           <Text ID="95969" Value="Control panel"/>
           <Text ID="97724" Value="ACKNOWLEDGE ERROR PADDLE"/>
-          <Text ID="97725" Value="ACKNOWLEDGE ERROR TRAPPER"/>
+          <Text ID="97725" Value="ACKNOWLEDGE ERROR PADDLE"/>
           <Text ID="97726" Value="ACKNOWLEDGE ERROR FIELD"/>
-          <Text ID="97727" Value="ACKNOWLEDGE ERROR TRAPPER"/>
+          <Text ID="97727" Value="ACKNOWLEDGE ERROR FIELD"/>
           <Text ID="97728" Value="Error paddle"/>
           <Text ID="97729" Value="Error field"/>
           <Text ID="97917" Value="DistanceSensor left"/>
@@ -82,7 +82,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="EmbVirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_20]"/>
-          <Property Name="Font" Value="Source[local].Font[MiddelgroteLetters]"/>
+          <Property Name="Font" Value="Source[local].Font[MiddleFont]"/>
           <Property Name="ForeColor" Value="16"/>
           <Property Name="Height" Value="50"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
@@ -109,7 +109,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="EmbVirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_30]"/>
-          <Property Name="Font" Value="Source[local].Font[MiddelgroteLetters]"/>
+          <Property Name="Font" Value="Source[local].Font[MiddleFont]"/>
           <Property Name="ForeColor" Value="16"/>
           <Property Name="Height" Value="50"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
@@ -128,7 +128,7 @@
         </Control>
         <Control ClassId="0x0000100B" Name="String_1">
           <Property Name="BackColor" Value="0"/>
-          <Property Name="Border" Value="Source[local].Border[dikkerand]"/>
+          <Property Name="Border" Value="Source[local].Border[DoubleFlatBorder]"/>
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="16"/>
@@ -172,7 +172,7 @@
           <Property Name="TextIndexDatapoint" Value="None"/>
           <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="9"/>
+          <Property Name="Top" Value="7"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_34]"/>
           <Property Name="Width" Value="110"/>
         </Control>
@@ -213,7 +213,7 @@
         </Control>
         <Control ClassId="0x0000100B" Name="String_2">
           <Property Name="BackColor" Value="0"/>
-          <Property Name="Border" Value="Source[local].Border[dikkerand]"/>
+          <Property Name="Border" Value="Source[local].Border[DoubleFlatBorder]"/>
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="16"/>
@@ -230,7 +230,7 @@
           <Property Name="AlignmentHorizontal" Value="Center"/>
           <Property Name="AlignmentVertical" Value="Center"/>
           <Property Name="BackColor" Value="0"/>
-          <Property Name="Border" Value="Source[local].Border[dikkerand]"/>
+          <Property Name="Border" Value="Source[local].Border[DoubleFlatBorder]"/>
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
@@ -250,7 +250,7 @@
           <Property Name="AlignmentHorizontal" Value="Center"/>
           <Property Name="AlignmentVertical" Value="Center"/>
           <Property Name="BackColor" Value="0"/>
-          <Property Name="Border" Value="Source[local].Border[dikkerand]"/>
+          <Property Name="Border" Value="Source[local].Border[DoubleFlatBorder]"/>
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
@@ -292,7 +292,7 @@
           <Property Name="AlignmentHorizontal" Value="Center"/>
           <Property Name="AlignmentVertical" Value="Center"/>
           <Property Name="BackColor" Value="0"/>
-          <Property Name="Border" Value="Source[local].Border[dikkerand]"/>
+          <Property Name="Border" Value="Source[local].Border[DoubleFlatBorder]"/>
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
@@ -323,7 +323,7 @@
           <Property Name="AlignmentHorizontal" Value="Center"/>
           <Property Name="AlignmentVertical" Value="Center"/>
           <Property Name="BackColor" Value="0"/>
-          <Property Name="Border" Value="Source[local].Border[dikkerand]"/>
+          <Property Name="Border" Value="Source[local].Border[DoubleFlatBorder]"/>
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
@@ -354,7 +354,7 @@
           <Property Name="AlignmentHorizontal" Value="Center"/>
           <Property Name="AlignmentVertical" Value="Center"/>
           <Property Name="BackColor" Value="0"/>
-          <Property Name="Border" Value="Source[local].Border[dikkerand]"/>
+          <Property Name="Border" Value="Source[local].Border[DoubleFlatBorder]"/>
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
@@ -385,7 +385,7 @@
           <Property Name="AlignmentHorizontal" Value="Center"/>
           <Property Name="AlignmentVertical" Value="Center"/>
           <Property Name="BackColor" Value="0"/>
-          <Property Name="Border" Value="Source[local].Border[dikkerand]"/>
+          <Property Name="Border" Value="Source[local].Border[DoubleFlatBorder]"/>
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
@@ -416,7 +416,7 @@
           <Property Name="AlignmentHorizontal" Value="Center"/>
           <Property Name="AlignmentVertical" Value="Center"/>
           <Property Name="BackColor" Value="0"/>
-          <Property Name="Border" Value="Source[local].Border[dikkerand]"/>
+          <Property Name="Border" Value="Source[local].Border[DoubleFlatBorder]"/>
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>

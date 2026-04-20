@@ -7,7 +7,7 @@
   <TaskClass Name="Cyclic#4">
     <Task Name="SPL_CalcTe" Source="UnitTestSample.Samples.Tests_Program.Tests_MyCalcLib_C.SPL_CalcTest.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
     <Task Name="SPL_CalcT1" Source="UnitTestSample.Samples.Tests_Program.Tests_MyCalcLib_C.SPL_CalcTest_Variants.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
-    <Task Name="Tests_Padd" Source="UnitTests.HelperTool_Supported.Tests_PaddleMotor_C.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
+    <Task Name="Tests_Padd" Source="UnitTests.UnitTests.Tests_PaddleMotor_C.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#5" />
   <TaskClass Name="Cyclic#6" />
