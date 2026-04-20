@@ -41,11 +41,9 @@
   <Property Name="WheelEnterDatapoint" Value="None"/>
   <SourceFiles>
     <Source File="Fonts\DefaultFont.fninfo"/>
-    <Source File="Fonts\GroteLetters.fninfo"/>
-    <Source File="Fonts\MiddelgroteLetters.fninfo"/>
-    <Source File="Fonts\KleineLetters.fninfo"/>
-    <Source File="Bitmaps\Bitmap_1.bminfo"/>
-    <Source File="Bitmaps\Bitmap_2.bminfo"/>
+    <Source File="Fonts\BigFont.fninfo"/>
+    <Source File="Fonts\MiddleFont.fninfo"/>
+    <Source File="Fonts\SmallFont.fninfo"/>
     <Source File="Bitmaps\Red_Arrow_Down.bminfo"/>
     <Source File="Bitmaps\Red_Arrow_Left.bminfo"/>
     <Source File="Bitmaps\Red_Arrow_Right.bminfo"/>
@@ -56,13 +54,13 @@
     <Source File="Bitmaps\Red_Arrow_Right_Small.bminfo"/>
     <Source File="Bitmaps\Red_Arrow_Up_Small.bminfo"/>
     <Source File="Pages\StartPage.page"/>
-    <Source File="Pages\Instellingen.page"/>
-    <Source File="Pages\SensorData.page"/>
-    <Source File="Pages\ManualControl.page"/>
+    <Source File="Pages\ControlPanel.page"/>
+    <Source File="Pages\AlarmPanel.page"/>
     <Source File="StyleSheets\Color.vcs"/>
-    <Source File="Borders\rand.bdr"/>
+    <Source File="StyleSheets\StyleSheet_1.vcs"/>
+    <Source File="Borders\FlatBorder.bdr"/>
     <Source File="Borders\Double3D.bdr"/>
-    <Source File="Borders\dikkerand.bdr"/>
+    <Source File="Borders\DoubleFlatBorder.bdr"/>
     <Source File="Trends\TrendData.tdc"/>
     <Source File="VirtualKeys.vcvk"/>
     <Source File="Palette.vcr"/>

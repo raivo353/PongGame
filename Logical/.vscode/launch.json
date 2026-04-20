@@ -8,7 +8,7 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/projects/AutomatedPongGame/Logical/Motion",
+      "cwd": "c:/projects/AutomatedPongGame/Logical",
       "program": "c:/projects/AutomatedPongGame/Logical/Motion/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",

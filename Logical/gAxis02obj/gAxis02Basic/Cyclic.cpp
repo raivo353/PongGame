@@ -22,8 +22,7 @@
 #define STATE_ERROR             101
 #define STATE_ERROR_RESET       102
 
-#define RED_COLOR 50
-#define GREEN_COLOR 10
+#define TWO_TICKS_JITTER 77
 
 unsigned long bur_heap_size = 0xFFFF; 
 
@@ -520,19 +519,41 @@ void _CYCLIC ProgramCyclic(void)
 	MC_Reset_0.Axis = Axis1Obj;
 	MC_Reset(&MC_Reset_0);
 	
-	if(BasicControl.Status.ErrorID != oldErrorID)
-	{
-		strncpy(firstErrorMessage, BasicControl.Status.ErrorText[0], sizeof(firstErrorMessage) - 1);
-		firstErrorMessage[sizeof(firstErrorMessage) - 1] = '\0';
-		oldErrorID = BasicControl.Status.ErrorID;
-	}
+	//io mapping with FieldMotor
+	BasicControl.Command.Power = g_FieldMotor.IO.Power;
+	BasicControl.Command.Home = g_FieldMotor.IO.Home;
 	
-	if(incrementKantelSpeed && BasicControl.Parameter.JogVelocity < 4000)
+	BasicControl.Command.ErrorAcknowledge = g_FieldMotor.IO.ErrorAcknowledge;
+	BasicControl.Command.MoveJogNeg = g_FieldMotor.IO.MoveJogNeg;
+	BasicControl.Command.MoveJogPos = g_FieldMotor.IO.MoveJogPos;
+	BasicControl.Command.Stop = g_FieldMotor.IO.Stop;
+	BasicControl.Command.MoveAbsolute = g_FieldMotor.IO.MoveAbsolute;
+	
+	
+	BasicControl.Parameter.Acceleration = g_FieldMotor.IO.Acceleration;
+	BasicControl.Parameter.Deceleration = g_FieldMotor.IO.Deceleration;
+	BasicControl.Parameter.JogVelocity = g_FieldMotor.IO.JogVelocity;
+	BasicControl.Parameter.Position = g_FieldMotor.IO.Position;
+	BasicControl.Parameter.Velocity = g_FieldMotor.IO.Velocity;
+	
+	g_FieldMotor.STS.ActPosition = BasicControl.Status.ActPosition;
+	if(BasicControl.Status.ActVelocity == 0 || BasicControl.Status.ActVelocity < -TWO_TICKS_JITTER || BasicControl.Status.ActVelocity > TWO_TICKS_JITTER)
 	{
-		BasicControl.Parameter.JogVelocity++; 
+		g_FieldMotor.STS.ActVelocity = BasicControl.Status.ActVelocity;
 	}
-	if(decrementKantelSpeed && BasicControl.Parameter.JogVelocity > 0)
+	g_FieldMotor.ALM.MotorError = (BasicControl.Status.ErrorID != 0);
+	g_FieldMotor.ALM.ErrorID = BasicControl.Status.ErrorID;
+	g_FieldMotor.STS.PowerOn = BasicControl.Command.Power;
+	//g_FieldMotor.STS.StandStill = BasicControl.AxisState.StandStill;
+	
+	for (int i = 0; i < 4; i++)
 	{
-		BasicControl.Parameter.JogVelocity--;
+		strncpy(
+			g_FieldMotor.ALM.ErrorText[i],
+			BasicControl.Status.ErrorText[i],
+			sizeof(g_FieldMotor.ALM.ErrorText[i]) - 1
+			);
+
+		g_FieldMotor.ALM.ErrorText[i][sizeof(g_FieldMotor.ALM.ErrorText[i]) - 1] = '\0';
 	}
 }

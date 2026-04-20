@@ -1,6 +1,7 @@
 # Build / binaries
 Binaries/
 Temp/
+.vscode/
 
 # User-specific settings
 *.set

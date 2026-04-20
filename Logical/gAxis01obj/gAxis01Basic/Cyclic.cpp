@@ -2,7 +2,7 @@
 	#include <AsDefault.h>
 #endif
 #include <string.h>
-
+#include <Library.h>
 
 /* defines of the state-constants */
 #define STATE_WAIT              0  
@@ -22,11 +22,7 @@
 #define STATE_ERROR             101
 #define STATE_ERROR_RESET       102
 
-#define RED_COLOR 51
-#define GREEN_COLOR 10
-
-#define MIDDELPUNT_TRAPPER_OFFSET 15
-//#define ACTPOSITION_TO_MM 0.0784
+#define TWO_TICKS_JITTER 77
 
 unsigned long bur_heap_size = 0xFFFF; 
 
@@ -524,35 +520,42 @@ void _CYCLIC ProgramCyclic(void)
 	MC_Reset(&MC_Reset_0);
 	
 
-	hmiActPosition = ActPositionToMM(BasicControl.Status.ActPosition); //function
-
-	digitalOutputs = SetOutputs(digitalOutputs, turnOnVentilator, turnOnSolenoid); //function
-
-	if(BasicControl.Status.ErrorID != oldErrorID)
-	{
-		strncpy(firstErrorMessage, BasicControl.Status.ErrorText[0], sizeof(firstErrorMessage) - 1);
-		firstErrorMessage[sizeof(firstErrorMessage) - 1] = '\0';
-		oldErrorID = BasicControl.Status.ErrorID;
-	}
-
 	
-	if(incrementTrapperSpeed && BasicControl.Parameter.JogVelocity < 4000)
-	{
-		BasicControl.Parameter.JogVelocity++;
-	}
-	if(decrementTrapperSpeed && BasicControl.Parameter.JogVelocity > 0)
-	{
-		BasicControl.Parameter.JogVelocity--;
-	}	
+	//io mapping met PaddleMotor
+	BasicControl.Command.Power = g_PaddleMotor.IO.Power;
+	BasicControl.Command.Home = g_PaddleMotor.IO.Home;
 
-	if(incrementTrapperAccDecc && BasicControl.Parameter.Acceleration < 50000)
+	BasicControl.Command.ErrorAcknowledge = g_PaddleMotor.IO.ErrorAcknowledge;
+	BasicControl.Command.MoveJogNeg = g_PaddleMotor.IO.MoveJogNeg;
+	BasicControl.Command.MoveJogPos = g_PaddleMotor.IO.MoveJogPos;
+	BasicControl.Command.Stop = g_PaddleMotor.IO.Stop;
+	BasicControl.Command.MoveAbsolute = g_PaddleMotor.IO.MoveAbsolute;
+	
+	
+	BasicControl.Parameter.Acceleration = g_PaddleMotor.IO.Acceleration;
+	BasicControl.Parameter.Deceleration = g_PaddleMotor.IO.Deceleration;
+	BasicControl.Parameter.JogVelocity = g_PaddleMotor.IO.JogVelocity;
+	BasicControl.Parameter.Position = g_PaddleMotor.IO.Position;
+	BasicControl.Parameter.Velocity = g_PaddleMotor.IO.Velocity;
+	
+	g_PaddleMotor.STS.ActPosition = BasicControl.Status.ActPosition;
+	
+	if(BasicControl.Status.ActVelocity == 0 || BasicControl.Status.ActVelocity < -TWO_TICKS_JITTER || BasicControl.Status.ActVelocity > TWO_TICKS_JITTER)
 	{
-		BasicControl.Parameter.Acceleration += 10;
-		BasicControl.Parameter.Deceleration += 10;
+		g_PaddleMotor.STS.ActVelocity = BasicControl.Status.ActVelocity;
 	}
-	if(decrementTrapperAccDecc && BasicControl.Parameter.Acceleration > 100)
+	g_PaddleMotor.ALM.MotorError = (BasicControl.Status.ErrorID != 0);
+	g_PaddleMotor.ALM.ErrorID = BasicControl.Status.ErrorID;
+	g_PaddleMotor.STS.PowerOn = BasicControl.Command.Power;
+	
+	for (int i = 0; i < 4; i++)
 	{
-		BasicControl.Parameter.Acceleration -= 10;
-		BasicControl.Parameter.Deceleration -= 10;
+		strncpy(
+			g_PaddleMotor.ALM.ErrorText[i],
+			BasicControl.Status.ErrorText[i],
+			sizeof(g_PaddleMotor.ALM.ErrorText[i]) - 1
+			);
+
+		g_PaddleMotor.ALM.ErrorText[i][sizeof(g_PaddleMotor.ALM.ErrorText[i]) - 1] = '\0';
 	}
 }
