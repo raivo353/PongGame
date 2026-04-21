@@ -15,7 +15,11 @@
 #define PaddleMotor inst->PaddleMotor
 #define Shooter inst->Shooter
 
-_LOCAL TON_typ DelayTimer;
+#define LEFT_SENSOR 1
+#define MIDDLE_SENSOR 2
+#define RIGHT_SENSOR 3
+
+_LOCAL TON_typ SpeedTimer;
 _LOCAL TON_typ ShootTimer;
 //_LOCAL BOOL prevBallDetected;
 
@@ -23,7 +27,7 @@ _LOCAL TON_typ ShootTimer;
 void FB_BallControl(struct FB_BallControl* inst)
 {
 	BallControl->STS.ShootTimeElapsed = ShootTimer.ET;
-	BallControl->STS.DelayTimeElapsed = DelayTimer.ET;
+	BallControl->STS.DelayTimeElapsed = SpeedTimer.ET;
 	/*TODO: Add your code here*/
 	if(BallControl->CS.StopGame)
 	{
@@ -58,48 +62,74 @@ void FB_BallControl(struct FB_BallControl* inst)
 		}
 		case STATE_RUNNING:
 		{
+			Shooter->CS.EnableFan = 1;
 			if(BallControl->STS.AutoActive)
 			{
-				if(inst->DistanceSensorLeft->STS.BallDetected && !BallControl->STS.PrevBallDetected)
+				TON(&ShootTimer);
+
+				switch(BallControl->STS.ShootState)
 				{
-					if(BallControl->STS.ShootState == 0)
-					{
-						DelayTimer.IN = 0;
-						ShootTimer.IN = 0;
-						TON(&DelayTimer);
-						TON(&ShootTimer);
-						BallControl->STS.ShootState = 1;
-					}
-					
-				}
-
-				BallControl->STS.PrevBallDetected = inst->DistanceSensorLeft->STS.BallDetected;
-
-				if(BallControl->STS.ShootState == 1)
-				{
-					DelayTimer.IN = 1;
-					DelayTimer.PT = 50;
-					TON(&DelayTimer);
-					if(DelayTimer.Q)
-					{
-						
-						BallControl->STS.ShootState = 2;
-					}
-				}
-				if(BallControl->STS.ShootState == 2)
-				{
-					ShootTimer.IN = 1;
-					ShootTimer.PT = 500;
-					TON(&ShootTimer);
-
-					BallControl->CS.Shoot = 1;
-
-					if(ShootTimer.Q)
-					{
+					case 0: 
 						BallControl->CS.Shoot = 0;
-						
+						ShootTimer.IN = 0;
+
+						if(inst->DistanceSensorRight->STS.BallDetected)
+						{
+							BallControl->STS.ShootState = 1;
+						}
+						break;
+
+					case 1: 
+						if(!inst->DistanceSensorRight->STS.BallDetected)
+						{
+							BallControl->STS.ShootState = 10;
+						}
+						break;
+
+					case 10:
+						if(inst->DistanceSensorMiddle->STS.BallDetected)
+						{
+							BallControl->STS.ShootState = 11;
+						}
+						break;
+
+					case 11:
+						if(!inst->DistanceSensorMiddle->STS.BallDetected)
+						{
+							BallControl->STS.ShootState = 20;
+						}
+						break;
+
+					case 20:
+						if(inst->DistanceSensorLeft->STS.BallDetected)
+						{
+							BallControl->CS.Shoot = 1;
+							ShootTimer.IN = 1;
+							ShootTimer.PT = 500; // 500 ms
+
+							BallControl->STS.ShootState = 30;
+						}
+						break;
+
+					case 30: 
+						BallControl->CS.Shoot = 1;
+						ShootTimer.IN = 1;
+
+						if(ShootTimer.Q)
+						{
+							BallControl->CS.Shoot = 0;
+							ShootTimer.IN = 0;
+
+							BallControl->STS.ShootState = 0;
+						}
+						break;
+
+					default:
+						// fallback veiligheid
+						BallControl->CS.Shoot = 0;
+						ShootTimer.IN = 0;
 						BallControl->STS.ShootState = 0;
-					}
+						break;
 				}
 			}
 			break;

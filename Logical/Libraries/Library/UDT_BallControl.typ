@@ -31,7 +31,6 @@ TYPE
 		ShootState : USINT;
 		DelayTimeElapsed : UINT;
 		ShootTimeElapsed : UINT;
-		PrevBallDetected : BOOL;
 	END_STRUCT;
 	UDT_BallControl_ALM : 	STRUCT 
 		ShooterAlarm : BOOL;

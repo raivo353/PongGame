@@ -65,7 +65,6 @@ void FB_Shooter(struct FB_Shooter* inst)
 			if(Shooter->STS.AutoActive)
 			{
 				Shooter->HMI.Shoot = 0;
-				Shooter->CS.EnableFan = 1;
 			}	
 			else
 			{

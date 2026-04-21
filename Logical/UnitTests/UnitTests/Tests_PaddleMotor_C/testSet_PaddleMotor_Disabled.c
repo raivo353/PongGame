@@ -114,7 +114,7 @@ _TEST test_Disabled_NoTransition_WhenInterlocked(void)
 	PaddleMotorFB.PaddleMotor->CS.Initialize = 1;
 	PaddleMotorFB.PaddleMotor->STS.AlarmActive = 0;
 	PaddleMotorFB.PaddleMotor->STS.Interlocked = 1;
-
+	
 	FB_PaddleMotor(&PaddleMotorFB);
 
 	TEST_ASSERT_EQUAL_INT(STATE_DISABLED, PaddleMotorFB.PaddleMotor->STS.StateInt);

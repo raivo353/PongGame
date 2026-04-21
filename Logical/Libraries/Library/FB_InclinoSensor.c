@@ -19,7 +19,7 @@
 /* TODO: Add your comment here */
 void FB_InclinoSensor(struct FB_InclinoSensor* inst)
 {
-	/*TODO: Add your code here*/
+	//Combining MSB and LSB with bitwise operators to show the value. Dividing by 100 to convert to degrees and explicit casting to float to show CurrentAngle as accurate as possible.
 	InclinoSensor->STS.CurrentAngle = (float)((INT)((InclinoSensor->IO.DataMSB << SHIFT_BYTE) | InclinoSensor->IO.DataLSB)) / TO_DEGREES;
 	
 	InclinoSensor->STS.AlarmActiveColour = GREEN_COLOUR;
