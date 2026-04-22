@@ -107,22 +107,22 @@ void FB_PongGame(struct FB_PongGame* inst)
 		}
 	}
 
-	BallControl->CS.Initialize = PongGame->HMI.Initialize | PongGame->CS.Initialize;
-	BallControl->CS.StopGame = PongGame->HMI.StopGame | PongGame->CS.StopGame;
-	BallControl->CS.Start = PongGame->HMI.Start | PongGame->CS.Start;
-	BallControl->CS.AutoMode = PongGame->HMI.AutoMode | PongGame->CS.AutoMode;
-	
-	BallControl->CS.ErrorAcknowledge = PongGame->HMI.ErrorAcknowledge | PongGame->CS.ErrorAcknowledge;
+	BallControl->CS.Initialize = PongGame->HMI.Initialize ^ PongGame->CS.Initialize;
+	BallControl->CS.StopGame = PongGame->HMI.StopGame ^ PongGame->CS.StopGame;
+	BallControl->CS.Start = PongGame->HMI.Start ^ PongGame->CS.Start;
+	BallControl->CS.AutoMode = PongGame->HMI.AutoMode ^ PongGame->CS.AutoMode;
+	BallControl->CS.ErrorAcknowledge = PongGame->HMI.ErrorAcknowledge ^ PongGame->CS.ErrorAcknowledge;
 
-	FieldControl->CS.Initialize = PongGame->HMI.Initialize | PongGame->CS.Initialize;
-	FieldControl->CS.StopGame = PongGame->HMI.StopGame | PongGame->CS.StopGame;
-	FieldControl->CS.Start = PongGame->HMI.Start | PongGame->CS.Start;
-	FieldControl->STS.AutoActive = PongGame->HMI.AutoMode | PongGame->CS.AutoMode;
+	FieldControl->CS.Initialize = PongGame->HMI.Initialize ^ PongGame->CS.Initialize;
+	FieldControl->CS.StopGame = PongGame->HMI.StopGame ^ PongGame->CS.StopGame;
+	FieldControl->CS.Start = PongGame->HMI.Start ^ PongGame->CS.Start;
 	
-	PongGame->STS.AutoActive = BallControl->STS.AutoActive & FieldControl->STS.AutoActive;
-	PongGame->STS.Initializing = BallControl->STS.Initializing & FieldControl->STS.Initializing;
-	PongGame->STS.AlarmActive = BallControl->STS.AlarmActive | FieldControl->STS.AlarmActive;
-	PongGame->STS.Disabled = BallControl->STS.Disabled & FieldControl->STS.Disabled;
-	PongGame->STS.Idle = BallControl->STS.Idle & FieldControl->STS.Idle;
-	PongGame->STS.Running = BallControl->STS.Running & FieldControl->STS.Running;
+	FieldControl->STS.AutoActive = PongGame->HMI.AutoMode || PongGame->CS.AutoMode;
+	
+	PongGame->STS.AutoActive = BallControl->STS.AutoActive && FieldControl->STS.AutoActive;
+	PongGame->STS.Initializing = BallControl->STS.Initializing && FieldControl->STS.Initializing;
+	PongGame->STS.AlarmActive = BallControl->STS.AlarmActive || FieldControl->STS.AlarmActive;
+	PongGame->STS.Disabled = BallControl->STS.Disabled && FieldControl->STS.Disabled;
+	PongGame->STS.Idle = BallControl->STS.Idle && FieldControl->STS.Idle;
+	PongGame->STS.Running = BallControl->STS.Running && FieldControl->STS.Running;
 }

@@ -185,13 +185,14 @@ void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 			{
 				PaddleMotor->CS.MoveJogNeg = 0;
 				PaddleMotor->HMI.MoveJogNeg = 0;
-				PaddleMotor->CS.MoveAbsolute = 0;
+				//PaddleMotor->CS.MoveAbsolute = 0;
+				PaddleMotor->PAR.Position = PaddleMotor->STS.ActPosition + 100;
 			}
-			else if(PaddleMotor->IO.EndButton || PaddleMotor->STS.ActPosition >= (PaddleMotor->STS.ReferencePosition - STOPPING_OFFSET))
+			else if(PaddleMotor->IO.EndButton || PaddleMotor->STS.ActPosition >= (PaddleMotor->STS.ReferencePosition - (STOPPING_OFFSET + 100)))
 			{
 				PaddleMotor->CS.MoveJogPos = 0;
 				PaddleMotor->HMI.MoveJogPos = 0;
-				PaddleMotor->CS.MoveAbsolute = 0;
+				PaddleMotor->PAR.Position = PaddleMotor->STS.ReferencePosition - 100;
 			}
 			break;
 		case STATE_STOPPING:

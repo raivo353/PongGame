@@ -92,10 +92,10 @@ void FB_Shooter(struct FB_Shooter* inst)
 
 	if(!Shooter->STS.Interlocked && !Shooter->STS.AlarmActive)
 	{
-		Shooter->IO.Shoot = Shooter->HMI.Shoot ^ Shooter->CS.Shoot;
+		Shooter->IO.Shoot = Shooter->HMI.Shoot != Shooter->CS.Shoot;
 	}
 	
-	Shooter->IO.EnableFan = Shooter->HMI.EnableFan ^ Shooter->CS.EnableFan;
+	Shooter->IO.EnableFan = Shooter->HMI.EnableFan != Shooter->CS.EnableFan;
 
 	Shooter->STS.Interlocked = Shooter->CS.Interlock;
 	Shooter->STS.AutoActive = Shooter->CS.AutoMode;

@@ -29,7 +29,7 @@ TYPE
 		BallVelocity : USINT;
 		Direction : BOOL;
 		ShootState : USINT;
-		DelayTimeElapsed : UINT;
+		SpeedTimeElapsed : UINT;
 		ShootTimeElapsed : UINT;
 	END_STRUCT;
 	UDT_BallControl_ALM : 	STRUCT 
