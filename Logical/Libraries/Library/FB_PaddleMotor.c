@@ -1,4 +1,8 @@
-
+/*********************************************************************************
+ * Copyright: MyAutomation-IT
+ * Author:    raivo 
+ * Created:   April 22, 2026/5:57 PM 
+ *********************************************************************************/ 
 #include <bur/plctypes.h>
 #include <standard.h>
 #include "CommonTypes.h"
@@ -17,7 +21,7 @@
 #define MIN_ACC_DEC 100
 #define MIN_POSITION PaddleMotor->STS.ReferencePosition - 2800
 #define MIDDLE_POSITION 1450
-#define STOPPING_OFFSET PaddleMotor->PAR.JogVelocity * PaddleMotor->PAR.JogVelocity * 0.0000216
+#define STOPPING_OFFSET PaddleMotor->STS.ActVelocity * PaddleMotor->STS.ActVelocity * 0.0000216
 #define REFERENCE_OFFSET 25
 
 
@@ -72,8 +76,8 @@ void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 			PaddleMotor->STS.Disabled = 0;
 			PaddleMotor->PAR.Acceleration = MAX_ACC_DEC;
 			PaddleMotor->PAR.Deceleration = MAX_ACC_DEC;
-			PaddleMotor->PAR.JogVelocity = 1000;
-			PaddleMotor->PAR.Velocity = 1000;
+			PaddleMotor->PAR.JogVelocity = STD_VELOCITY;
+			PaddleMotor->PAR.Velocity = STD_VELOCITY;
 
 			PaddleMotor->CS.Power = 1;	
 			PaddleMotor->CS.Stop = 0;
@@ -122,7 +126,7 @@ void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 					PaddleMotor->STS.ReferenceSet = 1;
 					PaddleMotor->CS.Home = 0;
 					
-					PaddleMotor->STS.ReferencePosition = PaddleMotor->STS.ActPosition + 25;
+					PaddleMotor->STS.ReferencePosition = PaddleMotor->STS.ActPosition + REFERENCE_OFFSET; //Offset is needed because paddle is moving 1 cycle longer than when ReferencePosition is set
 					PaddleMotor->PAR.Position = PaddleMotor->STS.ReferencePosition - MIDDLE_POSITION;
 					PaddleMotor->CS.MoveAbsolute = 1;
 				}
@@ -152,7 +156,7 @@ void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 
 			if(!PaddleMotor->STS.AutoActive)
 			{
-				PaddleMotor->CS.MoveAbsolute = 0;
+				//PaddleMotor->CS.MoveAbsolute = 0;
 				PaddleMotor->CS.MoveJogNeg = 0;
 				PaddleMotor->CS.MoveJogPos = 0;
 				//control parameters

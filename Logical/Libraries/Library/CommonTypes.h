@@ -1,4 +1,8 @@
-// AlarmDefinitions.h
+/*********************************************************************************
+ * Copyright: MyAutomation-IT
+ * Author:    raivo 
+ * Created:   April 22, 2026/5:57 PM 
+ *********************************************************************************/ 
 #ifndef COMMON_TYPES_H
 #define COMMON_TYPES_H
 
@@ -20,6 +24,7 @@
 #define MAX_ACC_DEC 40000
 #define MAX_VELOCITY 2000
 #define MIN_VELOCITY 100
+#define STD_VELOCITY 1000
 
 
 #endif

@@ -1,4 +1,8 @@
-
+/*********************************************************************************
+ * Copyright: MyAutomation-IT
+ * Author:    raivo 
+ * Created:   April 22, 2026/5:57 PM 
+ *********************************************************************************/ 
 #include <bur/plctypes.h>
 #include <standard.h>
 #include "CommonTypes.h"
@@ -19,8 +23,10 @@
 #define MIDDLE_SENSOR 2
 #define RIGHT_SENSOR 3
 
-#define MM_TO_POSITION 10
+#define MM_TO_POSITION 11.2
 #define MIN_POSITION PaddleMotor->STS.ReferencePosition - 2800
+
+#define DISTANCE_BETWEEN_SENSORS_MM 47
 
 _LOCAL TON_typ SpeedTimer;
 _LOCAL TON_typ ShootTimer;
@@ -61,26 +67,29 @@ void FB_BallControl(struct FB_BallControl* inst)
 		}
 		case STATE_RUNNING:
 		{
-			Shooter->CS.EnableFan = 1;
 			if(BallControl->STS.AutoActive)
 			{
+				PaddleMotor->CS.MoveAbsolute = 0;
+				Shooter->CS.EnableFan = 1;
 				switch(BallControl->STS.ShootState)
 				{
 					case 0: 
-					BallControl->CS.Shoot = 0;
-					ShootTimer.IN = 0;
-					SpeedTimer.IN = 0;
-					if(inst->DistanceSensorRight->STS.BallDetected)
-					{
-						PaddleMotor->PAR.Position = MIN_POSITION + ((inst->DistanceSensorRight->STS.Distance - 50) * MM_TO_POSITION);
-						PaddleMotor->CS.MoveAbsolute = 1;
-						PaddleMotor->PAR.Velocity = 5000;
-						BallControl->STS.SpeedTimeElapsed = 0;
-						BallControl->STS.ShootState = 5;  // eerst naar 5
-					}
+						BallControl->CS.Shoot = 0;
+						ShootTimer.IN = 0;
+						SpeedTimer.IN = 0;
+						PaddleMotor->CS.MoveAbsolute = 0;
+						if(inst->DistanceSensorRight->STS.BallDetected)
+						{
+							//PaddleMotor->PAR.Position = MIN_POSITION + ((inst->DistanceSensorRight->STS.Distance - 50) * MM_TO_POSITION);	
+							PaddleMotor->PAR.Velocity = 1000;
+							//PaddleMotor->CS.MoveAbsolute = 1;
+							BallControl->STS.SpeedTimeElapsed = 0;
+							BallControl->STS.ShootState = 5;  // eerst naar 5
+						}
 					break;
 
 					case 5:
+						PaddleMotor->CS.MoveAbsolute = 1;
 						SpeedTimer.PT = 5000;
 						SpeedTimer.IN = 1;  // volgende cyclus pikt TON dit op
 						BallControl->STS.ShootState = 20;
@@ -89,11 +98,23 @@ void FB_BallControl(struct FB_BallControl* inst)
 					case 20:
 						if(inst->DistanceSensorLeft->STS.BallDetected)
 						{
-							PaddleMotor->PAR.Position = MIN_POSITION + ((inst->DistanceSensorLeft->STS.Distance - 50) * MM_TO_POSITION);
+								
+							SpeedTimer.IN = 0;   // stop timer → ET bevriest
+
+							if(SpeedTimer.ET > 0)
+							{
+								BallControl->STS.BallVelocity = (DISTANCE_BETWEEN_SENSORS_MM / (float)SpeedTimer.ET) * 3.6f;
+							}
+							else
+							{
+								BallControl->STS.BallVelocity = 0.0f;
+							}
+
+							//PaddleMotor->PAR.Position = MIN_POSITION + ((inst->DistanceSensorRight->STS.Distance - 50) * MM_TO_POSITION);
+							//PaddleMotor->CS.MoveAbsolute = 1;
 							BallControl->CS.Shoot = 1;
 							ShootTimer.IN = 1;
 							ShootTimer.PT = 300;
-							BallControl->STS.SpeedTimeElapsed = SpeedTimer.ET;
 							BallControl->STS.ShootState = 30;
 						}
 						break;

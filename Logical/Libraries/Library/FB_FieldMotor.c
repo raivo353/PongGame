@@ -1,4 +1,8 @@
-
+/*********************************************************************************
+ * Copyright: MyAutomation-IT
+ * Author:    raivo 
+ * Created:   April 22, 2026/5:57 PM 
+ *********************************************************************************/ 
 #include <bur/plctypes.h>
 #include <standard.h>
 #include "CommonTypes.h"
@@ -68,8 +72,8 @@ void FB_FieldMotor(struct FB_FieldMotor* inst)
 
 			FieldMotor->PAR.Acceleration = MAX_ACC_DEC;
 			FieldMotor->PAR.Deceleration = MAX_ACC_DEC;
-			FieldMotor->PAR.JogVelocity = 1000;
-			FieldMotor->PAR.Velocity = 1000;
+			FieldMotor->PAR.JogVelocity = STD_VELOCITY;
+			FieldMotor->PAR.Velocity = STD_VELOCITY;
 
 			FieldMotorTimer.PT = MS_100; 
 			TON(&FieldMotorTimer);

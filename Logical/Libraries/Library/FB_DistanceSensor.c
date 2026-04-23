@@ -1,4 +1,8 @@
-
+/*********************************************************************************
+ * Copyright: MyAutomation-IT
+ * Author:    raivo 
+ * Created:   April 22, 2026/5:57 PM 
+ *********************************************************************************/ 
 #include <bur/plctypes.h>
 #include "CommonTypes.h"
 #ifdef __cplusplus
@@ -33,10 +37,19 @@ void FB_DistanceSensor(struct FB_DistanceSensor* inst)
 	int i;
 	for(i = 0; i < NUM_SENSORS; i++)
 	{
-		sensors[i]->STS.Distance = (INT)((sensors[i]->IO.DataMSB << SHIFT_BYTE) | sensors[i]->IO.DataLSB);
-		sensors[i]->IO.OUT1 = sensors[i]->IO.SensorInfo & OUT1_BITMASK;
-		sensors[i]->IO.OUT2 = (sensors[i]->IO.SensorInfo & OUT2_BITMASK) >> 1;
-		sensors[i]->STS.BallDetected = sensors[i]->IO.OUT1 && !sensors[i]->IO.OUT2;
+		UINT Distance = (INT)((sensors[i]->IO.DataMSB << SHIFT_BYTE) | sensors[i]->IO.DataLSB);
+		if(Distance >= OVERLOAD || Distance <= UNDERLOAD)
+		{
+			sensors[i]->STS.Distance = 0;
+		}
+		else
+		{
+			sensors[i]->STS.Distance = Distance;
+		}
+		
+		//sensors[i]->IO.OUT1 = sensors[i]->IO.SensorInfo & OUT1_BITMASK;
+		///sensors[i]->IO.OUT2 = (sensors[i]->IO.SensorInfo & OUT2_BITMASK) >> 1;
+		sensors[i]->STS.BallDetected = sensors[i]->STS.Distance >= 45 && sensors[i]->STS.Distance <= 305;
 		sensors[i]->STS.DeviceStatus = (sensors[i]->IO.SensorInfo & DEVICE_STATUS_BITMASK) >> 4; 
 		
 		sensors[i]->STS.AlarmActiveColour = GREEN_COLOUR;

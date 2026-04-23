@@ -26,7 +26,7 @@ TYPE
 		Interlocked : BOOL;
 		StateInt : USINT;
 		AutoActive : BOOL;
-		BallVelocity : USINT;
+		BallVelocity : REAL;
 		Direction : BOOL;
 		ShootState : USINT;
 		SpeedTimeElapsed : UINT;
