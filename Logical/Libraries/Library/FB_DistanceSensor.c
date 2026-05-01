@@ -47,9 +47,9 @@ void FB_DistanceSensor(struct FB_DistanceSensor* inst)
 			sensors[i]->STS.Distance = Distance;
 		}
 		
-		//sensors[i]->IO.OUT1 = sensors[i]->IO.SensorInfo & OUT1_BITMASK;
-		///sensors[i]->IO.OUT2 = (sensors[i]->IO.SensorInfo & OUT2_BITMASK) >> 1;
-		sensors[i]->STS.BallDetected = sensors[i]->STS.Distance >= 45 && sensors[i]->STS.Distance <= 305;
+		sensors[i]->IO.OUT1 = sensors[i]->IO.SensorInfo & OUT1_BITMASK;
+		sensors[i]->IO.OUT2 = (sensors[i]->IO.SensorInfo & OUT2_BITMASK) >> 1;
+		sensors[i]->STS.BallDetected = sensors[i]->STS.Distance >= 45 && sensors[i]->STS.Distance <= 300;
 		sensors[i]->STS.DeviceStatus = (sensors[i]->IO.SensorInfo & DEVICE_STATUS_BITMASK) >> 4; 
 		
 		sensors[i]->STS.AlarmActiveColour = GREEN_COLOUR;
@@ -77,7 +77,7 @@ void FB_DistanceSensor(struct FB_DistanceSensor* inst)
 			sensors[i]->ALM.OutOfBounds = 0;
 		}
 
-		if(sensors[i]->STS.DeviceStatus == 4)
+		if(sensors[i]->STS.DeviceStatus == 4 || sensors[i]->ALM.OutOfBounds)
 		{
 			sensors[i]->STS.AlarmActive = 1;
 		}
@@ -86,6 +86,7 @@ void FB_DistanceSensor(struct FB_DistanceSensor* inst)
 			sensors[i]->STS.AlarmActive = 0;
 		}
 	}
+
 
 
 }

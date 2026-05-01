@@ -22,7 +22,7 @@
 /* TODO: Add your comment here */
 void FB_Shooter(struct FB_Shooter* inst)
 {
-	if(Shooter->CS.StopGame)
+	if(Shooter->CS.StopGame && !Shooter->STS.Interlocked)
 	{
 		Shooter->STS.StateInt = STATE_DISABLED;
 	}
@@ -87,7 +87,7 @@ void FB_Shooter(struct FB_Shooter* inst)
 		case STATE_SHOOTING:
 			Shooter->STS.Shooting = 1;
 
-			if(!Shooter->CS.Shoot && !Shooter->HMI.Shoot)
+			if(!Shooter->CS.Shoot && !Shooter->HMI.Shoot && !Shooter->STS.AlarmActive && !Shooter->STS.Interlocked)
 			{
 				Shooter->STS.StateInt = STATE_IDLE;
 			}
@@ -96,10 +96,10 @@ void FB_Shooter(struct FB_Shooter* inst)
 
 	if(!Shooter->STS.Interlocked && !Shooter->STS.AlarmActive)
 	{
-		Shooter->IO.Shoot = Shooter->HMI.Shoot != Shooter->CS.Shoot;
+		Shooter->IO.Shoot = Shooter->HMI.Shoot ^ Shooter->CS.Shoot;
 	}
 	
-	Shooter->IO.EnableFan = Shooter->HMI.EnableFan != Shooter->CS.EnableFan;
+	Shooter->IO.EnableFan = Shooter->HMI.EnableFan ^ Shooter->CS.EnableFan;
 
 	Shooter->STS.Interlocked = Shooter->CS.Interlock;
 	Shooter->STS.AutoActive = Shooter->CS.AutoMode;

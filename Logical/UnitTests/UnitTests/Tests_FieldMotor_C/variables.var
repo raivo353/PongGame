@@ -1,0 +1,18 @@
+(********************************************************************
+ * COPYRIGHT --  MyAutomation-IT
+ ********************************************************************
+ * Program: Tests_FieldMotor_C
+ * File: variables.var
+ * Author: Raivo Berends
+ ********************************************************************
+ * Local variables of program Tests_FieldMotor_C
+ ********************************************************************)
+(*Describe the test*)
+VAR
+	Testsuite : UtMgrTestSuite := (Name:='FieldMotor_Tests',Type:=utMgrTEST_TYPE_C);
+END_VAR
+(*Variables used in the tests*)
+VAR
+	FieldMotorFB : FB_FieldMotor;
+	FieldMotorStruct : UDT_FieldMotor;
+END_VAR

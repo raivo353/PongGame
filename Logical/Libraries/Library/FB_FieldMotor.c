@@ -177,7 +177,10 @@ void FB_FieldMotor(struct FB_FieldMotor* inst)
 			FieldMotor->CS.MoveJogPos = 0;
 			FieldMotor->CS.Stop = 1;
 
-			FieldMotor->STS.StateInt = STATE_DISABLED;
+			if(FieldMotor->STS.StandStill && !FieldMotor->STS.Interlocked)
+			{
+				FieldMotor->STS.StateInt = STATE_DISABLED;
+			}
 			break;
 	}
 	 

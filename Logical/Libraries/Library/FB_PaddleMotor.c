@@ -21,7 +21,7 @@
 #define MIN_ACC_DEC 100
 #define MIN_POSITION PaddleMotor->STS.ReferencePosition - 2800
 #define MIDDLE_POSITION 1450
-#define STOPPING_OFFSET PaddleMotor->STS.ActVelocity * PaddleMotor->STS.ActVelocity * 0.0000216
+#define STOPPING_OFFSET (PaddleMotor->STS.ActVelocity * PaddleMotor->STS.ActVelocity) / 46000
 #define REFERENCE_OFFSET 25
 
 
@@ -144,6 +144,9 @@ void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 			PaddleMotor->CS.MoveAbsolute = 0;
 			PaddleMotor->CS.MoveJogNeg = 0;
 			PaddleMotor->CS.MoveJogPos = 0;
+			PaddleMotor->HMI.MoveJogPos = 0;
+			PaddleMotor->HMI.MoveAbsolute = 0;
+			PaddleMotor->HMI.MoveJogNeg = 0;
 			
 			if(PaddleMotor->CS.Start && !PaddleMotor->STS.AlarmActive && !PaddleMotor->STS.Interlocked)
 			{
@@ -212,7 +215,7 @@ void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 			PaddleMotor->HMI.MoveJogNeg = 0;
 			PaddleMotor->HMI.MoveJogPos = 0;
 
-			if(PaddleMotor->STS.StandStill)
+			if(PaddleMotor->STS.StandStill && !PaddleMotor->STS.Interlocked)
 			{
 				PaddleMotor->STS.StateInt = STATE_DISABLED;
 			}	

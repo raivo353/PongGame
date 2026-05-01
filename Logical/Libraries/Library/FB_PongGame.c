@@ -129,4 +129,5 @@ void FB_PongGame(struct FB_PongGame* inst)
 	PongGame->STS.Disabled = BallControl->STS.Disabled && FieldControl->STS.Disabled;
 	PongGame->STS.Idle = BallControl->STS.Idle && FieldControl->STS.Idle;
 	PongGame->STS.Running = BallControl->STS.Running && FieldControl->STS.Running;
+	PongGame->STS.Interlocked = BallControl->STS.Interlocked || FieldControl->STS.Interlocked;
 }

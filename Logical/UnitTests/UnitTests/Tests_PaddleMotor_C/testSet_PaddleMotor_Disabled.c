@@ -1,11 +1,7 @@
 /********************************************************************
  * COPYRIGHT - MyAutoMation-IT
  ********************************************************************
- * Program: -
- * Author:
- * Created: 
- ********************************************************************
- * Tests for ... 
+ * Author: Raivo Berends
  ********************************************************************/
 
 #include <bur/plctypes.h>
@@ -16,14 +12,14 @@
 
 #include "UnitTest.h"
 #include "Library.h"
-
-#define STATE_DISABLED 0
-#define STATE_INITIALIZING 10
+#include "CommonTypes.h"
+#include <string.h>
 
 _SETUP_TEST(void)
 {
 	/* TODO:  add code running before test set here */
 	PaddleMotorFB.PaddleMotor = &PaddleMotorStruct;
+	memset(PaddleMotorFB.PaddleMotor, 0, sizeof(*PaddleMotorFB.PaddleMotor));
 	PaddleMotorFB.PaddleMotor->STS.StateInt = STATE_DISABLED;
 	
 	TEST_DONE;

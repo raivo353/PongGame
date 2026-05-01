@@ -15,7 +15,8 @@ TYPE
 		dummy : BOOL;
 	END_STRUCT;
 	UDT_BallControl_PAR : 	STRUCT 
-		Position : UINT;
+		Position : REAL;
+		DesiredPosition : REAL;
 	END_STRUCT;
 	UDT_BallControl_STS : 	STRUCT 
 		Disabled : BOOL;
