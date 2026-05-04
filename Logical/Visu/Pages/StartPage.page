@@ -42,6 +42,7 @@
           <Text ID="97340" Value="Angle (degrees)"/>
           <Text ID="97922" Value="Alarm panel"/>
           <Text ID="97923" Value="Alarm panel"/>
+          <Text ID="98116" Value="Status:"/>
         </TextLayer>
         <TextLayer LanguageId="de">
           <Text ID="95529" Value=""/>
@@ -59,6 +60,7 @@
           <Text ID="97340" Value="Text_2"/>
           <Text ID="97922" Value=""/>
           <Text ID="97923" Value="Alarm panel"/>
+          <Text ID="98116" Value="Text_1"/>
         </TextLayer>
         <IndexMap>
           <Index ID="95529" Value="24"/>
@@ -76,6 +78,7 @@
           <Index ID="97340" Value="13"/>
           <Index ID="97922" Value="14"/>
           <Index ID="97923" Value="15"/>
+          <Index ID="98116" Value="16"/>
         </IndexMap>
       </TextGroup>
       <Controls>
@@ -417,6 +420,38 @@
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_14]"/>
           <Property Name="Width" Value="200"/>
         </Control>
+        <Control ClassId="0x00001004" Name="Text_2">
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[MiddleFont]"/>
+          <Property Name="ForeColor" Value="16"/>
+          <Property Name="Height" Value="44"/>
+          <Property Name="Left" Value="15"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="16"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="170"/>
+          <Property Name="Width" Value="99"/>
+        </Control>
+        <Control ClassId="0x0000100B" Name="String_1">
+          <Property Name="AlignmentHorizontal" Value="Left"/>
+          <Property Name="AlignmentVertical" Value="Top"/>
+          <Property Name="BackColor" Value="0"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[MiddleFont]"/>
+          <Property Name="ForeColor" Value="16"/>
+          <Property Name="Height" Value="30"/>
+          <Property Name="Left" Value="102"/>
+          <Property Name="SimulationValue" Value="ABC"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
+          <Property Name="Top" Value="170"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_PongGame.STS.StateString]"/>
+          <Property Name="Width" Value="149"/>
+        </Control>
       </Controls>
       <KeyMapping>
         <VirtualKey Name="%embVirtualKey_7">
@@ -544,8 +579,16 @@
       </KeyMapping>
     </Layer>
   </Layers>
-  <MovementOrder/>
+  <MovementOrder>
+    <MovementEntry Control="Source[embedded].Layer[Default].Control[String_1]">
+      <Property Name="Down" Value="Source[embedded].Layer[Default].Control[String_1]"/>
+      <Property Name="Left" Value="Source[embedded].Layer[Default].Control[String_1]"/>
+      <Property Name="Right" Value="Source[embedded].Layer[Default].Control[String_1]"/>
+      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[String_1]"/>
+    </MovementEntry>
+  </MovementOrder>
   <TabSequence>
     <TabSeqItem Index="0" Value="Source[embedded].Layer[Default].Control[Numeric_3]"/>
+    <TabSeqItem Index="1" Value="Source[embedded].Layer[Default].Control[String_1]"/>
   </TabSequence>
 </Page>

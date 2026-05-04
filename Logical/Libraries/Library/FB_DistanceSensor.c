@@ -37,7 +37,7 @@ void FB_DistanceSensor(struct FB_DistanceSensor* inst)
 	int i;
 	for(i = 0; i < NUM_SENSORS; i++)
 	{
-		UINT Distance = (INT)((sensors[i]->IO.DataMSB << SHIFT_BYTE) | sensors[i]->IO.DataLSB);
+		INT Distance = ((sensors[i]->IO.DataMSB << SHIFT_BYTE) | sensors[i]->IO.DataLSB);
 		if(Distance >= OVERLOAD || Distance <= UNDERLOAD)
 		{
 			sensors[i]->STS.Distance = 0;

@@ -25,6 +25,7 @@ TYPE
 		Interlocked : BOOL;
 		AlarmActiveColour : USINT;
 		GameStopped : BOOL;
+		StateString : STRING[80];
 	END_STRUCT;
 	UDT_PongGame_PAR : 	STRUCT 
 		Highscore : USINT;

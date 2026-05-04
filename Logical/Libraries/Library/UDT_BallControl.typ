@@ -28,10 +28,8 @@ TYPE
 		StateInt : USINT;
 		AutoActive : BOOL;
 		BallVelocity : REAL;
-		Direction : BOOL;
 		ShootState : USINT;
-		SpeedTimeElapsed : UINT;
-		ShootTimeElapsed : UINT;
+		TimeToPaddleMS : USINT;
 	END_STRUCT;
 	UDT_BallControl_ALM : 	STRUCT 
 		ShooterAlarm : BOOL;

@@ -75,6 +75,7 @@ void FB_PongGame(struct FB_PongGame* inst)
 		{
 			PongGame->STS.GameStopped = 0;
 			PongGame->CS.StopGame = 0;
+			strncpy(PongGame->STS.StateString, "Disabled", sizeof(PongGame->STS.StateString));
 			if(PongGame->STS.Initializing)
 			{
 				PongGame->STS.StateInt = STATE_INITIALIZING;
@@ -83,6 +84,7 @@ void FB_PongGame(struct FB_PongGame* inst)
 		}
 		case STATE_INITIALIZING:
 		{
+			strncpy(PongGame->STS.StateString, "Initializing...", sizeof(PongGame->STS.StateString));
 			if(PongGame->STS.Idle)
 			{
 				PongGame->STS.StateInt = STATE_IDLE;
@@ -91,6 +93,7 @@ void FB_PongGame(struct FB_PongGame* inst)
 		}
 		case STATE_IDLE:
 		{
+			strncpy(PongGame->STS.StateString, "Idle", sizeof(PongGame->STS.StateString));
 			if(PongGame->STS.Running)
 			{
 				PongGame->STS.StateInt = STATE_RUNNING;
@@ -99,10 +102,12 @@ void FB_PongGame(struct FB_PongGame* inst)
 		}
 		case STATE_RUNNING:
 		{
+			strncpy(PongGame->STS.StateString, "Running", sizeof(PongGame->STS.StateString));
 			break;
 		}
 		case STATE_STOPPING:
 		{
+			strncpy(PongGame->STS.StateString, "Stopping...", sizeof(PongGame->STS.StateString));
 			if(PongGame->STS.Disabled)
 			{
 				PongGame->STS.StateInt = STATE_DISABLED;
