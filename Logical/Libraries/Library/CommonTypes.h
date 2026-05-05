@@ -9,7 +9,7 @@
 #define BLACK_COLOUR 0
 #define RED_COLOUR   51
 
-#define STATE_DISABLED 00
+#define STATE_DISABLED 0
 #define STATE_INITIALIZING 10
 #define STATE_IDLE 20
 #define STATE_RUNNING 30

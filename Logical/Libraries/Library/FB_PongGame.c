@@ -6,6 +6,7 @@
 #include <bur/plctypes.h>
 #include <standard.h>
 #include "CommonTypes.h"
+#include <string.h>
 #ifdef __cplusplus
 	extern "C"
 	{
@@ -75,6 +76,7 @@ void FB_PongGame(struct FB_PongGame* inst)
 		{
 			PongGame->STS.GameStopped = 0;
 			PongGame->CS.StopGame = 0;
+			PongGame->PAR.Score = 0;
 			strncpy(PongGame->STS.StateString, "Disabled", sizeof(PongGame->STS.StateString));
 			if(PongGame->STS.Initializing)
 			{
@@ -102,11 +104,24 @@ void FB_PongGame(struct FB_PongGame* inst)
 		}
 		case STATE_RUNNING:
 		{
+			if(BallControl->STS.ShootCycleCompleted)
+			{	
+				PongGame->PAR.Score += 1;
+			}
+			if(BallControl->STS.GameOver)
+			{
+				PongGame->CS.StopGame = 1;
+			}
 			strncpy(PongGame->STS.StateString, "Running", sizeof(PongGame->STS.StateString));
 			break;
 		}
 		case STATE_STOPPING:
 		{
+			PongGame->CS.StopGame = 0;
+			if(PongGame->PAR.Score > PongGame->PAR.Highscore)
+			{
+				PongGame->PAR.Highscore = PongGame->PAR.Score;
+			}
 			strncpy(PongGame->STS.StateString, "Stopping...", sizeof(PongGame->STS.StateString));
 			if(PongGame->STS.Disabled)
 			{

@@ -27,7 +27,6 @@
 #define MIN_POSITION PaddleMotor->STS.ReferencePosition - 2800
 #define MAX_POSITION PaddleMotor->STS.ReferencePosition - 100
 #define AUTOMODE_VELOCITY 5000
-#define TO_KM_H 3.6f
 #define MIN_FIELD_DISTANCE 50
 
 #define DISTANCE_BETWEEN_SENSORS_MM 24
@@ -35,12 +34,17 @@
 
 _LOCAL TON_typ SpeedTimer;
 _LOCAL TON_typ ShootTimer;
-_LOCAL TON_typ DelayTimer;
+_LOCAL TON_typ ShootDelayTimer;
 _LOCAL TON_typ NewShootCycleTimer;
+_LOCAL BOOL firstRun;
+
+
 
 /* TODO: Add your comment here */
 void FB_BallControl(struct FB_BallControl* inst)
 {
+	BallControl->STS.ShootCycleCompleted = 0;
+
 	if(BallControl->CS.StopGame)
 	{
 		BallControl->STS.StateInt = STATE_STOPPING;
@@ -51,6 +55,7 @@ void FB_BallControl(struct FB_BallControl* inst)
 		case STATE_DISABLED:
 		{
 			BallControl->CS.Shoot = 0;
+			//BallControl->CS.StopGame = 0;
 			if(BallControl->STS.Initializing)
 			{
 				BallControl->STS.StateInt = STATE_INITIALIZING;
@@ -59,6 +64,10 @@ void FB_BallControl(struct FB_BallControl* inst)
 		}
 		case STATE_INITIALIZING:
 		{
+			BallControl->STS.PrevShootState = 0;
+			BallControl->STS.ShootState = 0;
+			BallControl->STS.GameOver = 0;
+			firstRun = 1;
 			if(BallControl->STS.Idle)
 			{
 				BallControl->STS.StateInt = STATE_IDLE;
@@ -67,6 +76,7 @@ void FB_BallControl(struct FB_BallControl* inst)
 		}
 		case STATE_IDLE:
 		{
+			NewShootCycleTimer.IN = 0;
 			if(BallControl->STS.Running)
 			{
 				BallControl->STS.StateInt = STATE_RUNNING;
@@ -82,31 +92,54 @@ void FB_BallControl(struct FB_BallControl* inst)
 				
 				PaddleMotor->PAR.Velocity = AUTOMODE_VELOCITY;
 
-				if(DelayTimer.Q)
+				if(ShootDelayTimer.Q)
 				{
 					BallControl->CS.Shoot = 0;
-					DelayTimer.IN = 0;
+					ShootDelayTimer.IN = 0;
 				}
+
+				BallControl->STS.NewShootCycleTimerET = NewShootCycleTimer.ET;
 				switch(BallControl->STS.ShootState)
 				{
-					case 0: 
+					case 0:
+					{
 						SpeedTimer.IN = 0;
-						if(inst->DistanceSensorRight->STS.BallDetected)
+
+						if(firstRun)
 						{
-							BallControl->PAR.DesiredPosition = MIN_POSITION + ((inst->DistanceSensorRight->STS.Distance - MIN_FIELD_DISTANCE) * MM_TO_POSITION);
-							NewShootCycleTimer.IN = 0;
-							if(BallControl->PAR.DesiredPosition >= MIN_POSITION && BallControl->PAR.DesiredPosition <= MAX_POSITION)
+							if(inst->DistanceSensorRight->STS.BallDetected)
 							{
-								//PaddleMotor->PAR.Position = BallControl->PAR.DesiredPosition;
-								//PaddleMotor->CS.MoveAbsolute = 1;
+								BallControl->PAR.DesiredPosition = MIN_POSITION + ((inst->DistanceSensorRight->STS.Distance - MIN_FIELD_DISTANCE) * MM_TO_POSITION);
+
+								BallControl->STS.ShootState = 5;
+								firstRun = 0;
 							}
-							BallControl->STS.ShootState = 5;  // eerst naar 5
 						}
+						else
+						{
+							if(NewShootCycleTimer.Q)
+							{
+								NewShootCycleTimer.IN = 0;
+								BallControl->STS.GameOver = 1;
+							}
+							else if(NewShootCycleTimer.ET >= 500)
+							{
+								if(inst->DistanceSensorRight->STS.BallDetected)
+								{
+									BallControl->PAR.DesiredPosition = MIN_POSITION + ((inst->DistanceSensorRight->STS.Distance - MIN_FIELD_DISTANCE) * MM_TO_POSITION);
+
+									NewShootCycleTimer.IN = 0;
+									BallControl->STS.ShootState = 5;
+								}
+							}
+							
+						}
+					}
 					break;
 
 					case 5:
 						SpeedTimer.PT = 5000;
-						SpeedTimer.IN = 1;  // volgende cyclus pikt TON dit op
+						SpeedTimer.IN = 1; 
 						BallControl->STS.ShootState = 10;
 					break;
 
@@ -132,10 +165,10 @@ void FB_BallControl(struct FB_BallControl* inst)
 							{
 								BallControl->STS.BallVelocity = (DISTANCE_BETWEEN_SENSORS_MM * 2.0f) / (float)SpeedTimer.ET;
 
-								// voorspelde tijd tot impact (ms)
-								BallControl->STS.TimeToPaddleMS = (DISTANCE_SENSOR_LEFT_TO_PADDLE_MM / BallControl->STS.BallVelocity);
+								
+								BallControl->STS.TimeToPaddleMS = SpeedTimer.ET;//(DISTANCE_SENSOR_LEFT_TO_PADDLE_MM / BallControl->STS.BallVelocity);
 
-								ShootTimer.PT = (int)BallControl->STS.TimeToPaddleMS;
+								ShootTimer.PT = BallControl->STS.TimeToPaddleMS;
 							}
 							else
 							{
@@ -146,7 +179,7 @@ void FB_BallControl(struct FB_BallControl* inst)
 							ShootTimer.IN = 1;
 
 							BallControl->PAR.DesiredPosition = MIN_POSITION + ((inst->DistanceSensorLeft->STS.Distance - MIN_FIELD_DISTANCE) * MM_TO_POSITION);
-							// paddle alvast positioneren
+							
 							if(BallControl->PAR.DesiredPosition >= MIN_POSITION && BallControl->PAR.DesiredPosition <= MAX_POSITION)
 							{
 								//PaddleMotor->PAR.Position = BallControl->PAR.DesiredPosition;
@@ -160,50 +193,27 @@ void FB_BallControl(struct FB_BallControl* inst)
 					case 30: 
 						if(ShootTimer.Q)
 						{
-							// exact schietmoment bereikt (voorspeld tijdstip)
-
-							BallControl->CS.Shoot = 1;   // daadwerkelijke shoot trigger
+							BallControl->CS.Shoot = 1;
 
 							ShootTimer.IN = 0;
 
-							BallControl->STS.ShootState = 50;
-							DelayTimer.PT = 300;
-							DelayTimer.IN = 1;
-						}
-					break;
-
-					case 40:
-						if(inst->DistanceSensorMiddle->STS.BallDetected)
-						{
-							BallControl->PAR.DesiredPosition = MIN_POSITION + ((inst->DistanceSensorMiddle->STS.Distance - MIN_FIELD_DISTANCE) * MM_TO_POSITION);
-							if(BallControl->PAR.DesiredPosition >= MIN_POSITION && BallControl->PAR.DesiredPosition <= MAX_POSITION)
-							{
-								//PaddleMotor->PAR.Position = BallControl->PAR.DesiredPosition;
-								//PaddleMotor->CS.MoveAbsolute = 1;
-							}
-							BallControl->STS.ShootState = 50;
-						}
-						break;
-
-					case 50:
-						if(inst->DistanceSensorRight->STS.BallDetected)
-						{
-
-							BallControl->PAR.DesiredPosition = MIN_POSITION + ((inst->DistanceSensorRight->STS.Distance - MIN_FIELD_DISTANCE) * MM_TO_POSITION);
-							if(BallControl->PAR.DesiredPosition >= MIN_POSITION && BallControl->PAR.DesiredPosition <= MAX_POSITION)
-							{
-								//PaddleMotor->PAR.Position = BallControl->PAR.DesiredPosition;
-								//PaddleMotor->CS.MoveAbsolute = 1;
-							}
-							NewShootCycleTimer.PT = 100;
-							NewShootCycleTimer.IN = 1;
 							BallControl->STS.ShootState = 0;
+							ShootDelayTimer.PT = 300;
+							ShootDelayTimer.IN = 1;
 						}
 					break;
 				}
+
+				if (BallControl->STS.PrevShootState == 30 && BallControl->STS.ShootState == 0)
+				{
+					NewShootCycleTimer.IN = 1;
+					NewShootCycleTimer.PT = 5000;
+					BallControl->STS.ShootCycleCompleted = 1;
+				}
+
 				TON(&ShootTimer);
 				TON(&SpeedTimer);
-				TON(&DelayTimer);
+				TON(&ShootDelayTimer);
 				TON(&NewShootCycleTimer);
 			}
 			else
@@ -221,6 +231,8 @@ void FB_BallControl(struct FB_BallControl* inst)
 			break;
 		}
 	}
+
+	BallControl->STS.PrevShootState = BallControl->STS.ShootState;
 
 	PaddleMotor->CS.Initialize = BallControl->CS.Initialize;
 	PaddleMotor->CS.Start = BallControl->CS.Start;

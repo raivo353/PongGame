@@ -29,7 +29,11 @@ TYPE
 		AutoActive : BOOL;
 		BallVelocity : REAL;
 		ShootState : USINT;
-		TimeToPaddleMS : USINT;
+		TimeToPaddleMS : DINT;
+		ShootCycleCompleted : BOOL;
+		PrevShootState : USINT;
+		NewShootCycleTimerET : UINT;
+		GameOver : BOOL;
 	END_STRUCT;
 	UDT_BallControl_ALM : 	STRUCT 
 		ShooterAlarm : BOOL;

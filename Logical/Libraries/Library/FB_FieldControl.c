@@ -4,6 +4,7 @@
  * Created:   April 22, 2026/5:57 PM 
  *********************************************************************************/ 
 #include <bur/plctypes.h>
+#include "CommonTypes.h"
 #ifdef __cplusplus
 	extern "C"
 	{
@@ -12,12 +13,6 @@
 #ifdef __cplusplus
 	};
 #endif
-
-#define STATE_DISABLED 00
-#define STATE_INITIALIZING 10
-#define STATE_IDLE 20
-#define STATE_RUNNING 30
-#define STATE_STOPPING 40
 
 #define MAX_ANGLE 18
 #define MIN_ANGLE 3
