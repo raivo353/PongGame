@@ -1,4 +1,8 @@
-
+/*********************************************************************************
+ * Copyright: MyAutomation-IT
+ * Author:    raivo 
+ * Created:   April 22, 2026/5:57 PM 
+ *********************************************************************************/ 
 #include <bur/plctypes.h>
 #include "CommonTypes.h"
 #ifdef __cplusplus
@@ -18,7 +22,7 @@
 /* TODO: Add your comment here */
 void FB_Shooter(struct FB_Shooter* inst)
 {
-	if(Shooter->CS.StopGame)
+	if(Shooter->CS.StopGame && !Shooter->STS.Interlocked)
 	{
 		Shooter->STS.StateInt = STATE_DISABLED;
 	}
@@ -65,7 +69,6 @@ void FB_Shooter(struct FB_Shooter* inst)
 			if(Shooter->STS.AutoActive)
 			{
 				Shooter->HMI.Shoot = 0;
-				Shooter->CS.EnableFan = 1;
 			}	
 			else
 			{
@@ -84,7 +87,7 @@ void FB_Shooter(struct FB_Shooter* inst)
 		case STATE_SHOOTING:
 			Shooter->STS.Shooting = 1;
 
-			if(!Shooter->CS.Shoot && !Shooter->HMI.Shoot)
+			if(!Shooter->CS.Shoot && !Shooter->HMI.Shoot && !Shooter->STS.AlarmActive && !Shooter->STS.Interlocked)
 			{
 				Shooter->STS.StateInt = STATE_IDLE;
 			}

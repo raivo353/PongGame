@@ -1,5 +1,10 @@
-
+/*********************************************************************************
+ * Copyright: MyAutomation-IT
+ * Author:    raivo 
+ * Created:   April 22, 2026/5:57 PM 
+ *********************************************************************************/ 
 #include <bur/plctypes.h>
+#include "CommonTypes.h"
 #ifdef __cplusplus
 	extern "C"
 	{
@@ -8,12 +13,6 @@
 #ifdef __cplusplus
 	};
 #endif
-
-#define STATE_DISABLED 00
-#define STATE_INITIALIZING 10
-#define STATE_IDLE 20
-#define STATE_RUNNING 30
-#define STATE_STOPPING 40
 
 #define MAX_ANGLE 18
 #define MIN_ANGLE 3
@@ -105,6 +104,7 @@ void FB_FieldControl(struct FB_FieldControl* inst)
 	FieldControl->STS.CurrentAngle = InclinoSensor->STS.CurrentAngle;
 	FieldControl->STS.Disabled = FieldMotor->STS.Disabled;
 	FieldControl->STS.AlarmActive = FieldMotor->STS.AlarmActive || InclinoSensor->STS.AlarmActive;
+	FieldControl->STS.Interlocked = FieldMotor->STS.Interlocked;
 	FieldControl->STS.Idle = FieldMotor->STS.Idle;
 	FieldControl->STS.Running = FieldMotor->STS.Running;
 	FieldControl->STS.Moving = FieldMotor->STS.Moving;

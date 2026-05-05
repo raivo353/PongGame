@@ -15,7 +15,8 @@ TYPE
 		dummy : BOOL;
 	END_STRUCT;
 	UDT_BallControl_PAR : 	STRUCT 
-		Position : UINT;
+		Position : REAL;
+		DesiredPosition : REAL;
 	END_STRUCT;
 	UDT_BallControl_STS : 	STRUCT 
 		Disabled : BOOL;
@@ -26,12 +27,13 @@ TYPE
 		Interlocked : BOOL;
 		StateInt : USINT;
 		AutoActive : BOOL;
-		BallVelocity : USINT;
-		Direction : BOOL;
+		BallVelocity : REAL;
 		ShootState : USINT;
-		DelayTimeElapsed : UINT;
-		ShootTimeElapsed : UINT;
-		PrevBallDetected : BOOL;
+		TimeToPaddleMS : DINT;
+		ShootCycleCompleted : BOOL;
+		PrevShootState : USINT;
+		NewShootCycleTimerET : UINT;
+		GameOver : BOOL;
 	END_STRUCT;
 	UDT_BallControl_ALM : 	STRUCT 
 		ShooterAlarm : BOOL;

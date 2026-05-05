@@ -1,7 +1,6 @@
 VAR
 	gAxis01 : ACP10AXIS_typ;
 	gAxis02 : ACP10AXIS_typ;
-	gVAxis01 : ACP10VAXIS_typ;
 	digitalInput : USINT;
 	g_PongGame : UDT_PongGame := (ALM:=(PaddleAxisError:=FALSE,ShooterError:=FALSE,TiltAxisError:=FALSE),CS:=(AutoMode:=FALSE,ErrorAcknowledge:=FALSE,Initialize:=FALSE,Start:=FALSE,StopGame:=FALSE),HMI:=(AutoMode:=FALSE,ErrorAcknowledge:=FALSE,Initialize:=FALSE,Start:=FALSE,StopGame:=FALSE),PAR:=(Score:=0),STS:=(Disabled:=TRUE,AlarmActive:=FALSE,Idle:=FALSE,Initializing:=FALSE,Running:=FALSE,StateInt:=0,AutoActive:=FALSE,Interlocked:=FALSE));
 	g_BallControl : UDT_BallControl := (ALM:=(ShooterAlarm:=FALSE,MotorAlarm:=FALSE,DistanceSensorAlarm:=FALSE),CS:=(AutoMode:=FALSE,Initialize:=FALSE,Shoot:=FALSE,Start:=FALSE,Stop:=FALSE,Interlock:=FALSE,ChangePosition:=FALSE,ErrorAcknowledge:=FALSE,StopGame:=FALSE),HMI:=(dummy:=FALSE),PAR:=(Position:=0),STS:=(Disabled:=TRUE,Idle:=FALSE,AlarmActive:=FALSE,Initializing:=FALSE,Running:=FALSE,Interlocked:=FALSE,StateInt:=0,AutoActive:=FALSE));

@@ -114,6 +114,9 @@
           <Property Name="Height" Value="50"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
           <Property Name="Left" Value="0"/>
+          <Property Name="Locking" Value="Datapoint &lt; Level"/>
+          <Property Name="LockingDatapoint" Value="Source[global].Variable[DataSource.g_PongGame.STS.StateInt]"/>
+          <Property Name="LockingLevel" Value="30"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextSource" Value="None"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>

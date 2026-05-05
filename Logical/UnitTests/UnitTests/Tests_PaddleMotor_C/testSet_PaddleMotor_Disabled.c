@@ -1,11 +1,7 @@
 /********************************************************************
- * COPYRIGHT --
+ * COPYRIGHT - MyAutoMation-IT
  ********************************************************************
- * Program: -
- * Author:
- * Created: 
- ********************************************************************
- * Tests for ... 
+ * Author: Raivo Berends
  ********************************************************************/
 
 #include <bur/plctypes.h>
@@ -16,14 +12,14 @@
 
 #include "UnitTest.h"
 #include "Library.h"
-
-#define STATE_DISABLED 0
-#define STATE_INITIALIZING 10
+#include "CommonTypes.h"
+#include <string.h>
 
 _SETUP_TEST(void)
 {
 	/* TODO:  add code running before test set here */
 	PaddleMotorFB.PaddleMotor = &PaddleMotorStruct;
+	memset(PaddleMotorFB.PaddleMotor, 0, sizeof(*PaddleMotorFB.PaddleMotor));
 	PaddleMotorFB.PaddleMotor->STS.StateInt = STATE_DISABLED;
 	
 	TEST_DONE;
@@ -114,7 +110,7 @@ _TEST test_Disabled_NoTransition_WhenInterlocked(void)
 	PaddleMotorFB.PaddleMotor->CS.Initialize = 1;
 	PaddleMotorFB.PaddleMotor->STS.AlarmActive = 0;
 	PaddleMotorFB.PaddleMotor->STS.Interlocked = 1;
-
+	
 	FB_PaddleMotor(&PaddleMotorFB);
 
 	TEST_ASSERT_EQUAL_INT(STATE_DISABLED, PaddleMotorFB.PaddleMotor->STS.StateInt);
