@@ -236,6 +236,8 @@
           <Property Name="Height" Value="100"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
           <Property Name="Left" Value="430"/>
+          <Property Name="Locking" Value="Datapoint = 0"/>
+          <Property Name="LockingDatapoint" Value="Source[global].Variable[DataSource.g_PongGame.STS.StateInt]"/>
           <Property Name="PressedBitmapSource" Value="Source[embedded].Property[BitmapSource]"/>
           <Property Name="PressedBorder" Value="Source[local].Border[Double3D]"/>
           <Property Name="PressedForeColor" Value="0"/>
@@ -548,7 +550,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="133"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_PongGame.PAR.Highscore]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_Highscore]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="60"/>
         </Control>
@@ -715,7 +717,7 @@
               <Property Name="Description" Value=""/>
               <Property Name="Locking" Value="Never"/>
               <Property Name="Name" Value="Action_0"/>
-              <Property Name="Page" Value="Source[local].Page[ManualPage]"/>
+              <Property Name="Page" Value="Source[local].Page[HelpPage]"/>
               <Property Name="Target" Value="Page"/>
             </KeyAction>
           </KeyActions>

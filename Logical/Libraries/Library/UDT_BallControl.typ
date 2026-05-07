@@ -34,6 +34,8 @@ TYPE
 		PrevShootState : USINT;
 		NewShootCycleTimerET : UINT;
 		GameOver : BOOL;
+		PaddlePositionMM : INT;
+		FirstRun : BOOL;
 	END_STRUCT;
 	UDT_BallControl_ALM : 	STRUCT 
 		ShooterAlarm : BOOL;

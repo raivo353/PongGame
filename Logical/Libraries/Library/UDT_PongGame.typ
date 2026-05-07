@@ -28,8 +28,8 @@ TYPE
 		StateString : STRING[80];
 	END_STRUCT;
 	UDT_PongGame_PAR : 	STRUCT 
-		Highscore : USINT;
-		Score : USINT;
+		Highscore : UINT;
+		Score : UINT;
 	END_STRUCT;
 	UDT_PongGame_ALM : 	STRUCT 
 		PaddleAxisError : BOOL;

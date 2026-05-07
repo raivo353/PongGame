@@ -158,9 +158,6 @@
           <Property Name="Height" Value="50"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
           <Property Name="Left" Value="7"/>
-          <Property Name="Locking" Value="Datapoint &lt; Level"/>
-          <Property Name="LockingDatapoint" Value="Source[global].Variable[DataSource.g_PongGame.STS.StateInt]"/>
-          <Property Name="LockingLevel" Value="30"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="PressedBackColor" Value="10"/>
           <Property Name="PressedBitmapSource" Value="None"/>
@@ -193,9 +190,6 @@
           <Property Name="Height" Value="50"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
           <Property Name="Left" Value="7"/>
-          <Property Name="Locking" Value="Datapoint &lt; Level"/>
-          <Property Name="LockingDatapoint" Value="Source[global].Variable[DataSource.g_PongGame.STS.StateInt]"/>
-          <Property Name="LockingLevel" Value="30"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="PressedBackColor" Value="10"/>
           <Property Name="PressedBitmapSource" Value="None"/>

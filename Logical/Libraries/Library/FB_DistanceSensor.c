@@ -22,11 +22,14 @@
 #define OUT1_BITMASK 0x1
 #define OUT2_BITMASK 0x2
 #define DEVICE_STATUS_BITMASK 0xF0
+#define SENSOR_FAILURE 4
 
-/* TODO: Add your comment here */
+#define BALL_MIN_DISTANCE 50
+#define BALL_MAX_DISTANCE 300
+
 void FB_DistanceSensor(struct FB_DistanceSensor* inst)
 {
-	/*TODO: Add your code here*/
+	/* sensor list abstraction */
 	UDT_DistanceSensor* sensors[NUM_SENSORS] = 
 	{
 		inst->DistanceSensorLeft,
@@ -37,7 +40,10 @@ void FB_DistanceSensor(struct FB_DistanceSensor* inst)
 	int i;
 	for(i = 0; i < NUM_SENSORS; i++)
 	{
+		/* combine MSB/LSB */
 		INT Distance = ((sensors[i]->IO.DataMSB << SHIFT_BYTE) | sensors[i]->IO.DataLSB);
+
+		/* clamp invalid sensor range */
 		if(Distance >= OVERLOAD || Distance <= UNDERLOAD)
 		{
 			sensors[i]->STS.Distance = 0;
@@ -47,16 +53,14 @@ void FB_DistanceSensor(struct FB_DistanceSensor* inst)
 			sensors[i]->STS.Distance = Distance;
 		}
 		
+		/* decode sensor IO bits */
 		sensors[i]->IO.OUT1 = sensors[i]->IO.SensorInfo & OUT1_BITMASK;
 		sensors[i]->IO.OUT2 = (sensors[i]->IO.SensorInfo & OUT2_BITMASK) >> 1;
-		sensors[i]->STS.BallDetected = sensors[i]->STS.Distance >= 45 && sensors[i]->STS.Distance <= 300;
+		sensors[i]->STS.BallDetected = sensors[i]->STS.Distance >= BALL_MIN_DISTANCE && sensors[i]->STS.Distance <= BALL_MAX_DISTANCE;
 		sensors[i]->STS.DeviceStatus = (sensors[i]->IO.SensorInfo & DEVICE_STATUS_BITMASK) >> 4; 
 		
-		sensors[i]->STS.AlarmActiveColour = GREEN_COLOUR;
-		if(sensors[i]->STS.AlarmActive)
-		{
-			sensors[i]->STS.AlarmActiveColour = RED_COLOUR;
-		}
+		/* alarm indication */
+		sensors[i]->STS.AlarmActiveColour = sensors[i]->STS.AlarmActive ? RED_COLOUR : GREEN_COLOUR;
 
 		if(sensors[i]->STS.Distance == OVERLOAD)
 		{
@@ -77,7 +81,7 @@ void FB_DistanceSensor(struct FB_DistanceSensor* inst)
 			sensors[i]->ALM.OutOfBounds = 0;
 		}
 
-		if(sensors[i]->STS.DeviceStatus == 4 || sensors[i]->ALM.OutOfBounds)
+		if(sensors[i]->STS.DeviceStatus == SENSOR_FAILURE || sensors[i]->ALM.OutOfBounds)
 		{
 			sensors[i]->STS.AlarmActive = 1;
 		}

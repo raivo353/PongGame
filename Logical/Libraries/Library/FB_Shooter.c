@@ -15,27 +15,26 @@
 #endif
 
 
-#define STATE_SHOOTING 50
+#define STATE_SHOOTING 30
+#define SHOOT_OUTPUT_BIT 3
+#define FAN_OUTPUT_BIT 0
 
 #define Shooter inst->Shooter
 
-/* TODO: Add your comment here */
 void FB_Shooter(struct FB_Shooter* inst)
 {
+	/* stop request handling */
 	if(Shooter->CS.StopGame && !Shooter->STS.Interlocked)
 	{
 		Shooter->STS.StateInt = STATE_DISABLED;
 	}
 
-	Shooter->STS.AlarmActiveColour = GREEN_COLOUR;
-	if(Shooter->STS.AlarmActive)
-	{
-		Shooter->STS.AlarmActiveColour = RED_COLOUR;
-	}
+	Shooter->STS.AlarmActiveColour = Shooter->STS.Interlocked ? RED_COLOUR : GREEN_COLOUR;
 	
 	switch (Shooter->STS.StateInt)
 	{
 		case STATE_DISABLED:
+			/* Reset outputs and states */
 			Shooter->STS.Disabled = 1;
 			Shooter->STS.Idle = 0;
 
@@ -46,6 +45,7 @@ void FB_Shooter(struct FB_Shooter* inst)
 			Shooter->CS.EnableFan = 0;
 			Shooter->CS.Interlock = 0;
 
+			/* Allow parameter tuning only when inactive */
 			if(Shooter->HMI.IncreaseIntensity)
 			{
 				Shooter->PAR.Intensity += 0.1;
@@ -59,6 +59,7 @@ void FB_Shooter(struct FB_Shooter* inst)
 				Shooter->STS.StateInt = STATE_IDLE;
 			}
 			break;
+
 		case STATE_IDLE:
 			Shooter->STS.Idle = 1;
 			Shooter->STS.Disabled = 0;
@@ -68,10 +69,12 @@ void FB_Shooter(struct FB_Shooter* inst)
 
 			if(Shooter->STS.AutoActive)
 			{
+				/* Ignore HMI in auto mode */
 				Shooter->HMI.Shoot = 0;
 			}	
 			else
 			{
+				/* Fan required before shooting */
 				if(!Shooter->HMI.EnableFan)
 				{
 					Shooter->CS.Interlock = 1;
@@ -79,14 +82,17 @@ void FB_Shooter(struct FB_Shooter* inst)
 				Shooter->CS.Shoot = 0;
 			}
 
-			if((Shooter->HMI.Shoot ^ Shooter->CS.Shoot) == 1 && !Shooter->STS.AlarmActive && !Shooter->STS.Interlocked)
+			/* XOR detects difference between HMI and control command */
+			if((Shooter->HMI.Shoot ^ Shooter->CS.Shoot) && !Shooter->STS.AlarmActive && !Shooter->STS.Interlocked)
 			{
 				Shooter->STS.StateInt = STATE_SHOOTING;
 			}
 			break;
+
 		case STATE_SHOOTING:
 			Shooter->STS.Shooting = 1;
 
+			/* Return when no shoot request remains */
 			if(!Shooter->CS.Shoot && !Shooter->HMI.Shoot && !Shooter->STS.AlarmActive && !Shooter->STS.Interlocked)
 			{
 				Shooter->STS.StateInt = STATE_IDLE;
@@ -94,6 +100,7 @@ void FB_Shooter(struct FB_Shooter* inst)
 			break;
 	}
 
+	/* Block output if unsafe */
 	if(!Shooter->STS.Interlocked && !Shooter->STS.AlarmActive)
 	{
 		Shooter->IO.Shoot = Shooter->HMI.Shoot ^ Shooter->CS.Shoot;
@@ -101,12 +108,13 @@ void FB_Shooter(struct FB_Shooter* inst)
 	
 	Shooter->IO.EnableFan = Shooter->HMI.EnableFan ^ Shooter->CS.EnableFan;
 
+	/* Map control state to status */
 	Shooter->STS.Interlocked = Shooter->CS.Interlock;
 	Shooter->STS.AutoActive = Shooter->CS.AutoMode;
 
-	
+	/* Map logical outputs to physical bits */
 	inst->digitalOutput = 0;
-	inst->digitalOutput |= (Shooter->IO.Shoot << 3);
-	inst->digitalOutput |= Shooter->IO.EnableFan;
+	inst->digitalOutput |= (Shooter->IO.Shoot << SHOOT_OUTPUT_BIT);
+	inst->digitalOutput |= (Shooter->IO.EnableFan << FAN_OUTPUT_BIT);
 	
 }

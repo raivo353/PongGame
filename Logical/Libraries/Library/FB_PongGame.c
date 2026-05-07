@@ -24,26 +24,27 @@
 _LOCAL TON_typ AlarmTimer;
 _LOCAL BOOL BlinkState;
 
-/* TODO: Add your comment here */
 void FB_PongGame(struct FB_PongGame* inst)
 {
-	if(PongGame->CS.StopGame || PongGame->HMI.StopGame)
+	if((PongGame->CS.StopGame || PongGame->HMI.StopGame) && !PongGame->STS.AlarmActive && !PongGame->STS.Interlocked)
 	{
+		/* immediate stop override */
 		PongGame->STS.StateInt = STATE_STOPPING;
 	}
-	PongGame->STS.AlarmActiveColour = BLACK_COLOUR;
+	
 	if(PongGame->STS.AlarmActive)
 	{
+		/* prevent repeated stop triggers */
 		PongGame->CS.StopGame = !PongGame->STS.GameStopped;
 
 		if(PongGame->CS.StopGame && !PongGame->STS.GameStopped)
 		{
     		PongGame->STS.GameStopped = 1;
-			//PongGame->CS.StopGame = 0;
 		}
 		
+		/* 1s blink generator */
 		AlarmTimer.IN = 1;
-		AlarmTimer.PT = 1000;
+		AlarmTimer.PT = MS_1000;
 		TON(&AlarmTimer);
 
 		if(AlarmTimer.Q)
@@ -53,19 +54,16 @@ void FB_PongGame(struct FB_PongGame* inst)
 			AlarmTimer.IN = 0;
 			TON(&AlarmTimer);
 		}
-		if(BlinkState)
-		{
-			PongGame->STS.AlarmActiveColour = RED_COLOUR;
-		}
-		else
-		{
-			PongGame->STS.AlarmActiveColour = BLACK_COLOUR;
-		}
+
+		PongGame->STS.AlarmActiveColour = BlinkState ? RED_COLOUR : BLACK_COLOUR;
 	}
 	else
 	{
+		PongGame->STS.AlarmActiveColour = BLACK_COLOUR;
+
 		AlarmTimer.IN = 0;
 		TON(&AlarmTimer);
+
 		BlinkState = 0;
 	}
 	
@@ -131,18 +129,25 @@ void FB_PongGame(struct FB_PongGame* inst)
 		}
 	}
 
-	BallControl->CS.Initialize = PongGame->HMI.Initialize ^ PongGame->CS.Initialize;
-	BallControl->CS.StopGame = PongGame->HMI.StopGame ^ PongGame->CS.StopGame;
-	BallControl->CS.Start = PongGame->HMI.Start ^ PongGame->CS.Start;
+	if(!PongGame->STS.AlarmActive && !PongGame->STS.Interlocked)
+	{
+		/*Signals can only be sent from HMI or CS, not both */
+		BallControl->CS.Initialize = PongGame->HMI.Initialize ^ PongGame->CS.Initialize;
+		BallControl->CS.StopGame = PongGame->HMI.StopGame ^ PongGame->CS.StopGame;
+		BallControl->CS.Start = PongGame->HMI.Start ^ PongGame->CS.Start;
+
+		FieldControl->CS.Initialize = PongGame->HMI.Initialize ^ PongGame->CS.Initialize;
+		FieldControl->CS.StopGame = PongGame->HMI.StopGame ^ PongGame->CS.StopGame;
+		FieldControl->CS.Start = PongGame->HMI.Start ^ PongGame->CS.Start;
+	}
+	
+	/*Signals can only be sent from HMI or CS, not both */
 	BallControl->CS.AutoMode = PongGame->HMI.AutoMode ^ PongGame->CS.AutoMode;
 	BallControl->CS.ErrorAcknowledge = PongGame->HMI.ErrorAcknowledge ^ PongGame->CS.ErrorAcknowledge;
 
-	FieldControl->CS.Initialize = PongGame->HMI.Initialize ^ PongGame->CS.Initialize;
-	FieldControl->CS.StopGame = PongGame->HMI.StopGame ^ PongGame->CS.StopGame;
-	FieldControl->CS.Start = PongGame->HMI.Start ^ PongGame->CS.Start;
-	
 	FieldControl->STS.AutoActive = PongGame->HMI.AutoMode || PongGame->CS.AutoMode;
 	
+	/* subsystem state mapping */
 	PongGame->STS.AutoActive = BallControl->STS.AutoActive && FieldControl->STS.AutoActive;
 	PongGame->STS.Initializing = BallControl->STS.Initializing && FieldControl->STS.Initializing;
 	PongGame->STS.AlarmActive = BallControl->STS.AlarmActive || FieldControl->STS.AlarmActive;

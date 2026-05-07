@@ -18,22 +18,18 @@
 #define TO_DEGREES 100
 #define SHIFT_BYTE 8
 
+#define CENTERPOINT_NORMAL 7
+#define CENTERPOINT_SET 3
+
 #define InclinoSensor inst->InclinoSensor
 
 void FB_InclinoSensor(struct FB_InclinoSensor* inst)
 {
-	//Combining MSB and LSB with bitwise operators to show the value. Dividing by 100 to convert to degrees and explicit casting to float to show CurrentAngle as accurate as possible.
+	/* Combine MSB + LSB into signed raw value, then scale to degrees, sensor sends value as integer * 100 */
 	InclinoSensor->STS.CurrentAngle = (float)((INT)((InclinoSensor->IO.DataMSB << SHIFT_BYTE) | InclinoSensor->IO.DataLSB)) / TO_DEGREES;
-	
-	InclinoSensor->STS.AlarmActiveColour = GREEN_COLOUR;
-	if(InclinoSensor->STS.AlarmActive)
-	{
-		InclinoSensor->STS.AlarmActiveColour = RED_COLOUR;
-	}
-	InclinoSensor->IO.SetCenterPoint = 7;
-	if(InclinoSensor->CS.SetCenterPoint)
-	{
-    	
-		InclinoSensor->IO.SetCenterPoint = 3;
-	}
+
+	InclinoSensor->STS.AlarmActiveColour = InclinoSensor->STS.AlarmActive ? RED_COLOUR : GREEN_COLOUR;
+
+	// Setpoint selection for calibration mode vs normal operation
+	InclinoSensor->IO.SetCenterPoint = InclinoSensor->CS.SetCenterPoint ? CENTERPOINT_SET : CENTERPOINT_NORMAL;
 }

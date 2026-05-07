@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?AutomationStudio Version="4.12.6.106"?>
-<Page xmlns="http://br-automation.co.at/AS/VC/Project" Name="ManualPage">
+<Page xmlns="http://br-automation.co.at/AS/VC/Project" Name="HelpPage">
   <Property Name="BackColor" Value="0"/>
   <Property Name="Description" Value=""/>
   <Property Name="Height" Value="480"/>
@@ -265,7 +265,7 @@
           <Property Name="ForeColor" Value="16"/>
           <Property Name="Height" Value="59"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="99"/>
+          <Property Name="Left" Value="101"/>
           <Property Name="PressedBackColor" Value="51"/>
           <Property Name="PressedBitmapSource" Value="Source[embedded].Property[BitmapSource]"/>
           <Property Name="PressedBorder" Value="Source[local].Border[Double3D]"/>
@@ -296,7 +296,7 @@
           <Property Name="ForeColor" Value="16"/>
           <Property Name="Height" Value="59"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="249"/>
+          <Property Name="Left" Value="248"/>
           <Property Name="PressedBackColor" Value="10"/>
           <Property Name="PressedBitmapSource" Value="Source[embedded].Property[BitmapSource]"/>
           <Property Name="PressedBorder" Value="Source[local].Border[Double3D]"/>
@@ -367,7 +367,7 @@
               <Property Name="Description" Value=""/>
               <Property Name="Locking" Value="Never"/>
               <Property Name="Name" Value="Action_0"/>
-              <Property Name="Page" Value="None"/>
+              <Property Name="Page" Value="Source[local].Page[ManualModeHelp]"/>
               <Property Name="Target" Value="Page"/>
             </KeyAction>
           </KeyActions>
@@ -393,7 +393,7 @@
               <Property Name="Description" Value=""/>
               <Property Name="Locking" Value="Never"/>
               <Property Name="Name" Value="Action_0"/>
-              <Property Name="Page" Value="None"/>
+              <Property Name="Page" Value="Source[local].Page[AlarmPanelHelp]"/>
               <Property Name="Target" Value="Page"/>
             </KeyAction>
           </KeyActions>
