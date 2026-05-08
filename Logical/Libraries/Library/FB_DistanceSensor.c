@@ -14,19 +14,6 @@
 	};
 #endif
 
-#define OVERLOAD 32760
-#define UNDERLOAD -32760
-#define SHIFT_BYTE 8
-#define NUM_SENSORS 3
-
-#define OUT1_BITMASK 0x1
-#define OUT2_BITMASK 0x2
-#define DEVICE_STATUS_BITMASK 0xF0
-#define SENSOR_FAILURE 4
-
-#define BALL_MIN_DISTANCE 50
-#define BALL_MAX_DISTANCE 300
-
 void FB_DistanceSensor(struct FB_DistanceSensor* inst)
 {
 	/* sensor list abstraction */
@@ -44,12 +31,30 @@ void FB_DistanceSensor(struct FB_DistanceSensor* inst)
 		INT Distance = ((sensors[i]->IO.DataMSB << SHIFT_BYTE) | sensors[i]->IO.DataLSB);
 
 		/* clamp invalid sensor range */
-		if(Distance >= OVERLOAD || Distance <= UNDERLOAD)
+		if(Distance > BALL_MAX_DISTANCE && Distance < OVERLOAD)
+		{
+			sensors[i]->STS.TooFar = 1;
+			sensors[i]->STS.TooClose = 0;
+			sensors[i]->ALM.OutOfBounds = 1;
+		}
+		else if(Distance < BALL_MIN_DISTANCE && Distance > UNDERLOAD)
+		{
+			sensors[i]->STS.TooClose = 1;
+			sensors[i]->STS.TooFar = 0;
+			sensors[i]->ALM.OutOfBounds = 1;
+		}
+		else if(Distance <= UNDERLOAD || Distance >= OVERLOAD)
 		{
 			sensors[i]->STS.Distance = 0;
+			sensors[i]->ALM.OutOfBounds = 0;
+			sensors[i]->STS.TooClose = 0;
+			sensors[i]->STS.TooFar = 0;
 		}
 		else
 		{
+			sensors[i]->STS.TooClose = 0;
+			sensors[i]->STS.TooFar = 0;
+			sensors[i]->ALM.OutOfBounds = 0;
 			sensors[i]->STS.Distance = Distance;
 		}
 		
@@ -62,30 +67,11 @@ void FB_DistanceSensor(struct FB_DistanceSensor* inst)
 		/* alarm indication */
 		sensors[i]->STS.AlarmActiveColour = sensors[i]->STS.AlarmActive ? RED_COLOUR : GREEN_COLOUR;
 
-		if(sensors[i]->STS.Distance == OVERLOAD)
-		{
-			sensors[i]->STS.TooFar = 1;
-			sensors[i]->STS.TooClose = 0;
-			sensors[i]->ALM.OutOfBounds = 1;
-		}
-		else if(sensors[i]->STS.Distance == UNDERLOAD)
-		{
-			sensors[i]->STS.TooClose = 1;
-			sensors[i]->STS.TooFar = 0;
-			sensors[i]->ALM.OutOfBounds = 1;
-		}
-		else
-		{
-			sensors[i]->STS.TooClose = 0;
-			sensors[i]->STS.TooFar = 0;
-			sensors[i]->ALM.OutOfBounds = 0;
-		}
-
 		if(sensors[i]->STS.DeviceStatus == SENSOR_FAILURE || sensors[i]->ALM.OutOfBounds)
 		{
 			sensors[i]->STS.AlarmActive = 1;
 		}
-		else if(sensors[i]->STS.DeviceStatus == 0)
+		else if(sensors[i]->STS.DeviceStatus != SENSOR_FAILURE)
 		{
 			sensors[i]->STS.AlarmActive = 0;
 		}

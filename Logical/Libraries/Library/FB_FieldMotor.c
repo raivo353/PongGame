@@ -15,8 +15,6 @@
 	};
 #endif
 
-#define ENDBUTTON_BITMASK 0x4
-
 #define FieldMotor inst->FieldMotor
 
 _LOCAL TON_typ FieldMotorTimer;
@@ -28,10 +26,10 @@ void FB_FieldMotor(struct FB_FieldMotor* inst)
 	FieldMotor->STS.AlarmActiveColour = FieldMotor->STS.AlarmActive ? RED_COLOUR : GREEN_COLOUR;
 
 	/* input decoding */
-	FieldMotor->IO.EndButton = !((inst->digitalInput & ENDBUTTON_BITMASK) >> 2);
+	FieldMotor->IO.EndButton = !((inst->digitalInput & ENDBUTTON_BITMASK_FIELD) >> 2);
 	
 	/* stop request handling */
-	if(FieldMotor->CS.StopGame && !FieldMotor->STS.AlarmActive && !FieldMotor->STS.Interlocked)
+	if(FieldMotor->CS.StopGame && !FieldMotor->STS.Interlocked)
 	{
 		FieldMotor->STS.StateInt = STATE_STOPPING;
 	}
@@ -81,11 +79,11 @@ void FB_FieldMotor(struct FB_FieldMotor* inst)
 			{
 				if(!FieldMotor->STS.TimerStarted) 
 				{ 
+					FieldMotor->CS.Home = 1;
 					FieldMotorTimer.IN = 1; 
 					FieldMotor->STS.TimerStarted = 1;
-					FieldMotor->CS.Home = 1; 
 				} 			
-				if(FieldMotorTimer.Q) 
+				else if(FieldMotorTimer.Q) 
 				{ 
 					FieldMotorTimer.IN = 0;
 					FieldMotor->CS.Home = 0; 

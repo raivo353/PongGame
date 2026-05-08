@@ -14,9 +14,6 @@
 	};
 #endif
 
-#define MAX_ANGLE 18
-#define MIN_ANGLE 3
-
 #define FieldMotor inst->FieldMotor
 #define FieldControl inst->FieldControl
 #define InclinoSensor inst->InclinoSensor
@@ -28,7 +25,7 @@
 void FB_FieldControl(struct FB_FieldControl* inst)
 {
 	/* immediate stop override */
-	if(FieldControl->CS.StopGame && !FieldControl->STS.AlarmActive && !FieldControl->STS.Interlocked)
+	if(FieldControl->CS.StopGame && !FieldControl->STS.Interlocked)
 	{
     	FieldControl->STS.StateInt = STATE_STOPPING;
 	}

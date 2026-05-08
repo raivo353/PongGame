@@ -1,0 +1,18 @@
+(********************************************************************
+ * COPYRIGHT --  MyAutomation-IT
+ ********************************************************************
+ * Program: Tests_DistanceSensor_C
+ * File: variables.var
+ * Author: Raivo Berends
+ ********************************************************************
+ * Local variables of program Tests_DistanceSensor_C
+ ********************************************************************)
+(*Describe the test*)
+VAR
+	Testsuite : UtMgrTestSuite := (Name:='DistanceSensor_Tests',Type:=utMgrTEST_TYPE_C);
+END_VAR
+(*Variables used in the tests*)
+VAR
+	DistanceSensorFB : FB_DistanceSensor;
+	DistanceSensorStruct : UDT_DistanceSensor;
+END_VAR

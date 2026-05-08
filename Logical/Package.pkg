@@ -11,7 +11,6 @@
     <Object Type="Package" Description="gAxis01obj">gAxis01obj</Object>
     <Object Type="Package" Description="gAxis02obj">gAxis02obj</Object>
     <Object Type="DataObject" Language="Vc" Description="640x480 (VGA)">Visu</Object>
-    <Object Type="Package">UnitTestSample</Object>
     <Object Type="Package">UnitTests</Object>
   </Objects>
 </Package>

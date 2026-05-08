@@ -22,17 +22,6 @@
 #define DistanceSensorMiddle inst->DistanceSensorMiddle
 #define DistanceSensorRight inst->DistanceSensorRight
 
-#define MM_TO_POSITION 11.2
-#define MAX_POSITION PaddleMotor->STS.ReferencePosition - 100
-#define AUTOMODE_VELOCITY 5000
-#define MIN_FIELD_DISTANCE 50
-
-#define DISTANCE_BETWEEN_SENSORS_MM 24
-#define DISTANCE_SENSOR_LEFT_TO_PADDLE_MM 75
-
-#define GAME_OVER_TRIGGER_MS 5000
-#define SHOOT_DELAY_MS 300
-
 _LOCAL TON_typ SpeedTimer;
 _LOCAL TON_typ ShootTimer;
 _LOCAL TON_typ ShootDelayTimer;
@@ -43,10 +32,11 @@ void FB_BallControl(struct FB_BallControl* inst)
 	/* reset per cycle */
 	BallControl->STS.ShootCycleCompleted = 0;
 
-	if(BallControl->CS.StopGame && !BallControl->STS.AlarmActive && !BallControl->STS.Interlocked)
+	if(BallControl->CS.StopGame && !BallControl->STS.Interlocked)
 	{
 		/* immediate stop override */
 		BallControl->STS.StateInt = STATE_STOPPING;
+		Shooter->PAR.Intensity = 3;
 	}
 
 	switch(BallControl->STS.StateInt)
@@ -54,6 +44,17 @@ void FB_BallControl(struct FB_BallControl* inst)
 		case STATE_DISABLED:
 		{
 			BallControl->CS.Shoot = 0;
+
+			/* Allow parameter tuning only when inactive */
+			if(Shooter->HMI.IncreaseIntensity && Shooter->PAR.Intensity < MAX_INTENSITY)
+			{
+				Shooter->PAR.Intensity += 0.002;
+			}
+			else if(Shooter->HMI.DecreaseIntensity && Shooter->PAR.Intensity > MIN_INTENSITY)
+			{
+				Shooter->PAR.Intensity -= 0.002;
+			}
+
 			if(BallControl->STS.Initializing)
 			{
 				BallControl->STS.StateInt = STATE_INITIALIZING;
@@ -168,8 +169,8 @@ void FB_BallControl(struct FB_BallControl* inst)
 
 							if(SpeedTimer.ET > 0)
 							{
-								BallControl->STS.BallVelocity = (DISTANCE_BETWEEN_SENSORS_MM * 2.0f) / (float)SpeedTimer.ET;
-								BallControl->STS.TimeToPaddleMS = SpeedTimer.ET;//(DISTANCE_SENSOR_LEFT_TO_PADDLE_MM / BallControl->STS.BallVelocity);
+								BallControl->STS.BallVelocity = (DISTANCE_BETWEEN_SENSORS_MM * 2.0f) / (float)SpeedTimer.ET; // m/s
+								BallControl->STS.TimeToPaddleMS = SpeedTimer.ET;
 
 								ShootTimer.PT = BallControl->STS.TimeToPaddleMS;
 							}
@@ -203,7 +204,8 @@ void FB_BallControl(struct FB_BallControl* inst)
 							ShootTimer.IN = 0;
 
 							BallControl->STS.ShootState = 0;
-							ShootDelayTimer.PT = SHOOT_DELAY_MS;
+							ShootDelayTimer.PT = (DINT)(MS_50 * Shooter->PAR.Intensity);
+
 							ShootDelayTimer.IN = 1;
 						}
 					break;

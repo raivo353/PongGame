@@ -16,7 +16,6 @@
 	};
 #endif
 
-#define ENDBUTTON_BITMASK 0x2
 #define MIDDLE_POSITION 1450
 
 /* dynamic braking offset (speed-dependent approach distance) */
@@ -32,10 +31,10 @@ _LOCAL TON_typ PaddleMotorTimer;
 void FB_PaddleMotor(struct FB_PaddleMotor* inst)
 {
 	/* input decode */
-	PaddleMotor->IO.EndButton = !((inst->digitalInput & ENDBUTTON_BITMASK) >> 1);
+	PaddleMotor->IO.EndButton = !((inst->digitalInput & ENDBUTTON_BITMASK_PADDLE) >> 1);
 
 	/* stop request handling */
-	if(PaddleMotor->CS.StopGame && !PaddleMotor->STS.AlarmActive && !PaddleMotor->STS.Interlocked)
+	if(PaddleMotor->CS.StopGame && !PaddleMotor->STS.Interlocked)
 	{
 		PaddleMotor->STS.StateInt = STATE_STOPPING;
 	}

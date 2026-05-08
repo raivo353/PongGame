@@ -1,0 +1,23 @@
+(********************************************************************
+ * COPYRIGHT --  MyAutomation-IT
+ ********************************************************************
+ * Program: Tests_BallControl_C
+ * File: variables.var
+ * Author: Raivo Berends
+ ********************************************************************
+ * Local variables of program Tests_BallControl_C
+ ********************************************************************)
+(*Describe the test*)
+VAR
+	Testsuite : UtMgrTestSuite := (Name:='BallControl_Tests',Type:=utMgrTEST_TYPE_C);
+END_VAR
+(*Variables used in the tests*)
+VAR
+	BallControlFB : FB_BallControl;
+	DistanceSensorLeftStruct : UDT_DistanceSensor;
+	DistanceSensorMiddleStruct : UDT_DistanceSensor;
+	DistanceSensorRightStruct : UDT_DistanceSensor;
+	BallControlStruct : UDT_BallControl;
+	PaddleMotorStruct : UDT_PaddleMotor;
+	ShooterStruct : UDT_Shooter;
+END_VAR

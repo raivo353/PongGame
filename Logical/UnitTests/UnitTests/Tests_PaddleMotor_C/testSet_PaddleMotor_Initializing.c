@@ -16,8 +16,6 @@
 #include <string.h>
 
 #define MIDDLE_POSITION 1450
-#define ENDBUTTON_BITMASK 0x2
-
 
 _SETUP_TEST(void)
 {
@@ -48,7 +46,7 @@ _TEST test_Initializing_SetsParameters(void)
 
 _TEST test_Initializing_StartsHoming(void)
 {
-	PaddleMotorFB.digitalInput = 0; // EndButton = inactive
+	PaddleMotorFB.digitalInput = ENDBUTTON_BITMASK_PADDLE; // EndButton = inactive
 
 	PaddleMotorFB.PaddleMotor->STS.EndButtonHit = 0;
 

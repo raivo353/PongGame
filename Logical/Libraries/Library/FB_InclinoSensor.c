@@ -15,12 +15,6 @@
 	};
 #endif
 
-#define TO_DEGREES 100
-#define SHIFT_BYTE 8
-
-#define CENTERPOINT_NORMAL 7
-#define CENTERPOINT_SET 3
-
 #define InclinoSensor inst->InclinoSensor
 
 void FB_InclinoSensor(struct FB_InclinoSensor* inst)

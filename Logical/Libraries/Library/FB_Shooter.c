@@ -14,11 +14,6 @@
 	};
 #endif
 
-
-#define STATE_SHOOTING 30
-#define SHOOT_OUTPUT_BIT 3
-#define FAN_OUTPUT_BIT 0
-
 #define Shooter inst->Shooter
 
 void FB_Shooter(struct FB_Shooter* inst)
@@ -45,15 +40,6 @@ void FB_Shooter(struct FB_Shooter* inst)
 			Shooter->CS.EnableFan = 0;
 			Shooter->CS.Interlock = 0;
 
-			/* Allow parameter tuning only when inactive */
-			if(Shooter->HMI.IncreaseIntensity)
-			{
-				Shooter->PAR.Intensity += 0.1;
-			}
-			else if(Shooter->HMI.DecreaseIntensity)
-			{
-				Shooter->PAR.Intensity -= 0.1;
-			}
 			if(Shooter->CS.Start && !Shooter->STS.AlarmActive && !Shooter->STS.Interlocked)
 			{
 				Shooter->STS.StateInt = STATE_IDLE;

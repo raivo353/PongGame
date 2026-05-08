@@ -5,8 +5,14 @@
   <TaskClass Name="Cyclic#2" />
   <TaskClass Name="Cyclic#3" />
   <TaskClass Name="Cyclic#4">
+    <Task Name="Tests_Incl" Source="UnitTests.UnitTests.Tests_InclinoSensor_C.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
     <Task Name="Tests_Padd" Source="UnitTests.UnitTests.Tests_PaddleMotor_C.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
     <Task Name="Tests_Fiel" Source="UnitTests.UnitTests.Tests_FieldMotor_C.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
+    <Task Name="Tests_Pong" Source="UnitTests.UnitTests.Tests_PongGame_C.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
+    <Task Name="Tests_Ball" Source="UnitTests.UnitTests.Tests_BallControl_C.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
+    <Task Name="Tests_Fie1" Source="UnitTests.UnitTests.Tests_FieldControl_C.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
+    <Task Name="Tests_Dist" Source="UnitTests.UnitTests.Tests_DistanceSensor_C.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
+    <Task Name="Tests_Shoo" Source="UnitTests.UnitTests.Tests_Shooter_C.prg" Memory="UserROM" Language="ANSIC" Debugging="true" />
   </TaskClass>
   <TaskClass Name="Cyclic#5" />
   <TaskClass Name="Cyclic#6" />
@@ -33,7 +39,6 @@
     <LibraryObject Name="UnitTest" Source="Libraries.UnitTest.UnitTest.lby" Memory="None" Language="ANSIC" Debugging="true" />
     <LibraryObject Name="UtWs" Source="Libraries.UnitTest.UtWs.lby" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="UtMgr" Source="Libraries.UnitTest.UtMgr.lby" Memory="UserROM" Language="Binary" Debugging="true" />
-    <LibraryObject Name="SPLMyCalc" Source="UnitTestSample.Samples.Tests_Program.SPLMyCalc.lby" Memory="UserROM" Language="IEC" Debugging="true" />
     <LibraryObject Name="Library" Source="Libraries.Library.lby" Memory="UserROM" Language="ANSIC" Debugging="true" />
     <LibraryObject Name="arssl" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="fileio" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
