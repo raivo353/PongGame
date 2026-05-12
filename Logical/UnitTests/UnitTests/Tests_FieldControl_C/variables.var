@@ -1,0 +1,20 @@
+(********************************************************************
+ * COPYRIGHT --  MyAutomation-IT
+ ********************************************************************
+ * Program: Tests_FieldControl_C
+ * File: variables.var
+ * Author: Raivo Berends
+ ********************************************************************
+ * Local variables of program Tests_FieldControl_C
+ ********************************************************************)
+(*Describe the test*)
+VAR
+	Testsuite : UtMgrTestSuite := (Name:='FieldControl_Tests',Type:=utMgrTEST_TYPE_C);
+END_VAR
+(*Variables used in the tests*)
+VAR
+	FieldControlFB : FB_FieldControl;
+	FieldControlStruct : UDT_FieldControl;
+	FieldMotorStruct : UDT_FieldMotor;
+	InclinoSensorStruct : UDT_InclinoSensor;
+END_VAR

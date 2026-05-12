@@ -1,0 +1,20 @@
+(********************************************************************
+ * COPYRIGHT --  MyAutomation-IT
+ ********************************************************************
+ * Program: Tests_PongGame_C
+ * File: variables.var
+ * Author: Raivo Berends
+ ********************************************************************
+ * Local variables of program Tests_PongGame_C
+ ********************************************************************)
+(*Describe the test*)
+VAR
+	Testsuite : UtMgrTestSuite := (Name:='PongGame_Tests',Type:=utMgrTEST_TYPE_C);
+END_VAR
+(*Variables used in the tests*)
+VAR
+	PongGameFB : FB_PongGame;
+	PongGameStruct : UDT_PongGame;
+	BallControlStruct : UDT_BallControl;
+	FieldControlStruct : UDT_FieldControl;
+END_VAR

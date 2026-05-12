@@ -53,12 +53,14 @@
     <Source File="Bitmaps\Red_Arrow_Left_Small.bminfo"/>
     <Source File="Bitmaps\Red_Arrow_Right_Small.bminfo"/>
     <Source File="Bitmaps\Red_Arrow_Up_Small.bminfo"/>
+    <Source File="Bitmaps\keypad.bminfo"/>
     <Source File="Pages\StartPage.page"/>
     <Source File="Pages\ControlPanel.page"/>
     <Source File="Pages\AlarmPanel.page"/>
-    <Source File="Pages\ManualPage.page"/>
+    <Source File="Pages\HelpPage.page"/>
     <Source File="Pages\AutoModeHelp.page"/>
     <Source File="Pages\ManualModeHelp.page"/>
+    <Source File="Pages\AlarmPanelHelp.page"/>
     <Source File="StyleSheets\Color.vcs"/>
     <Source File="StyleSheets\StyleSheet_1.vcs"/>
     <Source File="Borders\FlatBorder.bdr"/>

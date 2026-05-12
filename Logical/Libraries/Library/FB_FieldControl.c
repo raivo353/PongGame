@@ -14,23 +14,20 @@
 	};
 #endif
 
-#define MAX_ANGLE 18
-#define MIN_ANGLE 3
-
 #define FieldMotor inst->FieldMotor
 #define FieldControl inst->FieldControl
 #define InclinoSensor inst->InclinoSensor
 
-#define STOPPING_OFFSET (FieldControl->PAR.Angle * -0.068) + 1.3
+#define STOPPING_SLOPE -0.068
+#define STOPPING_OFFSET_BASE 1.3
+#define STOPPING_OFFSET ((FieldControl->PAR.Angle * STOPPING_SLOPE) + STOPPING_OFFSET_BASE)
 
-
-/* TODO: Add your comment here */
 void FB_FieldControl(struct FB_FieldControl* inst)
 {
-
-	if(FieldControl->CS.StopGame)
+	/* immediate stop override */
+	if(FieldControl->CS.StopGame && !FieldControl->STS.Interlocked)
 	{
-		FieldControl->STS.StateInt = STATE_STOPPING;
+    	FieldControl->STS.StateInt = STATE_STOPPING;
 	}
 
 	switch(FieldControl->STS.StateInt)
@@ -39,6 +36,7 @@ void FB_FieldControl(struct FB_FieldControl* inst)
 		{
 			FieldControl->STS.AtTargetPosition = 0;
 
+			/* manual angle adjust */
 			if(FieldControl->HMI.IncreaseAngle && FieldControl->PAR.Angle < MAX_ANGLE)
 			{
 				FieldControl->PAR.Angle += 0.002;
@@ -59,6 +57,7 @@ void FB_FieldControl(struct FB_FieldControl* inst)
 			{
 				FieldControl->STS.StateInt = STATE_IDLE;
 			}
+			/* target alignment detect */
 			else if((FieldControl->STS.CurrentAngle + STOPPING_OFFSET >= FieldControl->PAR.Angle) && !FieldControl->STS.AtTargetPosition && FieldMotor->STS.EndButtonHit)
 			{	
 				FieldControl->STS.AtTargetPosition = 1;
@@ -75,11 +74,18 @@ void FB_FieldControl(struct FB_FieldControl* inst)
 		}
 		case STATE_RUNNING:
 		{
+			/* motor safety clamp */
 			FieldMotor->CS.Stop = 0;
+
 			if(FieldControl->STS.CurrentAngle >= MAX_ANGLE)
 			{
 				FieldMotor->HMI.MoveJogNeg = 0;
 			}
+			else if(FieldControl->STS.CurrentAngle <= MIN_ANGLE)
+			{
+				FieldMotor->HMI.MoveJogPos = 0;
+			}
+
 			break;
 		}
 		case STATE_STOPPING:
@@ -92,16 +98,17 @@ void FB_FieldControl(struct FB_FieldControl* inst)
 		}
 	}
 
-
-
-	/*TODO: Add your code here*/
+	/* command forwarding */
 	FieldMotor->CS.Initialize = FieldControl->CS.Initialize;
 	FieldMotor->CS.Start = FieldControl->CS.Start;
 	FieldMotor->CS.StopGame = FieldControl->CS.StopGame;
 	FieldMotor->CS.ErrorAcknowledge = FieldControl->CS.ErrorAcknowledge;
 	FieldMotor->STS.AtTargetPosition = FieldControl->STS.AtTargetPosition;
 	
+	/* sensor mapping */
 	FieldControl->STS.CurrentAngle = InclinoSensor->STS.CurrentAngle;
+
+	/* subsystem state mapping */
 	FieldControl->STS.Disabled = FieldMotor->STS.Disabled;
 	FieldControl->STS.AlarmActive = FieldMotor->STS.AlarmActive || InclinoSensor->STS.AlarmActive;
 	FieldControl->STS.Interlocked = FieldMotor->STS.Interlocked;
@@ -110,6 +117,7 @@ void FB_FieldControl(struct FB_FieldControl* inst)
 	FieldControl->STS.Moving = FieldMotor->STS.Moving;
 	FieldControl->STS.Initializing = FieldMotor->STS.Initializing;
 
+	/* shared calibration command */
 	FieldControl->CS.SetCenterPoint = FieldMotor->CS.SetCenterPoint;
 	InclinoSensor->CS.SetCenterPoint = FieldMotor->CS.SetCenterPoint;
 

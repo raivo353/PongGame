@@ -14,19 +14,9 @@
 	};
 #endif
 
-#define OVERLOAD 32760
-#define UNDERLOAD -32760
-#define SHIFT_BYTE 8
-#define NUM_SENSORS 3
-
-#define OUT1_BITMASK 0x1
-#define OUT2_BITMASK 0x2
-#define DEVICE_STATUS_BITMASK 0xF0
-
-/* TODO: Add your comment here */
 void FB_DistanceSensor(struct FB_DistanceSensor* inst)
 {
-	/*TODO: Add your code here*/
+	/* sensor list abstraction */
 	UDT_DistanceSensor* sensors[NUM_SENSORS] = 
 	{
 		inst->DistanceSensorLeft,
@@ -37,51 +27,51 @@ void FB_DistanceSensor(struct FB_DistanceSensor* inst)
 	int i;
 	for(i = 0; i < NUM_SENSORS; i++)
 	{
+		/* combine MSB/LSB */
 		INT Distance = ((sensors[i]->IO.DataMSB << SHIFT_BYTE) | sensors[i]->IO.DataLSB);
-		if(Distance >= OVERLOAD || Distance <= UNDERLOAD)
-		{
-			sensors[i]->STS.Distance = 0;
-		}
-		else
-		{
-			sensors[i]->STS.Distance = Distance;
-		}
-		
-		sensors[i]->IO.OUT1 = sensors[i]->IO.SensorInfo & OUT1_BITMASK;
-		sensors[i]->IO.OUT2 = (sensors[i]->IO.SensorInfo & OUT2_BITMASK) >> 1;
-		sensors[i]->STS.BallDetected = sensors[i]->STS.Distance >= 45 && sensors[i]->STS.Distance <= 300;
-		sensors[i]->STS.DeviceStatus = (sensors[i]->IO.SensorInfo & DEVICE_STATUS_BITMASK) >> 4; 
-		
-		sensors[i]->STS.AlarmActiveColour = GREEN_COLOUR;
-		if(sensors[i]->STS.AlarmActive)
-		{
-			sensors[i]->STS.AlarmActiveColour = RED_COLOUR;
-		}
 
-		if(sensors[i]->STS.Distance == OVERLOAD)
+		/* clamp invalid sensor range */
+		if(Distance > BALL_MAX_DISTANCE && Distance < OVERLOAD)
 		{
 			sensors[i]->STS.TooFar = 1;
 			sensors[i]->STS.TooClose = 0;
 			sensors[i]->ALM.OutOfBounds = 1;
 		}
-		else if(sensors[i]->STS.Distance == UNDERLOAD)
+		else if(Distance < BALL_MIN_DISTANCE && Distance > UNDERLOAD)
 		{
 			sensors[i]->STS.TooClose = 1;
 			sensors[i]->STS.TooFar = 0;
 			sensors[i]->ALM.OutOfBounds = 1;
+		}
+		else if(Distance <= UNDERLOAD || Distance >= OVERLOAD)
+		{
+			sensors[i]->STS.Distance = 0;
+			sensors[i]->ALM.OutOfBounds = 0;
+			sensors[i]->STS.TooClose = 0;
+			sensors[i]->STS.TooFar = 0;
 		}
 		else
 		{
 			sensors[i]->STS.TooClose = 0;
 			sensors[i]->STS.TooFar = 0;
 			sensors[i]->ALM.OutOfBounds = 0;
+			sensors[i]->STS.Distance = Distance;
 		}
+		
+		/* decode sensor IO bits */
+		sensors[i]->IO.OUT1 = sensors[i]->IO.SensorInfo & OUT1_BITMASK;
+		sensors[i]->IO.OUT2 = (sensors[i]->IO.SensorInfo & OUT2_BITMASK) >> 1;
+		sensors[i]->STS.BallDetected = sensors[i]->STS.Distance >= BALL_MIN_DISTANCE && sensors[i]->STS.Distance <= BALL_MAX_DISTANCE;
+		sensors[i]->STS.DeviceStatus = (sensors[i]->IO.SensorInfo & DEVICE_STATUS_BITMASK) >> 4; 
+		
+		/* alarm indication */
+		sensors[i]->STS.AlarmActiveColour = sensors[i]->STS.AlarmActive ? RED_COLOUR : GREEN_COLOUR;
 
-		if(sensors[i]->STS.DeviceStatus == 4 || sensors[i]->ALM.OutOfBounds)
+		if(sensors[i]->STS.DeviceStatus == SENSOR_FAILURE)
 		{
 			sensors[i]->STS.AlarmActive = 1;
 		}
-		else if(sensors[i]->STS.DeviceStatus == 0)
+		else if(sensors[i]->STS.DeviceStatus != SENSOR_FAILURE)
 		{
 			sensors[i]->STS.AlarmActive = 0;
 		}

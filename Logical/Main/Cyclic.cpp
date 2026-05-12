@@ -22,4 +22,9 @@ void _CYCLIC ProgramCyclic(void)
 	FB_PongGame(&PongGame);
 	
 	digitalOutput = Shooter.digitalOutput;
+	
+	if(g_PongGame.PAR.Highscore > g_Highscore)
+	{
+		g_Highscore = g_PongGame.PAR.Highscore;
+	}
 }

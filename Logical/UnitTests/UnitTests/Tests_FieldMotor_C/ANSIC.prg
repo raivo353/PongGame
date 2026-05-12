@@ -8,5 +8,7 @@
     <File>testSet_FieldMotor_Disabled.c</File>
     <File>testSet_FieldMotor_Initializing.c</File>
     <File>testSet_FieldMotor_Idle.c</File>
+    <File>testSet_FieldMotor_Running.c</File>
+    <File>testSet_FieldMotor_Stopping.c</File>
   </Files>
 </Program>

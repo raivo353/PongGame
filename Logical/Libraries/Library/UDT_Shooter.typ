@@ -1,14 +1,5 @@
 
 TYPE
-	UDT_Shooter_PAR : 	STRUCT 
-		Intensity : REAL;
-	END_STRUCT;
-	UDT_Shooter_HMI : 	STRUCT 
-		EnableFan : BOOL;
-		Shoot : BOOL;
-		IncreaseIntensity : BOOL;
-		DecreaseIntensity : BOOL;
-	END_STRUCT;
 	UDT_Shooter_CS : 	STRUCT 
 		Interlock : BOOL;
 		EnableFan : BOOL;
@@ -16,6 +7,15 @@ TYPE
 		StopGame : BOOL;
 		Start : BOOL;
 		AutoMode : BOOL;
+	END_STRUCT;
+	UDT_Shooter_HMI : 	STRUCT 
+		EnableFan : BOOL;
+		Shoot : BOOL;
+		IncreaseIntensity : BOOL;
+		DecreaseIntensity : BOOL;
+	END_STRUCT;
+	UDT_Shooter_PAR : 	STRUCT 
+		Intensity : REAL;
 	END_STRUCT;
 	UDT_Shooter_STS : 	STRUCT 
 		Disabled : BOOL;

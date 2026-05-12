@@ -24,26 +24,27 @@
 _LOCAL TON_typ AlarmTimer;
 _LOCAL BOOL BlinkState;
 
-/* TODO: Add your comment here */
 void FB_PongGame(struct FB_PongGame* inst)
 {
-	if(PongGame->CS.StopGame || PongGame->HMI.StopGame)
+	if((PongGame->CS.StopGame ^ PongGame->HMI.StopGame) && !PongGame->STS.Interlocked)
 	{
+		/* immediate stop override */
 		PongGame->STS.StateInt = STATE_STOPPING;
 	}
-	PongGame->STS.AlarmActiveColour = BLACK_COLOUR;
+	
 	if(PongGame->STS.AlarmActive)
 	{
+		/* prevent repeated stop triggers */
 		PongGame->CS.StopGame = !PongGame->STS.GameStopped;
 
 		if(PongGame->CS.StopGame && !PongGame->STS.GameStopped)
 		{
     		PongGame->STS.GameStopped = 1;
-			//PongGame->CS.StopGame = 0;
 		}
 		
+		/* 1s blink generator */
 		AlarmTimer.IN = 1;
-		AlarmTimer.PT = 1000;
+		AlarmTimer.PT = MS_1000;
 		TON(&AlarmTimer);
 
 		if(AlarmTimer.Q)
@@ -53,19 +54,16 @@ void FB_PongGame(struct FB_PongGame* inst)
 			AlarmTimer.IN = 0;
 			TON(&AlarmTimer);
 		}
-		if(BlinkState)
-		{
-			PongGame->STS.AlarmActiveColour = RED_COLOUR;
-		}
-		else
-		{
-			PongGame->STS.AlarmActiveColour = BLACK_COLOUR;
-		}
+
+		PongGame->STS.AlarmActiveColour = BlinkState ? RED_COLOUR : BLACK_COLOUR;
 	}
 	else
 	{
+		PongGame->STS.AlarmActiveColour = BLACK_COLOUR;
+
 		AlarmTimer.IN = 0;
 		TON(&AlarmTimer);
+
 		BlinkState = 0;
 	}
 	
@@ -76,7 +74,6 @@ void FB_PongGame(struct FB_PongGame* inst)
 		{
 			PongGame->STS.GameStopped = 0;
 			PongGame->CS.StopGame = 0;
-			PongGame->PAR.Score = 0;
 			strncpy(PongGame->STS.StateString, "Disabled", sizeof(PongGame->STS.StateString));
 			if(PongGame->STS.Initializing)
 			{
@@ -86,6 +83,19 @@ void FB_PongGame(struct FB_PongGame* inst)
 		}
 		case STATE_INITIALIZING:
 		{
+			PongGame->PAR.Score = 0;
+			BOOL errorsAcknowledged;
+			int i;
+			if(!errorsAcknowledged)
+			{
+				for(i = 0; i < 8; i++)
+				{
+					/*generate 4 pulses of ErrorAcknowledge signals */
+					PongGame->CS.ErrorAcknowledge = (i % 2 == 1) ? 0 : 1;
+				}
+				errorsAcknowledged = 1;
+			}
+
 			strncpy(PongGame->STS.StateString, "Initializing...", sizeof(PongGame->STS.StateString));
 			if(PongGame->STS.Idle)
 			{
@@ -131,18 +141,23 @@ void FB_PongGame(struct FB_PongGame* inst)
 		}
 	}
 
+
+		/*Signals can only be sent from HMI or CS, not both */
 	BallControl->CS.Initialize = PongGame->HMI.Initialize ^ PongGame->CS.Initialize;
 	BallControl->CS.StopGame = PongGame->HMI.StopGame ^ PongGame->CS.StopGame;
 	BallControl->CS.Start = PongGame->HMI.Start ^ PongGame->CS.Start;
+	FieldControl->CS.Initialize = PongGame->HMI.Initialize ^ PongGame->CS.Initialize;
+	
+	FieldControl->CS.Start = PongGame->HMI.Start ^ PongGame->CS.Start;
+	
+	/*Signals can only be sent from HMI or CS, not both */
+	FieldControl->CS.StopGame = PongGame->HMI.StopGame ^ PongGame->CS.StopGame;
 	BallControl->CS.AutoMode = PongGame->HMI.AutoMode ^ PongGame->CS.AutoMode;
 	BallControl->CS.ErrorAcknowledge = PongGame->HMI.ErrorAcknowledge ^ PongGame->CS.ErrorAcknowledge;
 
-	FieldControl->CS.Initialize = PongGame->HMI.Initialize ^ PongGame->CS.Initialize;
-	FieldControl->CS.StopGame = PongGame->HMI.StopGame ^ PongGame->CS.StopGame;
-	FieldControl->CS.Start = PongGame->HMI.Start ^ PongGame->CS.Start;
-	
 	FieldControl->STS.AutoActive = PongGame->HMI.AutoMode || PongGame->CS.AutoMode;
 	
+	/* subsystem state mapping */
 	PongGame->STS.AutoActive = BallControl->STS.AutoActive && FieldControl->STS.AutoActive;
 	PongGame->STS.Initializing = BallControl->STS.Initializing && FieldControl->STS.Initializing;
 	PongGame->STS.AlarmActive = BallControl->STS.AlarmActive || FieldControl->STS.AlarmActive;

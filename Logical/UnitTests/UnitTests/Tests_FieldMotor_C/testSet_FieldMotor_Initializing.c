@@ -15,7 +15,6 @@
 #include "CommonTypes.h"
 #include <string.h>
 
-#define ENDBUTTON_BITMASK 0x4
 
 _SETUP_TEST(void)
 {
@@ -42,7 +41,7 @@ _TEST test_Initializing_SetsPowerAndParameters(void)
 
 _TEST test_Initializing_StartsHomingSequence(void)
 {
-	FieldMotorFB.digitalInput = ENDBUTTON_BITMASK;
+	FieldMotorFB.digitalInput = ENDBUTTON_BITMASK_FIELD;
 	FieldMotorFB.FieldMotor->STS.EndButtonHit = 0;
 
 	FB_FieldMotor(&FieldMotorFB);

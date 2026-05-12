@@ -27,13 +27,14 @@
       <TextGroup>
         <TextLayer LanguageId="en">
           <Text ID="98916" Value="Start page"/>
-          <Text ID="98918" Value="AUTO MODE"/>
-          <Text ID="98919" Value="1. Place the ball on top of the field.\n2. The game will start playing in auto mode!\n"/>
-          <Text ID="98920" Value="Manual page"/>
+          <Text ID="98918" Value="MANUAL MODE"/>
+          <Text ID="98919" Value="1. Remove the wooden bumpers on the field.\n2. Open the control panel.\n3. Turn on the ventilator\n4. Adjust the parameters as desired.\n5. Manually control the paddle and field.\n"/>
+          <Text ID="98920" Value="Help page"/>
           <Text ID="98922" Value="Rules:\n"/>
-          <Text ID="98923" Value="1. Every successfull ball launch is +1 score.\n2. If the paddle did not shoot the ball high enough (past all the sensors), GAME OVER!\n3. If the ball does not roll back down in 5 seconds, GAME OVER!\n4. Press                   to stop the game while the game \n\nis still playing\n5. The control panel can be used to check out live game data, manual controls are DISABLED."/>
-          <Text ID="98924" Value="Stop"/>
-          <Text ID="98925" Value="Auto"/>
+          <Text ID="98923" Value="1. The shooter is only available when the ventilator is enabled.\n2. Paddle and field speeds can be set between 100 and 2000."/>
+          <Text ID="99169" Value="Move paddle left &lt;-\n"/>
+          <Text ID="99170" Value="-&gt; Move paddle right"/>
+          <Text ID="99171" Value="    V\nShoot!"/>
         </TextLayer>
         <TextLayer LanguageId="de">
           <Text ID="98916" Value="Startscherm"/>
@@ -42,8 +43,9 @@
           <Text ID="98920" Value=""/>
           <Text ID="98922" Value="Text_1"/>
           <Text ID="98923" Value="Text_1"/>
-          <Text ID="98924" Value=""/>
-          <Text ID="98925" Value=""/>
+          <Text ID="99169" Value="Text_1"/>
+          <Text ID="99170" Value="Text_1"/>
+          <Text ID="99171" Value="Text_1"/>
         </TextLayer>
         <IndexMap>
           <Index ID="98916" Value="75"/>
@@ -52,8 +54,9 @@
           <Index ID="98920" Value="79"/>
           <Index ID="98922" Value="81"/>
           <Index ID="98923" Value="82"/>
-          <Index ID="98924" Value="83"/>
-          <Index ID="98925" Value="84"/>
+          <Index ID="99169" Value="6"/>
+          <Index ID="99170" Value="7"/>
+          <Index ID="99171" Value="8"/>
         </IndexMap>
       </TextGroup>
       <Controls>
@@ -90,22 +93,22 @@
           <Property Name="Font" Value="Source[local].Font[BigFont]"/>
           <Property Name="ForeColor" Value="16"/>
           <Property Name="Height" Value="44"/>
-          <Property Name="Left" Value="218"/>
+          <Property Name="Left" Value="210"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="77"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="11"/>
-          <Property Name="Width" Value="210"/>
+          <Property Name="Top" Value="10"/>
+          <Property Name="Width" Value="240"/>
         </Control>
         <Control ClassId="0x00001004" Name="Text_2">
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Font" Value="Source[local].Font[MiddleFont]"/>
           <Property Name="ForeColor" Value="16"/>
-          <Property Name="Height" Value="60"/>
+          <Property Name="Height" Value="135"/>
           <Property Name="Left" Value="40"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
@@ -131,7 +134,7 @@
           <Property Name="ForeColor" Value="16"/>
           <Property Name="Height" Value="50"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="0"/>
+          <Property Name="Left" Value="1"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextSource" Value="None"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
@@ -150,7 +153,7 @@
           <Property Name="Font" Value="Source[local].Font[MiddleFont]"/>
           <Property Name="ForeColor" Value="16"/>
           <Property Name="Height" Value="32"/>
-          <Property Name="Left" Value="20"/>
+          <Property Name="Left" Value="22"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -158,7 +161,7 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="81"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="139"/>
+          <Property Name="Top" Value="199"/>
           <Property Name="Width" Value="242"/>
         </Control>
         <Control ClassId="0x00001004" Name="Text_5">
@@ -166,8 +169,8 @@
           <Property Name="Description" Value=""/>
           <Property Name="Font" Value="Source[local].Font[MiddleFont]"/>
           <Property Name="ForeColor" Value="16"/>
-          <Property Name="Height" Value="236"/>
-          <Property Name="Left" Value="22"/>
+          <Property Name="Height" Value="109"/>
+          <Property Name="Left" Value="24"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -175,38 +178,71 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="82"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="161"/>
+          <Property Name="Top" Value="220"/>
           <Property Name="Width" Value="589"/>
         </Control>
-        <Control ClassId="0x00001002" Name="Button_11">
-          <Property Name="AlignmentHorizontal" Value="Center"/>
-          <Property Name="BackColor" Value="51"/>
-          <Property Name="BitmapIndexDatapoint" Value="None"/>
-          <Property Name="BitmapSource" Value="None"/>
-          <Property Name="Border" Value="Source[local].Border[Double3D]"/>
+        <Control ClassId="0x00001005" Name="Bitmap_1">
+          <Property Name="Bitmap" Value="Source[local].Bitmap[keypad]"/>
+          <Property Name="BitmapSource" Value="SingleBitmap"/>
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
-          <Property Name="EmbVirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_36]"/>
+          <Property Name="Height" Value="87"/>
+          <Property Name="IndexDatapoint" Value="None"/>
+          <Property Name="Left" Value="187"/>
+          <Property Name="SimulationValue" Value="0"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
+          <Property Name="Top" Value="300"/>
+          <Property Name="Width" Value="242"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_3">
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
           <Property Name="Font" Value="Source[local].Font[MiddleFont]"/>
           <Property Name="ForeColor" Value="16"/>
-          <Property Name="Height" Value="40"/>
-          <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="123"/>
-          <Property Name="PressedBackColor" Value="10"/>
-          <Property Name="PressedBitmapSource" Value="Source[embedded].Property[BitmapSource]"/>
-          <Property Name="PressedBorder" Value="Source[local].Border[Double3D]"/>
-          <Property Name="PressedForeColor" Value="0"/>
-          <Property Name="PressedTextGroup" Value="Source[embedded].TextGroup"/>
-          <Property Name="PressedTextIndex" Value="84"/>
-          <Property Name="PressedTextSource" Value="SingleText"/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="3"/>
+          <Property Name="Multiline" Value="Automatic"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
-          <Property Name="TextIndex" Value="83"/>
-          <Property Name="TextIndexDatapoint" Value="None"/>
-          <Property Name="TextSimulationValue" Value="0"/>
+          <Property Name="TextIndexOffset" Value="6"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="275"/>
-          <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_36]"/>
+          <Property Name="Top" Value="333"/>
+          <Property Name="Width" Value="251"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_6">
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[MiddleFont]"/>
+          <Property Name="ForeColor" Value="16"/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="394"/>
+          <Property Name="Multiline" Value="Automatic"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="7"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="333"/>
+          <Property Name="Width" Value="242"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_7">
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[MiddleFont]"/>
+          <Property Name="ForeColor" Value="16"/>
+          <Property Name="Height" Value="90"/>
+          <Property Name="Left" Value="272"/>
+          <Property Name="Multiline" Value="Automatic"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="8"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="373"/>
           <Property Name="Width" Value="100"/>
         </Control>
       </Controls>
@@ -232,7 +268,7 @@
               <Property Name="Description" Value=""/>
               <Property Name="Locking" Value="Never"/>
               <Property Name="Name" Value="Action_0"/>
-              <Property Name="Page" Value="Source[local].Page[ManualPage]"/>
+              <Property Name="Page" Value="Source[local].Page[HelpPage]"/>
               <Property Name="Target" Value="Page"/>
             </KeyAction>
           </KeyActions>

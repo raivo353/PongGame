@@ -11,9 +11,6 @@ TYPE
 		ErrorAcknowledge : BOOL;
 		StopGame : BOOL;
 	END_STRUCT;
-	UDT_BallControl_HMI : 	STRUCT 
-		dummy : BOOL;
-	END_STRUCT;
 	UDT_BallControl_PAR : 	STRUCT 
 		Position : REAL;
 		DesiredPosition : REAL;
@@ -32,12 +29,14 @@ TYPE
 		TimeToPaddleMS : DINT;
 		ShootCycleCompleted : BOOL;
 		PrevShootState : USINT;
-		NewShootCycleTimerET : UINT;
 		GameOver : BOOL;
+		PaddlePositionMM : INT;
+		FirstRun : BOOL;
+	END_STRUCT;
+	UDT_BallControl_HMI : 	STRUCT 
+		dummy : BOOL;
 	END_STRUCT;
 	UDT_BallControl_ALM : 	STRUCT 
-		ShooterAlarm : BOOL;
-		MotorAlarm : BOOL;
-		DistanceSensorAlarm : BOOL;
+		dummy : BOOL;
 	END_STRUCT;
 END_TYPE

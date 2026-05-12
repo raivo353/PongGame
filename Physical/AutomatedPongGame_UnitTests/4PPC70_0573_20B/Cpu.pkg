@@ -13,6 +13,6 @@
     <Build AnsicIncludeDirectories="\Logical\Libraries\UnitTest\UnitTest\,\Logical\Libraries\Library\" GccVersion="4.1.2" GeneratePPCode="false" PreBuildStep="" />
     <DefaultTargetMemory Tasks="UserROM" />
     <Transfer GenerateRUCPackage="true" RunUnitTestsAfterTransfer="true" SavedOfflineInstallationFolder="" SavedPipDestinationFolder="" SavedRuntimeUtilityCenterPackagePath="" />
-    <OnlineConfiguration Name="ARsim_TCPIP" DeviceType="TCPIP" DeviceParameters="/IF=tcpip /LOPO=11159 /SA=1" ConnectionParameters="/RT=1000 /AM=* /DAIP=127.0.0.1 /REPO=11160 /ANSL=1" Description="" />
+    <OnlineConfiguration Name="ARsim_TCPIP" DeviceType="TCPIP" DeviceParameters="/IF=tcpip /LOPO=11159 /SA=1" ConnectionParameters="/COMT=2500 /RT=1000 /AM=* /DAIP=127.0.0.1 /REPO=11160 /ANSL=1" Description="" />
   </Configuration>
 </Cpu>

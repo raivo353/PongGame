@@ -20,6 +20,8 @@
       <Parameter ID="ActivateSnmp" Value="2" />
     </Connector>
     <Parameter ID="ConfigurationID" Value="AutomatedPongGame_Config1" />
+    <Parameter ID="PermanentPvSize" Value="108" />
+    <Parameter ID="RemanentGlobalPvSize" Value="108" />
     <Parameter ID="TimerDeviceType" Value="EPLX2X" />
     <Parameter ID="TimerDevice" Value="4PPC70_0573_20B.IF1" />
     <Parameter ID="TaskClassIdleTime" Value="2000" />

@@ -83,40 +83,6 @@ _TEST test_Running_DecreaseJogSpeed(void)
 	TEST_DONE;
 }
 
-_TEST test_Running_IncreaseAccDec(void)
-{
-	PaddleMotorFB.PaddleMotor->CS.AutoMode = 0;
-
-	PaddleMotorFB.PaddleMotor->PAR.Acceleration = 1000;
-	PaddleMotorFB.PaddleMotor->PAR.Deceleration = 1000;
-
-	PaddleMotorFB.PaddleMotor->HMI.IncreaseAccDec = 1;
-
-	FB_PaddleMotor(&PaddleMotorFB);
-
-	TEST_ASSERT_EQUAL_INT(1010, PaddleMotorFB.PaddleMotor->PAR.Acceleration);
-	TEST_ASSERT_EQUAL_INT(1010, PaddleMotorFB.PaddleMotor->PAR.Deceleration);
-
-	TEST_DONE;
-}
-
-_TEST test_Running_DecreaseAccDec(void)
-{
-	PaddleMotorFB.PaddleMotor->CS.AutoMode = 0;
-
-	PaddleMotorFB.PaddleMotor->PAR.Acceleration = 2000;
-	PaddleMotorFB.PaddleMotor->PAR.Deceleration = 2000;
-
-	PaddleMotorFB.PaddleMotor->HMI.DecreaseAccDec = 1;
-
-	FB_PaddleMotor(&PaddleMotorFB);
-
-	TEST_ASSERT_EQUAL_INT(1990, PaddleMotorFB.PaddleMotor->PAR.Acceleration);
-	TEST_ASSERT_EQUAL_INT(1990, PaddleMotorFB.PaddleMotor->PAR.Deceleration);
-
-	TEST_DONE;
-}
-
 _TEST test_Running_AutoMode_ResetsHMIInputs(void)
 {
 	PaddleMotorFB.PaddleMotor->STS.AutoActive = 1;
@@ -272,7 +238,7 @@ _TEST test_Running_StoppingOffset_AffectsUpperLimit(void)
 B+R UnitTest: This is generated code.
 Do not edit! Do not move!
 Description: UnitTest Testprogramm infrastructure (TestSet).
-LastUpdated: 2026-05-01 12:04:37Z
+LastUpdated: 2026-05-07 08:15:55Z
 By B+R UnitTest Helper Version: 2.0.2.35
 */
 UNITTEST_FIXTURES(fixtures)
@@ -281,8 +247,6 @@ UNITTEST_FIXTURES(fixtures)
 	new_TestFixture("test_Running_ManualMode_StopsJogging", test_Running_ManualMode_StopsJogging), 
 	new_TestFixture("test_Running_IncreaseJogSpeed", test_Running_IncreaseJogSpeed), 
 	new_TestFixture("test_Running_DecreaseJogSpeed", test_Running_DecreaseJogSpeed), 
-	new_TestFixture("test_Running_IncreaseAccDec", test_Running_IncreaseAccDec), 
-	new_TestFixture("test_Running_DecreaseAccDec", test_Running_DecreaseAccDec), 
 	new_TestFixture("test_Running_AutoMode_ResetsHMIInputs", test_Running_AutoMode_ResetsHMIInputs), 
 	new_TestFixture("test_Running_LowerLimitProtection", test_Running_LowerLimitProtection), 
 	new_TestFixture("test_Running_UpperLimitProtection_EndButton", test_Running_UpperLimitProtection_EndButton), 
