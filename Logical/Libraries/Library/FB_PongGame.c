@@ -74,7 +74,6 @@ void FB_PongGame(struct FB_PongGame* inst)
 		{
 			PongGame->STS.GameStopped = 0;
 			PongGame->CS.StopGame = 0;
-			PongGame->PAR.Score = 0;
 			strncpy(PongGame->STS.StateString, "Disabled", sizeof(PongGame->STS.StateString));
 			if(PongGame->STS.Initializing)
 			{
@@ -84,6 +83,19 @@ void FB_PongGame(struct FB_PongGame* inst)
 		}
 		case STATE_INITIALIZING:
 		{
+			PongGame->PAR.Score = 0;
+			BOOL errorsAcknowledged;
+			int i;
+			if(!errorsAcknowledged)
+			{
+				for(i = 0; i < 8; i++)
+				{
+					/*generate 4 pulses of ErrorAcknowledge signals */
+					PongGame->CS.ErrorAcknowledge = (i % 2 == 1) ? 0 : 1;
+				}
+				errorsAcknowledged = 1;
+			}
+
 			strncpy(PongGame->STS.StateString, "Initializing...", sizeof(PongGame->STS.StateString));
 			if(PongGame->STS.Idle)
 			{
@@ -129,16 +141,14 @@ void FB_PongGame(struct FB_PongGame* inst)
 		}
 	}
 
-	if(!PongGame->STS.AlarmActive && !PongGame->STS.Interlocked)
-	{
+
 		/*Signals can only be sent from HMI or CS, not both */
-		BallControl->CS.Initialize = PongGame->HMI.Initialize ^ PongGame->CS.Initialize;
-		BallControl->CS.StopGame = PongGame->HMI.StopGame ^ PongGame->CS.StopGame;
-		BallControl->CS.Start = PongGame->HMI.Start ^ PongGame->CS.Start;
-		FieldControl->CS.Initialize = PongGame->HMI.Initialize ^ PongGame->CS.Initialize;
-		
-		FieldControl->CS.Start = PongGame->HMI.Start ^ PongGame->CS.Start;
-	}
+	BallControl->CS.Initialize = PongGame->HMI.Initialize ^ PongGame->CS.Initialize;
+	BallControl->CS.StopGame = PongGame->HMI.StopGame ^ PongGame->CS.StopGame;
+	BallControl->CS.Start = PongGame->HMI.Start ^ PongGame->CS.Start;
+	FieldControl->CS.Initialize = PongGame->HMI.Initialize ^ PongGame->CS.Initialize;
+	
+	FieldControl->CS.Start = PongGame->HMI.Start ^ PongGame->CS.Start;
 	
 	/*Signals can only be sent from HMI or CS, not both */
 	FieldControl->CS.StopGame = PongGame->HMI.StopGame ^ PongGame->CS.StopGame;

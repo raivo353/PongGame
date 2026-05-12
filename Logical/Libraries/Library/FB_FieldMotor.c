@@ -158,13 +158,7 @@ void FB_FieldMotor(struct FB_FieldMotor* inst)
 					FieldMotor->PAR.JogVelocity--;
 				}
 			}			
-			else
-			{
-				/* auto mode overrides HMI motion */
-				FieldMotor->HMI.MoveAbsolute = 0;
-				FieldMotor->HMI.MoveJogNeg = 0;
-				FieldMotor->HMI.MoveJogPos = 0;
-			}
+
 			/* end switch safety override */
 			if(FieldMotor->IO.EndButton)
 			{

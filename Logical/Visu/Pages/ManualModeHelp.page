@@ -28,7 +28,7 @@
         <TextLayer LanguageId="en">
           <Text ID="98916" Value="Start page"/>
           <Text ID="98918" Value="MANUAL MODE"/>
-          <Text ID="98919" Value="1. Remove the wooden bumpers on the field.\n2. Open the control panel.\n2. Adjust the parameters as desired.\n3. Manually control the paddle and field.\n"/>
+          <Text ID="98919" Value="1. Remove the wooden bumpers on the field.\n2. Open the control panel.\n3. Turn on the ventilator\n4. Adjust the parameters as desired.\n5. Manually control the paddle and field.\n"/>
           <Text ID="98920" Value="Help page"/>
           <Text ID="98922" Value="Rules:\n"/>
           <Text ID="98923" Value="1. The shooter is only available when the ventilator is enabled.\n2. Paddle and field speeds can be set between 100 and 2000."/>
@@ -108,7 +108,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="Font" Value="Source[local].Font[MiddleFont]"/>
           <Property Name="ForeColor" Value="16"/>
-          <Property Name="Height" Value="94"/>
+          <Property Name="Height" Value="135"/>
           <Property Name="Left" Value="40"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
@@ -153,7 +153,7 @@
           <Property Name="Font" Value="Source[local].Font[MiddleFont]"/>
           <Property Name="ForeColor" Value="16"/>
           <Property Name="Height" Value="32"/>
-          <Property Name="Left" Value="20"/>
+          <Property Name="Left" Value="22"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -161,7 +161,7 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="81"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="166"/>
+          <Property Name="Top" Value="199"/>
           <Property Name="Width" Value="242"/>
         </Control>
         <Control ClassId="0x00001004" Name="Text_5">
@@ -170,7 +170,7 @@
           <Property Name="Font" Value="Source[local].Font[MiddleFont]"/>
           <Property Name="ForeColor" Value="16"/>
           <Property Name="Height" Value="109"/>
-          <Property Name="Left" Value="22"/>
+          <Property Name="Left" Value="24"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -178,7 +178,7 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="82"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="187"/>
+          <Property Name="Top" Value="220"/>
           <Property Name="Width" Value="589"/>
         </Control>
         <Control ClassId="0x00001005" Name="Bitmap_1">
@@ -188,10 +188,10 @@
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="87"/>
           <Property Name="IndexDatapoint" Value="None"/>
-          <Property Name="Left" Value="185"/>
+          <Property Name="Left" Value="187"/>
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
-          <Property Name="Top" Value="267"/>
+          <Property Name="Top" Value="300"/>
           <Property Name="Width" Value="242"/>
         </Control>
         <Control ClassId="0x00001004" Name="Text_3">
@@ -200,7 +200,7 @@
           <Property Name="Font" Value="Source[local].Font[MiddleFont]"/>
           <Property Name="ForeColor" Value="16"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1"/>
+          <Property Name="Left" Value="3"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -208,7 +208,7 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="6"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="300"/>
+          <Property Name="Top" Value="333"/>
           <Property Name="Width" Value="251"/>
         </Control>
         <Control ClassId="0x00001004" Name="Text_6">
@@ -217,7 +217,7 @@
           <Property Name="Font" Value="Source[local].Font[MiddleFont]"/>
           <Property Name="ForeColor" Value="16"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="398"/>
+          <Property Name="Left" Value="394"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -225,7 +225,7 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="7"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="300"/>
+          <Property Name="Top" Value="333"/>
           <Property Name="Width" Value="242"/>
         </Control>
         <Control ClassId="0x00001004" Name="Text_7">
@@ -234,7 +234,7 @@
           <Property Name="Font" Value="Source[local].Font[MiddleFont]"/>
           <Property Name="ForeColor" Value="16"/>
           <Property Name="Height" Value="90"/>
-          <Property Name="Left" Value="270"/>
+          <Property Name="Left" Value="272"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -242,7 +242,7 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="8"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="340"/>
+          <Property Name="Top" Value="373"/>
           <Property Name="Width" Value="100"/>
         </Control>
       </Controls>

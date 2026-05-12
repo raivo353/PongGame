@@ -14,6 +14,10 @@ TYPE
 		Start : BOOL;
 		StopGame : BOOL;
 	END_STRUCT;
+	UDT_PongGame_PAR : 	STRUCT 
+		Highscore : UINT;
+		Score : UINT;
+	END_STRUCT;
 	UDT_PongGame_STS : 	STRUCT 
 		Disabled : BOOL;
 		AlarmActive : BOOL;
@@ -27,13 +31,7 @@ TYPE
 		GameStopped : BOOL;
 		StateString : STRING[80];
 	END_STRUCT;
-	UDT_PongGame_PAR : 	STRUCT 
-		Highscore : UINT;
-		Score : UINT;
-	END_STRUCT;
 	UDT_PongGame_ALM : 	STRUCT 
-		PaddleAxisError : BOOL;
-		ShooterError : BOOL;
-		TiltAxisError : BOOL;
+		dummy : BOOL;
 	END_STRUCT;
 END_TYPE

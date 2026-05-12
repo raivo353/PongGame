@@ -46,7 +46,7 @@
           <Text ID="98516" Value="Highscore:"/>
           <Text ID="98839" Value="Help"/>
           <Text ID="98840" Value="Auto"/>
-          <Text ID="99439" Value="Set angle"/>
+          <Text ID="99439" Value="Set shooting intensity"/>
           <Text ID="99440" Value="Shooting intensity"/>
         </TextLayer>
         <TextLayer LanguageId="de">
@@ -554,7 +554,7 @@
           <Property Name="EmbVirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_28]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="51"/>
+          <Property Name="Left" Value="68"/>
           <Property Name="Locking" Value="Datapoint &gt;= Level"/>
           <Property Name="LockingDatapoint" Value="Source[global].Variable[DataSource.g_FieldControl.STS.StateInt]"/>
           <Property Name="LockingLevel" Value="10"/>
@@ -566,7 +566,7 @@
           <Property Name="TextIndexDatapoint" Value="None"/>
           <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="None"/>
-          <Property Name="Top" Value="420"/>
+          <Property Name="Top" Value="414"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_28]"/>
           <Property Name="Width" Value="40"/>
         </Control>
@@ -582,7 +582,7 @@
           <Property Name="EmbVirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_36]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="121"/>
+          <Property Name="Left" Value="138"/>
           <Property Name="Locking" Value="Datapoint &gt;= Level"/>
           <Property Name="LockingDatapoint" Value="Source[global].Variable[DataSource.g_FieldControl.STS.StateInt]"/>
           <Property Name="LockingLevel" Value="10"/>
@@ -594,7 +594,7 @@
           <Property Name="TextIndexDatapoint" Value="None"/>
           <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="None"/>
-          <Property Name="Top" Value="420"/>
+          <Property Name="Top" Value="414"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_36]"/>
           <Property Name="Width" Value="40"/>
         </Control>
@@ -606,7 +606,7 @@
           <Property Name="Font" Value="Source[local].Font[MiddleFont]"/>
           <Property Name="ForeColor" Value="16"/>
           <Property Name="Height" Value="25"/>
-          <Property Name="Left" Value="31"/>
+          <Property Name="Left" Value="0"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
@@ -614,7 +614,7 @@
           <Property Name="TextIndexOffset" Value="28"/>
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="385"/>
-          <Property Name="Width" Value="150"/>
+          <Property Name="Width" Value="254"/>
         </Control>
         <Control ClassId="0x00001004" Name="Text_6">
           <Property Name="AlignmentHorizontal" Value="Center"/>
@@ -626,7 +626,7 @@
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="ForeColor" Value="16"/>
           <Property Name="Height" Value="30"/>
-          <Property Name="Left" Value="20"/>
+          <Property Name="Left" Value="36"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -634,7 +634,7 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="29"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="355"/>
+          <Property Name="Top" Value="356"/>
           <Property Name="Width" Value="100"/>
         </Control>
         <Control ClassId="0x00001007" Name="Numeric_4">
@@ -646,7 +646,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="16"/>
           <Property Name="Height" Value="30"/>
-          <Property Name="Left" Value="132"/>
+          <Property Name="Left" Value="148"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -654,7 +654,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Empty]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="355"/>
+          <Property Name="Top" Value="356"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.g_Shooter.PAR.Intensity]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="60"/>

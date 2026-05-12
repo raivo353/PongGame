@@ -10,6 +10,13 @@ TYPE
 		Interlock : BOOL;
 		SetCenterPoint : BOOL;
 	END_STRUCT;
+	UDT_FieldControl_HMI : 	STRUCT 
+		IncreaseAngle : BOOL;
+		DecreaseAngle : BOOL;
+	END_STRUCT;
+	UDT_FieldControl_PAR : 	STRUCT 
+		Angle : REAL;
+	END_STRUCT;
 	UDT_FieldControl_STS : 	STRUCT 
 		Disabled : BOOL;
 		Idle : BOOL;
@@ -23,14 +30,7 @@ TYPE
 		CurrentAngle : REAL;
 		AtTargetPosition : BOOL;
 	END_STRUCT;
-	UDT_FieldControl_PAR : 	STRUCT 
-		Angle : REAL;
-	END_STRUCT;
-	UDT_FieldControl_HMI : 	STRUCT 
-		IncreaseAngle : BOOL;
-		DecreaseAngle : BOOL;
-	END_STRUCT;
 	UDT_FieldControl_ALM : 	STRUCT 
-		MotorAlarm : BOOL;
+		dummy : BOOL;
 	END_STRUCT;
 END_TYPE

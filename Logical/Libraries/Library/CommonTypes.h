@@ -30,6 +30,12 @@
 #define SHOOT_OUTPUT_BIT 3
 #define FAN_OUTPUT_BIT 0
 
+#define STATE_DETECT_RIGHT 0
+#define STATE_START_SPEEDTIMER 5
+#define STATE_DETECT_MIDDLE 10
+#define STATE_DETECT_LEFT 20
+#define STATE_SHOOT 30
+
 #define MS_50 50
 #define MS_100 100
 #define MS_500 500
@@ -53,6 +59,7 @@
 
 #define BALL_MIN_DISTANCE 50
 #define BALL_MAX_DISTANCE 300
+#define MAX_PADDLE_DIFFERENCE 50
 
 #define MM_TO_POSITION 11.2
 #define MAX_POSITION (PaddleMotor->STS.ReferencePosition - 100)

@@ -67,7 +67,7 @@ void FB_DistanceSensor(struct FB_DistanceSensor* inst)
 		/* alarm indication */
 		sensors[i]->STS.AlarmActiveColour = sensors[i]->STS.AlarmActive ? RED_COLOUR : GREEN_COLOUR;
 
-		if(sensors[i]->STS.DeviceStatus == SENSOR_FAILURE || sensors[i]->ALM.OutOfBounds)
+		if(sensors[i]->STS.DeviceStatus == SENSOR_FAILURE)
 		{
 			sensors[i]->STS.AlarmActive = 1;
 		}
