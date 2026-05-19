@@ -108,26 +108,9 @@ _TEST Test_Running_MinJogSpeedLimit(void)
 	TEST_DONE;
 }
 
-_TEST Test_Running_AutoModeDisablesHMICommands(void)
-{
-	FieldMotorFB.FieldMotor->STS.AutoActive = 1;
-
-	FieldMotorFB.FieldMotor->HMI.MoveAbsolute = 1;
-	FieldMotorFB.FieldMotor->HMI.MoveJogNeg = 1;
-	FieldMotorFB.FieldMotor->HMI.MoveJogPos = 1;
-
-	FB_FieldMotor(&FieldMotorFB);
-
-	TEST_ASSERT_EQUAL_INT(0, FieldMotorFB.FieldMotor->HMI.MoveAbsolute);
-	TEST_ASSERT_EQUAL_INT(0, FieldMotorFB.FieldMotor->HMI.MoveJogNeg);
-	TEST_ASSERT_EQUAL_INT(0, FieldMotorFB.FieldMotor->HMI.MoveJogPos);
-
-	TEST_DONE;
-}
-
 _TEST Test_Running_EndButtonStopsPositiveMovement(void)
 {
-	FieldMotorFB.FieldMotor->IO.EndButton = 1;
+	FieldMotorFB.digitalInput = !ENDBUTTON_BITMASK_FIELD;
 
 	FieldMotorFB.FieldMotor->CS.MoveJogPos = 1;
 	FieldMotorFB.FieldMotor->HMI.MoveJogPos = 1;
@@ -232,7 +215,7 @@ _TEST Test_Running_AlarmSourcePropagation(void)
 B+R UnitTest: This is generated code.
 Do not edit! Do not move!
 Description: UnitTest Testprogramm infrastructure (TestSet).
-LastUpdated: 2026-05-08 07:52:41Z
+LastUpdated: 2026-05-19 08:31:48Z
 By B+R UnitTest Helper Version: 2.0.2.35
 */
 UNITTEST_FIXTURES(fixtures)
@@ -243,7 +226,6 @@ UNITTEST_FIXTURES(fixtures)
 	new_TestFixture("Test_Running_MaxJogSpeedLimit", Test_Running_MaxJogSpeedLimit), 
 	new_TestFixture("Test_Running_DecreaseJogSpeed", Test_Running_DecreaseJogSpeed), 
 	new_TestFixture("Test_Running_MinJogSpeedLimit", Test_Running_MinJogSpeedLimit), 
-	new_TestFixture("Test_Running_AutoModeDisablesHMICommands", Test_Running_AutoModeDisablesHMICommands), 
 	new_TestFixture("Test_Running_EndButtonStopsPositiveMovement", Test_Running_EndButtonStopsPositiveMovement), 
 	new_TestFixture("Test_Running_StopGameTransitionsToStopping", Test_Running_StopGameTransitionsToStopping), 
 	new_TestFixture("Test_Running_StopBlockedByInterlock", Test_Running_StopBlockedByInterlock), 

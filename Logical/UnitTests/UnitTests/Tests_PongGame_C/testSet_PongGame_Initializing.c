@@ -75,11 +75,23 @@ _TEST Test_Initializing_IdleHasPriority(void)
 	TEST_DONE;
 }
 
+_TEST Test_Initializing_ResetScore(void)
+{
+	PongGameFB.PongGame->PAR.Score = 99;
+
+	FB_PongGame(&PongGameFB);
+
+	TEST_ASSERT_EQUAL_INT(0, PongGameFB.PongGame->PAR.Score);
+
+	TEST_DONE;
+}
+
+
 /*
 B+R UnitTest: This is generated code.
 Do not edit! Do not move!
 Description: UnitTest Testprogramm infrastructure (TestSet).
-LastUpdated: 2026-05-07 13:54:36Z
+LastUpdated: 2026-05-19 08:38:02Z
 By B+R UnitTest Helper Version: 2.0.2.35
 */
 UNITTEST_FIXTURES(fixtures)
@@ -88,6 +100,7 @@ UNITTEST_FIXTURES(fixtures)
 	new_TestFixture("Test_Initializing_StaysWhenNotIdle", Test_Initializing_StaysWhenNotIdle), 
 	new_TestFixture("Test_Initializing_TransitionsToIdle", Test_Initializing_TransitionsToIdle), 
 	new_TestFixture("Test_Initializing_IdleHasPriority", Test_Initializing_IdleHasPriority), 
+	new_TestFixture("Test_Initializing_ResetScore", Test_Initializing_ResetScore), 
 };
 
 UNITTEST_CALLER_COMPLETE_EXPLICIT(testSet_PongGame_Initializing, "testSet_PongGame_Initializing", setupTest, 0, fixtures, 0, 0, 0);

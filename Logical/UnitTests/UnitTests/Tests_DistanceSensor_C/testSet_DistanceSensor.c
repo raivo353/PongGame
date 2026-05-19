@@ -175,7 +175,7 @@ _TEST Test_DistanceSensor_OutOfBoundsSetsAlarm(void)
 
 	FB_DistanceSensor(&DistanceSensorFB);
 
-	TEST_ASSERT_EQUAL_INT(1, DistanceSensorFB.DistanceSensorMiddle->STS.AlarmActive);
+	TEST_ASSERT_EQUAL_INT(1, DistanceSensorFB.DistanceSensorMiddle->ALM.OutOfBounds);
 
 	TEST_DONE;
 }

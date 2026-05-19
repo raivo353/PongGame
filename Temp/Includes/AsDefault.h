@@ -17,9 +17,13 @@ extern "C"
 	#include <sys_lib.h>
 	#include <brsystem.h>
 	#include <Acp10man.h>
+	#include <AsARCfg.h>
+	#include <DataObj.h>
+	#include <UtMgr.h>
 	#include <AsIecCon.h>
 	#include <Acp10sdc.h>
 	#include <Acp10_MC.h>
+	#include <UtWs.h>
 	#include <Library.h>
 #ifdef __cplusplus
 };

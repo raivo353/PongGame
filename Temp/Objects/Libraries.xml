@@ -3,28 +3,34 @@
 <LibraryInfos>
   <Library
     Name="Acp10_MC"
-    IsDeployed="true"
+    IsDeployed="false"
     IsStatic="false"
     UseAsStatic="false"
     Version="5.30.2" />
   <Library
     Name="Acp10man"
-    IsDeployed="true"
+    IsDeployed="false"
     IsStatic="false"
     UseAsStatic="false"
     Version="5.30.2" />
   <Library
     Name="Acp10par"
-    IsDeployed="true"
+    IsDeployed="false"
     IsStatic="false"
     UseAsStatic="false"
     Version="5.30.2" />
   <Library
     Name="Acp10sdc"
-    IsDeployed="true"
+    IsDeployed="false"
     IsStatic="false"
     UseAsStatic="false"
     Version="5.30.2" />
+  <Library
+    Name="AsARCfg"
+    IsDeployed="true"
+    IsStatic="false"
+    UseAsStatic="false"
+    Version="" />
   <Library
     Name="AsBrStr"
     IsDeployed="true"
@@ -33,19 +39,25 @@
     Version="" />
   <Library
     Name="AsIecCon"
-    IsDeployed="false"
+    IsDeployed="true"
     IsStatic="false"
     UseAsStatic="false"
     Version="" />
   <Library
     Name="astime"
-    IsDeployed="false"
+    IsDeployed="true"
     IsStatic="false"
     UseAsStatic="false"
     Version="" />
   <Library
     Name="brsystem"
-    IsDeployed="true"
+    IsDeployed="false"
+    IsStatic="false"
+    UseAsStatic="false"
+    Version="" />
+  <Library
+    Name="DataObj"
+    IsDeployed="false"
     IsStatic="false"
     UseAsStatic="false"
     Version="" />
@@ -53,11 +65,11 @@
     Name="Library"
     IsDeployed="true"
     IsStatic="false"
-    UseAsStatic="true"
+    UseAsStatic="false"
     Version="" />
   <Library
     Name="NcGlobal"
-    IsDeployed="true"
+    IsDeployed="false"
     IsStatic="false"
     UseAsStatic="false"
     Version="5.30.2" />
@@ -69,13 +81,13 @@
     Version="" />
   <Library
     Name="runtime"
-    IsDeployed="true"
+    IsDeployed="false"
     IsStatic="false"
     UseAsStatic="false"
     Version="" />
   <Library
     Name="standard"
-    IsDeployed="true"
+    IsDeployed="false"
     IsStatic="false"
     UseAsStatic="false"
     Version="" />
@@ -86,9 +98,21 @@
     UseAsStatic="false"
     Version="" />
   <Library
-    Name="Timer"
+    Name="UnitTest"
     IsDeployed="true"
     IsStatic="true"
     UseAsStatic="true"
-    Version="" />
+    Version="2.02.0" />
+  <Library
+    Name="UtMgr"
+    IsDeployed="true"
+    IsStatic="false"
+    UseAsStatic="false"
+    Version="2.02.0" />
+  <Library
+    Name="UtWs"
+    IsDeployed="true"
+    IsStatic="false"
+    UseAsStatic="false"
+    Version="2.02.0" />
 </LibraryInfos>

@@ -9,5 +9,5 @@
   AutomationStudioVersion="4.12.6.106"
   AutomationStudioEdition="Standard"
   BuildCrossReference="false"
-  ActiveConfiguration="Config1"
+  ActiveConfiguration="AutomatedPongGame_UnitTests"
   CreateAnsiCDeclarations="false" />

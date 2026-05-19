@@ -36,13 +36,11 @@ _TEST Test_Disabled_ResetsRuntimeValues(void)
 	PongGameFB.PongGame->HMI.StopGame = 0;
 
 	PongGameFB.PongGame->STS.GameStopped = 1;
-	PongGameFB.PongGame->PAR.Score = 99;
 
 	FB_PongGame(&PongGameFB);
 
 	TEST_ASSERT_EQUAL_INT(0, PongGameFB.PongGame->STS.GameStopped);
 	TEST_ASSERT_EQUAL_INT(0, PongGameFB.PongGame->CS.StopGame);
-	TEST_ASSERT_EQUAL_INT(0, PongGameFB.PongGame->PAR.Score);
 
 	TEST_DONE;
 }
@@ -93,13 +91,11 @@ _TEST Test_Disabled_OverwriteExistingValues(void)
 	PongGameFB.PongGame->HMI.StopGame = 0;
 
 	PongGameFB.PongGame->STS.GameStopped = 1;
-	PongGameFB.PongGame->PAR.Score = 1234;
 
 	FB_PongGame(&PongGameFB);
 
 	TEST_ASSERT_EQUAL_INT(0, PongGameFB.PongGame->STS.GameStopped);
 	TEST_ASSERT_EQUAL_INT(0, PongGameFB.PongGame->CS.StopGame);
-	TEST_ASSERT_EQUAL_INT(0, PongGameFB.PongGame->PAR.Score);
 
 	TEST_DONE;
 }
@@ -110,7 +106,6 @@ _TEST Test_Disabled_StillResetsValues_BeforeInitializingTransition(void)
 	PongGameFB.PongGame->HMI.StopGame = 0;
 
 	PongGameFB.PongGame->STS.GameStopped = 1;
-	PongGameFB.PongGame->PAR.Score = 50;
 
 	PongGameFB.PongGame->STS.Initializing = 1;
 
@@ -118,7 +113,6 @@ _TEST Test_Disabled_StillResetsValues_BeforeInitializingTransition(void)
 
 	TEST_ASSERT_EQUAL_INT(0, PongGameFB.PongGame->STS.GameStopped);
 	TEST_ASSERT_EQUAL_INT(0, PongGameFB.PongGame->CS.StopGame);
-	TEST_ASSERT_EQUAL_INT(0, PongGameFB.PongGame->PAR.Score);
 
 	TEST_ASSERT_EQUAL_INT(STATE_INITIALIZING, PongGameFB.PongGame->STS.StateInt);
 
